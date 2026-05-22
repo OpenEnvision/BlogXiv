@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 520" role="img" aria-labelledby="title desc">
+  <title id="title">Interpretability geometry cover</title>
+  <desc id="desc">Activation manifolds, exemplar regions, and readable latent explanations for interpretability posts.</desc>
+  <rect width="760" height="520" fill="#f7f5ff"/>
+  <path d="M115 356c70-160 162-232 278-216 110 15 177 116 254 20" fill="none" stroke="#7c3aed" stroke-width="16" stroke-linecap="round"/>
+  <path d="M118 376c92-118 171-152 238-102 82 61 169 70 286-24" fill="none" stroke="#0ea5a3" stroke-width="10" stroke-linecap="round"/>
+  <g fill="#ffffff" stroke="#111827" stroke-width="3">
+    <circle cx="180" cy="306" r="30"/>
+    <circle cx="278" cy="226" r="24"/>
+    <circle cx="406" cy="230" r="34"/>
+    <circle cx="534" cy="268" r="26"/>
+    <circle cx="624" cy="188" r="22"/>
+  </g>
+  <g fill="#111827" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700">
+    <text x="168" y="313">E1</text>
+    <text x="267" y="233">E2</text>
+    <text x="394" y="237">NLA</text>
+    <text x="522" y="275">SAE</text>
+  </g>
+  <text x="380" y="448" text-anchor="middle" fill="#111827" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700">Activation Geometry</text>
+</svg>

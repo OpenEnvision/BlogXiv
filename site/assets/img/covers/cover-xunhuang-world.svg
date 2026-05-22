@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Video world model cover</title>
+  <desc id="desc">Distinct cover for video world model essays.</desc>
+  <rect width="1200" height="630" fill="#eef2ff"/>
+  <rect x="80" y="76" width="1040" height="478" rx="34" fill="#ffffff" stroke="#4f46e5" stroke-width="4"/>
+  <path d="M202 388c122-126 224-154 306-84 76 66 160 48 252-54 66-74 142-86 238-36v176z" fill="#c7d2fe" stroke="#3730a3" stroke-width="6"/>
+  <circle cx="336" cy="220" r="54" fill="#818cf8"/>
+  <rect x="680" y="154" width="260" height="170" rx="24" fill="#e0e7ff" stroke="#4338ca" stroke-width="5"/>
+  <path d="M748 210l108 60-108 60z" fill="#4338ca"/>
+  <text x="176" y="526" fill="#312e81" font-family="Arial, Helvetica, sans-serif" font-size="52" font-weight="700">Video World Models</text>
+</svg>

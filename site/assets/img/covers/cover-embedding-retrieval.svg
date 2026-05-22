@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 520" role="img" aria-labelledby="title desc">
+  <title id="title">Embedding retrieval cover</title>
+  <desc id="desc">Query-document embedding space, hard-negative filtering, and exact-softmax retrieval training.</desc>
+  <rect width="760" height="520" fill="#f7fbff"/>
+  <rect x="82" y="78" width="596" height="364" rx="24" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+  <g transform="translate(134 136)">
+    <circle cx="138" cy="122" r="18" fill="#2563eb"/>
+    <circle cx="214" cy="80" r="14" fill="#16a34a"/>
+    <circle cx="246" cy="154" r="14" fill="#16a34a"/>
+    <circle cx="316" cy="116" r="14" fill="#16a34a"/>
+    <circle cx="378" cy="70" r="14" fill="#f97316"/>
+    <circle cx="420" cy="164" r="14" fill="#ef4444"/>
+    <path d="M138 122L214 80M138 122L246 154M138 122L316 116" stroke="#16a34a" stroke-width="4" stroke-linecap="round"/>
+    <path d="M138 122L378 70M138 122L420 164" stroke="#ef4444" stroke-width="4" stroke-linecap="round" stroke-dasharray="9 10"/>
+    <rect x="58" y="226" width="392" height="58" rx="14" fill="#f8fafc" stroke="#94a3b8" stroke-width="3"/>
+    <path d="M88 255h90M206 255h90M324 255h86" stroke="#334155" stroke-width="7" stroke-linecap="round"/>
+  </g>
+  <text x="380" y="112" text-anchor="middle" fill="#111827" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700">Embedding Training</text>
+</svg>

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 520" role="img" aria-labelledby="title desc">
+  <title id="title">Knowledge representation cover</title>
+  <desc id="desc">Semantic graph nodes and rules for knowledge representation articles.</desc>
+  <rect width="760" height="520" fill="#f7fbf4"/>
+  <g stroke="#111827" stroke-width="4">
+    <path d="M190 184l178 78 196-82M368 262l-76 112M368 262l122 116M190 184l102 190M564 180l-74 198"/>
+  </g>
+  <g fill="#ffffff" stroke-width="5">
+    <circle cx="190" cy="184" r="54" stroke="#22c55e"/>
+    <circle cx="368" cy="262" r="62" stroke="#2563eb"/>
+    <circle cx="564" cy="180" r="54" stroke="#f97316"/>
+    <circle cx="292" cy="374" r="48" stroke="#8b5cf6"/>
+    <circle cx="490" cy="378" r="48" stroke="#dc2626"/>
+  </g>
+  <text x="380" y="88" text-anchor="middle" fill="#111827" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700">Knowledge Graphs</text>
+</svg>

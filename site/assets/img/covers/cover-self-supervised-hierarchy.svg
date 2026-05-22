@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 520" role="img" aria-labelledby="title desc">
+  <title id="title">Self-supervised hierarchy cover</title>
+  <desc id="desc">Deep self-supervised learning hierarchy with source depths predicting multiple teacher targets.</desc>
+  <rect width="760" height="520" fill="#f7fafc"/>
+  <rect x="82" y="82" width="596" height="356" rx="24" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+  <g transform="translate(162 144)" stroke="#0f172a" stroke-width="4">
+    <g fill="#dbeafe">
+      <rect width="92" height="44" rx="10"/>
+      <rect y="64" width="92" height="44" rx="10"/>
+      <rect y="128" width="92" height="44" rx="10"/>
+      <rect y="192" width="92" height="44" rx="10"/>
+    </g>
+    <g fill="#dcfce7" transform="translate(324 0)">
+      <rect width="92" height="44" rx="10"/>
+      <rect y="64" width="92" height="44" rx="10"/>
+      <rect y="128" width="92" height="44" rx="10"/>
+      <rect y="192" width="92" height="44" rx="10"/>
+    </g>
+    <path d="M92 22h324M92 86h324M92 150h324M92 214h324" stroke="#94a3b8" stroke-width="4" stroke-linecap="round"/>
+    <path d="M92 214C188 128 258 82 324 22M92 150C198 172 254 142 324 86M92 86C196 116 256 154 324 214" fill="none" stroke="#7c3aed" stroke-width="6" stroke-linecap="round"/>
+  </g>
+  <text x="380" y="120" text-anchor="middle" fill="#111827" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700">Representation Hierarchy</text>
+</svg>

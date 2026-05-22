@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Research Craft cover</title>
+  <desc id="desc">Notebook, evaluation marks, and research workflow cover.</desc>
+  <rect width="1200" height="630" fill="#f8f6fb"/>
+  <rect x="122" y="92" width="956" height="446" rx="32" fill="#ffffff" stroke="#cbb9db" stroke-width="4"/>
+  <rect x="210" y="160" width="350" height="300" rx="24" fill="#efe6f6"/>
+  <path d="M260 226h242M260 288h190M260 350h226" stroke="#412d54" stroke-width="18" stroke-linecap="round"/>
+  <rect x="648" y="174" width="296" height="74" rx="20" fill="#d9ece3"/>
+  <rect x="648" y="282" width="296" height="74" rx="20" fill="#f3df96"/>
+  <rect x="648" y="390" width="296" height="74" rx="20" fill="#dfe7ff"/>
+  <path d="M692 211l28 28 54-66M692 319l28 28 54-66M692 427l28 28 54-66" fill="none" stroke="#245944" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="210" y="520" fill="#2b2133" font-family="Arial, Helvetica, sans-serif" font-size="54" font-weight="700">Research Craft</text>
+</svg>

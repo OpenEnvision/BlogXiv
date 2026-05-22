@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Open model ecosystem cover</title>
+  <desc id="desc">Distinct cover for open model ecosystem analysis.</desc>
+  <rect width="1200" height="630" fill="#eefdf9"/>
+  <rect x="78" y="74" width="1044" height="482" rx="36" fill="#ffffff" stroke="#14b8a6" stroke-width="4"/>
+  <path d="M206 414h792" stroke="#ccfbf1" stroke-width="72" stroke-linecap="round"/>
+  <circle cx="284" cy="244" r="74" fill="#0f766e"/>
+  <circle cx="518" cy="244" r="74" fill="#14b8a6"/>
+  <circle cx="752" cy="244" r="74" fill="#2dd4bf"/>
+  <circle cx="986" cy="244" r="74" fill="#99f6e4"/>
+  <path d="M358 244h86M592 244h86M826 244h86" stroke="#0f172a" stroke-width="16" stroke-linecap="round"/>
+  <text x="178" y="458" fill="#134e4a" font-family="Arial, Helvetica, sans-serif" font-size="52" font-weight="700">Open Model Map</text>
+  <text x="180" y="510" fill="#0f766e" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700">ecosystem / capability / strategy</text>
+</svg>

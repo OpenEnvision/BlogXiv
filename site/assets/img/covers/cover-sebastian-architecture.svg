@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Model architecture cover</title>
+  <desc id="desc">Distinct cover for modern LLM architecture comparison articles.</desc>
+  <rect width="1200" height="630" fill="#f5f5f4"/>
+  <rect x="82" y="78" width="1036" height="474" rx="34" fill="#ffffff" stroke="#78716c" stroke-width="4"/>
+  <rect x="188" y="160" width="170" height="250" rx="22" fill="#e7e5e4" stroke="#44403c" stroke-width="5"/>
+  <rect x="436" y="124" width="170" height="322" rx="22" fill="#d6d3d1" stroke="#44403c" stroke-width="5"/>
+  <rect x="684" y="180" width="170" height="214" rx="22" fill="#e7e5e4" stroke="#44403c" stroke-width="5"/>
+  <path d="M358 286h78M606 286h78M854 286h112" stroke="#57534e" stroke-width="18" stroke-linecap="round"/>
+  <text x="174" y="528" fill="#292524" font-family="Arial, Helvetica, sans-serif" font-size="52" font-weight="700">Architecture Map</text>
+</svg>

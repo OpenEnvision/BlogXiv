@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 520" role="img" aria-labelledby="title desc">
+  <title id="title">Evals and tracing cover</title>
+  <desc id="desc">Trace spans becoming datasets, rubric scores, regression checks, and production eval loops.</desc>
+  <rect width="760" height="520" fill="#f7fafc"/>
+  <rect x="86" y="80" width="588" height="360" rx="24" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+  <g transform="translate(138 148)">
+    <path d="M54 56h420M54 126h340M54 196h464" stroke="#334155" stroke-width="9" stroke-linecap="round"/>
+    <circle cx="54" cy="56" r="24" fill="#dbeafe" stroke="#2563eb" stroke-width="5"/>
+    <circle cx="54" cy="126" r="24" fill="#fef3c7" stroke="#d97706" stroke-width="5"/>
+    <circle cx="54" cy="196" r="24" fill="#dcfce7" stroke="#16a34a" stroke-width="5"/>
+    <rect x="342" y="12" width="168" height="88" rx="16" fill="#eef2ff" stroke="#4f46e5" stroke-width="5"/>
+    <path d="M376 56h34l18 20 42-48" fill="none" stroke="#4f46e5" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="248" y="154" width="210" height="88" rx="16" fill="#fee2e2" stroke="#dc2626" stroke-width="5"/>
+    <path d="M284 198h138M284 220h92" stroke="#7f1d1d" stroke-width="8" stroke-linecap="round"/>
+  </g>
+  <text x="380" y="120" text-anchor="middle" fill="#111827" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700">Evals + Traces</text>
+</svg>

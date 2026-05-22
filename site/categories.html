@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categories - BlogXiv</title>
+    <meta name="description" content="Browse AI research blogs by category on BlogXiv - models, agents, safety, efficiency, world models, and research craft">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/styles.css?v=footer-openenvision-logo-42">
+    <link rel="stylesheet" href="assets/css/enhancements.css?v=popular-real-blogs-expanded-15">
+    <link rel="icon" type="image/svg+xml" href="assets/img/brand/icon.svg">
+    <link rel="mask-icon" href="assets/img/brand/icon.svg" color="#7cacdc">
+    <!-- Theme initialization script (prevents flash) -->
+    <script>
+        (function() {
+            const theme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="index.html" class="brand-link" aria-label="BlogXiv home">
+                    <img src="assets/img/brand/blogxiv.svg" alt="BlogXiv" class="brand-logo" />
+                </a>
+            </div>
+            
+            <div class="nav-search">
+                <div class="search-container">
+                    <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.35-4.35"></path>
+                    </svg>
+                    <input type="text" id="searchInput" placeholder="Search categories..." class="search-input">
+                </div>
+            </div>
+            
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
+                    </svg>
+                    <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+                <a href="explore.html" class="btn btn-secondary">Explore</a>
+                
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="categories-page">
+        <div class="container">
+            <!-- Page Header -->
+            <header class="page-header">
+                <h1 class="page-title">Browse by Category</h1>
+                <p class="page-description">Explore AI research blogs organized by specialized domains and research areas</p>
+            </header>
+
+            <!-- Categories Grid -->
+            <section class="categories-section">
+                <div class="categories-grid">
+                    <div class="category-card" data-category="Multimodal Model">
+                        <div class="category-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="category-title">Multimodal Model</h3>
+                        <p class="category-description">Vision-language, audio-language, and unified multimodal model research</p>
+                        <div class="category-tags">
+                            <span class="tag">Multimodal</span>
+                            <span class="tag">Vision-Language</span>
+                            <span class="tag">Audio-Language</span>
+                            <span class="tag">Reasoning</span>
+                        </div>
+                        <a href="explore.html?category=Multimodal%20Model" class="category-link">Explore Multimodal Model Blogs</a>
+                    </div>
+                    
+                    <div class="category-card" data-category="Visual Generation">
+                        <div class="category-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="category-title">Visual Generation</h3>
+                        <p class="category-description">Image, video, editing, and controllable visual synthesis research</p>
+                        <div class="category-tags">
+                            <span class="tag">Image Generation</span>
+                            <span class="tag">Video Generation</span>
+                            <span class="tag">Diffusion</span>
+                            <span class="tag">Editing</span>
+                        </div>
+                        <a href="explore.html?category=Visual%20Generation" class="category-link">Explore Visual Generation Blogs</a>
+                    </div>
+                    
+                    <div class="category-card" data-category="World Model">
+                        <div class="category-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="category-title">World Model</h3>
+                        <p class="category-description">Physical simulation, video worlds, robotics/VLA, and model-based planning research</p>
+                        <div class="category-tags">
+                            <span class="tag">Simulation</span>
+                            <span class="tag">Robotics</span>
+                            <span class="tag">Planning</span>
+                            <span class="tag">Physical Dynamics</span>
+                        </div>
+                        <a href="explore.html?category=World%20Model" class="category-link">Explore World Model Blogs</a>
+                    </div>
+
+                    <div class="category-card" data-category="AI Agents">
+                        <div class="category-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 8V4H8"></path>
+                                <rect x="4" y="8" width="16" height="12" rx="2"></rect>
+                                <path d="M2 14h2M20 14h2M9 13v2M15 13v2M9 18h6"></path>
+                            </svg>
+                        </div>
+                        <h3 class="category-title">AI Agents</h3>
+                        <p class="category-description">Tool-using agents, coding agents, browser agents, and long-horizon agent systems</p>
+                        <div class="category-tags">
+                            <span class="tag">Tool Use</span>
+                            <span class="tag">Coding Agents</span>
+                            <span class="tag">Browser Agents</span>
+                            <span class="tag">Agent Infrastructure</span>
+                        </div>
+                        <a href="explore.html?category=AI%20Agents" class="category-link">Explore AI Agents Blogs</a>
+                    </div>
+
+                    <div class="category-card" data-category="LLM & MLLM">
+                        <div class="category-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 5h16M4 12h10M4 19h16"></path>
+                                <path d="M17 10l3 2-3 2"></path>
+                            </svg>
+                        </div>
+                        <h3 class="category-title">LLM & MLLM</h3>
+                        <p class="category-description">Language, reasoning, tool-use, and multimodal model analysis</p>
+                        <div class="category-tags">
+                            <span class="tag">LLM</span>
+                            <span class="tag">MLLM</span>
+                            <span class="tag">Reasoning</span>
+                            <span class="tag">Tool Use</span>
+                        </div>
+                        <a href="explore.html?category=LLM%20%26%20MLLM" class="category-link">Explore LLM & MLLM Blogs</a>
+                    </div>
+
+                    <div class="category-card" data-category="Foundation Model">
+                        <div class="category-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="4" y="4" width="6" height="6" rx="1"></rect>
+                                <rect x="14" y="4" width="6" height="6" rx="1"></rect>
+                                <rect x="9" y="14" width="6" height="6" rx="1"></rect>
+                                <path d="M10 7h4M7 10l3 4M17 10l-3 4"></path>
+                            </svg>
+                        </div>
+                        <h3 class="category-title">Foundation Model</h3>
+                        <p class="category-description">Open and frontier models, training recipes, datasets, and releases</p>
+                        <div class="category-tags">
+                            <span class="tag">Open Weights</span>
+                            <span class="tag">Frontier Models</span>
+                            <span class="tag">Datasets</span>
+                            <span class="tag">Scaling</span>
+                        </div>
+                        <a href="explore.html?category=Foundation%20Model" class="category-link">Explore Foundation Model Blogs</a>
+                    </div>
+
+                    <div class="category-card" data-category="Efficient AI">
+                        <div class="category-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 14a8 8 0 1 1 16 0"></path>
+                                <path d="M12 14l5-5"></path>
+                                <path d="M7 20h10"></path>
+                            </svg>
+                        </div>
+                        <h3 class="category-title">Efficient AI</h3>
+                        <p class="category-description">Inference, training, serving, quantization, and small-model systems</p>
+                        <div class="category-tags">
+                            <span class="tag">Inference</span>
+                            <span class="tag">Training</span>
+                            <span class="tag">Serving</span>
+                            <span class="tag">Small Models</span>
+                        </div>
+                        <a href="explore.html?category=Efficient%20AI" class="category-link">Explore Efficient AI Blogs</a>
+                    </div>
+
+                    <div class="category-card" data-category="Trustworthy AI">
+                        <div class="category-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 3l7 4v5c0 5-3.5 8-7 9-3.5-1-7-4-7-9V7l7-4z"></path>
+                                <path d="M9 12l2 2 4-5"></path>
+                            </svg>
+                        </div>
+                        <h3 class="category-title">Trustworthy AI</h3>
+                        <p class="category-description">Alignment, interpretability, hallucination, red teaming, auditing, and secure AI systems</p>
+                        <div class="category-tags">
+                            <span class="tag">Alignment</span>
+                            <span class="tag">Interpretability</span>
+                            <span class="tag">Red Teaming</span>
+                            <span class="tag">AI Security</span>
+                        </div>
+                        <a href="explore.html?category=Trustworthy%20AI" class="category-link">Explore Trustworthy AI Blogs</a>
+                    </div>
+
+                    <div class="category-card" data-category="Research Craft">
+                        <div class="category-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 4h14v16H5z"></path>
+                                <path d="M8 8h8M8 12h8M8 16h5"></path>
+                            </svg>
+                        </div>
+                        <h3 class="category-title">Research Craft</h3>
+                        <p class="category-description">Evals, research taste, systems thinking, and becoming a stronger researcher</p>
+                        <div class="category-tags">
+                            <span class="tag">Evals</span>
+                            <span class="tag">Research Taste</span>
+                            <span class="tag">AI Engineering</span>
+                            <span class="tag">Methods</span>
+                        </div>
+                        <a href="explore.html?category=Research%20Craft" class="category-link">Explore Research Craft Blogs</a>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-brand">
+                        <a href="index.html" class="brand-link" aria-label="BlogXiv home">
+                            <img src="assets/img/brand/blogxiv.svg" alt="BlogXiv" class="brand-logo" />
+                        </a>
+                        <a href="https://github.com/OpenEnvision" class="brand-link" aria-label="OpenEnvision GitHub" target="_blank" rel="noopener noreferrer">
+                            <img src="assets/img/brand/openenvision_logo_cropped.png" alt="OpenEnvision" class="brand-logo openenvision-logo" />
+                        </a>
+                    </div>
+                    <p class="footer-description">
+                        Discover, share, and explore amazing AI research blogs across different domains. 
+                        Join our community of knowledge seekers and content creators.
+                    </p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3 class="footer-title">Platform</h3>
+                    <ul class="footer-links">
+                        <li><a href="explore.html">Explore</a></li>
+                        <li><a href="categories.html">Categories</a></li>
+                        <li><a href="bloggers.html">Bloggers</a></li>
+                        <li><a href="trending.html">Trending</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3 class="footer-title">Community</h3>
+                    <ul class="footer-links">
+                        <li><a href="guidelines.html">Guidelines</a></li>
+                        <li><a href="help.html">Help Center</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="feedback.html">Feedback</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section footer-contribute-section">
+                    <h3 class="footer-title">Contribute</h3>
+                    <div class="footer-actions" aria-label="Contribute to BlogXiv">
+                        <a class="footer-action-link footer-github-action" href="https://github.com/OpenEnvision/BlogXiv" target="_blank" rel="noopener noreferrer" aria-label="Star OpenEnvision slash BlogXiv on GitHub">
+                            <span class="footer-action-icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" role="img" focusable="false">
+                                    <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2.01c-3.2.7-3.87-1.36-3.87-1.36-.52-1.34-1.28-1.69-1.28-1.69-1.05-.72.08-.71.08-.71 1.16.08 1.77 1.2 1.77 1.2 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.23-1.28-5.23-5.68 0-1.25.45-2.28 1.19-3.08-.12-.29-.52-1.46.11-3.04 0 0 .97-.31 3.17 1.18a10.9 10.9 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.23 2.75.11 3.04.74.8 1.19 1.83 1.19 3.08 0 4.41-2.69 5.38-5.25 5.66.41.35.78 1.05.78 2.12v3.15c0 .31.21.67.8.56A11.52 11.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z" />
+                                </svg>
+                            </span>
+                            <span class="footer-action-copy">
+                                <span class="footer-action-label">Star on GitHub</span>
+                                <span class="footer-action-meta">OpenEnvision/BlogXiv</span>
+                            </span>
+                        </a>
+                        <a class="footer-action-link footer-mail-action" href="mailto:juanxitian1031@gmail.com?subject=BlogXiv%20Blog%20Submission&body=Please%20include%3A%0A-%20Blog%20title%3A%0A-%20URL%3A%0A-%20Author%20or%20lab%3A%0A-%20Suggested%20category%3A%0A-%20Why%20it%20is%20technically%20valuable%3A" aria-label="Submit a technical AI blog by email">
+                            <span class="footer-action-icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" role="img" focusable="false">
+                                    <path d="M4 6.75h16v10.5a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6.75Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" />
+                                    <path d="m4.5 7.25 6.38 5.1a1.8 1.8 0 0 0 2.24 0l6.38-5.1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </span>
+                            <span class="footer-action-copy">
+                                <span class="footer-action-label">Submit a Blog</span>
+                                <span class="footer-action-meta">juanxitian1031@gmail.com</span>
+                            </span>
+                        </a>
+                    </div>
+                    <p class="footer-contribute-note">Research blogs are reviewed for technical depth, clarity, and durable insight.</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-copyright">
+                    <p>&copy; 2026 OpenEnvision｜BlogXiv. All rights reserved.</p>
+                </div>
+                <div class="footer-legal">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/app.js?v=popular-real-blogs-expanded-46"></script>
+    <!-- Loading animation overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-container">
+            <div class="loading-logo">
+                <img src="assets/img/brand/blogxiv.svg" alt="BlogXiv">
+            </div>
+            
+            <div class="loading-text" id="loadingText">Loading category content...</div>
+        </div>
+    </div>
+
+    <script src="assets/js/pages/categories.js?v=categories-taxonomy-43"></script>
+</body>
+</html>

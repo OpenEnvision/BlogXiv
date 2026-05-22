@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Efficient AI cover</title>
+  <desc id="desc">Abstract systems diagram for efficient AI blogs.</desc>
+  <rect width="1200" height="630" fill="#f7fbf8"/>
+  <rect x="76" y="74" width="1048" height="482" rx="32" fill="#ffffff" stroke="#b9d8c5" stroke-width="4"/>
+  <path d="M180 438h216M180 364h142M180 290h260M180 216h186" stroke="#2f6f56" stroke-width="22" stroke-linecap="round"/>
+  <path d="M545 152h280v326H545z" fill="#e4f2e9" stroke="#2f6f56" stroke-width="4"/>
+  <path d="M587 204h196M587 268h154M587 332h210M587 396h118" stroke="#245944" stroke-width="18" stroke-linecap="round"/>
+  <path d="M866 244l92 72-92 72" fill="none" stroke="#2563eb" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="958" cy="316" r="18" fill="#2563eb"/>
+  <text x="180" y="520" fill="#10251d" font-family="Arial, Helvetica, sans-serif" font-size="54" font-weight="700">Efficient AI</text>
+</svg>

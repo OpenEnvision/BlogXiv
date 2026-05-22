@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">CMU evals cover</title>
+  <desc id="desc">Distinct cover for CMU evaluation and judge validation articles.</desc>
+  <rect width="1200" height="630" fill="#fefce8"/>
+  <rect x="80" y="76" width="1040" height="478" rx="34" fill="#ffffff" stroke="#ca8a04" stroke-width="4"/>
+  <rect x="180" y="142" width="840" height="324" rx="28" fill="#fef9c3" stroke="#a16207" stroke-width="5"/>
+  <path d="M254 224h530M254 304h410M254 384h496" stroke="#713f12" stroke-width="20" stroke-linecap="round"/>
+  <path d="M842 234l46 46 88-112" fill="none" stroke="#16a34a" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M842 382l112-112M954 382L842 270" stroke="#dc2626" stroke-width="20" stroke-linecap="round"/>
+  <text x="180" y="528" fill="#713f12" font-family="Arial, Helvetica, sans-serif" font-size="52" font-weight="700">Judge Validation</text>
+</svg>

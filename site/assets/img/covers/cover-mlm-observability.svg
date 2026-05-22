@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">LLM observability cover</title>
+  <desc id="desc">Distinct cover for LLM observability articles.</desc>
+  <rect width="1200" height="630" fill="#eff6ff"/>
+  <rect x="80" y="76" width="1040" height="478" rx="34" fill="#ffffff" stroke="#2563eb" stroke-width="4"/>
+  <path d="M214 390h780" stroke="#dbeafe" stroke-width="42" stroke-linecap="round"/>
+  <path d="M236 386l104-126 118 72 112-156 128 188 118-106 132 124" fill="none" stroke="#1d4ed8" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="570" cy="176" r="32" fill="#2563eb"/>
+  <circle cx="698" cy="364" r="32" fill="#60a5fa"/>
+  <rect x="196" y="144" width="812" height="318" rx="24" fill="none" stroke="#93c5fd" stroke-width="6"/>
+  <text x="176" y="526" fill="#1e3a8a" font-family="Arial, Helvetica, sans-serif" font-size="52" font-weight="700">LLM Observability</text>
+</svg>

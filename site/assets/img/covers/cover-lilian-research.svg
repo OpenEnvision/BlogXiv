@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Research survey cover</title>
+  <desc id="desc">Distinct cover for Lilian Weng survey-style research articles.</desc>
+  <rect width="1200" height="630" fill="#f0fdf4"/>
+  <rect x="78" y="76" width="1044" height="478" rx="34" fill="#ffffff" stroke="#22c55e" stroke-width="4"/>
+  <rect x="178" y="144" width="248" height="330" rx="24" fill="#dcfce7" stroke="#15803d" stroke-width="5"/>
+  <rect x="476" y="144" width="248" height="330" rx="24" fill="#bbf7d0" stroke="#15803d" stroke-width="5"/>
+  <rect x="774" y="144" width="248" height="330" rx="24" fill="#86efac" stroke="#15803d" stroke-width="5"/>
+  <path d="M226 232h152M226 304h112M226 376h138M524 232h152M524 304h112M524 376h138M822 232h152M822 304h112M822 376h138" stroke="#14532d" stroke-width="14" stroke-linecap="round"/>
+  <text x="174" y="526" fill="#14532d" font-family="Arial, Helvetica, sans-serif" font-size="52" font-weight="700">Research Survey</text>
+</svg>

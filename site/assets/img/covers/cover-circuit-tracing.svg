@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 520" role="img" aria-labelledby="title desc">
+  <title id="title">Circuit tracing cover</title>
+  <desc id="desc">Attribution graph nodes, edges, and traced language-model mechanisms.</desc>
+  <rect width="760" height="520" fill="#fbf8ff"/>
+  <rect x="84" y="80" width="592" height="360" rx="24" fill="#ffffff" stroke="#d8c9f1" stroke-width="2"/>
+  <g fill="none" stroke-linecap="round">
+    <path d="M168 278c92-112 168-112 230-18 58 86 128 74 202-76" stroke="#7c3aed" stroke-width="9"/>
+    <path d="M170 346c94-34 162-6 224 28 74 42 134-20 204-42" stroke="#0891b2" stroke-width="8"/>
+    <path d="M226 184l102 78M328 262l108-2M436 260l112-78M328 262l74 112" stroke="#334155" stroke-width="4"/>
+  </g>
+  <g font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" text-anchor="middle">
+    <circle cx="226" cy="184" r="34" fill="#ede9fe" stroke="#7c3aed" stroke-width="5"/>
+    <text x="226" y="192" fill="#3b0764">A</text>
+    <circle cx="328" cy="262" r="34" fill="#cffafe" stroke="#0891b2" stroke-width="5"/>
+    <text x="328" y="270" fill="#164e63">B</text>
+    <circle cx="436" cy="260" r="34" fill="#fef3c7" stroke="#d97706" stroke-width="5"/>
+    <text x="436" y="268" fill="#7c2d12">C</text>
+    <circle cx="548" cy="182" r="34" fill="#dcfce7" stroke="#16a34a" stroke-width="5"/>
+    <text x="548" y="190" fill="#14532d">D</text>
+    <circle cx="402" cy="374" r="34" fill="#fee2e2" stroke="#dc2626" stroke-width="5"/>
+    <text x="402" y="382" fill="#7f1d1d">E</text>
+  </g>
+  <text x="380" y="120" text-anchor="middle" fill="#111827" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700">Circuit Tracing</text>
+</svg>

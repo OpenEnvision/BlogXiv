@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Foundation Model cover</title>
+  <desc id="desc">Layered foundation model architecture cover.</desc>
+  <rect width="1200" height="630" fill="#fbfaf4"/>
+  <rect x="92" y="116" width="1016" height="398" rx="30" fill="#ffffff" stroke="#d4be76" stroke-width="4"/>
+  <rect x="188" y="196" width="210" height="180" rx="18" fill="#f3df96"/>
+  <rect x="494" y="162" width="210" height="248" rx="18" fill="#dfe7fb"/>
+  <rect x="800" y="196" width="210" height="180" rx="18" fill="#d9ece3"/>
+  <path d="M398 286h96M704 286h96" stroke="#25324d" stroke-width="16" stroke-linecap="round"/>
+  <path d="M246 442h708" stroke="#25324d" stroke-width="18" stroke-linecap="round"/>
+  <circle cx="293" cy="286" r="34" fill="#25324d"/>
+  <circle cx="599" cy="286" r="34" fill="#25324d"/>
+  <circle cx="905" cy="286" r="34" fill="#25324d"/>
+  <text x="188" y="524" fill="#1f2433" font-family="Arial, Helvetica, sans-serif" font-size="54" font-weight="700">Foundation Model</text>
+</svg>

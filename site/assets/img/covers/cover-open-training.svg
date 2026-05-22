@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Open training cover</title>
+  <desc id="desc">Distinct cover for open model training, post-training, and reproducibility articles.</desc>
+  <rect width="1200" height="630" fill="#f0fdfa"/>
+  <rect x="80" y="76" width="1040" height="478" rx="34" fill="#ffffff" stroke="#0d9488" stroke-width="4"/>
+  <path d="M202 400h780" stroke="#ccfbf1" stroke-width="34" stroke-linecap="round"/>
+  <rect x="236" y="168" width="190" height="190" rx="26" fill="#99f6e4" stroke="#0f766e" stroke-width="5"/>
+  <rect x="506" y="168" width="190" height="190" rx="26" fill="#5eead4" stroke="#0f766e" stroke-width="5"/>
+  <rect x="776" y="168" width="190" height="190" rx="26" fill="#2dd4bf" stroke="#0f766e" stroke-width="5"/>
+  <path d="M426 264h80M696 264h80" stroke="#115e59" stroke-width="18" stroke-linecap="round"/>
+  <text x="174" y="526" fill="#134e4a" font-family="Arial, Helvetica, sans-serif" font-size="52" font-weight="700">Open Training</text>
+</svg>

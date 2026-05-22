@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Manager - BlogXiv</title>
+    <meta name="description" content="Manage and add new blogs to BlogXiv - AI Research Blog Platform">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/styles.css?v=popular-real-blogs-expanded-15">
+    <link rel="icon" type="image/svg+xml" href="assets/img/brand/icon.svg">
+    <link rel="mask-icon" href="assets/img/brand/icon.svg" color="#7cacdc">
+    <style>
+        .blog-manager {
+            padding: 2rem 0 4rem;
+            margin-top: 80px;
+        }
+        
+        .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-xl);
+            padding: var(--spacing-2xl);
+        }
+        
+        .form-group {
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .form-group label {
+            display: block;
+            font-weight: 500;
+            color: var(--text-primary);
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: var(--spacing-sm) var(--spacing-md);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            background-color: var(--bg-secondary);
+            color: var(--text-primary);
+            font-size: 0.875rem;
+            transition: border-color var(--transition-fast);
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.1);
+        }
+        
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .form-group textarea.large {
+            min-height: 300px;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-lg);
+        }
+        
+        .tags-input {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-xs);
+            align-items: center;
+        }
+        
+        .tag-input {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .tag-preview {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-xs);
+            margin-top: var(--spacing-sm);
+        }
+        
+        .tag-preview .tag {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 0.25rem 0.5rem;
+            border-radius: var(--radius-sm);
+            font-size: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+        }
+        
+        .tag-preview .tag .remove-tag {
+            cursor: pointer;
+            font-weight: bold;
+        }
+        
+        .form-actions {
+            display: flex;
+            gap: var(--spacing-md);
+            justify-content: flex-end;
+            margin-top: var(--spacing-2xl);
+            padding-top: var(--spacing-xl);
+            border-top: 1px solid var(--border-color);
+        }
+        
+        .preview-section {
+            margin-top: var(--spacing-2xl);
+            padding-top: var(--spacing-xl);
+            border-top: 1px solid var(--border-color);
+        }
+        
+        .preview-blog {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-lg);
+        }
+        
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-actions {
+                flex-direction: column;
+            }
+            
+            .form-container {
+                padding: var(--spacing-lg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="index.html" class="brand-link" aria-label="BlogXiv home">
+                    <img src="assets/img/brand/blogxiv.svg" alt="BlogXiv" class="brand-logo" />
+                </a>
+            </div>
+            
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
+                    </svg>
+                    <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+                <a href="explore.html" class="btn btn-secondary">Explore</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="blog-manager">
+        <div class="container">
+            <!-- Page Header -->
+            <header class="page-header">
+                <h1 class="page-title">Blog Manager</h1>
+                <p class="page-description">Add and manage your AI research blogs on BlogXiv</p>
+            </header>
+
+            <!-- Blog Form -->
+            <div class="form-container">
+                <form id="blogForm">
+                    <div class="form-group">
+                        <label for="blogTitle">Blog Title *</label>
+                        <input type="text" id="blogTitle" name="title" required placeholder="Enter your blog title...">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="blogExcerpt">Blog Excerpt *</label>
+                        <textarea id="blogExcerpt" name="excerpt" required placeholder="Write a brief description of your blog..."></textarea>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="blogAuthor">Author Name *</label>
+                            <input type="text" id="blogAuthor" name="author" required placeholder="Your name...">
+                        </div>
+                        <div class="form-group">
+                            <label for="blogCategory">Category *</label>
+                            <select id="blogCategory" name="category" required>
+                                <option value="">Select a category...</option>
+                                <option value="Multimodal Model">Multimodal Model</option>
+                                <option value="Visual Generation">Visual Generation</option>
+                                <option value="World Model">World Model</option>
+                                <option value="AI Agents">AI Agents</option>
+                                <option value="LLM & MLLM">LLM & MLLM</option>
+                                <option value="Foundation Model">Foundation Model</option>
+                                <option value="Efficient AI">Efficient AI</option>
+                                <option value="Trustworthy AI">Trustworthy AI</option>
+                                <option value="Research Craft">Research Craft</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="blogReadTime">Read Time</label>
+                            <input type="text" id="blogReadTime" name="readTime" placeholder="e.g., 10 min read">
+                        </div>
+                        <div class="form-group">
+                            <label for="blogPublishDate">Publish Date</label>
+                            <input type="date" id="blogPublishDate" name="publishDate">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="blogTags">Tags</label>
+                        <div class="tags-input">
+                            <input type="text" id="blogTags" class="tag-input" placeholder="Add tags (press Enter to add)...">
+                        </div>
+                        <div class="tag-preview" id="tagPreview"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="blogContent">Blog Content *</label>
+                        <textarea id="blogContent" name="content" class="large" required placeholder="Write your blog content here using HTML formatting...">
+<h2>Introduction</h2>
+<p>Start your blog with an engaging introduction...</p>
+
+<h2>Main Content</h2>
+<p>Add your main content here. You can use HTML tags for formatting:</p>
+
+<ul>
+    <li><strong>Bold text</strong> for emphasis</li>
+    <li><em>Italic text</em> for highlights</li>
+    <li>Links: <a href="#">example link</a></li>
+</ul>
+
+<blockquote>
+    "Use blockquotes for important quotes or callouts."
+</blockquote>
+
+<h3>Code Examples</h3>
+<pre><code># Your code here
+def example_function():
+    return "Hello, World!"</code></pre>
+
+<h2>Conclusion</h2>
+<p>Wrap up your blog with a strong conclusion...</p>
+                        </textarea>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-outline" id="previewBtn">Preview</button>
+                        <button type="button" class="btn btn-secondary" id="saveDraftBtn">Save Draft</button>
+                        <button type="submit" class="btn btn-primary" id="publishBtn">Publish Blog</button>
+                    </div>
+                </form>
+
+                <!-- Preview Section -->
+                <div class="preview-section" id="previewSection" style="display: none;">
+                    <h3>Blog Preview</h3>
+                    <div class="preview-blog" id="previewContent"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-brand">
+                        <a href="index.html" class="brand-link" aria-label="BlogXiv home">
+                            <img src="assets/img/brand/blogxiv.svg" alt="BlogXiv" class="brand-logo" />
+                        </a>
+                    </div>
+                    <p class="footer-description">
+                        Discover, share, and explore amazing AI research blogs across different domains. 
+                        Join our community of knowledge seekers and content creators.
+                    </p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3 class="footer-title">Platform</h3>
+                    <ul class="footer-links">
+                        <li><a href="explore.html">Explore</a></li>
+                        <li><a href="categories.html">Categories</a></li>
+                        <li><a href="bloggers.html">Bloggers</a></li>
+                        <li><a href="trending.html">Trending</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3 class="footer-title">Community</h3>
+                    <ul class="footer-links">
+                        <li><a href="guidelines.html">Guidelines</a></li>
+                        <li><a href="help.html">Help Center</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="feedback.html">Feedback</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section footer-contribute-section">
+                    <h3 class="footer-title">Contribute</h3>
+                    <div class="footer-actions" aria-label="Contribute to BlogXiv">
+                        <a class="footer-action-link footer-github-action" href="https://github.com/OpenEnvision/BlogXiv" target="_blank" rel="noopener noreferrer" aria-label="Star OpenEnvision slash BlogXiv on GitHub">
+                            <span class="footer-action-icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" role="img" focusable="false">
+                                    <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2.01c-3.2.7-3.87-1.36-3.87-1.36-.52-1.34-1.28-1.69-1.28-1.69-1.05-.72.08-.71.08-.71 1.16.08 1.77 1.2 1.77 1.2 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.23-1.28-5.23-5.68 0-1.25.45-2.28 1.19-3.08-.12-.29-.52-1.46.11-3.04 0 0 .97-.31 3.17 1.18a10.9 10.9 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.23 2.75.11 3.04.74.8 1.19 1.83 1.19 3.08 0 4.41-2.69 5.38-5.25 5.66.41.35.78 1.05.78 2.12v3.15c0 .31.21.67.8.56A11.52 11.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z" />
+                                </svg>
+                            </span>
+                            <span class="footer-action-copy">
+                                <span class="footer-action-label">Star on GitHub</span>
+                                <span class="footer-action-meta">OpenEnvision/BlogXiv</span>
+                            </span>
+                        </a>
+                        <a class="footer-action-link footer-mail-action" href="mailto:juanxitian1031@gmail.com?subject=BlogXiv%20Blog%20Submission&body=Please%20include%3A%0A-%20Blog%20title%3A%0A-%20URL%3A%0A-%20Author%20or%20lab%3A%0A-%20Suggested%20category%3A%0A-%20Why%20it%20is%20technically%20valuable%3A" aria-label="Submit a technical AI blog by email">
+                            <span class="footer-action-icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" role="img" focusable="false">
+                                    <path d="M4 6.75h16v10.5a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6.75Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" />
+                                    <path d="m4.5 7.25 6.38 5.1a1.8 1.8 0 0 0 2.24 0l6.38-5.1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </span>
+                            <span class="footer-action-copy">
+                                <span class="footer-action-label">Submit a Blog</span>
+                                <span class="footer-action-meta">juanxitian1031@gmail.com</span>
+                            </span>
+                        </a>
+                    </div>
+                    <p class="footer-contribute-note">Research blogs are reviewed for technical depth, clarity, and durable insight.</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-copyright">
+                    <p>&copy; 2026 BlogXiv｜OpenEnvision. All rights reserved.</p>
+                </div>
+                <div class="footer-legal">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Loading animation overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-container">
+            <div class="loading-logo">
+                <img src="assets/img/brand/blogxiv.svg" alt="BlogXiv">
+            </div>
+            
+            <div class="loading-text" id="loadingText">Loading management interface...</div>
+        </div>
+    </div>
+
+    <script src="assets/js/app.js?v=popular-real-blogs-expanded-46"></script>
+    <script src="assets/js/pages/blog-manager.js?v=popular-real-blogs-expanded-15"></script>
+</body>
+</html>

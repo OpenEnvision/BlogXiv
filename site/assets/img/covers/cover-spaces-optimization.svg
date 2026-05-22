@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Optimization notes cover</title>
+  <desc id="desc">Distinct cover for optimization theory and training dynamics articles.</desc>
+  <rect width="1200" height="630" fill="#f7fee7"/>
+  <rect x="78" y="76" width="1044" height="478" rx="34" fill="#ffffff" stroke="#84cc16" stroke-width="4"/>
+  <path d="M188 420c122-210 238-252 348-126 96 110 182 72 274-114 48-98 104-124 186-82" fill="none" stroke="#4d7c0f" stroke-width="24" stroke-linecap="round"/>
+  <path d="M188 462h814M188 148v314" stroke="#a3a3a3" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="536" cy="294" r="32" fill="#65a30d"/>
+  <circle cx="810" cy="180" r="32" fill="#84cc16"/>
+  <text x="176" y="532" fill="#365314" font-family="Arial, Helvetica, sans-serif" font-size="52" font-weight="700">Training Dynamics</text>
+</svg>

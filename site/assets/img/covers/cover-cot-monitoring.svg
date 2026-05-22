@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 520" role="img" aria-labelledby="title desc">
+  <title id="title">Chain-of-thought monitorability cover</title>
+  <desc id="desc">Reasoning traces, monitors, and safety gates for CoT monitorability posts.</desc>
+  <rect width="760" height="520" fill="#f3fbf8"/>
+  <rect x="90" y="80" width="580" height="360" rx="24" fill="#ffffff" stroke="#cddbd6" stroke-width="2"/>
+  <path d="M154 166h246M154 214h350M154 262h212M154 310h302" fill="none" stroke="#1f2937" stroke-width="11" stroke-linecap="round"/>
+  <path d="M520 216c44-60 104-60 148 0-44 60-104 60-148 0z" fill="#dff7ee" stroke="#059669" stroke-width="5"/>
+  <circle cx="594" cy="216" r="24" fill="#059669"/>
+  <path d="M508 336l46 46 100-116" fill="none" stroke="#2563eb" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="380" y="132" text-anchor="middle" fill="#111827" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700">CoT Monitorability</text>
+</svg>

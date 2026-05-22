@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">LLM and MLLM cover</title>
+  <desc id="desc">Tokens, text, image, and audio blocks for LLM and MLLM blogs.</desc>
+  <rect width="1200" height="630" fill="#f6f8ff"/>
+  <rect x="100" y="90" width="1000" height="450" rx="34" fill="#ffffff" stroke="#b8c5f0" stroke-width="4"/>
+  <rect x="174" y="174" width="300" height="116" rx="18" fill="#dfe7ff"/>
+  <rect x="174" y="334" width="300" height="74" rx="18" fill="#eaf0ff"/>
+  <rect x="542" y="174" width="184" height="184" rx="24" fill="#f3d7d7"/>
+  <path d="M578 306l45-58 42 44 24-29 32 43" fill="none" stroke="#7a2834" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="792" y="174" width="206" height="184" rx="24" fill="#d9ece3"/>
+  <path d="M848 320V212M895 320V244M942 320V226" stroke="#245944" stroke-width="16" stroke-linecap="round"/>
+  <path d="M214 225h212M214 372h176" stroke="#25324d" stroke-width="18" stroke-linecap="round"/>
+  <text x="174" y="508" fill="#1f2433" font-family="Arial, Helvetica, sans-serif" font-size="54" font-weight="700">LLM + MLLM</text>
+</svg>

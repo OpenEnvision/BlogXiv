@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">World Model cover</title>
+  <desc id="desc">Planning graph and simulated world grid cover.</desc>
+  <rect width="1200" height="630" fill="#f5fbff"/>
+  <rect x="92" y="88" width="1016" height="454" rx="34" fill="#ffffff" stroke="#a9cbe1" stroke-width="4"/>
+  <path d="M192 396h816M192 316h816M192 236h816M272 156v320M432 156v320M592 156v320M752 156v320M912 156v320" stroke="#d3e5f1" stroke-width="6"/>
+  <path d="M258 392c72-126 160-160 270-102 102 54 182 16 248-92 54-88 128-102 220-42" fill="none" stroke="#2563eb" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="258" cy="392" r="24" fill="#2563eb"/>
+  <circle cx="528" cy="290" r="24" fill="#2563eb"/>
+  <circle cx="776" cy="198" r="24" fill="#2563eb"/>
+  <circle cx="996" cy="156" r="24" fill="#2563eb"/>
+  <text x="192" y="520" fill="#102338" font-family="Arial, Helvetica, sans-serif" font-size="54" font-weight="700">World Model</text>
+</svg>

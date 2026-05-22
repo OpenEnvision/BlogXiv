@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Interaction models cover</title>
+  <desc id="desc">Distinct cover for Thinking Machines Lab interaction and inference articles.</desc>
+  <rect width="1200" height="630" fill="#f8fafc"/>
+  <rect x="78" y="76" width="1044" height="478" rx="36" fill="#ffffff" stroke="#0f172a" stroke-width="4"/>
+  <circle cx="344" cy="252" r="72" fill="#e0f2fe" stroke="#0f172a" stroke-width="6"/>
+  <circle cx="600" cy="252" r="72" fill="#fef3c7" stroke="#0f172a" stroke-width="6"/>
+  <circle cx="856" cy="252" r="72" fill="#dcfce7" stroke="#0f172a" stroke-width="6"/>
+  <path d="M416 252h112M672 252h112M600 324v86" stroke="#0f172a" stroke-width="16" stroke-linecap="round"/>
+  <rect x="438" y="410" width="324" height="70" rx="20" fill="#0f172a"/>
+  <text x="510" y="459" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700">human loop</text>
+  <text x="174" y="532" fill="#0f172a" font-family="Arial, Helvetica, sans-serif" font-size="52" font-weight="700">Interaction Models</text>
+</svg>

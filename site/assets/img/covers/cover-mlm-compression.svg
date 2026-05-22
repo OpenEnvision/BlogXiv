@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Prompt compression cover</title>
+  <desc id="desc">Distinct cover for prompt compression and cost-control articles.</desc>
+  <rect width="1200" height="630" fill="#f0fdf4"/>
+  <rect x="80" y="76" width="1040" height="478" rx="34" fill="#ffffff" stroke="#22c55e" stroke-width="4"/>
+  <path d="M202 188h438M202 266h356M202 344h500M202 422h292" stroke="#166534" stroke-width="20" stroke-linecap="round"/>
+  <path d="M742 218l150 96-150 96" fill="none" stroke="#16a34a" stroke-width="26" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="892" y="196" width="132" height="236" rx="24" fill="#dcfce7" stroke="#15803d" stroke-width="6"/>
+  <path d="M930 260h56M930 326h56M930 392h56" stroke="#14532d" stroke-width="14" stroke-linecap="round"/>
+  <text x="176" y="526" fill="#14532d" font-family="Arial, Helvetica, sans-serif" font-size="52" font-weight="700">Prompt Compression</text>
+</svg>

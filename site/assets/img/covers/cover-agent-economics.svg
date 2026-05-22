@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 520" role="img" aria-labelledby="title desc">
+  <title id="title">Agent economics cover</title>
+  <desc id="desc">Token cost curves and agent loop budgets for agent economics articles.</desc>
+  <rect width="760" height="520" fill="#fff8ed"/>
+  <rect x="82" y="70" width="596" height="382" rx="26" fill="#ffffff" stroke="#ead8bd" stroke-width="2"/>
+  <path d="M152 382h456" stroke="#111827" stroke-width="5" stroke-linecap="round"/>
+  <path d="M152 382V132" stroke="#111827" stroke-width="5" stroke-linecap="round"/>
+  <path d="M174 350c52-8 84-28 116-72 50-68 94-80 152-20 58 60 100 28 146-104" fill="none" stroke="#f97316" stroke-width="12" stroke-linecap="round"/>
+  <g fill="#2563eb">
+    <rect x="194" y="302" width="36" height="80" rx="8"/>
+    <rect x="264" y="248" width="36" height="134" rx="8"/>
+    <rect x="334" y="210" width="36" height="172" rx="8"/>
+    <rect x="404" y="170" width="36" height="212" rx="8"/>
+  </g>
+  <text x="380" y="126" text-anchor="middle" fill="#111827" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700">Agent Cost Curves</text>
+</svg>

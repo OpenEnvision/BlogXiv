@@ -1,0 +1,67 @@
+id	publishDate	category	sourceName	url	title
+causal-forcing-video	2026-02-04	Visual Generation	Causal Forcing Project	https://causal-forcing.github.io/	Causal Forcing: Next-Token Prediction Meets Full-Sequence Diffusion
+depthvlm	2026-05-15	Multimodal Model	DepthVLM Project	https://depthvlm.github.io/	DepthVLM: Dense Metric Depth Estimation in VLMs
+procvlm	2026-05-09	World Model	ProcVLM Project	https://procvlm.github.io/	ProcVLM: Procedure-Grounded Progress Rewards
+gazevla	2026-04-24	World Model	GazeVLA Project	https://gazevla.github.io/	GazeVLA: Learning Human Intention for Robotic Manipulation
+univigu	2026-04-09	Visual Generation	Uni-ViGU Project	https://fr0zencrane.github.io/uni-vigu-page/	Uni-ViGU: Unified Video Generation and Understanding
+dynaedit	2026-03-18	Visual Generation	DynaEdit Project	https://dynaedit.github.io/	DynaEdit: Versatile Video Editing Without Training
+kiwi-edit	2026-03-02	Visual Generation	Kiwi-Edit Project	https://showlab.github.io/Kiwi-Edit/	Kiwi-Edit: Instruction and Reference Video Editing
+mos-vla	2025-10-18	World Model	MoS-VLA Project	https://mos-vla.github.io/	MoS-VLA: One-Shot Skill Adaptation for VLA Policies
+thinkact-vla	2025-07-22	World Model	ThinkAct Project	https://jasper0314-huang.github.io/thinkact-vla/	ThinkAct: Reinforced Visual Latent Planning
+egovla	2025-07-16	World Model	EgoVLA Project	https://rchalyang.github.io/EgoVLA	EgoVLA: Learning VLA Models from Egocentric Human Videos
+bridgevla	2025-06-09	World Model	BridgeVLA Project	https://bridgevla.github.io/	BridgeVLA: Input-Output Alignment for 3D Manipulation
+pyramid-flow	2024-10-08	Visual Generation	Pyramid Flow Project	https://pyramid-flow.github.io/	Pyramid Flow: Efficient Video Generative Modeling
+covip-vlm	2026-02-03	Multimodal Model	CoViP Project	https://oyt9306.github.io/covip.github.io/	CoViP: Contextualized Visual Personalization in VLMs
+vid-llm	2025-09-29	Multimodal Model	Vid-LLM Project	https://chenhaijier.github.io/Vid-LLM/	Vid-LLM: Compact Video-based 3D Multimodal LLM
+dreamvla	2025-07-06	World Model	DreamVLA Project	https://zhangwenyao1.github.io/DreamVLA/	DreamVLA: A VLA Model Dreamed with World Knowledge
+chatvla	2025-02-20	World Model	ChatVLA Project	https://chatvla.github.io/	ChatVLA: Unified Multimodal Understanding and Robot Control
+longvie-2	2025-12-15	Visual Generation	LongVie 2 Project	https://vchitect.github.io/LongVie2-project/	LongVie 2: Multimodal Controllable Ultra-Long Video World Model
+videovla	2025-12-07	World Model	VideoVLA Project	https://videovla-nips2025.github.io/	VideoVLA: Video Generators Can Be Robot Manipulators
+navila	2024-12-05	World Model	NaVILA Project	https://navila-bot.github.io/	NaVILA: Legged Robot Vision-Language-Action Model for Navigation
+vla-world	2026-04-10	World Model	VLA-World Project	https://vlaworld.github.io/	VLA-World: Interactive World Model for Autonomous Driving
+firebolt-vl	2026-04-06	Multimodal Model	Firebolt-VL Project	https://fireboltvl.github.io/	Firebolt-VL: Efficient Vision-Language Understanding
+penguin-vl	2026-03-06	Multimodal Model	Penguin-VL Project	https://penguin-vl.github.io/	Penguin-VL: Efficient VLMs with LLM-based Vision Encoders
+green-vla	2026-01-31	World Model	Green-VLA Project	https://greenvla.github.io/	Green-VLA: Staged VLA Model for Generalist Robots
+hif-vla	2025-12-10	World Model	HiF-VLA Project	https://hifvla.github.io/	HiF-VLA: Hindsight, Insight and Foresight for VLAs
+infinity-rope-video	2025-11-26	Visual Generation	Infinity-RoPE Project	https://infinity-rope.github.io/	Infinity-RoPE: Action-Controllable Infinite Video Generation
+worldforge-3d4d	2025-09-18	Visual Generation	WorldForge Project	https://worldforge-agi.github.io/	WorldForge: 3D/4D Generation from Video Diffusion Models
+ar-vla	2026-03-10	World Model	AR-VLA Project	https://arvla.insait.ai/	AR-VLA: True Autoregressive Action Expert for VLAs
+lance-unified-multimodal	2026-05-18	Multimodal Model	Lance Project	https://lance-project.github.io/	Lance: Unified Multimodal Modeling by Multi-Task Synergy
+robobrain-25	2026-01-20	World Model	RoboBrain Project	https://superrobobrain.github.io/	RoboBrain 2.5: Depth in Sight, Time in Mind
+robobrain-20	2025-07-02	World Model	RoboBrain Project	https://superrobobrain.github.io/	RoboBrain 2.0 Technical Report
+magma-multimodal-agents	2025-02-18	Multimodal Model	Magma Project	https://microsoft.github.io/Magma/	Magma: A Foundation Model for Multimodal AI Agents
+xgen-mm-blip3	2024-08-16	Multimodal Model	Hugging Face Papers	https://huggingface.co/papers/2408.08872	xGen-MM (BLIP-3): A Family of Open Large Multimodal Models
+omnihuman-1	2025-02-01	Visual Generation	OmniHuman Project	https://omnihuman-lab.github.io/	OmniHuman-1
+sana-linear-dit	2024-10-14	Visual Generation	SANA Project	https://nvlabs.github.io/Sana/	SANA: Efficient High-Resolution Image Synthesis
+pandora-general-world-model	2024-06-12	World Model	Pandora Project	https://world-model.maitrix.org/	Pandora: Towards General World Model
+wonderworld	2024-06-11	World Model	WonderWorld Project	https://kovenyu.com/wonderworld/	WonderWorld: Interactive 3D Scene Generation
+robodreamer-world-model	2024-04-16	World Model	RoboDreamer Project	https://robovideo.github.io/	RoboDreamer: Learning Compositional World Models
+dwm-diffusion-world-model	2024-02-05	World Model	Hugging Face Papers	https://huggingface.co/papers/2402.03570	Diffusion World Model
+gamengen-real-time-game-engines	2024-08-27	World Model	GameNGen Project	https://gamengen.github.io/	Diffusion Models Are Real-Time Game Engines
+oasis-interactive-world-model	2024-10-31	World Model	Oasis Project	https://oasis-model.github.io/	Oasis: an interactive, explorable world model
+dreamerv3-world-models	2023-01-10	World Model	Danijar Hafner	https://danijar.com/project/dreamerv3/	Mastering Diverse Control Tasks through World Models
+llava-visual-instruction-tuning	2023-04-17	Multimodal Model	LLaVA Project	https://llava-vl.github.io/	LLaVA: Large Language and Vision Assistant
+openvla	2024-06-13	Multimodal Model	OpenVLA Project	https://openvla.github.io/	OpenVLA: An Open-Source Vision-Language-Action Model
+muse-text-to-image	2023-01-02	Visual Generation	Muse Project	https://muse-model.github.io/	Muse: Text-To-Image Generation via Masked Generative Transformers
+latent-diffusion-models	2021-12-20	Visual Generation	CompVis Project	https://ommer-lab.com/research/latent-diffusion-models/	High-Resolution Image Synthesis with Latent Diffusion Models
+stylegan3	2021-06-23	Visual Generation	NVIDIA Research	https://nvlabs.github.io/stylegan3/	Alias-Free Generative Adversarial Networks
+controlnet	2023-02-10	Visual Generation	CVF Open Access	https://openaccess.thecvf.com/content/ICCV2023/html/Zhang_Adding_Conditional_Control_to_Text-to-Image_Diffusion_Models_ICCV_2023_paper.html	Adding Conditional Control to Text-to-Image Diffusion Models
+voyager-open-ended-agent	2023-05-25	World Model	Voyager Project	https://voyager.minedojo.org/	Voyager: An Open-Ended Embodied Agent with Large Language Models
+td-mpc2	2023-10-25	World Model	TD-MPC2 Project	https://www.tdmpc2.com/	TD-MPC2: Scalable, Robust World Models for Continuous Control
+planet-latent-dynamics	2019-05-01	World Model	PlaNet Project	https://planetrl.github.io/	Learning Latent Dynamics for Planning from Pixels
+dreamfusion-text-to-3d	2022-09-29	World Model	DreamFusion Project	https://dreamfusion3d.github.io/	DreamFusion: Text-to-3D using 2D Diffusion
+dreambooth-personalization	2022-08-25	Visual Generation	DreamBooth Project	https://dreambooth.github.io/	DreamBooth: Fine Tuning Text-to-Image Diffusion Models for Subject-Driven Generation
+textual-inversion-personalization	2022-08-02	Visual Generation	Textual Inversion Project	https://textual-inversion.github.io/	An Image is Worth One Word: Personalizing Text-to-Image Generation using Textual Inversion
+dream-to-control	2019-12-03	World Model	Dreamer Project	https://dreamrl.github.io/	Dream to Control: Learning Behaviors by Latent Imagination
+daydreamer-robot-learning	2022-07-18	World Model	DayDreamer Project	https://danijar.com/project/daydreamer/	DayDreamer: World Models for Physical Robot Learning
+unisim-real-world-simulators	2023-10-09	World Model	UniSim Project	https://universal-simulator.github.io/unisim/	UniSim: Learning Interactive Real-World Simulators
+diamond-diffusion-world-model	2024-05-29	World Model	DIAMOND Project	https://diamond-wm.github.io/	Diffusion for World Modeling: Visual Details Matter in Atari
+minigpt-4-vision-language	2023-04-17	Multimodal Model	MiniGPT-4 Project	https://minigpt-4.github.io/	MiniGPT-4: Enhancing Vision-language Understanding with Advanced Large Language Models
+instructblip-instruction-tuning	2023-05-11	Multimodal Model	Hugging Face Papers	https://huggingface.co/papers/2305.06500	InstructBLIP: Towards General-purpose Vision-Language Models with Instruction Tuning
+animatediff-personalized-animation	2023-07-10	Visual Generation	AnimateDiff Project	https://animatediff.github.io/	AnimateDiff: Animate Your Personalized Text-to-Image Diffusion Models without Specific Tuning
+ip-adapter-image-prompt	2023-08-13	Visual Generation	IP-Adapter Project	https://ip-adapter.github.io/	IP-Adapter: Text Compatible Image Prompt Adapter for Text-to-Image Diffusion Models
+videocrafter2-video-generation	2024-01-12	Visual Generation	VideoCrafter Project	https://ailab-cvc.github.io/videocrafter2/	VideoCrafter2: Overcoming Data Limitations for High-Quality Video Diffusion Models
+minedojo-embodied-agents	2022-06-16	World Model	MineDojo Project	https://minedojo.org/	MineDojo: Building Open-Ended Embodied Agents with Internet-Scale Knowledge
+dynalang-language-world-model	2023-08-02	World Model	Dynalang Project	https://dynalang.github.io/	Dynalang: Learning to Model the World with Language
+saycan-robotic-affordances	2022-04-04	World Model	SayCan Project	https://say-can.github.io/	Do As I Can, Not As I Say: Grounding Language in Robotic Affordances
+diffusion-policy-action-diffusion	2023-03-08	World Model	Diffusion Policy Project	https://diffusion-policy.cs.columbia.edu/	Diffusion Policy: Visuomotor Policy Learning via Action Diffusion

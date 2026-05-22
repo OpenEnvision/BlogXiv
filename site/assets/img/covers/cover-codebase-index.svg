@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 520" role="img" aria-labelledby="title desc">
+  <title id="title">Codebase index cover</title>
+  <desc id="desc">Merkle trees, semantic chunks, proof filters, and codebase search for coding agents.</desc>
+  <rect width="760" height="520" fill="#f8fafc"/>
+  <rect x="86" y="78" width="588" height="364" rx="24" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+  <g transform="translate(164 150)" fill="#e0f2fe" stroke="#0284c7" stroke-width="5">
+    <rect x="146" y="0" width="124" height="58" rx="14"/>
+    <rect x="42" y="108" width="124" height="58" rx="14"/>
+    <rect x="250" y="108" width="124" height="58" rx="14"/>
+    <rect x="0" y="214" width="98" height="50" rx="12"/>
+    <rect x="112" y="214" width="98" height="50" rx="12"/>
+    <rect x="224" y="214" width="98" height="50" rx="12"/>
+    <rect x="336" y="214" width="98" height="50" rx="12"/>
+  </g>
+  <g stroke="#334155" stroke-width="5" stroke-linecap="round">
+    <path d="M372 208l-104 108M372 208l104 108M206 316l-42 106M268 316l42 106M430 316l-42 106M492 316l42 106"/>
+    <path d="M548 164l40 40 74-82" stroke="#16a34a" stroke-width="10" stroke-linejoin="round"/>
+  </g>
+  <text x="380" y="120" text-anchor="middle" fill="#111827" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700">Codebase Index</text>
+</svg>

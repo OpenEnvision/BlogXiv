@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 520" role="img" aria-labelledby="title desc">
+  <title id="title">Feature rewards cover</title>
+  <desc id="desc">Internal feature probes, reward signals, and hallucination reduction loops for interpretability-guided training.</desc>
+  <rect width="760" height="520" fill="#f7fbff"/>
+  <rect x="84" y="80" width="592" height="360" rx="24" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M164 252c64-100 128-100 192 0s128 100 192 0" stroke="#0891b2" stroke-width="9"/>
+    <path d="M164 320c64-34 120-6 178 22 82 40 130-40 220-70" stroke="#16a34a" stroke-width="8"/>
+    <path d="M528 174l36 36 72-86" stroke="#2563eb" stroke-width="13"/>
+  </g>
+  <g font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" text-anchor="middle">
+    <rect x="152" y="160" width="98" height="62" rx="14" fill="#e0f2fe" stroke="#0891b2" stroke-width="4"/>
+    <text x="201" y="198" fill="#164e63">Probe</text>
+    <rect x="330" y="212" width="112" height="62" rx="14" fill="#fef3c7" stroke="#d97706" stroke-width="4"/>
+    <text x="386" y="250" fill="#7c2d12">Reward</text>
+    <rect x="238" y="318" width="138" height="62" rx="14" fill="#dcfce7" stroke="#16a34a" stroke-width="4"/>
+    <text x="307" y="356" fill="#14532d">Correct</text>
+  </g>
+  <circle cx="584" cy="168" r="56" fill="#eef2ff" stroke="#4f46e5" stroke-width="5"/>
+  <text x="584" y="178" text-anchor="middle" fill="#312e81" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="700">RL</text>
+  <text x="380" y="120" text-anchor="middle" fill="#111827" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700">Feature Rewards</text>
+</svg>

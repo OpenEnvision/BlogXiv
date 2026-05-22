@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 520" role="img" aria-labelledby="title desc">
+  <title id="title">Flow maps cover</title>
+  <desc id="desc">Continuous trajectories mapping noise into data for flow map and diffusion articles.</desc>
+  <rect width="760" height="520" fill="#f1f8ff"/>
+  <g fill="none" stroke-linecap="round">
+    <path d="M92 388c140-208 246-42 330-196 68-126 164-64 246-22" stroke="#2563eb" stroke-width="12"/>
+    <path d="M94 328c132-148 238-20 330-136 74-92 166-34 238 24" stroke="#06b6d4" stroke-width="8"/>
+    <path d="M98 250c124-82 240 18 326-56 78-68 160-26 230 52" stroke="#8b5cf6" stroke-width="6"/>
+  </g>
+  <g fill="#111827">
+    <circle cx="96" cy="388" r="15"/>
+    <circle cx="668" cy="170" r="15"/>
+    <circle cx="94" cy="328" r="10"/>
+    <circle cx="662" cy="216" r="10"/>
+  </g>
+  <text x="380" y="96" text-anchor="middle" fill="#111827" font-family="Arial, Helvetica, sans-serif" font-size="36" font-weight="700">Flow Maps</text>
+</svg>

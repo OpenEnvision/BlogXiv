@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Frontier lab notes cover</title>
+  <desc id="desc">Distinct cover for frontier lab model, agent, and interpretability articles.</desc>
+  <rect width="1200" height="630" fill="#f1f5f9"/>
+  <rect x="78" y="76" width="1044" height="478" rx="34" fill="#ffffff" stroke="#475569" stroke-width="4"/>
+  <circle cx="360" cy="272" r="102" fill="#e2e8f0" stroke="#334155" stroke-width="6"/>
+  <circle cx="600" cy="272" r="102" fill="#cbd5e1" stroke="#334155" stroke-width="6"/>
+  <circle cx="840" cy="272" r="102" fill="#94a3b8" stroke="#334155" stroke-width="6"/>
+  <path d="M462 272h36M702 272h36" stroke="#0f172a" stroke-width="16" stroke-linecap="round"/>
+  <text x="174" y="526" fill="#0f172a" font-family="Arial, Helvetica, sans-serif" font-size="52" font-weight="700">Frontier Lab Notes</text>
+</svg>

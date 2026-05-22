@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Illustrated reasoning cover</title>
+  <desc id="desc">Distinct cover for visual explainers of reasoning models.</desc>
+  <rect width="1200" height="630" fill="#fff1f2"/>
+  <rect x="80" y="76" width="1040" height="478" rx="34" fill="#ffffff" stroke="#fb7185" stroke-width="4"/>
+  <path d="M220 404h210V194H220z" fill="#ffe4e6" stroke="#be123c" stroke-width="6"/>
+  <path d="M306 274l74 42-74 42z" fill="#be123c"/>
+  <path d="M534 198h396M534 286h278M534 374h344" stroke="#881337" stroke-width="22" stroke-linecap="round"/>
+  <circle cx="970" cy="286" r="54" fill="#fb7185"/>
+  <text x="176" y="526" fill="#881337" font-family="Arial, Helvetica, sans-serif" font-size="52" font-weight="700">Illustrated R1</text>
+</svg>

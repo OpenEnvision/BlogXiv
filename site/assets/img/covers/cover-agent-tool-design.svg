@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 520" role="img" aria-labelledby="title desc">
+  <title id="title">Agent tool design cover</title>
+  <desc id="desc">Tool schemas, compact outputs, sandbox rails, and agent feedback loops for tool-design posts.</desc>
+  <rect width="760" height="520" fill="#f8fbff"/>
+  <rect x="82" y="82" width="596" height="356" rx="24" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+  <g transform="translate(134 152)" font-family="Arial, Helvetica, sans-serif" font-weight="700">
+    <rect width="162" height="78" rx="16" fill="#dbeafe" stroke="#2563eb" stroke-width="5"/>
+    <text x="81" y="49" text-anchor="middle" fill="#1e3a8a" font-size="25">Schema</text>
+    <rect x="208" width="162" height="78" rx="16" fill="#dcfce7" stroke="#16a34a" stroke-width="5"/>
+    <text x="289" y="49" text-anchor="middle" fill="#14532d" font-size="25">Tool</text>
+    <rect x="416" width="162" height="78" rx="16" fill="#fef3c7" stroke="#d97706" stroke-width="5"/>
+    <text x="497" y="49" text-anchor="middle" fill="#7c2d12" font-size="25">Result</text>
+    <path d="M162 39h46M370 39h46" stroke="#334155" stroke-width="7" stroke-linecap="round"/>
+    <rect x="76" y="154" width="426" height="72" rx="16" fill="#eef2ff" stroke="#4f46e5" stroke-width="5"/>
+    <text x="289" y="199" text-anchor="middle" fill="#312e81" font-size="26">Agent eval loop</text>
+    <path d="M498 154c54 0 70-116 10-116" fill="none" stroke="#4f46e5" stroke-width="7" stroke-linecap="round"/>
+    <path d="M514 24l-20 16 24 12" fill="none" stroke="#4f46e5" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <text x="380" y="120" text-anchor="middle" fill="#0f172a" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700">Tool Design</text>
+</svg>

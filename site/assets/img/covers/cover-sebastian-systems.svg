@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">LLM systems cover</title>
+  <desc id="desc">Distinct cover for attention variants, KV cache, and LLM systems posts.</desc>
+  <rect width="1200" height="630" fill="#ecfeff"/>
+  <rect x="80" y="76" width="1040" height="478" rx="34" fill="#ffffff" stroke="#0891b2" stroke-width="4"/>
+  <path d="M224 206h312M224 306h312M224 406h312" stroke="#155e75" stroke-width="18" stroke-linecap="round"/>
+  <path d="M676 178h270v260H676z" fill="#cffafe" stroke="#0e7490" stroke-width="5"/>
+  <path d="M720 234h182M720 308h136M720 382h204" stroke="#164e63" stroke-width="16" stroke-linecap="round"/>
+  <path d="M536 206c72 0 68 100 140 100M536 306c72 0 68 100 140 100" fill="none" stroke="#06b6d4" stroke-width="18" stroke-linecap="round"/>
+  <text x="174" y="522" fill="#164e63" font-family="Arial, Helvetica, sans-serif" font-size="52" font-weight="700">LLM Systems</text>
+</svg>

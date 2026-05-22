@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 520" role="img" aria-labelledby="title desc">
+  <title id="title">Post-training RL cover</title>
+  <desc id="desc">Rollout loops, reward signals, and training traces for LLM post-training articles.</desc>
+  <rect width="760" height="520" fill="#f5f7fb"/>
+  <rect x="60" y="66" width="640" height="388" rx="28" fill="#ffffff" stroke="#d7dee9" stroke-width="2"/>
+  <path d="M142 174c92-70 214-70 306 0s92 184 0 254-214 70-306 0-92-184 0-254z" fill="#e9f2ff" stroke="#2d6cdf" stroke-width="5"/>
+  <path d="M480 164l82 44-82 44z" fill="#2d6cdf"/>
+  <path d="M202 146l-82-44 82-44z" fill="#34a853"/>
+  <g fill="none" stroke="#111827" stroke-width="4" stroke-linecap="round">
+    <path d="M232 256h296"/>
+    <path d="M232 312h198"/>
+    <path d="M232 368h246"/>
+  </g>
+  <g fill="#ffb020">
+    <circle cx="192" cy="256" r="14"/>
+    <circle cx="192" cy="312" r="14"/>
+    <circle cx="192" cy="368" r="14"/>
+  </g>
+  <text x="380" y="102" text-anchor="middle" fill="#101827" font-family="Arial, Helvetica, sans-serif" font-size="36" font-weight="700">Post-training RL</text>
+</svg>

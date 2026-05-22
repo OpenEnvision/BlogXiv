@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Coding agent components cover</title>
+  <desc id="desc">Distinct cover for coding agent architecture articles.</desc>
+  <rect width="1200" height="630" fill="#f8fafc"/>
+  <rect x="78" y="76" width="1044" height="478" rx="34" fill="#ffffff" stroke="#64748b" stroke-width="4"/>
+  <rect x="176" y="150" width="410" height="314" rx="24" fill="#e2e8f0" stroke="#334155" stroke-width="5"/>
+  <path d="M236 246l72-52M236 246l72 52M420 194l72 52M420 298l72-52" stroke="#0f172a" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="680" y="156" width="300" height="70" rx="20" fill="#dbeafe"/>
+  <rect x="680" y="280" width="300" height="70" rx="20" fill="#dcfce7"/>
+  <rect x="680" y="404" width="300" height="70" rx="20" fill="#fae8ff"/>
+  <path d="M830 226v54M830 350v54" stroke="#334155" stroke-width="12" stroke-linecap="round"/>
+  <text x="174" y="528" fill="#0f172a" font-family="Arial, Helvetica, sans-serif" font-size="52" font-weight="700">Coding Agents</text>
+</svg>

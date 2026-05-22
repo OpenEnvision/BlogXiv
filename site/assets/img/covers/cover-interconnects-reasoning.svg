@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Reasoning model analysis cover</title>
+  <desc id="desc">Distinct cover for reasoning model and RL analysis.</desc>
+  <rect width="1200" height="630" fill="#f8fafc"/>
+  <rect x="82" y="78" width="1036" height="474" rx="36" fill="#ffffff" stroke="#334155" stroke-width="4"/>
+  <path d="M232 210c94-82 234-82 328 0s234 82 328 0" fill="none" stroke="#2563eb" stroke-width="22" stroke-linecap="round"/>
+  <path d="M232 314c94-82 234-82 328 0s234 82 328 0" fill="none" stroke="#7c3aed" stroke-width="22" stroke-linecap="round"/>
+  <path d="M232 418c94-82 234-82 328 0s234 82 328 0" fill="none" stroke="#0f766e" stroke-width="22" stroke-linecap="round"/>
+  <circle cx="600" cy="314" r="70" fill="#0f172a"/>
+  <text x="557" y="338" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="58" font-weight="700">RL</text>
+  <text x="164" y="512" fill="#0f172a" font-family="Arial, Helvetica, sans-serif" font-size="50" font-weight="700">Reasoning Models</text>
+</svg>

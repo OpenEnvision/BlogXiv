@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Agent design patterns cover</title>
+  <desc id="desc">Distinct cover for agent design pattern articles.</desc>
+  <rect width="1200" height="630" fill="#fff7ed"/>
+  <rect x="80" y="76" width="1040" height="478" rx="34" fill="#ffffff" stroke="#f97316" stroke-width="4"/>
+  <rect x="190" y="156" width="220" height="116" rx="24" fill="#ffedd5" stroke="#c2410c" stroke-width="5"/>
+  <rect x="490" y="156" width="220" height="116" rx="24" fill="#fed7aa" stroke="#c2410c" stroke-width="5"/>
+  <rect x="790" y="156" width="220" height="116" rx="24" fill="#fdba74" stroke="#c2410c" stroke-width="5"/>
+  <rect x="340" y="346" width="220" height="116" rx="24" fill="#fed7aa" stroke="#c2410c" stroke-width="5"/>
+  <rect x="640" y="346" width="220" height="116" rx="24" fill="#ffedd5" stroke="#c2410c" stroke-width="5"/>
+  <path d="M410 214h80M710 214h80M600 272l-150 74M600 272l150 74" stroke="#9a3412" stroke-width="14" stroke-linecap="round"/>
+  <text x="176" y="526" fill="#7c2d12" font-family="Arial, Helvetica, sans-serif" font-size="52" font-weight="700">Agent Patterns</text>
+</svg>

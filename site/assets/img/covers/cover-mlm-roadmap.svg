@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Agent roadmap cover</title>
+  <desc id="desc">Distinct cover for agentic programming roadmap articles.</desc>
+  <rect width="1200" height="630" fill="#fefce8"/>
+  <rect x="80" y="76" width="1040" height="478" rx="34" fill="#ffffff" stroke="#eab308" stroke-width="4"/>
+  <path d="M214 386c106-142 210-196 312-162 98 34 136 160 262 142 84-12 142-86 198-184" fill="none" stroke="#ca8a04" stroke-width="24" stroke-linecap="round"/>
+  <circle cx="214" cy="386" r="36" fill="#facc15"/>
+  <circle cx="526" cy="224" r="36" fill="#eab308"/>
+  <circle cx="788" cy="366" r="36" fill="#a16207"/>
+  <circle cx="986" cy="182" r="36" fill="#713f12"/>
+  <text x="176" y="526" fill="#713f12" font-family="Arial, Helvetica, sans-serif" font-size="52" font-weight="700">Agent Roadmap</text>
+</svg>

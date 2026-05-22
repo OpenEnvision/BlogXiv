@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 520" role="img" aria-labelledby="title desc">
+  <title id="title">Diffusion evaluation cover</title>
+  <desc id="desc">Frontier curves and likelihood metrics for diffusion language model evaluation posts.</desc>
+  <rect width="760" height="520" fill="#f8fbff"/>
+  <rect x="94" y="78" width="572" height="356" rx="24" fill="#ffffff" stroke="#d5e3f5" stroke-width="2"/>
+  <path d="M152 358h456M152 358V142" stroke="#111827" stroke-width="5" stroke-linecap="round"/>
+  <path d="M174 330c48-62 98-86 150-72 54 14 106-30 158-74 46-40 82-54 128-54" fill="none" stroke="#7c3aed" stroke-width="11" stroke-linecap="round"/>
+  <path d="M174 288c58-16 108-10 154 18 64 38 134-6 198-58 36-30 62-42 84-40" fill="none" stroke="#06b6d4" stroke-width="8" stroke-linecap="round"/>
+  <g fill="#ffb020">
+    <circle cx="324" cy="258" r="13"/>
+    <circle cx="482" cy="184" r="13"/>
+    <circle cx="526" cy="248" r="13"/>
+  </g>
+  <text x="380" y="124" text-anchor="middle" fill="#111827" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700">Generative Frontiers</text>
+</svg>

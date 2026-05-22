@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">CMU reasoning and RL cover</title>
+  <desc id="desc">Distinct cover for CMU reasoning, RL, and test-time compute articles.</desc>
+  <rect width="1200" height="630" fill="#f7fee7"/>
+  <rect x="82" y="78" width="1036" height="474" rx="34" fill="#ffffff" stroke="#65a30d" stroke-width="4"/>
+  <path d="M210 410c80-170 188-244 324-222 108 18 130 110 218 120 86 10 152-54 226-144" fill="none" stroke="#4d7c0f" stroke-width="24" stroke-linecap="round"/>
+  <path d="M210 464h760" stroke="#d9f99d" stroke-width="26" stroke-linecap="round"/>
+  <circle cx="534" cy="188" r="44" fill="#84cc16"/>
+  <circle cx="752" cy="308" r="44" fill="#bef264"/>
+  <circle cx="978" cy="164" r="44" fill="#365314"/>
+  <text x="172" y="534" fill="#365314" font-family="Arial, Helvetica, sans-serif" font-size="50" font-weight="700">Reasoning RL</text>
+</svg>

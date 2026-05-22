@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 520" role="img" aria-labelledby="title desc">
+  <title id="title">Goal-conditioned RL cover</title>
+  <desc id="desc">Reward maximization, shortest path, and goal-reaching triangle for reinforcement learning theory articles.</desc>
+  <rect width="760" height="520" fill="#fff7f7"/>
+  <polygon points="380,100 142,392 618,392" fill="#ffffff" stroke="#111827" stroke-width="6"/>
+  <circle cx="380" cy="100" r="54" fill="#dbeafe" stroke="#2563eb" stroke-width="5"/>
+  <circle cx="142" cy="392" r="54" fill="#dcfce7" stroke="#16a34a" stroke-width="5"/>
+  <circle cx="618" cy="392" r="54" fill="#fee2e2" stroke="#ef4444" stroke-width="5"/>
+  <text x="380" y="108" text-anchor="middle" fill="#111827" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700">MDP</text>
+  <text x="142" y="400" text-anchor="middle" fill="#111827" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700">SSP</text>
+  <text x="618" y="400" text-anchor="middle" fill="#111827" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700">GCMDP</text>
+  <text x="380" y="466" text-anchor="middle" fill="#111827" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="700">Rewards as Goals</text>
+</svg>

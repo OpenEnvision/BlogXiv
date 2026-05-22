@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Stanford agent evaluation cover</title>
+  <desc id="desc">Distinct cover for Stanford AI agent and AI Index articles.</desc>
+  <rect width="1200" height="630" fill="#fff7f7"/>
+  <rect x="80" y="76" width="1040" height="478" rx="34" fill="#ffffff" stroke="#b91c1c" stroke-width="4"/>
+  <path d="M198 444V214l156-78 156 78v230" fill="#fee2e2" stroke="#991b1b" stroke-width="6"/>
+  <path d="M646 190h300M646 276h218M646 362h266" stroke="#7f1d1d" stroke-width="20" stroke-linecap="round"/>
+  <circle cx="760" cy="444" r="42" fill="#ef4444"/>
+  <circle cx="892" cy="444" r="42" fill="#f87171"/>
+  <circle cx="1024" cy="444" r="42" fill="#fecaca"/>
+  <text x="178" y="522" fill="#7f1d1d" font-family="Arial, Helvetica, sans-serif" font-size="52" font-weight="700">Agent Evaluation</text>
+</svg>

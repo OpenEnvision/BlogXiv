@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Agent practice cover</title>
+  <desc id="desc">Distinct cover for practical agent engineering articles.</desc>
+  <rect width="1200" height="630" fill="#fefce8"/>
+  <rect x="78" y="76" width="1044" height="478" rx="34" fill="#ffffff" stroke="#eab308" stroke-width="4"/>
+  <path d="M220 210h250M220 306h180M220 402h300" stroke="#854d0e" stroke-width="22" stroke-linecap="round"/>
+  <rect x="640" y="156" width="280" height="280" rx="36" fill="#fef3c7" stroke="#ca8a04" stroke-width="6"/>
+  <path d="M730 230h100M730 300h100M730 370h100" stroke="#713f12" stroke-width="16" stroke-linecap="round"/>
+  <path d="M920 296l72-54v108z" fill="#eab308"/>
+  <text x="176" y="526" fill="#713f12" font-family="Arial, Helvetica, sans-serif" font-size="52" font-weight="700">Agent Practice</text>
+</svg>

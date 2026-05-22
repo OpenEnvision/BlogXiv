@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Agent systems cover</title>
+  <desc id="desc">Distinct cover for agent frameworks and cybersecurity agent evaluation.</desc>
+  <rect width="1200" height="630" fill="#f5f3ff"/>
+  <rect x="82" y="84" width="1036" height="462" rx="40" fill="#ffffff" stroke="#8b5cf6" stroke-width="4"/>
+  <circle cx="318" cy="230" r="68" fill="#ede9fe" stroke="#7c3aed" stroke-width="8"/>
+  <circle cx="600" cy="230" r="68" fill="#ede9fe" stroke="#7c3aed" stroke-width="8"/>
+  <circle cx="882" cy="230" r="68" fill="#ede9fe" stroke="#7c3aed" stroke-width="8"/>
+  <path d="M386 230h146M668 230h146M600 298v92M318 298l112 92M882 298l-112 92" stroke="#6d28d9" stroke-width="16" stroke-linecap="round"/>
+  <rect x="420" y="390" width="360" height="74" rx="18" fill="#312e81"/>
+  <text x="485" y="441" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700">agent loop</text>
+  <text x="162" y="520" fill="#2e1065" font-family="Arial, Helvetica, sans-serif" font-size="50" font-weight="700">Agent Systems</text>
+</svg>

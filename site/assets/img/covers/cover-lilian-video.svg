@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Video generation survey cover</title>
+  <desc id="desc">Distinct cover for video diffusion survey articles.</desc>
+  <rect width="1200" height="630" fill="#eff6ff"/>
+  <rect x="80" y="76" width="1040" height="478" rx="34" fill="#ffffff" stroke="#3b82f6" stroke-width="4"/>
+  <rect x="188" y="164" width="824" height="270" rx="28" fill="#dbeafe" stroke="#1d4ed8" stroke-width="6"/>
+  <path d="M260 164v270M424 164v270M588 164v270M752 164v270M916 164v270" stroke="#60a5fa" stroke-width="8"/>
+  <path d="M510 238l154 88-154 88z" fill="#1d4ed8"/>
+  <text x="174" y="524" fill="#1e3a8a" font-family="Arial, Helvetica, sans-serif" font-size="52" font-weight="700">Video Diffusion</text>
+</svg>

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 520" role="img" aria-labelledby="title desc">
+  <title id="title">AI forecasting cover</title>
+  <desc id="desc">LLM forecasting pipeline with research agents, probability distributions, and ensemble scoring.</desc>
+  <rect width="760" height="520" fill="#f8fafc"/>
+  <rect x="82" y="80" width="596" height="360" rx="24" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+  <g transform="translate(128 150)">
+    <rect width="130" height="70" rx="14" fill="#dbeafe" stroke="#2563eb" stroke-width="4"/>
+    <rect x="186" y="0" width="130" height="70" rx="14" fill="#ede9fe" stroke="#7c3aed" stroke-width="4"/>
+    <rect x="372" y="0" width="130" height="70" rx="14" fill="#dcfce7" stroke="#16a34a" stroke-width="4"/>
+    <path d="M130 35h56M316 35h56" stroke="#334155" stroke-width="6" stroke-linecap="round"/>
+    <path d="M48 206c58-70 96-84 142-34 46 50 82 46 122-18 34-54 76-78 142-46" fill="none" stroke="#f97316" stroke-width="8" stroke-linecap="round"/>
+    <path d="M40 236h444M40 236V104" stroke="#111827" stroke-width="5" stroke-linecap="round"/>
+  </g>
+  <g font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" text-anchor="middle">
+    <text x="193" y="192" fill="#1e3a8a">Research</text>
+    <text x="379" y="192" fill="#3b0764">Predict</text>
+    <text x="565" y="192" fill="#14532d">Ensemble</text>
+  </g>
+  <text x="380" y="120" text-anchor="middle" fill="#111827" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700">AI Forecasting</text>
+</svg>

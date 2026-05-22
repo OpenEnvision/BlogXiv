@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Agent benchmark audit cover</title>
+  <desc id="desc">Distinct cover for benchmark reliability and agent evaluation articles.</desc>
+  <rect width="1200" height="630" fill="#fff7ed"/>
+  <rect x="72" y="72" width="1056" height="486" rx="34" fill="#ffffff" stroke="#f97316" stroke-width="4"/>
+  <path d="M172 178h250M172 246h170M172 314h280" stroke="#9a3412" stroke-width="22" stroke-linecap="round"/>
+  <rect x="612" y="152" width="280" height="280" rx="26" fill="#ffedd5" stroke="#ea580c" stroke-width="6"/>
+  <path d="M680 294l50 50 104-128" fill="none" stroke="#16a34a" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M868 216l84-68M868 368l84 68" stroke="#fb923c" stroke-width="16" stroke-linecap="round"/>
+  <circle cx="984" cy="132" r="34" fill="#7c2d12"/>
+  <circle cx="984" cy="468" r="34" fill="#7c2d12"/>
+  <text x="170" y="472" fill="#431407" font-family="Arial, Helvetica, sans-serif" font-size="50" font-weight="700">Benchmark Audit</text>
+  <text x="170" y="524" fill="#9a3412" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700">Agents / evals / reliability</text>
+</svg>

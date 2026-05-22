@@ -1,0 +1,21 @@
+{
+  "name": "BlogXiv",
+  "short_name": "BlogXiv",
+  "description": "Curated AI research blogs and technical insight.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0f4c81",
+  "icons": [
+    {
+      "src": "assets/img/brand/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "assets/img/brand/blogxiv.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

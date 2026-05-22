@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">LLM evals cover</title>
+  <desc id="desc">Distinct cover for product evals and LLM judge articles.</desc>
+  <rect width="1200" height="630" fill="#fdf2f8"/>
+  <rect x="78" y="76" width="1044" height="478" rx="34" fill="#ffffff" stroke="#ec4899" stroke-width="4"/>
+  <rect x="174" y="154" width="346" height="310" rx="24" fill="#fce7f3" stroke="#be185d" stroke-width="5"/>
+  <path d="M226 232h214M226 300h160M226 368h244" stroke="#9d174d" stroke-width="18" stroke-linecap="round"/>
+  <rect x="634" y="154" width="320" height="310" rx="24" fill="#fff1f2" stroke="#f43f5e" stroke-width="5"/>
+  <path d="M700 312l62 62 134-164" fill="none" stroke="#16a34a" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="174" y="528" fill="#831843" font-family="Arial, Helvetica, sans-serif" font-size="52" font-weight="700">LLM Evals</text>
+</svg>

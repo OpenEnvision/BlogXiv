@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Kernel systems cover</title>
+  <desc id="desc">Distinct cover for Dao AI Lab kernel and training efficiency articles.</desc>
+  <rect width="1200" height="630" fill="#ecfdf5"/>
+  <rect x="76" y="74" width="1048" height="482" rx="34" fill="#ffffff" stroke="#10b981" stroke-width="4"/>
+  <rect x="216" y="154" width="768" height="294" rx="28" fill="#d1fae5" stroke="#047857" stroke-width="6"/>
+  <path d="M302 210h596M302 282h596M302 354h596" stroke="#065f46" stroke-width="18" stroke-linecap="round"/>
+  <path d="M390 126v72M534 126v72M678 126v72M822 126v72M390 448v72M534 448v72M678 448v72M822 448v72" stroke="#059669" stroke-width="14" stroke-linecap="round"/>
+  <text x="176" y="532" fill="#064e3b" font-family="Arial, Helvetica, sans-serif" font-size="52" font-weight="700">GPU Kernels</text>
+</svg>

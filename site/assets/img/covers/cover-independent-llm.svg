@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Independent LLM analysis cover</title>
+  <desc id="desc">Distinct cover for independent researcher LLM and optimizer essays.</desc>
+  <rect width="1200" height="630" fill="#f8fafc"/>
+  <rect x="78" y="76" width="1044" height="478" rx="34" fill="#ffffff" stroke="#2563eb" stroke-width="4"/>
+  <path d="M190 202h350M190 292h260M190 382h418" stroke="#1e3a8a" stroke-width="22" stroke-linecap="round"/>
+  <circle cx="816" cy="292" r="132" fill="#dbeafe" stroke="#1d4ed8" stroke-width="6"/>
+  <path d="M758 292h116M816 234v116" stroke="#1d4ed8" stroke-width="22" stroke-linecap="round"/>
+  <text x="174" y="526" fill="#1e3a8a" font-family="Arial, Helvetica, sans-serif" font-size="52" font-weight="700">Independent Analysis</text>
+</svg>

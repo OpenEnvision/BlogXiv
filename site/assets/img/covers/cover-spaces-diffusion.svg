@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Diffusion geometry cover</title>
+  <desc id="desc">Distinct cover for diffusion model theory articles.</desc>
+  <rect width="1200" height="630" fill="#fdf4ff"/>
+  <rect x="80" y="76" width="1040" height="478" rx="34" fill="#ffffff" stroke="#d946ef" stroke-width="4"/>
+  <circle cx="300" cy="280" r="98" fill="#fae8ff" stroke="#a21caf" stroke-width="6"/>
+  <circle cx="508" cy="280" r="98" fill="#f5d0fe" stroke="#a21caf" stroke-width="6"/>
+  <circle cx="716" cy="280" r="98" fill="#e879f9" stroke="#a21caf" stroke-width="6"/>
+  <circle cx="924" cy="280" r="98" fill="#86198f" stroke="#a21caf" stroke-width="6"/>
+  <path d="M398 280h12M606 280h12M814 280h12" stroke="#701a75" stroke-width="20" stroke-linecap="round"/>
+  <text x="174" y="524" fill="#701a75" font-family="Arial, Helvetica, sans-serif" font-size="52" font-weight="700">Diffusion Geometry</text>
+</svg>

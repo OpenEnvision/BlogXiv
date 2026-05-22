@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Vision-language research cover</title>
+  <desc id="desc">Distinct cover for CMU vision-language research articles.</desc>
+  <rect width="1200" height="630" fill="#f0f9ff"/>
+  <rect x="78" y="76" width="1044" height="478" rx="34" fill="#ffffff" stroke="#0284c7" stroke-width="4"/>
+  <rect x="176" y="156" width="396" height="254" rx="24" fill="#e0f2fe" stroke="#0369a1" stroke-width="6"/>
+  <circle cx="290" cy="252" r="44" fill="#38bdf8"/>
+  <path d="M208 376l116-104 86 78 64-54 68 80z" fill="#075985"/>
+  <rect x="676" y="160" width="316" height="62" rx="18" fill="#bae6fd"/>
+  <rect x="676" y="252" width="246" height="62" rx="18" fill="#e0f2fe"/>
+  <rect x="676" y="344" width="286" height="62" rx="18" fill="#bae6fd"/>
+  <text x="174" y="516" fill="#0c4a6e" font-family="Arial, Helvetica, sans-serif" font-size="52" font-weight="700">Vision + Language</text>
+</svg>

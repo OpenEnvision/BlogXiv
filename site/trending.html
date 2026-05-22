@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trending - BlogXiv</title>
+    <meta name="description" content="Trending on BlogXiv: most read, most discussed, and fastest growing topics in AI research blogging.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/styles.css?v=popular-real-blogs-expanded-15">
+    <link rel="stylesheet" href="assets/css/enhancements.css?v=popular-real-blogs-expanded-15">
+    <link rel="icon" type="image/svg+xml" href="assets/img/brand/icon.svg">
+    <link rel="mask-icon" href="assets/img/brand/icon.svg" color="#7cacdc">
+    <!-- Theme initialization script (prevents flash) -->
+    <script>
+        (function() {
+            const theme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="index.html" class="brand-link" aria-label="BlogXiv home">
+                    <img src="assets/img/brand/blogxiv.svg" alt="BlogXiv" class="brand-logo" />
+                </a>
+            </div>
+            <div class="nav-search">
+                <div class="search-container">
+                    <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.35-4.35"></path>
+                    </svg>
+                    <input type="text" id="searchInput" placeholder="Search trending topics..." class="search-input">
+                </div>
+            </div>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
+                    </svg>
+                    <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+                <a href="explore.html" class="btn btn-secondary">Explore</a>
+                <a href="categories.html" class="btn btn-primary">Categories</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="categories-page">
+        <div class="container">
+            <!-- Page Header -->
+            <header class="page-header">
+                <h1 class="page-title">Trending</h1>
+                <p class="page-description">Most read, most discussed, and rising topics across BlogXiv.</p>
+            </header>
+
+            <!-- Filters -->
+            <div class="filters-section">
+                <div class="filter-group">
+                    <label for="timeRange">Time Range:</label>
+                    <select id="timeRange" class="filter-select">
+                        <option value="week">Past Week</option>
+                        <option value="month" selected>Past Month</option>
+                        <option value="year">Past Year</option>
+                        <option value="all">All Time</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="metric">Metric:</label>
+                    <select id="metric" class="filter-select">
+                        <option value="views" selected>Most Read</option>
+                        <option value="comments">Most Discussed</option>
+                        <option value="growth">Fastest Growing</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Trending Stats -->
+            <div class="stats-section">
+                <div class="stat-card">
+                    <span class="stat-number" id="trendingViews">0</span>
+                    <span class="stat-label">Curated Reads</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number" id="trendingPosts">0</span>
+                    <span class="stat-label">Trending Posts</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number" id="trendingAuthors">0</span>
+                    <span class="stat-label">Authors Featured</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number" id="trendingTopics">0</span>
+                    <span class="stat-label">Hot Topics</span>
+                </div>
+            </div>
+
+            <!-- Trending Lists -->
+            <section class="blogs-section">
+                <div class="blogs-header">
+                    <h2>Top Posts</h2>
+                </div>
+                <div class="blogs-grid" id="topPostsGrid"></div>
+            </section>
+
+            <section class="blogs-section">
+                <div class="blogs-header">
+                    <h2>Rising Topics</h2>
+                </div>
+                <div class="categories-grid" id="risingTopicsGrid"></div>
+            </section>
+
+            <section class="blogs-section">
+                <div class="blogs-header">
+                    <h2>Authors to Watch</h2>
+                </div>
+                <div class="authors-grid" id="authorsWatchGrid"></div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-brand">
+                        <a href="index.html" class="brand-link" aria-label="BlogXiv home">
+                            <img src="assets/img/brand/blogxiv.svg" alt="BlogXiv" class="brand-logo" />
+                        </a>
+                    </div>
+                    <p class="footer-description">
+                        Discover, share, and explore amazing AI research blogs across different domains. 
+                        Join our community of knowledge seekers and content creators.
+                    </p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3 class="footer-title">Platform</h3>
+                    <ul class="footer-links">
+                        <li><a href="explore.html">Explore</a></li>
+                        <li><a href="categories.html">Categories</a></li>
+                        <li><a href="bloggers.html">Bloggers</a></li>
+                        <li><a href="trending.html">Trending</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3 class="footer-title">Community</h3>
+                    <ul class="footer-links">
+                        <li><a href="guidelines.html">Guidelines</a></li>
+                        <li><a href="help.html">Help Center</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="feedback.html">Feedback</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section footer-contribute-section">
+                    <h3 class="footer-title">Contribute</h3>
+                    <div class="footer-actions" aria-label="Contribute to BlogXiv">
+                        <a class="footer-action-link footer-github-action" href="https://github.com/OpenEnvision/BlogXiv" target="_blank" rel="noopener noreferrer" aria-label="Star OpenEnvision slash BlogXiv on GitHub">
+                            <span class="footer-action-icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" role="img" focusable="false">
+                                    <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2.01c-3.2.7-3.87-1.36-3.87-1.36-.52-1.34-1.28-1.69-1.28-1.69-1.05-.72.08-.71.08-.71 1.16.08 1.77 1.2 1.77 1.2 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.23-1.28-5.23-5.68 0-1.25.45-2.28 1.19-3.08-.12-.29-.52-1.46.11-3.04 0 0 .97-.31 3.17 1.18a10.9 10.9 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.23 2.75.11 3.04.74.8 1.19 1.83 1.19 3.08 0 4.41-2.69 5.38-5.25 5.66.41.35.78 1.05.78 2.12v3.15c0 .31.21.67.8.56A11.52 11.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z" />
+                                </svg>
+                            </span>
+                            <span class="footer-action-copy">
+                                <span class="footer-action-label">Star on GitHub</span>
+                                <span class="footer-action-meta">OpenEnvision/BlogXiv</span>
+                            </span>
+                        </a>
+                        <a class="footer-action-link footer-mail-action" href="mailto:juanxitian1031@gmail.com?subject=BlogXiv%20Blog%20Submission&body=Please%20include%3A%0A-%20Blog%20title%3A%0A-%20URL%3A%0A-%20Author%20or%20lab%3A%0A-%20Suggested%20category%3A%0A-%20Why%20it%20is%20technically%20valuable%3A" aria-label="Submit a technical AI blog by email">
+                            <span class="footer-action-icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" role="img" focusable="false">
+                                    <path d="M4 6.75h16v10.5a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6.75Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" />
+                                    <path d="m4.5 7.25 6.38 5.1a1.8 1.8 0 0 0 2.24 0l6.38-5.1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </span>
+                            <span class="footer-action-copy">
+                                <span class="footer-action-label">Submit a Blog</span>
+                                <span class="footer-action-meta">juanxitian1031@gmail.com</span>
+                            </span>
+                        </a>
+                    </div>
+                    <p class="footer-contribute-note">Research blogs are reviewed for technical depth, clarity, and durable insight.</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-copyright">
+                    <p>&copy; 2026 BlogXiv｜OpenEnvision. All rights reserved.</p>
+                </div>
+                <div class="footer-legal">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Loading animation overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-container">
+            <div class="loading-logo">
+                <img src="assets/img/brand/blogxiv.svg" alt="BlogXiv">
+            </div>
+            
+            <div class="loading-text" id="loadingText">Calculating trending content...</div>
+        </div>
+    </div>
+
+    <script src="assets/js/app.js?v=popular-real-blogs-expanded-46"></script>
+    <script>
+        // Curated community data for the trending page (front-end only)
+        (function(){
+            const topPostsGrid = document.getElementById('topPostsGrid');
+            const risingTopicsGrid = document.getElementById('risingTopicsGrid');
+            const authorsWatchGrid = document.getElementById('authorsWatchGrid');
+            const blogs = [...BlogXiv.prototype.getCuratedCommunityBlogs()]
+                .sort((a, b) => new Date(b.publishDate) - new Date(a.publishDate));
+            const topPosts = blogs.slice(0, 12);
+            const authorsData = [...new Set(topPosts.map(post => post.author))].slice(0, 6);
+            const topicsData = [...new Set(topPosts.flatMap(post => post.tags))].slice(0, 6);
+            const categories = [...new Set(topPosts.map(post => post.category))];
+            const posts = topPosts.length;
+            const authors = authorsData.length;
+            const topics = topicsData.length;
+            const setText = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val.toLocaleString(); };
+            setText('trendingViews', blogs.length);
+            setText('trendingPosts', posts);
+            setText('trendingAuthors', authors);
+            setText('trendingTopics', topics);
+
+            if (topPostsGrid) {
+                topPostsGrid.innerHTML = topPosts.map(p => `
+                    <article class="blog-card" data-blog-url="${p.url}">
+                        <div class="blog-image">
+                            <img class="blog-cover-image ${p.coverFit === 'contain' ? 'is-contain' : ''}" src="${p.coverImage}" alt="${p.coverAlt || p.title}" loading="lazy" referrerpolicy="no-referrer">
+                            <span class="blog-source-pill">${p.sourceName}</span>
+                        </div>
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <span class="blog-category">${p.category}</span>
+                                <span>•</span>
+                                <span>${p.readTime}</span>
+                            </div>
+                            <h3 class="blog-title">${p.title}</h3>
+                            <p class="blog-excerpt">${p.excerpt}</p>
+                            <div class="blog-footer">
+                                <div class="blog-author">
+                                    <img class="author-avatar" src="${p.authorAvatar}" alt="${p.author}" loading="lazy" referrerpolicy="no-referrer">
+                                    <div class="author-name">${p.author}</div>
+                                </div>
+                                <a class="blog-source-link" href="${p.url}" target="_blank" rel="noopener noreferrer">Read original</a>
+                            </div>
+                        </div>
+                    </article>
+                `).join('');
+                topPostsGrid.querySelectorAll('.blog-card').forEach(card => {
+                    card.addEventListener('click', (event) => {
+                        if (event.target.closest('a')) return;
+                        window.open(card.dataset.blogUrl, '_blank', 'noopener,noreferrer');
+                    });
+                });
+            }
+
+            if (risingTopicsGrid) {
+                risingTopicsGrid.innerHTML = topicsData.map((t, index) => `
+                    <div class="category-card">
+                        <div class="category-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"></path><path d="M19 9l-5 5-4-4-3 3"></path></svg>
+                        </div>
+                        <h3 class="category-title">${t}</h3>
+                        <p class="category-description">${categories[index % categories.length]}</p>
+                    </div>
+                `).join('');
+            }
+
+            if (authorsWatchGrid) {
+                authorsWatchGrid.innerHTML = authorsData.map(name => `
+                    <div class="author-card">
+                        <div class="author-header">
+                            <img class="author-avatar" src="${topPosts.find(post => post.author === name).authorAvatar}" alt="${name}" loading="lazy" referrerpolicy="no-referrer">
+                            <div class="author-info">
+                                <div class="author-name">${name}</div>
+                                <div class="author-title">${topPosts.find(post => post.author === name).category}</div>
+                                <div class="author-institution">${topPosts.find(post => post.author === name).sourceName}</div>
+                            </div>
+                        </div>
+                        <div class="author-stats">
+                            <span class="stat-number">${topPosts.filter(post => post.author === name).length}</span>
+                            <span class="stat-label">Posts</span>
+                            <span class="stat-number">${topPosts.find(post => post.author === name).tags.length}</span>
+                            <span class="stat-label">Topics</span>
+                        </div>
+                        <div class="author-actions">
+                            <a class="btn btn-outline" href="bloggers.html">View Bloggers</a>
+                            <a class="btn btn-primary" href="explore.html">View Posts</a>
+                        </div>
+                    </div>
+                `).join('');
+            }
+        })();
+    </script>
+</body>
+</html>
