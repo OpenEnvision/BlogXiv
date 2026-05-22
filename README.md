@@ -9,8 +9,9 @@
 </p>
 
 <p align="center">
-  <img alt="Static Site" src="https://img.shields.io/badge/site-static-blue">
+  <img src="https://img.shields.io/github/stars/OpenEnvision/BlogXiv?style=flat-square" alt="GitHub Stars">
   <img alt="Editorial Curation" src="https://img.shields.io/badge/curation-editorial-6f42c1">
+  <img src="https://img.shields.io/badge/Last_Update-2026_05-2563eb?style=flat-square" alt="Last Updated">
   <img alt="Maintained by OpenEnvision" src="https://img.shields.io/badge/maintainer-OpenEnvision-0f4c81">
 </p>
 
