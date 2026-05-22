@@ -1,7 +1,7 @@
 // Blog Manager JavaScript
 class BlogManager {
     constructor() {
-        this.currentTheme = localStorage.getItem('theme') || 'light';
+        this.currentTheme = this.getStoredTheme();
         this.tags = [];
         this.nextBlogId = 13; // Start from 13 since we have 12 sample blogs
         
@@ -15,15 +15,33 @@ class BlogManager {
     }
     
     // Theme Management
+    getStoredTheme() {
+        try {
+            const storedTheme = localStorage.getItem('theme');
+            return storedTheme === 'dark' || storedTheme === 'light' ? storedTheme : 'light';
+        } catch (error) {
+            return 'light';
+        }
+    }
+
+    applyTheme(theme) {
+        document.documentElement.setAttribute('data-theme', theme);
+        document.documentElement.style.colorScheme = theme;
+    }
+
     setupTheme() {
-        document.documentElement.setAttribute('data-theme', this.currentTheme);
+        this.applyTheme(this.currentTheme);
         this.updateThemeIcon();
     }
     
     toggleTheme() {
         this.currentTheme = this.currentTheme === 'light' ? 'dark' : 'light';
-        document.documentElement.setAttribute('data-theme', this.currentTheme);
-        localStorage.setItem('theme', this.currentTheme);
+        this.applyTheme(this.currentTheme);
+        try {
+            localStorage.setItem('theme', this.currentTheme);
+        } catch (error) {
+            // Keep the current page theme even if storage is unavailable.
+        }
         this.updateThemeIcon();
     }
     
@@ -47,8 +65,9 @@ class BlogManager {
     setupEventListeners() {
         // Theme toggle
         const themeToggle = document.getElementById('themeToggle');
-        if (themeToggle) {
+        if (themeToggle && themeToggle.dataset.themeBound !== 'true') {
             themeToggle.addEventListener('click', () => this.toggleTheme());
+            themeToggle.dataset.themeBound = 'true';
         }
         
         // Form submission

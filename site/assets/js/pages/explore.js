@@ -1,7 +1,7 @@
 // Explore Page JavaScript
 class ExplorePage {
     constructor() {
-        this.currentTheme = localStorage.getItem('theme') || 'light';
+        this.currentTheme = this.getStoredTheme();
         this.blogs = [];
         this.filteredBlogs = [];
         this.displayedBlogs = 12; // Show 12 blogs initially
@@ -148,15 +148,33 @@ class ExplorePage {
     }
     
     // Theme Management
+    getStoredTheme() {
+        try {
+            const storedTheme = localStorage.getItem('theme');
+            return storedTheme === 'dark' || storedTheme === 'light' ? storedTheme : 'light';
+        } catch (error) {
+            return 'light';
+        }
+    }
+
+    applyTheme(theme) {
+        document.documentElement.setAttribute('data-theme', theme);
+        document.documentElement.style.colorScheme = theme;
+    }
+
     setupTheme() {
-        document.documentElement.setAttribute('data-theme', this.currentTheme);
+        this.applyTheme(this.currentTheme);
         this.updateThemeIcon();
     }
     
     toggleTheme() {
         this.currentTheme = this.currentTheme === 'light' ? 'dark' : 'light';
-        document.documentElement.setAttribute('data-theme', this.currentTheme);
-        localStorage.setItem('theme', this.currentTheme);
+        this.applyTheme(this.currentTheme);
+        try {
+            localStorage.setItem('theme', this.currentTheme);
+        } catch (error) {
+            // Keep the current page theme even if storage is unavailable.
+        }
         this.updateThemeIcon();
     }
     
@@ -180,8 +198,9 @@ class ExplorePage {
     setupEventListeners() {
         // Theme toggle
         const themeToggle = document.getElementById('themeToggle');
-        if (themeToggle) {
+        if (themeToggle && themeToggle.dataset.themeBound !== 'true') {
             themeToggle.addEventListener('click', () => this.toggleTheme());
+            themeToggle.dataset.themeBound = 'true';
         }
         
         // Search functionality
@@ -506,7 +525,7 @@ class ExplorePage {
     
     renderBlogCard(blog) {
         return `
-            <article class="blog-card fade-in-up" data-blog-id="${blog.id}" data-blog-url="${blog.url || ''}">
+            <article class="blog-card" data-blog-id="${blog.id}" data-blog-url="${blog.url || ''}">
                 <div class="blog-image">
                     <img class="blog-cover-image ${blog.coverFit === 'contain' ? 'is-contain' : ''}" src="${blog.coverImage}" alt="${blog.coverAlt || blog.title}" loading="lazy" referrerpolicy="no-referrer">
                     <span class="blog-source-pill">${blog.sourceName}</span>
@@ -535,7 +554,7 @@ class ExplorePage {
     
     renderBlogListItem(blog) {
         return `
-            <article class="blog-list-item fade-in-up" data-blog-id="${blog.id}" data-blog-url="${blog.url || ''}">
+            <article class="blog-list-item" data-blog-id="${blog.id}" data-blog-url="${blog.url || ''}">
                 <div class="blog-list-content">
                     <div class="blog-meta">
                         <span class="blog-category">${blog.category}</span>

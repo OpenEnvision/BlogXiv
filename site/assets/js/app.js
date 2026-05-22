@@ -1,7 +1,7 @@
 // BlogXiv JavaScript
 class BlogXiv {
     constructor() {
-        this.currentTheme = localStorage.getItem('theme') || 'light';
+        this.currentTheme = this.getStoredTheme();
         this.searchTimeout = null;
         this.blogs = [];
         this.filteredBlogs = [];
@@ -49,6 +49,7 @@ class BlogXiv {
         this.applyInitialUrlFilters();
         this.renderBlogs();
         this.setupAnimations();
+        this.deferVisitorMap();
     }
 
     isRepositoryRootPage() {
@@ -69,17 +70,56 @@ class BlogXiv {
         }
         return this.isRepositoryRootPage() ? `site/${src}` : src;
     }
+
+    deferVisitorMap() {
+        const visitorMap = document.querySelector('.visitor-map');
+        if (!visitorMap || document.getElementById('mapmyvisitors')) return;
+
+        const loadVisitorMap = () => {
+            if (document.getElementById('mapmyvisitors')) return;
+            const script = document.createElement('script');
+            script.type = 'text/javascript';
+            script.id = 'mapmyvisitors';
+            script.async = true;
+            script.src = '//mapmyvisitors.com/map.js?d=yyIIyne0NYzfu0sZmsFXqa1fNVlZtaCTpDu6YiKHYxg&cl=ffffff&w=a';
+            visitorMap.appendChild(script);
+        };
+
+        if (document.readyState === 'complete') {
+            window.setTimeout(loadVisitorMap, 0);
+        } else {
+            window.addEventListener('load', loadVisitorMap, { once: true });
+        }
+    }
     
     // Theme Management
+    getStoredTheme() {
+        try {
+            const storedTheme = localStorage.getItem('theme');
+            return storedTheme === 'dark' || storedTheme === 'light' ? storedTheme : 'light';
+        } catch (error) {
+            return 'light';
+        }
+    }
+
+    applyTheme(theme) {
+        document.documentElement.setAttribute('data-theme', theme);
+        document.documentElement.style.colorScheme = theme;
+    }
+
     setupTheme() {
-        document.documentElement.setAttribute('data-theme', this.currentTheme);
+        this.applyTheme(this.currentTheme);
         this.updateThemeIcon();
     }
 
     toggleTheme() {
         this.currentTheme = this.currentTheme === 'light' ? 'dark' : 'light';
-        document.documentElement.setAttribute('data-theme', this.currentTheme);
-        localStorage.setItem('theme', this.currentTheme);
+        this.applyTheme(this.currentTheme);
+        try {
+            localStorage.setItem('theme', this.currentTheme);
+        } catch (error) {
+            // Theme still applies for the current page when storage is unavailable.
+        }
         this.updateThemeIcon();
     }
 
@@ -132,8 +172,9 @@ class BlogXiv {
 
         // Theme toggle
         const themeToggle = document.getElementById('themeToggle');
-        if (themeToggle) {
+        if (themeToggle && themeToggle.dataset.themeBound !== 'true') {
             themeToggle.addEventListener('click', () => this.toggleTheme());
+            themeToggle.dataset.themeBound = 'true';
         }
 
         // Search functionality - open overlay on click
@@ -9121,7 +9162,7 @@ class BlogXiv {
         const blogsToShow = this.filteredBlogs.slice(0, this.displayedBlogs);
         
         blogsGrid.innerHTML = blogsToShow.map(blog => `
-            <article class="blog-card fade-in-up" data-blog-id="${blog.id}" data-blog-url="${blog.url || ''}" tabindex="0" role="link" aria-label="Open ${blog.title}">
+            <article class="blog-card" data-blog-id="${blog.id}" data-blog-url="${blog.url || ''}" tabindex="0" role="link" aria-label="Open ${blog.title}">
                 <div class="blog-image">
                     <img class="blog-cover-image ${blog.coverFit === 'contain' ? 'is-contain' : ''}" src="${this.getMediaHref(blog.coverImage)}" alt="${blog.coverAlt || blog.title}" loading="lazy" referrerpolicy="no-referrer">
                     <span class="blog-source-pill">${blog.sourceName}</span>
@@ -9448,6 +9489,7 @@ class LoadingAnimation {
         this.overlay = document.getElementById('loadingOverlay');
         this.loadingText = document.getElementById('loadingText');
         this.isVisible = false;
+        this.disabled = true;
         this.loadingMessages = [
             'Loading amazing content...',
             'Exploring the blogosphere...',
@@ -9461,6 +9503,11 @@ class LoadingAnimation {
 
     // Show loading animation
     show(message = null, duration = null) {
+        if (this.disabled) {
+            this.hide();
+            return false;
+        }
+
         if (this.overlay) {
             if (!this.isVisible) {
                 this.overlay.classList.add('active');
@@ -9485,13 +9532,11 @@ class LoadingAnimation {
 
     // Hide loading animation
     hide() {
-        if (!this.isVisible) return;
-        
         this.isVisible = false;
         if (this.overlay) {
             this.overlay.classList.remove('active');
-            this.stopMessageRotation();
         }
+        this.stopMessageRotation();
     }
 
     // Set loading message
@@ -9633,6 +9678,12 @@ function initTypewriter() {
         'We are researchers.',
         'We are bloggers.'
     ];
+
+    const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduceMotion) {
+        typewriterElement.textContent = messages[0];
+        return;
+    }
     
     let messageIndex = 0;
     let charIndex = 0;

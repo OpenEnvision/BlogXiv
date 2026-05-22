@@ -4,11 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Feedback - BlogXiv</title>
-    <meta name="description" content="Send feedback to BlogXiv: product ideas, bugs, content suggestions. Email feedback@blogxiv.com or use quick links.">
+    <meta name="description" content="Send feedback to BlogXiv: product ideas, bugs, content suggestions. Email juanxitian1031@gmail.com or use quick links.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/styles.css">
+    <!-- Theme bootstrap -->
+    <script>
+        (function() {
+            var theme = "light";
+            try {
+                var storedTheme = window.localStorage && window.localStorage.getItem("theme");
+                theme = storedTheme === "dark" || storedTheme === "light" ? storedTheme : "light";
+            } catch (error) {
+                theme = "light";
+            }
+            document.documentElement.setAttribute("data-theme", theme);
+            document.documentElement.style.colorScheme = theme;
+        })();
+    </script>
+    <link rel="stylesheet" href="assets/css/styles.css?v=theme-fix-1">
     <link rel="icon" type="image/svg+xml" href="assets/img/brand/icon.svg">
     <link rel="mask-icon" href="assets/img/brand/icon.svg" color="#7cacdc">
     <style>
@@ -57,7 +71,7 @@
                         <div class="research-content">
                             <h3 class="research-title">Report a bug</h3>
                             <p class="research-description">Tell us what’s broken with steps to reproduce and browser info.</p>
-                            <p style="margin-top:.5rem;"><a class="btn btn-outline" href="mailto:feedback@blogxiv.com?subject=Bug%20Report&body=Describe%20the%20issue%3A%0ASteps%20to%20reproduce%3A%0AExpected%20result%3A%0AActual%20result%3A%0ABrowser%20%2F%20OS%3A">Send email</a></p>
+                            <p style="margin-top:.5rem;"><a class="btn btn-outline" href="mailto:juanxitian1031@gmail.com?subject=Bug%20Report&body=Describe%20the%20issue%3A%0ASteps%20to%20reproduce%3A%0AExpected%20result%3A%0AActual%20result%3A%0ABrowser%20%2F%20OS%3A">Send email</a></p>
                         </div>
                     </div>
                     <div class="research-card">
@@ -67,7 +81,7 @@
                         <div class="research-content">
                             <h3 class="research-title">Suggest a feature</h3>
                             <p class="research-description">Share your use case and the outcome you’re trying to achieve.</p>
-                            <p style="margin-top:.5rem;"><a class="btn btn-outline" href="mailto:feedback@blogxiv.com?subject=Feature%20Suggestion&body=What%20problem%20does%20this%20solve%3F%0AWho%20benefits%3F%0AWhat%20would%20success%20look%20like%3F">Send email</a></p>
+                            <p style="margin-top:.5rem;"><a class="btn btn-outline" href="mailto:juanxitian1031@gmail.com?subject=Feature%20Suggestion&body=What%20problem%20does%20this%20solve%3F%0AWho%20benefits%3F%0AWhat%20would%20success%20look%20like%3F">Send email</a></p>
                         </div>
                     </div>
                     <div class="research-card">
@@ -77,7 +91,7 @@
                         <div class="research-content">
                             <h3 class="research-title">Content suggestions</h3>
                             <p class="research-description">Propose topics, authors, or series we should highlight.</p>
-                            <p style="margin-top:.5rem;"><a class="btn btn-outline" href="mailto:info@blogxiv.com?subject=Content%20Suggestion">Send email</a></p>
+                            <p style="margin-top:.5rem;"><a class="btn btn-outline" href="mailto:juanxitian1031@gmail.com?subject=Content%20Suggestion">Send email</a></p>
                         </div>
                     </div>
                 </div>
@@ -88,7 +102,7 @@
                 <div class="research-card" style="padding: 1.5rem 2rem;">
                     <div class="research-content">
                         <p class="research-description">We read every message and prioritize improvements that benefit the community. For security issues or policy violations, please see <a href="contact.html">Contact</a> or <a href="guidelines.html">Guidelines</a>.</p>
-                        <p class="research-description" style="margin-top: .5rem;">Email us anytime at <a href="mailto:feedback@blogxiv.com">feedback@blogxiv.com</a>.</p>
+                        <p class="research-description" style="margin-top: .5rem;">Email us anytime at <a href="mailto:juanxitian1031@gmail.com">juanxitian1031@gmail.com</a>.</p>
                     </div>
                 </div>
             </section>
@@ -176,8 +190,8 @@
         </div>
     </div>
 
-    <script src="assets/js/app.js"></script>
+    <script src="assets/js/app.js?v=theme-fix-1"></script>
+    <div class="visitor-map" aria-label="Visitor map and count"></div>
 </body>
 </html>
-
 

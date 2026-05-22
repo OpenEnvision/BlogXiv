@@ -9,9 +9,9 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/OpenEnvision/BlogXiv/actions/workflows/pages.yml"><img alt="GitHub Pages Deployment" src="https://github.com/OpenEnvision/BlogXiv/actions/workflows/pages.yml/badge.svg"></a>
-  <img alt="Static Site" src="https://img.shields.io/badge/site-static-blue">
+  <img src="https://img.shields.io/github/stars/OpenEnvision/BlogXiv?style=flat-square" alt="GitHub Stars">
   <img alt="Editorial Curation" src="https://img.shields.io/badge/curation-editorial-6f42c1">
+  <img src="https://img.shields.io/badge/Last_Update-2026_05-2563eb?style=flat-square" alt="Last Updated">
   <img alt="Maintained by OpenEnvision" src="https://img.shields.io/badge/maintainer-OpenEnvision-0f4c81">
 </p>
 
@@ -279,10 +279,9 @@ If BlogXiv is useful in academic or technical work, please cite the project as:
 
 ```bibtex
 @misc{openenvision_blogxiv_2026,
-  title        = {BlogXiv: A Curated Index for Technical AI Research Writing},
+  title        = {BlogXiv},
   author       = {{OpenEnvision}},
   year         = {2026},
-  howpublished = {\url{https://blogxiv.org/}},
   note         = {Curated research blog index}
 }
 ```

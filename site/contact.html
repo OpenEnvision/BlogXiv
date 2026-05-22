@@ -4,11 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact - BlogXiv</title>
-    <meta name="description" content="Contact BlogXiv: press, partnerships, policy, and general inquiries. Email info@blogxiv.com or feedback@blogxiv.com.">
+    <meta name="description" content="Contact BlogXiv: press, partnerships, policy, and general inquiries. Email juanxitian1031@gmail.com.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/styles.css">
+    <!-- Theme bootstrap -->
+    <script>
+        (function() {
+            var theme = "light";
+            try {
+                var storedTheme = window.localStorage && window.localStorage.getItem("theme");
+                theme = storedTheme === "dark" || storedTheme === "light" ? storedTheme : "light";
+            } catch (error) {
+                theme = "light";
+            }
+            document.documentElement.setAttribute("data-theme", theme);
+            document.documentElement.style.colorScheme = theme;
+        })();
+    </script>
+    <link rel="stylesheet" href="assets/css/styles.css?v=theme-fix-1">
     <link rel="icon" type="image/svg+xml" href="assets/img/brand/icon.svg">
     <link rel="mask-icon" href="assets/img/brand/icon.svg" color="#7cacdc">
 </head>
@@ -53,7 +67,7 @@
                         <div class="research-content">
                             <h3 class="research-title">Press & Partnerships</h3>
                             <p class="research-description">Media requests, collaborations, events, and academic programs.</p>
-                            <p style="margin-top:.5rem;"><a class="btn btn-outline" href="mailto:info@blogxiv.com?subject=Press%20%2F%20Partnerships%20Inquiry">info@blogxiv.com</a></p>
+                            <p style="margin-top:.5rem;"><a class="btn btn-outline" href="mailto:juanxitian1031@gmail.com?subject=Press%20%2F%20Partnerships%20Inquiry">juanxitian1031@gmail.com</a></p>
                         </div>
                     </div>
                     <div class="research-card">
@@ -63,7 +77,7 @@
                         <div class="research-content">
                             <h3 class="research-title">Policy & Abuse</h3>
                             <p class="research-description">Report harassment, plagiarism, or security issues with context.</p>
-                            <p style="margin-top:.5rem;"><a class="btn btn-outline" href="mailto:feedback@blogxiv.com?subject=Policy%20%26%20Abuse%20Report">feedback@blogxiv.com</a></p>
+                            <p style="margin-top:.5rem;"><a class="btn btn-outline" href="mailto:juanxitian1031@gmail.com?subject=Policy%20%26%20Abuse%20Report">juanxitian1031@gmail.com</a></p>
                         </div>
                     </div>
                     <div class="research-card">
@@ -73,7 +87,7 @@
                         <div class="research-content">
                             <h3 class="research-title">General</h3>
                             <p class="research-description">Questions about using BlogXiv, content, or features.</p>
-                            <p style="margin-top:.5rem;"><a class="btn btn-outline" href="mailto:info@blogxiv.com?subject=General%20Inquiry">info@blogxiv.com</a></p>
+                            <p style="margin-top:.5rem;"><a class="btn btn-outline" href="mailto:juanxitian1031@gmail.com?subject=General%20Inquiry">juanxitian1031@gmail.com</a></p>
                         </div>
                     </div>
                 </div>
@@ -172,8 +186,8 @@
         </div>
     </div>
 
-    <script src="assets/js/app.js"></script>
+    <script src="assets/js/app.js?v=theme-fix-1"></script>
     
+    <div class="visitor-map" aria-label="Visitor map and count"></div>
 </body>
 </html>
-

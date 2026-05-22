@@ -8,7 +8,21 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/styles.css?v=popular-real-blogs-expanded-15">
+    <!-- Theme bootstrap -->
+    <script>
+        (function() {
+            var theme = "light";
+            try {
+                var storedTheme = window.localStorage && window.localStorage.getItem("theme");
+                theme = storedTheme === "dark" || storedTheme === "light" ? storedTheme : "light";
+            } catch (error) {
+                theme = "light";
+            }
+            document.documentElement.setAttribute("data-theme", theme);
+            document.documentElement.style.colorScheme = theme;
+        })();
+    </script>
+    <link rel="stylesheet" href="assets/css/styles.css?v=theme-fix-1">
     <link rel="icon" type="image/svg+xml" href="assets/img/brand/icon.svg">
     <link rel="mask-icon" href="assets/img/brand/icon.svg" color="#7cacdc">
     <style>
@@ -369,7 +383,8 @@ def example_function():
         </div>
     </div>
 
-    <script src="assets/js/app.js?v=popular-real-blogs-expanded-46"></script>
-    <script src="assets/js/pages/blog-manager.js?v=popular-real-blogs-expanded-15"></script>
+    <script src="assets/js/app.js?v=theme-fix-1"></script>
+    <script src="assets/js/pages/blog-manager.js?v=theme-fix-1"></script>
+    <div class="visitor-map" aria-label="Visitor map and count"></div>
 </body>
 </html>

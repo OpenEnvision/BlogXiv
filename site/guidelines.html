@@ -8,7 +8,21 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/styles.css">
+    <!-- Theme bootstrap -->
+    <script>
+        (function() {
+            var theme = "light";
+            try {
+                var storedTheme = window.localStorage && window.localStorage.getItem("theme");
+                theme = storedTheme === "dark" || storedTheme === "light" ? storedTheme : "light";
+            } catch (error) {
+                theme = "light";
+            }
+            document.documentElement.setAttribute("data-theme", theme);
+            document.documentElement.style.colorScheme = theme;
+        })();
+    </script>
+    <link rel="stylesheet" href="assets/css/styles.css?v=theme-fix-1">
     <link rel="icon" type="image/svg+xml" href="assets/img/brand/icon.svg">
     <link rel="mask-icon" href="assets/img/brand/icon.svg" color="#7cacdc">
 </head>
@@ -113,11 +127,11 @@
                     <div class="research-content">
                         <p class="research-description" style="margin-bottom: 1rem;">We respond to reports and remove content when necessary to keep BlogXiv useful and trustworthy.</p>
                         <ul style="color: var(--text-secondary); line-height: 1.8; padding-left: 1.25rem;">
-                            <li><strong>Report a violation</strong>: <a href="mailto:feedback@blogxiv.com?subject=Report%20a%20Community%20Guidelines%20Violation&body=Please%20include%20links%2C%20screenshots%2C%20and%20context." class="btn btn-outline">feedback@blogxiv.com</a></li>
-                            <li><strong>General inquiries</strong>: <a href="mailto:info@blogxiv.com?subject=BlogXiv%20Community%20Inquiry" class="btn btn-outline">info@blogxiv.com</a></li>
+                            <li><strong>Report a violation</strong>: <a href="mailto:juanxitian1031@gmail.com?subject=Report%20a%20Community%20Guidelines%20Violation&body=Please%20include%20links%2C%20screenshots%2C%20and%20context." class="btn btn-outline">juanxitian1031@gmail.com</a></li>
+                            <li><strong>General inquiries</strong>: <a href="mailto:juanxitian1031@gmail.com?subject=BlogXiv%20Community%20Inquiry" class="btn btn-outline">juanxitian1031@gmail.com</a></li>
                             <li>See also: <a href="help.html">Help Center</a> and <a href="contact.html">Contact</a>.</li>
                         </ul>
-                        <p style="color: var(--text-secondary); font-size: 0.875rem; margin-top: 1rem;">Last updated: 2025</p>
+                        <p style="color: var(--text-secondary); font-size: 0.875rem; margin-top: 1rem;">Last updated: 2026</p>
                     </div>
                 </div>
             </section>
@@ -207,7 +221,7 @@
         </div>
     </div>
 
-    <script src="assets/js/app.js"></script>
+    <script src="assets/js/app.js?v=theme-fix-1"></script>
+    <div class="visitor-map" aria-label="Visitor map and count"></div>
 </body>
 </html>
-

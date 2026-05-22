@@ -1,7 +1,7 @@
 // Curated Bloggers Page JavaScript
 class BloggersPage {
     constructor() {
-        this.currentTheme = localStorage.getItem('theme') || 'light';
+        this.currentTheme = this.getStoredTheme();
         this.bloggers = [];
         this.filteredBloggers = [];
         this.searchQuery = '';
@@ -143,15 +143,33 @@ class BloggersPage {
         this.applyFilters();
     }
 
+    getStoredTheme() {
+        try {
+            const storedTheme = localStorage.getItem('theme');
+            return storedTheme === 'dark' || storedTheme === 'light' ? storedTheme : 'light';
+        } catch (error) {
+            return 'light';
+        }
+    }
+
+    applyTheme(theme) {
+        document.documentElement.setAttribute('data-theme', theme);
+        document.documentElement.style.colorScheme = theme;
+    }
+
     setupTheme() {
-        document.documentElement.setAttribute('data-theme', this.currentTheme);
+        this.applyTheme(this.currentTheme);
         this.updateThemeIcon();
     }
 
     toggleTheme() {
         this.currentTheme = this.currentTheme === 'light' ? 'dark' : 'light';
-        document.documentElement.setAttribute('data-theme', this.currentTheme);
-        localStorage.setItem('theme', this.currentTheme);
+        this.applyTheme(this.currentTheme);
+        try {
+            localStorage.setItem('theme', this.currentTheme);
+        } catch (error) {
+            // Keep the current page theme even if storage is unavailable.
+        }
         this.updateThemeIcon();
     }
 
@@ -173,8 +191,9 @@ class BloggersPage {
 
     setupEventListeners() {
         const themeToggle = document.getElementById('themeToggle');
-        if (themeToggle) {
+        if (themeToggle && themeToggle.dataset.themeBound !== 'true') {
             themeToggle.addEventListener('click', () => this.toggleTheme());
+            themeToggle.dataset.themeBound = 'true';
         }
 
         const searchInput = document.getElementById('searchInput');
@@ -331,7 +350,7 @@ class BloggersPage {
 
     renderBloggerCard(blogger) {
         return `
-            <article class="author-card fade-in-up" data-homepage="${this.escapeAttribute(blogger.homepage)}" tabindex="0" role="article" aria-label="Open ${this.escapeAttribute(blogger.name)} homepage">
+            <article class="author-card" data-homepage="${this.escapeAttribute(blogger.homepage)}" tabindex="0" role="article" aria-label="Open ${this.escapeAttribute(blogger.name)} homepage">
                 <div class="author-header">
                     <img class="author-avatar" src="${this.escapeAttribute(blogger.avatar)}" alt="${this.escapeAttribute(blogger.name)}" loading="lazy" referrerpolicy="no-referrer">
                     <div class="author-info">
