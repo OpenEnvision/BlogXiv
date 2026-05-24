@@ -22,9 +22,20 @@ class CategoriesPage {
         }
     }
 
+    normalizeTheme(theme) {
+        return theme === 'dark' || theme === 'light' ? theme : 'light';
+    }
+
+    getActiveTheme() {
+        return this.normalizeTheme(document.documentElement.getAttribute('data-theme') || this.currentTheme || this.getStoredTheme());
+    }
+
     applyTheme(theme) {
-        document.documentElement.setAttribute('data-theme', theme);
-        document.documentElement.style.colorScheme = theme;
+        const normalizedTheme = this.normalizeTheme(theme);
+        this.currentTheme = normalizedTheme;
+        document.documentElement.setAttribute('data-theme', normalizedTheme);
+        document.documentElement.style.colorScheme = normalizedTheme;
+        return normalizedTheme;
     }
 
     setupTheme() {
@@ -33,8 +44,9 @@ class CategoriesPage {
     }
     
     toggleTheme() {
-        this.currentTheme = this.currentTheme === 'light' ? 'dark' : 'light';
-        this.applyTheme(this.currentTheme);
+        const activeTheme = this.getActiveTheme();
+        const nextTheme = activeTheme === 'light' ? 'dark' : 'light';
+        this.applyTheme(nextTheme);
         try {
             localStorage.setItem('theme', this.currentTheme);
         } catch (error) {
@@ -48,13 +60,18 @@ class CategoriesPage {
         if (themeToggle) {
             const sunIcon = themeToggle.querySelector('.sun-icon');
             const moonIcon = themeToggle.querySelector('.moon-icon');
+            const activeTheme = this.getActiveTheme();
             
-            if (this.currentTheme === 'dark') {
-                sunIcon.style.display = 'none';
-                moonIcon.style.display = 'block';
+            if (activeTheme === 'dark') {
+                if (sunIcon) sunIcon.style.display = 'none';
+                if (moonIcon) moonIcon.style.display = 'block';
+                themeToggle.setAttribute('aria-pressed', 'true');
+                themeToggle.setAttribute('aria-label', 'Switch to light theme');
             } else {
-                sunIcon.style.display = 'block';
-                moonIcon.style.display = 'none';
+                if (sunIcon) sunIcon.style.display = 'block';
+                if (moonIcon) moonIcon.style.display = 'none';
+                themeToggle.setAttribute('aria-pressed', 'false');
+                themeToggle.setAttribute('aria-label', 'Switch to dark theme');
             }
         }
     }

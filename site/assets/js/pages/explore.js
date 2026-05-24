@@ -157,9 +157,20 @@ class ExplorePage {
         }
     }
 
+    normalizeTheme(theme) {
+        return theme === 'dark' || theme === 'light' ? theme : 'light';
+    }
+
+    getActiveTheme() {
+        return this.normalizeTheme(document.documentElement.getAttribute('data-theme') || this.currentTheme || this.getStoredTheme());
+    }
+
     applyTheme(theme) {
-        document.documentElement.setAttribute('data-theme', theme);
-        document.documentElement.style.colorScheme = theme;
+        const normalizedTheme = this.normalizeTheme(theme);
+        this.currentTheme = normalizedTheme;
+        document.documentElement.setAttribute('data-theme', normalizedTheme);
+        document.documentElement.style.colorScheme = normalizedTheme;
+        return normalizedTheme;
     }
 
     setupTheme() {
@@ -168,8 +179,9 @@ class ExplorePage {
     }
     
     toggleTheme() {
-        this.currentTheme = this.currentTheme === 'light' ? 'dark' : 'light';
-        this.applyTheme(this.currentTheme);
+        const activeTheme = this.getActiveTheme();
+        const nextTheme = activeTheme === 'light' ? 'dark' : 'light';
+        this.applyTheme(nextTheme);
         try {
             localStorage.setItem('theme', this.currentTheme);
         } catch (error) {
@@ -183,13 +195,18 @@ class ExplorePage {
         if (themeToggle) {
             const sunIcon = themeToggle.querySelector('.sun-icon');
             const moonIcon = themeToggle.querySelector('.moon-icon');
+            const activeTheme = this.getActiveTheme();
             
-            if (this.currentTheme === 'dark') {
-                sunIcon.style.display = 'none';
-                moonIcon.style.display = 'block';
+            if (activeTheme === 'dark') {
+                if (sunIcon) sunIcon.style.display = 'none';
+                if (moonIcon) moonIcon.style.display = 'block';
+                themeToggle.setAttribute('aria-pressed', 'true');
+                themeToggle.setAttribute('aria-label', 'Switch to light theme');
             } else {
-                sunIcon.style.display = 'block';
-                moonIcon.style.display = 'none';
+                if (sunIcon) sunIcon.style.display = 'block';
+                if (moonIcon) moonIcon.style.display = 'none';
+                themeToggle.setAttribute('aria-pressed', 'false');
+                themeToggle.setAttribute('aria-label', 'Switch to dark theme');
             }
         }
     }
@@ -542,7 +559,7 @@ class ExplorePage {
                     <p class="blog-excerpt">${blog.excerpt}</p>
                     <div class="blog-footer">
                         <div class="blog-author">
-                            <img class="author-avatar" src="${blog.authorAvatar}" alt="${blog.author}" loading="lazy" referrerpolicy="no-referrer">
+                            ${this.renderAuthorAvatar(blog)}
                             <span class="author-name">${blog.author}</span>
                         </div>
                         <a class="blog-source-link" href="${blog.url}" target="_blank" rel="noopener noreferrer">Read original</a>
@@ -567,7 +584,7 @@ class ExplorePage {
                     <p class="blog-excerpt">${blog.excerpt}</p>
                     <div class="blog-footer">
                         <div class="blog-author">
-                            <img class="author-avatar" src="${blog.authorAvatar}" alt="${blog.author}" loading="lazy" referrerpolicy="no-referrer">
+                            ${this.renderAuthorAvatar(blog)}
                             <span class="author-name">${blog.author}</span>
                         </div>
                         <a class="blog-source-link" href="${blog.url}" target="_blank" rel="noopener noreferrer">Read original</a>
@@ -638,6 +655,10 @@ class ExplorePage {
     }
     
     // Utility Functions
+    renderAuthorAvatar(blog) {
+        return window.BlogXivAvatarUtils.renderAvatar(blog.author, blog.authorAvatar, { sourceUrl: blog.url });
+    }
+
     formatDate(dateString) {
         const date = new Date(dateString);
         const now = new Date();

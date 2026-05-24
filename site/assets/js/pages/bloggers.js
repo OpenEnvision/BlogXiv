@@ -42,6 +42,96 @@ class BloggersPage {
                 qualityRank: 11
             },
             {
+                name: 'Andrej Karpathy',
+                institution: 'Eureka Labs / former OpenAI and Tesla',
+                homepage: 'https://karpathy.ai/',
+                avatar: 'https://karpathy.ai/assets/me_new.jpg',
+                matches: ['Karpathy', 'Andrej Karpathy'],
+                specialty: 'Foundation Model',
+                focus: ['deep learning systems', 'training practice', 'AI education'],
+                qualityRank: 10
+            },
+            {
+                name: 'Chris Olah',
+                institution: 'Anthropic / Transformer Circuits',
+                homepage: 'https://colah.github.io/',
+                avatar: 'https://github.com/colah.png',
+                matches: ['Chris Olah', "colah's blog", 'Transformer Circuits'],
+                specialty: 'Trustworthy AI',
+                focus: ['mechanistic interpretability', 'visual explanations', 'transformer circuits'],
+                qualityRank: 10
+            },
+            {
+                name: 'François Chollet',
+                institution: 'Ndea / ARC Prize / Keras',
+                homepage: 'https://fchollet.com/',
+                avatar: 'https://github.com/fchollet.png',
+                matches: ['François Chollet', 'Francois Chollet', 'Sparks in the Wind', 'Keras Blog'],
+                specialty: 'Foundation Model',
+                focus: ['abstraction', 'generalization', 'LLM mental models'],
+                qualityRank: 9
+            },
+            {
+                name: 'Yao Fu',
+                institution: 'Long-context and multimodal reasoning researcher',
+                homepage: 'https://yaofu.notion.site/About-Yao-Fu-b5efd2e00ea94bd3a18ca1ae78e655f8',
+                avatar: 'https://github.com/FranxYao.png',
+                matches: ['Yao Fu'],
+                specialty: 'LLM & MLLM',
+                focus: ['long context', 'reasoning', 'instruction tuning'],
+                qualityRank: 8
+            },
+            {
+                name: 'David Ha',
+                institution: 'hardmaru / former Google Brain',
+                homepage: 'https://otoro.net/',
+                avatar: 'https://github.com/hardmaru.png',
+                matches: ['David Ha', 'hardmaru', 'otoro'],
+                specialty: 'World Model',
+                focus: ['world models', 'neuroevolution', 'generative agents'],
+                qualityRank: 8
+            },
+            {
+                name: 'Sara Hooker',
+                institution: 'Adaption Labs / former Cohere For AI',
+                homepage: 'https://hardwarelottery.github.io/',
+                avatar: 'https://www.google.com/s2/favicons?domain=hardwarelottery.github.io&sz=128',
+                matches: ['Sara Hooker', 'The Hardware Lottery'],
+                specialty: 'Efficient AI',
+                focus: ['hardware-aware AI', 'research incentives', 'efficient models'],
+                qualityRank: 8
+            },
+            {
+                name: 'Sergey Levine',
+                institution: 'UC Berkeley / BAIR',
+                homepage: 'https://people.eecs.berkeley.edu/~svlevine/',
+                avatar: 'https://www.google.com/s2/favicons?domain=berkeley.edu&sz=128',
+                matches: ['Sergey Levine'],
+                specialty: 'AI Agents',
+                focus: ['offline RL', 'robot learning', 'decision making'],
+                qualityRank: 8
+            },
+            {
+                name: 'Patrick Mineault',
+                institution: 'xcorr / NeuroAI archive',
+                homepage: 'https://xcorr.net/',
+                avatar: 'https://www.google.com/s2/favicons?domain=xcorr.net&sz=128',
+                matches: ['Patrick Mineault', 'Good Research Code', 'xcorr'],
+                specialty: 'Research Craft',
+                focus: ['research code', 'neuroAI', 'scientific workflow'],
+                qualityRank: 8
+            },
+            {
+                name: 'Elvis Saravia',
+                institution: 'DAIR.AI',
+                homepage: 'https://www.dair.ai/blog',
+                avatar: 'https://www.google.com/s2/favicons?domain=dair.ai&sz=128',
+                matches: ['Elvis Saravia', 'DAIR.AI'],
+                specialty: 'AI Agents',
+                focus: ['prompt engineering', 'context engineering', 'agent workflows'],
+                qualityRank: 7
+            },
+            {
                 name: 'Hamel Husain',
                 institution: "Hamel's Blog / Parlance Labs",
                 homepage: 'https://hamel.dev/',
@@ -112,16 +202,6 @@ class BloggersPage {
                 qualityRank: 8
             },
             {
-                name: 'Andrej Karpathy',
-                institution: 'Eureka Labs / former OpenAI and Tesla',
-                homepage: 'https://karpathy.ai/',
-                avatar: 'https://karpathy.ai/assets/me_new.jpg',
-                matches: ['Karpathy', 'Andrej Karpathy'],
-                specialty: 'Foundation Model',
-                focus: ['deep learning systems', 'education', 'foundation models'],
-                qualityRank: 8
-            },
-            {
                 name: 'Jeremy Bernstein',
                 institution: 'Thinking Machines Lab',
                 homepage: 'https://jeremybernste.in/',
@@ -152,9 +232,20 @@ class BloggersPage {
         }
     }
 
+    normalizeTheme(theme) {
+        return theme === 'dark' || theme === 'light' ? theme : 'light';
+    }
+
+    getActiveTheme() {
+        return this.normalizeTheme(document.documentElement.getAttribute('data-theme') || this.currentTheme || this.getStoredTheme());
+    }
+
     applyTheme(theme) {
-        document.documentElement.setAttribute('data-theme', theme);
-        document.documentElement.style.colorScheme = theme;
+        const normalizedTheme = this.normalizeTheme(theme);
+        this.currentTheme = normalizedTheme;
+        document.documentElement.setAttribute('data-theme', normalizedTheme);
+        document.documentElement.style.colorScheme = normalizedTheme;
+        return normalizedTheme;
     }
 
     setupTheme() {
@@ -163,8 +254,9 @@ class BloggersPage {
     }
 
     toggleTheme() {
-        this.currentTheme = this.currentTheme === 'light' ? 'dark' : 'light';
-        this.applyTheme(this.currentTheme);
+        const activeTheme = this.getActiveTheme();
+        const nextTheme = activeTheme === 'light' ? 'dark' : 'light';
+        this.applyTheme(nextTheme);
         try {
             localStorage.setItem('theme', this.currentTheme);
         } catch (error) {
@@ -179,13 +271,18 @@ class BloggersPage {
 
         const sunIcon = themeToggle.querySelector('.sun-icon');
         const moonIcon = themeToggle.querySelector('.moon-icon');
+        const activeTheme = this.getActiveTheme();
 
-        if (this.currentTheme === 'dark') {
-            sunIcon.style.display = 'none';
-            moonIcon.style.display = 'block';
+        if (activeTheme === 'dark') {
+            if (sunIcon) sunIcon.style.display = 'none';
+            if (moonIcon) moonIcon.style.display = 'block';
+            themeToggle.setAttribute('aria-pressed', 'true');
+            themeToggle.setAttribute('aria-label', 'Switch to light theme');
         } else {
-            sunIcon.style.display = 'block';
-            moonIcon.style.display = 'none';
+            if (sunIcon) sunIcon.style.display = 'block';
+            if (moonIcon) moonIcon.style.display = 'none';
+            themeToggle.setAttribute('aria-pressed', 'false');
+            themeToggle.setAttribute('aria-label', 'Switch to dark theme');
         }
     }
 

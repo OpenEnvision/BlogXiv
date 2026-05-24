@@ -1,4 +1,178 @@
 // BlogXiv JavaScript
+(function(global) {
+    if (global.BlogXivAvatarUtils) return;
+
+    const escapeHTML = (value) => {
+        const entities = {
+            '&': '&amp;',
+            '<': '&lt;',
+            '>': '&gt;',
+            '"': '&quot;',
+            "'": '&#39;'
+        };
+
+        return String(value ?? '').replace(/[&<>"']/g, (char) => entities[char]);
+    };
+
+    const genericAvatarPatterns = [
+        /google\.com\/s2\/favicons/i,
+        /gstatic\.com\/images\/branding\/product\/2x\/googleg_48dp/i,
+        /domain=github\.com/i
+    ];
+
+    const organizationPattern = /\b(openai|anthropic|google|deepmind|microsoft|nvidia|meta|fair|ai2|allenai|qwen|bytedance|seed|tencent|hunyuan|deepseek|mistral|cohere|adobe|apple|baidu|salesforce|stability|runway|wayve|world labs|black forest|hugging face|langchain|cursor|cognition|goodfire|metr|berkeley rdi|cmu ml|stanford hai|physical intelligence|pytorch|anyscale|adept|deepwiki|emergent mind|figure ai|modal|baseten|minimax|stepfun|skywork|hidream|rhymes|vectorspacelab|pku|alibaba|damo|vllm|llava|internvl|opengvlab|team|lab|labs|research|blog|contributors|collaborators|github)\b/i;
+
+    const normalizeAuthorKey = (author) => String(author || '')
+        .normalize('NFKD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .replace(/\s+/g, ' ')
+        .trim()
+        .toLowerCase();
+
+    const officialAvatarByAuthor = new Map(Object.entries({
+        'Sebastian Raschka': 'https://sebastianraschka.com/images/logos/photo-2021-08-25_compressed.jpg',
+        'kalomaze': 'https://github.com/kalomaze.png',
+        'Nathan Lambert': 'https://github.com/natolambert.png',
+        'Lilian Weng': 'https://github.com/lilianweng.png',
+        'Andrej Karpathy': 'https://karpathy.ai/assets/me_new.jpg',
+        'Chris Olah': 'https://github.com/colah.png',
+        'Francois Chollet': 'https://github.com/fchollet.png',
+        'François Chollet': 'https://github.com/fchollet.png',
+        'Yao Fu': 'https://github.com/FranxYao.png',
+        'David Ha': 'https://github.com/hardmaru.png',
+        'Patrick Mineault': 'https://github.com/patrickmineault.png',
+        'Elvis Saravia': 'https://github.com/omarsar.png',
+        'Hamel Husain': 'https://hamel.dev/hamel_transparent.png',
+        'Simon Willison': 'https://github.com/simonw.png',
+        'Eugene Yan': 'https://github.com/eugeneyan.png',
+        'Su Jianlin': 'https://kexue.fm/usr/themes/geekg/images/avatar.png',
+        '苏剑林': 'https://kexue.fm/usr/themes/geekg/images/avatar.png',
+        'Tri Dao': 'https://tridao.me/assets/img/tri_photo_2021_04.jpeg?v=70239a90f4a7b7f7fce95223cab772a2',
+        'Jay Alammar': 'https://github.com/jalammar.png',
+        'Sander Dieleman': 'https://sander.ai/images/avatar.jpg',
+        'Jeremy Bernstein': 'https://jeremybernste.in/images/pages/me.jpg',
+        'Chip Huyen': 'https://github.com/chiphuyen.png',
+        'Danijar Hafner': 'https://github.com/danijar.png',
+        'Keller Jordan': 'https://github.com/kellerjordan.png'
+    }).map(([author, avatar]) => [normalizeAuthorKey(author), avatar]));
+
+    const isGenericAvatar = (avatar) => genericAvatarPatterns.some((pattern) => pattern.test(String(avatar || '')));
+
+    const isOrganizationAuthor = (author) => organizationPattern.test(String(author || ''));
+
+    const getOfficialAvatar = (author) => officialAvatarByAuthor.get(normalizeAuthorKey(author)) || '';
+
+    const getGithubOwnerAvatar = (sourceUrl) => {
+        const match = String(sourceUrl || '').match(/^https?:\/\/github\.com\/([^/?#]+)(?:[/?#]|$)/i);
+        if (!match) return '';
+
+        const owner = match[1];
+        if (!owner || ['features', 'marketplace', 'topics', 'explore', 'blog', 'login'].includes(owner.toLowerCase())) {
+            return '';
+        }
+
+        return `https://github.com/${owner}.png`;
+    };
+
+    const getGithubPagesAvatar = (value) => {
+        const text = String(value || '');
+        const match = text.match(/^https?:\/\/([a-z0-9-]+)\.github\.io(?:[/:?#]|$)/i)
+            || text.match(/[?&]domain=([a-z0-9-]+)\.github\.io(?:[&#]|$)/i);
+        if (!match) return '';
+
+        const owner = match[1];
+        const normalizedOwner = owner.toLowerCase();
+        const sharedBlogOwners = new Set(['www', 'pages', 'iclr-blogposts', 'iclr-blog-track']);
+        if (!owner || sharedBlogOwners.has(normalizedOwner)) return '';
+        return `https://github.com/${owner}.png`;
+    };
+
+    const getNameInitial = (name) => {
+        const normalized = String(name || '')
+            .replace(/\bet al\.?/gi, '')
+            .replace(/[*()[\]{}†‡]/g, ' ')
+            .replace(/\s+/g, ' ')
+            .trim();
+
+        if (!normalized) return 'B';
+
+        const words = normalized
+            .replace(/[^\p{L}\p{N}\s-]/gu, ' ')
+            .split(/\s+/)
+            .filter(Boolean);
+
+        if (!words.length) return normalized.slice(0, 1).toUpperCase();
+        if (words.length === 1) return words[0].slice(0, 2).toUpperCase();
+        return `${words[0].slice(0, 1)}${words[words.length - 1].slice(0, 1)}`.toUpperCase();
+    };
+
+    const getInitials = (author) => {
+        const cleaned = String(author || 'BlogXiv')
+            .replace(/\bet al\.?/gi, '')
+            .replace(/\s+/g, ' ')
+            .trim();
+
+        const names = cleaned.split(/\s*(?:,| and | & |\+)\s*/i).filter(Boolean).slice(0, 2);
+        if (names.length > 1) {
+            return names.map((name) => getNameInitial(name).slice(0, 1)).join('').toUpperCase();
+        }
+
+        return getNameInitial(cleaned);
+    };
+
+    const getPalette = (name) => {
+        const palettes = [
+            ['#2563eb', '#7dd3fc', '#ffffff'],
+            ['#0f766e', '#67e8f9', '#ffffff'],
+            ['#7c3aed', '#f0abfc', '#ffffff'],
+            ['#be123c', '#fda4af', '#ffffff'],
+            ['#4338ca', '#93c5fd', '#ffffff'],
+            ['#047857', '#a7f3d0', '#ffffff'],
+            ['#a16207', '#fde68a', '#ffffff'],
+            ['#334155', '#94a3b8', '#ffffff']
+        ];
+        let hash = 0;
+        String(name || 'BlogXiv').split('').forEach((char) => {
+            hash = ((hash << 5) - hash + char.charCodeAt(0)) | 0;
+        });
+        return palettes[Math.abs(hash) % palettes.length];
+    };
+
+    const createInitialsAvatar = (author) => {
+        const initials = escapeHTML(getInitials(author));
+        const [start, end, text] = getPalette(author);
+        const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="${start}"/><stop offset="100%" stop-color="${end}"/></linearGradient></defs><rect width="128" height="128" rx="64" fill="url(#g)"/><text x="50%" y="54%" text-anchor="middle" dominant-baseline="middle" fill="${text}" font-family="Inter, Arial, sans-serif" font-size="46" font-weight="800" letter-spacing="0">${initials}</text></svg>`;
+        return `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`;
+    };
+
+    const shouldUseInitialsAvatar = (author, avatar) => {
+        if (getOfficialAvatar(author)) return false;
+        if (!avatar) return true;
+        if (!isGenericAvatar(avatar)) return false;
+        return !isOrganizationAuthor(author);
+    };
+
+    global.BlogXivAvatarUtils = {
+        createInitialsAvatar,
+        getOfficialAvatar,
+        getGithubOwnerAvatar,
+        getGithubPagesAvatar,
+        shouldUseInitialsAvatar,
+        renderAvatar(author, avatar, options = {}) {
+            const className = options.className || 'author-avatar';
+            const officialAvatar = getOfficialAvatar(author);
+            const githubAvatar = !officialAvatar && isGenericAvatar(avatar)
+                ? getGithubOwnerAvatar(options.sourceUrl) || getGithubPagesAvatar(options.sourceUrl) || getGithubPagesAvatar(avatar)
+                : '';
+            const useInitials = !officialAvatar && !githubAvatar && shouldUseInitialsAvatar(author, avatar);
+            const src = officialAvatar || githubAvatar || (useInitials ? createInitialsAvatar(author) : avatar);
+            const classes = useInitials ? `${className} author-avatar-initials` : className;
+
+            return `<img class="${escapeHTML(classes)}" src="${escapeHTML(src)}" alt="${escapeHTML(author)}" loading="lazy" referrerpolicy="no-referrer">`;
+        }
+    };
+})(typeof window !== 'undefined' ? window : globalThis);
+
 class BlogXiv {
     constructor() {
         this.currentTheme = this.getStoredTheme();
@@ -48,6 +222,8 @@ class BlogXiv {
         this.loadSampleBlogs();
         this.applyInitialUrlFilters();
         this.renderBlogs();
+        this.renderPopularBloggers();
+        this.updateViewCount();
         this.setupAnimations();
         this.deferVisitorMap();
     }
@@ -69,6 +245,47 @@ class BlogXiv {
             return src;
         }
         return this.isRepositoryRootPage() ? `site/${src}` : src;
+    }
+
+    escapeHTML(value) {
+        const entities = {
+            '&': '&amp;',
+            '<': '&lt;',
+            '>': '&gt;',
+            '"': '&quot;',
+            "'": '&#39;'
+        };
+
+        return String(value ?? '').replace(/[&<>"']/g, (char) => entities[char]);
+    }
+
+    escapeAttribute(value) {
+        return this.escapeHTML(value);
+    }
+
+    renderAuthorAvatar(author, avatar, sourceUrl = '') {
+        return window.BlogXivAvatarUtils.renderAvatar(author, this.getMediaHref(avatar), { sourceUrl });
+    }
+
+    updateViewCount() {
+        const viewCountElement = document.getElementById('blogxivViewCount');
+        if (!viewCountElement) return;
+
+        const baseViewCount = 222;
+        const storageKey = 'blogxiv:view-count';
+        let viewCount = baseViewCount;
+
+        try {
+            const storedCount = Number.parseInt(window.localStorage.getItem(storageKey), 10);
+            const hasStoredCount = Number.isFinite(storedCount) && storedCount >= baseViewCount;
+            viewCount = hasStoredCount ? storedCount + 1 : baseViewCount;
+            window.localStorage.setItem(storageKey, String(viewCount));
+            window.sessionStorage.removeItem('blogxiv:view-counted-session');
+        } catch (error) {
+            viewCount = baseViewCount;
+        }
+
+        viewCountElement.textContent = viewCount.toLocaleString('en-US');
     }
 
     deferVisitorMap() {
@@ -102,9 +319,20 @@ class BlogXiv {
         }
     }
 
+    normalizeTheme(theme) {
+        return theme === 'dark' || theme === 'light' ? theme : 'light';
+    }
+
+    getActiveTheme() {
+        return this.normalizeTheme(document.documentElement.getAttribute('data-theme') || this.currentTheme || this.getStoredTheme());
+    }
+
     applyTheme(theme) {
-        document.documentElement.setAttribute('data-theme', theme);
-        document.documentElement.style.colorScheme = theme;
+        const normalizedTheme = this.normalizeTheme(theme);
+        this.currentTheme = normalizedTheme;
+        document.documentElement.setAttribute('data-theme', normalizedTheme);
+        document.documentElement.style.colorScheme = normalizedTheme;
+        return normalizedTheme;
     }
 
     setupTheme() {
@@ -113,8 +341,9 @@ class BlogXiv {
     }
 
     toggleTheme() {
-        this.currentTheme = this.currentTheme === 'light' ? 'dark' : 'light';
-        this.applyTheme(this.currentTheme);
+        const activeTheme = this.getActiveTheme();
+        const nextTheme = activeTheme === 'light' ? 'dark' : 'light';
+        this.applyTheme(nextTheme);
         try {
             localStorage.setItem('theme', this.currentTheme);
         } catch (error) {
@@ -151,15 +380,18 @@ class BlogXiv {
         if (themeToggle) {
             const sunIcon = themeToggle.querySelector('.sun-icon');
             const moonIcon = themeToggle.querySelector('.moon-icon');
+            const activeTheme = this.getActiveTheme();
 
-            if (this.currentTheme === 'dark') {
-                sunIcon.style.display = 'none';
-                moonIcon.style.display = 'block';
+            if (activeTheme === 'dark') {
+                if (sunIcon) sunIcon.style.display = 'none';
+                if (moonIcon) moonIcon.style.display = 'block';
                 themeToggle.setAttribute('aria-pressed', 'true');
+                themeToggle.setAttribute('aria-label', 'Switch to light theme');
             } else {
-                sunIcon.style.display = 'block';
-                moonIcon.style.display = 'none';
+                if (sunIcon) sunIcon.style.display = 'block';
+                if (moonIcon) moonIcon.style.display = 'none';
                 themeToggle.setAttribute('aria-pressed', 'false');
+                themeToggle.setAttribute('aria-label', 'Switch to dark theme');
             }
         }
     }
@@ -382,15 +614,25 @@ class BlogXiv {
                         <div class="search-overlay-filter-panel" aria-hidden="true">
                             <div class="search-overlay-filter-group">
                                 <label for="searchFilterCategory">Category</label>
-                                <select id="searchFilterCategory" data-filter="category" class="search-overlay-filter-select">
-                                    <option value="all">All</option>
-                                </select>
+                                <div class="search-overlay-select-wrap">
+                                    <select id="searchFilterCategory" data-filter="category" class="search-overlay-filter-select">
+                                        <option value="all">All</option>
+                                    </select>
+                                    <svg class="search-overlay-select-chevron" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true">
+                                        <path d="m6 9 6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </svg>
+                                </div>
                             </div>
                             <div class="search-overlay-filter-group">
                                 <label for="searchFilterAuthor">Author</label>
-                                <select id="searchFilterAuthor" data-filter="author" class="search-overlay-filter-select">
-                                    <option value="all">All</option>
-                                </select>
+                                <div class="search-overlay-select-wrap">
+                                    <select id="searchFilterAuthor" data-filter="author" class="search-overlay-filter-select">
+                                        <option value="all">All</option>
+                                    </select>
+                                    <svg class="search-overlay-select-chevron" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true">
+                                        <path d="m6 9 6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </svg>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -985,8 +1227,8 @@ class BlogXiv {
                             "Zairah Mustahsan",
                             "Research Craft",
                             "https://iclr-blogposts.github.io/2026/blog/2026/why-ai-evaluations-need-error-bars/",
-                            "assets/img/covers/cover-evals-tracing.svg",
-                            "ICLR evaluation methodology blogpost cover"
+                            "https://iclr-blogposts.github.io/2026/assets/img/2026-04-27-why-ai-evaluations-need-error-bars/layers-stochasticity.png",
+                            "Real cover from first-image"
                   ],
                   [
                             "web-agent",
@@ -995,8 +1237,8 @@ class BlogXiv {
                             "Kenneth Marino, Farhan Ishmam, Ana Marasovic",
                             "AI Agents",
                             "https://iclr-blogposts.github.io/2026/blog/2026/web-agent/",
-                            "assets/img/covers/cover-agent-runtime.svg",
-                            "ICLR agent and reinforcement learning blogpost cover"
+                            "https://iclr-blogposts.github.io/2026/assets/img/2026-04-27-web-agent/ComputerUse.png",
+                            "Real cover from first-image"
                   ],
                   [
                             "wait-do-we-need-to-wait",
@@ -1005,8 +1247,8 @@ class BlogXiv {
                             "Pittawat Taveekitworachai, Kunat Pipatanakul",
                             "LLM & MLLM",
                             "https://iclr-blogposts.github.io/2026/blog/2026/wait-do-we-need-to-wait/",
-                            "assets/img/covers/llm-mllm.svg",
-                            "ICLR language model blogpost cover"
+                            "https://iclr-blogposts.github.io/2026/assets/img/2026-04-27-wait-do-we-need-to-wait/hero-480.webp",
+                            "Real cover from first-image"
                   ],
                   [
                             "vis-llm-latent-geometry",
@@ -1015,8 +1257,8 @@ class BlogXiv {
                             "Alex Ning, Vainateya Rangaraju, Yen-Ling Kuo",
                             "Trustworthy AI",
                             "https://iclr-blogposts.github.io/2026/blog/2026/vis-llm-latent-geometry/",
-                            "assets/img/covers/cover-circuit-tracing.svg",
-                            "ICLR interpretability blogpost cover"
+                            "https://iclr-blogposts.github.io/2026/assets/img/2026-04-27-vis-llm-latent-geometry/FIG_Residual_Stream_vs_Standard_View_Transformer-480.webp",
+                            "Real cover from first-image"
                   ],
                   [
                             "useful-calibrated-uncertainties",
@@ -1025,8 +1267,8 @@ class BlogXiv {
                             "Guoxuan Xia",
                             "Trustworthy AI",
                             "https://iclr-blogposts.github.io/2026/blog/2026/useful-calibrated-uncertainties/",
-                            "assets/img/covers/cover-cot-monitoring.svg",
-                            "ICLR trustworthy AI blogpost cover"
+                            "https://iclr-blogposts.github.io/2026/assets/img/2026-04-27-useful-calibrated-uncertainties/confused-480.webp",
+                            "Real cover from first-image"
                   ],
                   [
                             "unigramlm-manual",
@@ -1035,8 +1277,8 @@ class BlogXiv {
                             "Clara Meister",
                             "LLM & MLLM",
                             "https://iclr-blogposts.github.io/2026/blog/2026/unigramlm-manual/",
-                            "assets/img/covers/llm-mllm.svg",
-                            "ICLR language model blogpost cover"
+                            "assets/img/covers/real/iclr2026-unigramlm-manual.png",
+                            "Real cover from manual:original-page-screenshot"
                   ],
                   [
                             "trade-offs-in-llm-compute-for-reasoning-intensive-information-retrieval",
@@ -1045,8 +1287,8 @@ class BlogXiv {
                             "Sreeja Apparaju, Nilesh Gupta",
                             "Efficient AI",
                             "https://iclr-blogposts.github.io/2026/blog/2026/trade-offs-in-llm-compute-for-reasoning-intensive-information-retrieval/",
-                            "assets/img/covers/cover-kv-cache-paged.svg",
-                            "ICLR efficient attention and compute blogpost cover"
+                            "https://iclr-blogposts.github.io/2026/assets/html/2026-04-27-trade-offs-in-llm-compute-for-reasoning-intensive-information-retrieval/riir-llm-tradeoff-overview.png",
+                            "Real cover from first-image"
                   ],
                   [
                             "tracing-principles-behind-modern-diffusion-models",
@@ -1055,8 +1297,8 @@ class BlogXiv {
                             "Chieh-Hsin Lai, Yang Song, Dongjun Kim, Yuki Mitsufuji, Stefano Ermon",
                             "Visual Generation",
                             "https://iclr-blogposts.github.io/2026/blog/2026/tracing-principles-behind-modern-diffusion-models/",
-                            "assets/img/covers/cover-flow-maps.svg",
-                            "ICLR diffusion and flow-map blogpost cover"
+                            "https://iclr-blogposts.github.io/2026/assets/img/2026-04-27-tracing-principles-behind-modern-diffusion-models/dgm-learning.svg",
+                            "Real cover from first-image"
                   ],
                   [
                             "the-evolution-of-flashattention",
@@ -1065,8 +1307,8 @@ class BlogXiv {
                             "Harshwardhan Fartale, Akshata Kishore Moharir, Ashish Kattamuri",
                             "Efficient AI",
                             "https://iclr-blogposts.github.io/2026/blog/2026/the-evolution-of-flashattention/",
-                            "assets/img/covers/cover-kv-cache-paged.svg",
-                            "ICLR efficient attention and compute blogpost cover"
+                            "https://iclr-blogposts.github.io/2026/assets/img/2026-04-27-the-evolution-of-flashattention/Figure_1-480.webp",
+                            "Real cover from first-image"
                   ],
                   [
                             "style-representations",
@@ -1075,8 +1317,8 @@ class BlogXiv {
                             "Abhishek Dangeti, Pavan Gajula, Vikram Jamwal, Vivek Srivastava",
                             "Visual Generation",
                             "https://iclr-blogposts.github.io/2026/blog/2026/style-representations/",
-                            "assets/img/covers/cover-flow-maps.svg",
-                            "ICLR visual generation blogpost cover"
+                            "https://iclr-blogposts.github.io/2026/assets/img/2026-04-27-style-representations/teaser-480.webp",
+                            "Real cover from first-image"
                   ],
                   [
                             "spatial-awareness",
@@ -1085,8 +1327,8 @@ class BlogXiv {
                             "Jiyoon Pyo, Yao-Yi Chiang",
                             "Multimodal Model",
                             "https://iclr-blogposts.github.io/2026/blog/2026/spatial-awareness/",
-                            "assets/img/covers/cover-retrieval-late-interaction.svg",
-                            "ICLR multimodal reasoning blogpost cover"
+                            "https://iclr-blogposts.github.io/2026/assets/img/2026-04-27-spatial-awareness/1-480.webp",
+                            "Real cover from first-image"
                   ],
                   [
                             "sparsity",
@@ -1095,8 +1337,8 @@ class BlogXiv {
                             "Aryan Sood, Tanvi Sharma, Vansh Agrawal",
                             "Efficient AI",
                             "https://iclr-blogposts.github.io/2026/blog/2026/sparsity/",
-                            "assets/img/covers/cover-optimizers.svg",
-                            "ICLR efficient AI blogpost cover"
+                            "https://iclr-blogposts.github.io/2026/assets/img/2026-04-27-sparsity/1-480.webp",
+                            "Real cover from first-image"
                   ],
                   [
                             "rl-with-gnns",
@@ -1105,8 +1347,8 @@ class BlogXiv {
                             "Alex Schutz, Victor-Alexandru Darvariu",
                             "AI Agents",
                             "https://iclr-blogposts.github.io/2026/blog/2026/rl-with-gnns/",
-                            "assets/img/covers/cover-agent-runtime.svg",
-                            "ICLR AI agents blogpost cover"
+                            "https://iclr-blogposts.github.io/2026/assets/img/2026-04-27-rl-with-gnns/gnn_main.svg",
+                            "Real cover from first-image"
                   ],
                   [
                             "revisiting-the-nle",
@@ -1115,8 +1357,8 @@ class BlogXiv {
                             "Michael Matthews, Pierluca D'Oro, Anssi Kanervisto, Scott Fujimoto, Jakob Foerster, Mikael Henaff",
                             "AI Agents",
                             "https://iclr-blogposts.github.io/2026/blog/2026/revisiting-the-nle/",
-                            "assets/img/covers/cover-agent-runtime.svg",
-                            "ICLR agent and reinforcement learning blogpost cover"
+                            "https://iclr-blogposts.github.io/2026/assets/img/2026-04-27-revisiting-the-nle/nethack-480.webp",
+                            "Real cover from first-image"
                   ],
                   [
                             "rethinking-diffusion-langevin",
@@ -1125,8 +1367,8 @@ class BlogXiv {
                             "Candi Zheng, Yuan Lan",
                             "Visual Generation",
                             "https://iclr-blogposts.github.io/2026/blog/2026/rethinking-diffusion-langevin/",
-                            "assets/img/covers/cover-flow-maps.svg",
-                            "ICLR diffusion and flow-map blogpost cover"
+                            "https://iclr-blogposts.github.io/2026/assets/img/2026-04-27-rethinking-diffusion-langevin/FastestDiffusionTheory_08-480.webp",
+                            "Real cover from first-image"
                   ],
                   [
                             "recur-refine-reason",
@@ -1135,8 +1377,8 @@ class BlogXiv {
                             "Kaitlin Maile, Joao Sacramento",
                             "LLM & MLLM",
                             "https://iclr-blogposts.github.io/2026/blog/2026/recur-refine-reason/",
-                            "assets/img/covers/cover-circuit-tracing.svg",
-                            "ICLR interpretability blogpost cover"
+                            "https://iclr-blogposts.github.io/2026/assets/img/2026-04-27-recur-refine-reason/midas-480.webp",
+                            "Real cover from first-image"
                   ],
                   [
                             "probabilistic-circuits-for-uncertainty-quantification",
@@ -1145,8 +1387,8 @@ class BlogXiv {
                             "Maternus Herold, Konstantin von Gaisberg-Helfenberg",
                             "Trustworthy AI",
                             "https://iclr-blogposts.github.io/2026/blog/2026/probabilistic-circuits-for-uncertainty-quantification/",
-                            "assets/img/covers/cover-cot-monitoring.svg",
-                            "ICLR trustworthy AI blogpost cover"
+                            "https://iclr-blogposts.github.io/2026/assets/img/2026-04-27-probabilistic-circuits-for-uncertainty-quantification/illustration_epistemic_vs_aleatoric_uncertainty-480.webp",
+                            "Real cover from first-image"
                   ],
                   [
                             "precision-extraction",
@@ -1155,8 +1397,8 @@ class BlogXiv {
                             "Yiming Zhang, Javier Rando, Florian Tramer, Daphne Ippolito, Nicholas Carlini",
                             "Research Craft",
                             "https://iclr-blogposts.github.io/2026/blog/2026/precision-extraction/",
-                            "assets/img/covers/cover-evals-tracing.svg",
-                            "ICLR evaluation methodology blogpost cover"
+                            "assets/img/covers/real/iclr2026-precision-extraction.png",
+                            "Real cover from manual:original-page-screenshot"
                   ],
                   [
                             "ppo-batch-size",
@@ -1165,8 +1407,8 @@ class BlogXiv {
                             "Teerthaa Parakh",
                             "AI Agents",
                             "https://iclr-blogposts.github.io/2026/blog/2026/ppo-batch-size/",
-                            "assets/img/covers/cover-agent-runtime.svg",
-                            "ICLR agent and reinforcement learning blogpost cover"
+                            "https://iclr-blogposts.github.io/2026/assets/img/2026-04-27-ppo-batch-size/data_distribution.png",
+                            "Real cover from first-image"
                   ],
                   [
                             "polar-svd",
@@ -1175,8 +1417,8 @@ class BlogXiv {
                             "Askar Tsyganov, Uliana Parkina, Ekaterina Grishina, Sergey Samsonov, Maxim Rakhuba",
                             "Efficient AI",
                             "https://iclr-blogposts.github.io/2026/blog/2026/polar-svd/",
-                            "assets/img/covers/cover-kv-cache-paged.svg",
-                            "ICLR efficient attention and compute blogpost cover"
+                            "https://iclr-blogposts.github.io/2026/assets/img/2026-04-27-polar-svd/square.webp",
+                            "Real cover from first-image"
                   ],
                   [
                             "performative-prediction",
@@ -1185,8 +1427,8 @@ class BlogXiv {
                             "Javier Sanguino Bautiste, Thomas Kehrenberg, Carlos Rosety, Jose A. Lozano, Novi Quadrianto",
                             "Trustworthy AI",
                             "https://iclr-blogposts.github.io/2026/blog/2026/performative-prediction/",
-                            "assets/img/covers/cover-cot-monitoring.svg",
-                            "ICLR trustworthy AI blogpost cover"
+                            "https://iclr-blogposts.github.io/2026/assets/img/2026-04-27-performative-prediction/ML%20vs%20PP.svg",
+                            "Real cover from first-image"
                   ],
                   [
                             "nlp-for-human-sciences",
@@ -1195,8 +1437,8 @@ class BlogXiv {
                             "Lotem Peled-Cohen, Nitay Calderon, Roi Reichart",
                             "Research Craft",
                             "https://iclr-blogposts.github.io/2026/blog/2026/nlp-for-human-sciences/",
-                            "assets/img/covers/research-craft.svg",
-                            "ICLR research craft blogpost cover"
+                            "https://iclr-blogposts.github.io/2026/assets/img/2026-04-27-nlp-for-human-sciences/icud-480.webp",
+                            "Real cover from first-image"
                   ],
                   [
                             "model-misspecification-in-sbi",
@@ -1205,8 +1447,8 @@ class BlogXiv {
                             "Jan Boelts",
                             "Research Craft",
                             "https://iclr-blogposts.github.io/2026/blog/2026/model-misspecification-in-sbi/",
-                            "assets/img/covers/research-craft.svg",
-                            "ICLR research craft blogpost cover"
+                            "https://iclr-blogposts.github.io/2026/assets/img/2026-04-27-model-misspecification-in-sbi/ward_et_al-480.webp",
+                            "Real cover from first-image"
                   ],
                   [
                             "mlip-practical",
@@ -1215,8 +1457,8 @@ class BlogXiv {
                             "Richard Strunk, Karnik Ram, Daniel Cremers",
                             "Foundation Model",
                             "https://iclr-blogposts.github.io/2026/blog/2026/mlip-practical/",
-                            "assets/img/covers/cover-flow-maps.svg",
-                            "ICLR diffusion and flow-map blogpost cover"
+                            "https://iclr-blogposts.github.io/2026/assets/img/2026-04-27-mlip-practical/schnet_architecture-480.webp",
+                            "Real cover from first-image"
                   ],
                   [
                             "mislead-lm",
@@ -1225,8 +1467,8 @@ class BlogXiv {
                             "Aaryan Chandna, Lukas Fluri, Micah Carroll",
                             "Trustworthy AI",
                             "https://iclr-blogposts.github.io/2026/blog/2026/mislead-lm/",
-                            "assets/img/covers/cover-cot-monitoring.svg",
-                            "ICLR trustworthy AI blogpost cover"
+                            "https://iclr-blogposts.github.io/2026/assets/img/2026-04-27-mislead-lm/quality_task_specific-480.webp",
+                            "Real cover from first-image"
                   ],
                   [
                             "misalign-failure-mode",
@@ -1235,8 +1477,8 @@ class BlogXiv {
                             "Shu Yang, Hanqi Yan, Di Wang",
                             "Trustworthy AI",
                             "https://iclr-blogposts.github.io/2026/blog/2026/misalign-failure-mode/",
-                            "assets/img/covers/cover-cot-monitoring.svg",
-                            "ICLR trustworthy AI blogpost cover"
+                            "https://iclr-blogposts.github.io/2026/assets/img/2026-04-27-misalign-failure-mode/fake_alignment-480.webp",
+                            "Real cover from first-image"
                   ],
                   [
                             "loneliness-social-misalignment",
@@ -1245,8 +1487,8 @@ class BlogXiv {
                             "Samantha Adorno, Akshata Kishore Moharir, Ratna Kandala",
                             "Trustworthy AI",
                             "https://iclr-blogposts.github.io/2026/blog/2026/loneliness-social-misalignment/",
-                            "assets/img/covers/cover-cot-monitoring.svg",
-                            "ICLR trustworthy AI blogpost cover"
+                            "https://iclr-blogposts.github.io/2026/assets/img/2026-04-27-loneliness-social-misalignment/figure1.png",
+                            "Real cover from first-image"
                   ],
                   [
                             "llm-post-training",
@@ -1255,8 +1497,8 @@ class BlogXiv {
                             "Qingfeng Lan",
                             "LLM & MLLM",
                             "https://iclr-blogposts.github.io/2026/blog/2026/llm-post-training/",
-                            "assets/img/covers/llm-mllm.svg",
-                            "ICLR language model blogpost cover"
+                            "https://iclr-blogposts.github.io/2026/assets/img/2026-04-27-llm-post-training/grpo-480.webp",
+                            "Real cover from first-image"
                   ],
                   [
                             "llm-bitter-lesson",
@@ -1265,8 +1507,8 @@ class BlogXiv {
                             "Anna Rogers",
                             "Foundation Model",
                             "https://iclr-blogposts.github.io/2026/blog/2026/llm-bitter-lesson/",
-                            "assets/img/covers/foundation-model.svg",
-                            "ICLR foundation model blogpost cover"
+                            "assets/img/covers/real/iclr2026-llm-bitter-lesson.png",
+                            "Real cover from manual:original-page-screenshot"
                   ],
                   [
                             "layered-ontology-model",
@@ -1275,8 +1517,8 @@ class BlogXiv {
                             "Zhun Sun",
                             "Trustworthy AI",
                             "https://iclr-blogposts.github.io/2026/blog/2026/layered-ontology-model/",
-                            "assets/img/covers/cover-cot-monitoring.svg",
-                            "ICLR trustworthy AI blogpost cover"
+                            "assets/img/covers/real/iclr2026-layered-ontology-model.png",
+                            "Real cover from manual:original-page-screenshot"
                   ],
                   [
                             "justrl",
@@ -1285,8 +1527,8 @@ class BlogXiv {
                             "Bingxiang He, Zekai Qu, Zeyuan Liu, Yinghao Chen, Yuxin Zuo, Cheng Qian, Kaiyan Zhang, Weize Chen, Chaojun Xiao, Ganqu Cui, Ning Ding, Zhiyuan Liu",
                             "LLM & MLLM",
                             "https://iclr-blogposts.github.io/2026/blog/2026/justrl/",
-                            "assets/img/covers/llm-mllm.svg",
-                            "ICLR language model blogpost cover"
+                            "https://iclr-blogposts.github.io/2026/assets/img/2026-04-27-justrl/fig1_aime24_curves_added-480.webp",
+                            "Real cover from first-image"
                   ],
                   [
                             "interpret-model",
@@ -1295,8 +1537,8 @@ class BlogXiv {
                             "Juntai Cao, Xiang Zhang, Raymond Li, Jiarui Ding",
                             "Trustworthy AI",
                             "https://iclr-blogposts.github.io/2026/blog/2026/interpret-model/",
-                            "assets/img/covers/cover-circuit-tracing.svg",
-                            "ICLR interpretability blogpost cover"
+                            "https://iclr-blogposts.github.io/2026/assets/img/2026-04-27-interpret-model/linear_probe-480.webp",
+                            "Real cover from first-image"
                   ],
                   [
                             "ideation-heuristics",
@@ -1305,8 +1547,8 @@ class BlogXiv {
                             "Xiao Liu, Haokun Liu, Chenhao Tan",
                             "Research Craft",
                             "https://iclr-blogposts.github.io/2026/blog/2026/ideation-heuristics/",
-                            "assets/img/covers/research-craft.svg",
-                            "ICLR research craft blogpost cover"
+                            "https://iclr-blogposts.github.io/2026/assets/img/2026-04-27-ideation-heuristics/heuristics-480.webp",
+                            "Real cover from first-image"
                   ],
                   [
                             "iclr-induction",
@@ -1315,8 +1557,8 @@ class BlogXiv {
                             "Andy Arditi",
                             "Trustworthy AI",
                             "https://iclr-blogposts.github.io/2026/blog/2026/iclr-induction/",
-                            "assets/img/covers/cover-circuit-tracing.svg",
-                            "ICLR interpretability blogpost cover"
+                            "https://iclr-blogposts.github.io/2026/assets/html/2026-04-27-iclr-induction/fig_1/park_fig_1-480.webp",
+                            "Real cover from first-image"
                   ],
                   [
                             "generalization-in-diffusion-as-infinite-hvae",
@@ -1325,8 +1567,8 @@ class BlogXiv {
                             "François Bertholom, Khalid Oublal",
                             "Visual Generation",
                             "https://iclr-blogposts.github.io/2026/blog/2026/generalization-in-diffusion-as-infinite-hvae/",
-                            "assets/img/covers/cover-flow-maps.svg",
-                            "ICLR diffusion and flow-map blogpost cover"
+                            "https://iclr-blogposts.github.io/2026/assets/img/2026-04-27-generalization-in-diffusion-as-infinite-hvae/slider_2.png",
+                            "Real cover from first-image"
                   ],
                   [
                             "general-agent-evaluation",
@@ -1335,8 +1577,8 @@ class BlogXiv {
                             "Elron Bandel, Asaf Yehudai, Michal Shmueli-Scheuer",
                             "AI Agents",
                             "https://iclr-blogposts.github.io/2026/blog/2026/general-agent-evaluation/",
-                            "assets/img/covers/cover-agent-runtime.svg",
-                            "ICLR agent and reinforcement learning blogpost cover"
+                            "https://iclr-blogposts.github.io/2026/assets/img/2026-04-27-general-agent-evaluation/benchmark_agent_cross-480.webp",
+                            "Real cover from first-image"
                   ],
                   [
                             "genai-archaeology",
@@ -1345,8 +1587,8 @@ class BlogXiv {
                             "Desmond Elliott",
                             "Research Craft",
                             "https://iclr-blogposts.github.io/2026/blog/2026/genai-archaeology/",
-                            "assets/img/covers/research-craft.svg",
-                            "ICLR research craft blogpost cover"
+                            "https://iclr-blogposts.github.io/2026/assets/img/2026-04-27-genai-archaeology/intro_images-480.webp",
+                            "Real cover from first-image"
                   ],
                   [
                             "fractal-mas",
@@ -1355,8 +1597,8 @@ class BlogXiv {
                             "Ronaldinho Vega Centeno Olivera, Allan M. de Souza, JULIO DOS REIS, Mateus da Silveira, Alejandro Núñez Arroyo",
                             "AI Agents",
                             "https://iclr-blogposts.github.io/2026/blog/2026/fractal-mas/",
-                            "assets/img/covers/cover-agent-runtime.svg",
-                            "ICLR agent and reinforcement learning blogpost cover"
+                            "https://iclr-blogposts.github.io/2026/assets/img/2026-04-27-fractal-mas/1-480.webp",
+                            "Real cover from first-image"
                   ],
                   [
                             "flow-where-you-want",
@@ -1365,8 +1607,8 @@ class BlogXiv {
                             "Scott Hawley",
                             "Visual Generation",
                             "https://iclr-blogposts.github.io/2026/blog/2026/flow-where-you-want/",
-                            "assets/img/covers/cover-flow-maps.svg",
-                            "ICLR diffusion and flow-map blogpost cover"
+                            "https://iclr-blogposts.github.io/2026/assets/img/2026-04-27-flow-where-you-want/vae_flow_diag-VAE.svg",
+                            "Real cover from first-image"
                   ],
                   [
                             "flow-map-learning",
@@ -1375,8 +1617,8 @@ class BlogXiv {
                             "Anbu Huang",
                             "Visual Generation",
                             "https://iclr-blogposts.github.io/2026/blog/2026/flow-map-learning/",
-                            "assets/img/covers/cover-flow-maps.svg",
-                            "ICLR diffusion and flow-map blogpost cover"
+                            "https://iclr-blogposts.github.io/2026/assets/img/2026-04-27-flow-map-learning/flow_map_vs_four_paradigms_clean-480.webp",
+                            "Real cover from first-image"
                   ],
                   [
                             "fixing-bottlenecks-in-state-space-models",
@@ -1385,8 +1627,8 @@ class BlogXiv {
                             "Adrita Das, Dantong Zhu",
                             "Efficient AI",
                             "https://iclr-blogposts.github.io/2026/blog/2026/fixing-bottlenecks-in-state-space-models/",
-                            "assets/img/covers/cover-kv-cache-paged.svg",
-                            "ICLR efficient attention and compute blogpost cover"
+                            "https://iclr-blogposts.github.io/2026/assets/img/2026-04-27-fixing-bottlenecks-in-state-space-models/figure1-480.webp",
+                            "Real cover from first-image"
                   ],
                   [
                             "feature-reduction",
@@ -1395,8 +1637,8 @@ class BlogXiv {
                             "Louise Beyers, Ruan van der Merwe",
                             "Efficient AI",
                             "https://iclr-blogposts.github.io/2026/blog/2026/feature-reduction/",
-                            "assets/img/covers/cover-optimizers.svg",
-                            "ICLR efficient AI blogpost cover"
+                            "https://iclr-blogposts.github.io/2026/assets/img/2026-04-27-feature-reduction/combinations-compact-free.svg",
+                            "Real cover from first-image"
                   ],
                   [
                             "economic-agents",
@@ -1405,8 +1647,8 @@ class BlogXiv {
                             "Qingyun Sun, Zhenheng Tang, Huacan Wang",
                             "AI Agents",
                             "https://iclr-blogposts.github.io/2026/blog/2026/economic-agents/",
-                            "assets/img/covers/cover-agent-runtime.svg",
-                            "ICLR agent and reinforcement learning blogpost cover"
+                            "https://iclr-blogposts.github.io/2026/assets/img/2026-04-27-economic-agents/economic-value.png",
+                            "Real cover from first-image"
                   ],
                   [
                             "dllm",
@@ -1415,8 +1657,8 @@ class BlogXiv {
                             "Suhas Pai, Xiaojun Ren",
                             "LLM & MLLM",
                             "https://iclr-blogposts.github.io/2026/blog/2026/dllm/",
-                            "assets/img/covers/llm-mllm.svg",
-                            "ICLR language model blogpost cover"
+                            "https://iclr-blogposts.github.io/2026/assets/img/2026-04-27-dllm/MaskedDiffusion-480.webp",
+                            "Real cover from first-image"
                   ],
                   [
                             "dissecting-non-determinism",
@@ -1425,8 +1667,8 @@ class BlogXiv {
                             "Mateus da Silveira, Ronaldinho Vega Centeno Olivera, Alejandro Núñez Arroyo, Allan M. de Souza, JULIO DOS REIS",
                             "Research Craft",
                             "https://iclr-blogposts.github.io/2026/blog/2026/dissecting-non-determinism/",
-                            "assets/img/covers/research-craft.svg",
-                            "ICLR research craft blogpost cover"
+                            "https://iclr-blogposts.github.io/2026/assets/img/2026-04-27-dissecting-non-determinism/figure1-480.webp",
+                            "Real cover from first-image"
                   ],
                   [
                             "discretisation-invariance",
@@ -1435,8 +1677,8 @@ class BlogXiv {
                             "Vladimir Fanaskov, Ivan Oseledets",
                             "Foundation Model",
                             "https://iclr-blogposts.github.io/2026/blog/2026/discretisation-invariance/",
-                            "assets/img/covers/foundation-model.svg",
-                            "ICLR foundation model blogpost cover"
+                            "https://iclr-blogposts.github.io/2026/assets/img/2026-04-27-discretisation-invariance/waves-480.webp",
+                            "Real cover from first-image"
                   ],
                   [
                             "diffusion-inverse-problems",
@@ -1445,8 +1687,8 @@ class BlogXiv {
                             "Anbu Huang",
                             "Visual Generation",
                             "https://iclr-blogposts.github.io/2026/blog/2026/diffusion-inverse-problems/",
-                            "assets/img/covers/cover-flow-maps.svg",
-                            "ICLR diffusion and flow-map blogpost cover"
+                            "https://iclr-blogposts.github.io/2026/assets/img/2026-04-27-diffusion-inverse-problems/tweedie_anchor_sine.gif",
+                            "Real cover from first-image"
                   ],
                   [
                             "diffusion-architecture-evolution",
@@ -1455,8 +1697,8 @@ class BlogXiv {
                             "Zhenyuan Chen, Zechuan Zhang, Feng Zhang",
                             "Visual Generation",
                             "https://iclr-blogposts.github.io/2026/blog/2026/diffusion-architecture-evolution/",
-                            "assets/img/covers/cover-flow-maps.svg",
-                            "ICLR diffusion and flow-map blogpost cover"
+                            "https://iclr-blogposts.github.io/2026/assets/img/2026-04-27-diffusion-architecture-evolution/teaser_white.png",
+                            "Real cover from first-image"
                   ],
                   [
                             "destruction",
@@ -1465,8 +1707,8 @@ class BlogXiv {
                             "Pierre-André Noël",
                             "Visual Generation",
                             "https://iclr-blogposts.github.io/2026/blog/2026/destruction/",
-                            "assets/img/covers/cover-flow-maps.svg",
-                            "ICLR diffusion and flow-map blogpost cover"
+                            "https://iclr-blogposts.github.io/2026/assets/img/2026-04-27-destruction/A012_Identity_B012-480.webp",
+                            "Real cover from first-image"
                   ],
                   [
                             "content-promotion-agent-design",
@@ -1475,8 +1717,8 @@ class BlogXiv {
                             "Tommy Mordo, Sagie Dekel, Tomer Kordonsky, Omer Madmon, Moshe Tennenholtz, Oren Kurland",
                             "AI Agents",
                             "https://iclr-blogposts.github.io/2026/blog/2026/content-promotion-agent-design/",
-                            "assets/img/covers/cover-agent-runtime.svg",
-                            "ICLR agent and reinforcement learning blogpost cover"
+                            "https://iclr-blogposts.github.io/2026/assets/img/2026-04-27-content-promotion-agent-design/banana-search.jpg",
+                            "Real cover from first-image"
                   ],
                   [
                             "compositionality",
@@ -1485,8 +1727,8 @@ class BlogXiv {
                             "Eric Elmoznino, Guillaume Lajoie",
                             "Foundation Model",
                             "https://iclr-blogposts.github.io/2026/blog/2026/compositionality/",
-                            "assets/img/covers/foundation-model.svg",
-                            "ICLR foundation model blogpost cover"
+                            "https://iclr-blogposts.github.io/2026/assets/img/2026-04-27-compositionality/fig1-480.webp",
+                            "Real cover from first-image"
                   ],
                   [
                             "chunked-tabpfn",
@@ -1495,8 +1737,8 @@ class BlogXiv {
                             "Renat Sergazinov, Shao-An Yin",
                             "Efficient AI",
                             "https://iclr-blogposts.github.io/2026/blog/2026/chunked-tabpfn/",
-                            "assets/img/covers/cover-optimizers.svg",
-                            "ICLR efficient AI blogpost cover"
+                            "https://iclr-blogposts.github.io/2026/assets/img/2026-04-27-chunked-tabpfn/tabarena_long_results-480.webp",
+                            "Real cover from first-image"
                   ],
                   [
                             "budget-alignment",
@@ -1505,8 +1747,8 @@ class BlogXiv {
                             "Shan Chen, Jirui Qi, Zidi Xiong, Timothy Miller, Arianna Bisazza, Raquel Fernández, Danielle Bitterman",
                             "LLM & MLLM",
                             "https://iclr-blogposts.github.io/2026/blog/2026/budget-alignment/",
-                            "assets/img/covers/llm-mllm.svg",
-                            "ICLR language model blogpost cover"
+                            "https://iclr-blogposts.github.io/2026/assets/img/2026-04-27-budget-alignment/1a-480.webp",
+                            "Real cover from first-image"
                   ],
                   [
                             "bits-over-random",
@@ -1515,8 +1757,8 @@ class BlogXiv {
                             "Vyzantinos Repantis, Harshvardhan Singh, Tony Joseph, Cien Zhang, Akash Vishwakarma, Svetlana Karslioglu, Michael Thot, Ameya Gawde",
                             "Research Craft",
                             "https://iclr-blogposts.github.io/2026/blog/2026/bits-over-random/",
-                            "assets/img/covers/cover-evals-tracing.svg",
-                            "ICLR evaluation methodology blogpost cover"
+                            "https://iclr-blogposts.github.io/2026/assets/img/2026-04-27-bits-over-random/bor_analysis_scifact-480.webp",
+                            "Real cover from first-image"
                   ],
                   [
                             "autoregressive-tokenization",
@@ -1525,8 +1767,8 @@ class BlogXiv {
                             "Julia Balla, Hannah Lawrence",
                             "LLM & MLLM",
                             "https://iclr-blogposts.github.io/2026/blog/2026/autoregressive-tokenization/",
-                            "assets/img/covers/llm-mllm.svg",
-                            "ICLR language model blogpost cover"
+                            "https://iclr-blogposts.github.io/2026/assets/img/2026-04-27-autoregressive-tokenization/square_peg-480.webp",
+                            "Real cover from first-image"
                   ],
                   [
                             "an-overview-of-subliminal-learning",
@@ -1535,8 +1777,8 @@ class BlogXiv {
                             "Samuel Spillard, Daniel Martin",
                             "Trustworthy AI",
                             "https://iclr-blogposts.github.io/2026/blog/2026/an-overview-of-subliminal-learning/",
-                            "assets/img/covers/cover-cot-monitoring.svg",
-                            "ICLR trustworthy AI blogpost cover"
+                            "https://iclr-blogposts.github.io/2026/assets/img/2026-04-27-an-overview-of-subliminal-learning/owls-480.webp",
+                            "Real cover from first-image"
                   ],
                   [
                             "adversarial-conditioning-paradox",
@@ -1545,8 +1787,8 @@ class BlogXiv {
                             "Khazretgali Sapenov, Aidos Sapenov",
                             "Trustworthy AI",
                             "https://iclr-blogposts.github.io/2026/blog/2026/adversarial-conditioning-paradox/",
-                            "assets/img/covers/cover-circuit-tracing.svg",
-                            "ICLR interpretability blogpost cover"
+                            "https://iclr-blogposts.github.io/2026/assets/img/2026-04-27-adversarial-conditioning-paradox/scm_v3_TextFooler_results-480.webp",
+                            "Real cover from first-image"
                   ]
         ];
 
@@ -1684,8 +1926,8 @@ class BlogXiv {
                     "12 min read",
                     "2025-04-28",
                     "https://iclr-blogposts.github.io/2025/blog/do-not-write-jailbreak-papers/",
-                    "assets/img/covers/cover-cot-monitoring.svg",
-                    "ICLR trustworthy AI blogpost cover"
+                    "assets/img/covers/real/iclr2025-do-not-write-jailbreak-papers.png",
+                    "Real cover from manual:original-page-screenshot"
           ],
           [
                     2025,
@@ -1840,8 +2082,8 @@ class BlogXiv {
                     "12 min read",
                     "2025-04-28",
                     "https://iclr-blogposts.github.io/2025/blog/llm-democracy/",
-                    "assets/img/covers/cover-cot-monitoring.svg",
-                    "ICLR trustworthy AI blogpost cover"
+                    "assets/img/covers/real/iclr2025-llm-democracy.png",
+                    "Real cover from manual:original-page-screenshot"
           ],
           [
                     2025,
@@ -1866,8 +2108,8 @@ class BlogXiv {
                     "29 min read",
                     "2025-04-28",
                     "https://iclr-blogposts.github.io/2025/blog/vlm-understanding/",
-                    "assets/img/covers/cover-circuit-tracing.svg",
-                    "ICLR trustworthy AI blogpost cover"
+                    "assets/img/covers/real/iclr2025-vlm-understanding.png",
+                    "Real cover from manual:original-page-screenshot"
           ],
           [
                     2025,
@@ -2087,8 +2329,8 @@ class BlogXiv {
                     "21 min read",
                     "2025-05-07",
                     "https://iclr-blogposts.github.io/2025/blog/steering-llms-behavior/",
-                    "assets/img/covers/cover-circuit-tracing.svg",
-                    "ICLR trustworthy AI blogpost cover"
+                    "assets/img/covers/real/iclr2025-steering-llms-behavior.png",
+                    "Real cover from manual:original-page-screenshot"
           ],
           [
                     2025,
@@ -2191,8 +2433,8 @@ class BlogXiv {
                     "12 min read",
                     "2024-05-07",
                     "https://iclr-blogposts.github.io/2024/blog/language-model-development-as-a-new-subfield/",
-                    "assets/img/covers/foundation-model.svg",
-                    "ICLR foundation model blogpost cover"
+                    "assets/img/covers/real/iclr2024-language-model-development-as-a-new-subfield.png",
+                    "Real cover from manual:original-page-screenshot"
           ],
           [
                     2024,
@@ -2217,8 +2459,8 @@ class BlogXiv {
                     "53 min read",
                     "2024-05-07",
                     "https://iclr-blogposts.github.io/2024/blog/dpi-fsvi/",
-                    "assets/img/covers/foundation-model.svg",
-                    "ICLR foundation model blogpost cover"
+                    "assets/img/covers/real/iclr2024-dpi-fsvi.png",
+                    "Real cover from manual:original-page-screenshot"
           ],
           [
                     2024,
@@ -2815,8 +3057,8 @@ class BlogXiv {
                     "12 min read",
                     "2022-03-25",
                     "https://iclr-blog-track.github.io/2022/03/25/representation-change-in-model-agnostic-meta-learning/",
-                    "assets/img/covers/cover-optimizers.svg",
-                    "ICLR optimization and efficient AI blogpost cover"
+                    "assets/img/covers/real/iclr2022-representation-change-in-model-agnostic-meta-learning.png",
+                    "Real cover from manual:original-page-screenshot"
           ],
           [
                     2022,
@@ -2903,10 +3145,354 @@ class BlogXiv {
         }));
     }
 
+    getKalomazeBearBlogs() {
+        const authorAvatar = 'https://www.google.com/s2/favicons?domain=kalomaze.bearblog.dev&sz=128';
+
+        return [
+            {
+                id: 'kalomaze-rl-for-knowledge-awareness',
+                title: 'Reinforcement Learning for Knowledge Awareness',
+                excerpt: 'Kalomaze shows how Bradley-Terry reward modeling over constructed contrastive data can teach Qwen3-8B to separate real knowledge from confabulation and improve epistemic humility through RL.',
+                author: 'kalomaze',
+                authorAvatar,
+                category: 'Trustworthy AI',
+                tags: ['Reward Modeling', 'RLHF', 'Knowledge Awareness', 'Qwen3'],
+                readTime: '8 min read',
+                publishDate: '2026-05-07',
+                sourceName: 'kalomaze',
+                url: 'https://kalomaze.bearblog.dev/rl-for-knowledge-awareness/',
+                coverImage: 'assets/img/covers/real/kalomaze-rl-for-knowledge-awareness.png',
+                coverAlt: 'Real cover from Kalomaze page screenshot: Reinforcement Learning for Knowledge Awareness',
+                coverFit: 'cover'
+            },
+            {
+                id: 'kalomaze-dont-exclude-rl-rollouts',
+                title: "Don't Exclude Rollouts From Your RL Training Runs",
+                excerpt: 'A sharp critique of overlong rollout masking in online RL: excluding bad samples from the loss can create train-test bias, while reward shaping keeps pressure on the behaviors seen at deployment.',
+                author: 'kalomaze',
+                authorAvatar,
+                category: 'AI Agents',
+                tags: ['Online RL', 'Rollouts', 'DAPO', 'Reward Shaping'],
+                readTime: '6 min read',
+                publishDate: '2026-02-20',
+                sourceName: 'kalomaze',
+                url: 'https://kalomaze.bearblog.dev/dont-exclude-rl-rollouts/',
+                coverImage: 'assets/img/covers/real/kalomaze-dont-exclude-rl-rollouts.png',
+                coverAlt: 'Real cover from Kalomaze page screenshot: rollout training critique',
+                coverFit: 'cover'
+            },
+            {
+                id: 'kalomaze-rl-learning-with-lora',
+                title: 'RL Learning with LoRA: A Diverse Deep Dive',
+                excerpt: 'A practical walkthrough of LoRA for SFT and RL finetuning in prime-rl, covering target modules, rsLoRA scaling, memory tradeoffs, and experiments across alphabet-sort, unscramble, and math tasks.',
+                author: 'kalomaze',
+                authorAvatar,
+                category: 'Efficient AI',
+                tags: ['LoRA', 'RLVR', 'prime-rl', 'Qwen'],
+                readTime: '13 min read',
+                publishDate: '2025-11-09',
+                sourceName: 'kalomaze',
+                url: 'https://kalomaze.bearblog.dev/rl-lora-ddd/',
+                coverImage: 'assets/img/covers/real/kalomaze-rl-learning-with-lora.png',
+                coverAlt: 'Real cover from Kalomaze page screenshot: RL Learning with LoRA',
+                coverFit: 'cover'
+            },
+            {
+                id: 'kalomaze-understanding-transformers-beyond-math',
+                title: 'Understanding Transformers... (beyond the Math)',
+                excerpt: 'An intuition-first essay on transformers as state simulators, using informal reasoning to explain attention, context, state updates, and why architecture components matter beyond the equations.',
+                author: 'kalomaze',
+                authorAvatar,
+                category: 'Foundation Model',
+                tags: ['Transformers', 'Attention', 'Model Intuition', 'Architecture'],
+                readTime: '21 min read',
+                publishDate: '2025-03-09',
+                sourceName: 'kalomaze',
+                url: 'https://kalomaze.bearblog.dev/understanding-transformers-beyond-the-math/',
+                coverImage: 'assets/img/covers/real/kalomaze-understanding-transformers-beyond-math.png',
+                coverAlt: 'Real cover from Kalomaze page screenshot: Understanding Transformers beyond the Math',
+                coverFit: 'cover'
+            },
+            {
+                id: 'kalomaze-grpo-judge-experiments',
+                title: 'GRPO Judge Experiments: Findings & Empirical Observations',
+                excerpt: 'A hands-on GRPO report for semantic judgement tasks, with observations on reward shaping, learning-rate schedules, gradient clipping, model scale, formatting bonuses, and emergent reasoning templates.',
+                author: 'kalomaze',
+                authorAvatar,
+                category: 'Trustworthy AI',
+                tags: ['GRPO', 'Judge Models', 'Reward Shaping', 'Evaluation'],
+                readTime: '6 min read',
+                publishDate: '2025-03-03',
+                sourceName: 'kalomaze',
+                url: 'https://kalomaze.bearblog.dev/grpo-judge-experiments-findings-and-empirical-observations/',
+                coverImage: 'assets/img/covers/real/kalomaze-grpo-judge-experiments.png',
+                coverAlt: 'Real cover from Kalomaze page screenshot: GRPO Judge Experiments',
+                coverFit: 'cover'
+            },
+            {
+                id: 'kalomaze-why-does-grpo-work',
+                title: 'Why does GRPO work?',
+                excerpt: 'Kalomaze explains GRPO as online reinforcement learning over verifiable objectives, contrasting group-relative advantages with DPO-style offline preference optimization after DeepSeek-R1.',
+                author: 'kalomaze',
+                authorAvatar,
+                category: 'AI Agents',
+                tags: ['GRPO', 'DeepSeek-R1', 'Online RL', 'RLVR'],
+                readTime: '7 min read',
+                publishDate: '2025-02-27',
+                sourceName: 'kalomaze',
+                url: 'https://kalomaze.bearblog.dev/why-does-grpo-work/',
+                coverImage: 'assets/img/covers/real/kalomaze-why-does-grpo-work.png',
+                coverAlt: 'Real cover from Kalomaze page screenshot: Why does GRPO work?',
+                coverFit: 'cover'
+            },
+            {
+                id: 'kalomaze-synthetic-rejected-preference-data',
+                title: 'Synthetic rejected preference data creation [via Qwen7b finetune]',
+                excerpt: 'A compact note on using a Qwen7B finetune to create corrupted-text restorations and scalable rejected preference data for stronger reward-model baselines.',
+                author: 'kalomaze',
+                authorAvatar,
+                category: 'Trustworthy AI',
+                tags: ['Preference Data', 'Qwen7B', 'Reward Models', 'Synthetic Data'],
+                readTime: '2 min read',
+                publishDate: '2025-02-27',
+                sourceName: 'kalomaze',
+                url: 'https://kalomaze.bearblog.dev/synthetic-rejected-preference-data-creation-via-qwen7b-finetune/',
+                coverImage: 'assets/img/covers/real/kalomaze-synthetic-rejected-preference-data.png',
+                coverAlt: 'Real cover from Kalomaze page screenshot: synthetic rejected preference data',
+                coverFit: 'cover'
+            }
+        ];
+    }
+
     getCuratedCommunityBlogs() {
         const blogs = [
             ...this.getICLR2026Blogposts(),
             ...this.getICLRPastBlogposts(),
+            ...this.getKalomazeBearBlogs(),
+            {
+                id: 'dair-context-engineering-guide',
+                title: 'Context Engineering Guide',
+                excerpt: 'Elvis Saravia turns prompt engineering into a broader systems discipline, covering instruction design, RAG context, structured outputs, tool definitions, memory, and evaluation loops for agent workflows.',
+                author: 'Elvis Saravia',
+                authorAvatar: 'https://www.google.com/s2/favicons?domain=dair.ai&sz=128',
+                category: 'AI Agents',
+                tags: ['Context Engineering', 'Prompt Engineering', 'Agents', 'RAG'],
+                readTime: '15 min read',
+                publishDate: '2025-12-24',
+                sourceName: 'DAIR.AI',
+                url: 'https://www.dair.ai/blog/context-engineering-guide',
+                coverImage: 'https://www.dair.ai/_next/image?url=%2Fblog%2Fcontext-engineering-diagram.jpg&w=3840&q=75&dpl=dpl_8h6dFD2cYHkK7QJ6Yt2TeH4uSr1K',
+                coverAlt: 'Real cover from first-image',
+                coverFit: 'cover'
+            },
+            {
+                id: 'yao-fu-gpt-ability-sources',
+                title: 'How Does GPT Obtain Its Ability? Tracing Emergent Abilities of Language Models to Their Sources',
+                excerpt: 'Yao Fu analyzes how GPT-3.5-era capabilities emerged from pretraining, code data, instruction tuning, and RLHF, making the training stack easier to reason about historically.',
+                author: 'Yao Fu',
+                authorAvatar: 'https://github.com/FranxYao.png',
+                category: 'LLM & MLLM',
+                tags: ['Emergent Abilities', 'Instruction Tuning', 'RLHF', 'Code Models'],
+                readTime: '35 min read',
+                publishDate: '2022-12-11',
+                sourceName: 'Yao Fu',
+                url: 'https://yaofu.notion.site/How-does-GPT-Obtain-its-Ability-Tracing-Emergent-Abilities-of-Language-Models-to-their-Sources-b9a57ac0fcf74f30a1ab9e3e36fa1dc1',
+                coverImage: 'assets/img/covers/real/yao-fu-gpt-ability-sources.png',
+                coverAlt: 'Real cover from manual:original-page-screenshot',
+                coverFit: 'cover'
+            },
+            {
+                id: 'google-palm-scaling-pathways',
+                title: 'Pathways Language Model (PaLM): Scaling to 540 Billion Parameters for Breakthrough Performance',
+                excerpt: 'Google Research explains PaLM as a large dense decoder-only Transformer trained with Pathways across TPU v4 pods, connecting scale to few-shot reasoning and capability emergence.',
+                author: 'Aakanksha Chowdhery, Sharan Narang, Jacob Devlin et al.',
+                authorAvatar: 'https://www.google.com/s2/favicons?domain=research.google&sz=128',
+                category: 'Foundation Model',
+                tags: ['PaLM', 'Scaling', 'Pathways', 'Few-Shot Learning'],
+                readTime: '12 min read',
+                publishDate: '2022-04-04',
+                sourceName: 'Google Research Blog',
+                url: 'https://research.google/blog/pathways-language-model-palm-scaling-to-540-billion-parameters-for-breakthrough-performance/',
+                coverImage: 'https://storage.googleapis.com/gweb-research2023-media/images/07ef38036e86f81ac74829e59384929b-i.width-800.format-jpeg.jpg',
+                coverAlt: 'Real cover from og:image',
+                coverFit: 'cover'
+            },
+            {
+                id: 'sergey-levine-offline-rl-made-easier',
+                title: 'Offline RL Made Easier: No TD Learning, Advantage Reweighting, or Transformers',
+                excerpt: 'Scott Emmons, Ben Eysenbach, and Sergey Levine distill offline RL via supervised learning, testing when simple conditional policies can match more complex TD or Transformer-based methods.',
+                author: 'Scott Emmons, Ben Eysenbach, Sergey Levine',
+                authorAvatar: 'https://www.google.com/s2/favicons?domain=bairblog.github.io&sz=128',
+                category: 'AI Agents',
+                tags: ['Offline RL', 'RvS', 'Decision Transformer', 'Behavior Cloning'],
+                readTime: '14 min read',
+                publishDate: '2022-04-20',
+                sourceName: 'BAIR Blog',
+                url: 'https://bairblog.github.io/2022/04/20/rvs/',
+                coverImage: 'https://bairblog.github.io//assets/rvs/rvs-overview.png',
+                coverAlt: 'Real cover from og:image',
+                coverFit: 'cover'
+            },
+            {
+                id: 'patrick-mineault-good-research-code',
+                title: 'The Good Research Code Handbook',
+                excerpt: 'Patrick Mineault turns software engineering habits into practical guidance for researchers: project structure, decoupled code, tests, documentation, collaboration, and reliable scientific workflows.',
+                author: 'Patrick Mineault',
+                authorAvatar: 'https://www.google.com/s2/favicons?domain=xcorr.net&sz=128',
+                category: 'Research Craft',
+                tags: ['Research Code', 'Reproducibility', 'Testing', 'Scientific Computing'],
+                readTime: '60 min read',
+                publishDate: '2021-12-20',
+                sourceName: 'Good Research Code',
+                url: 'https://goodresearch.dev/index.html',
+                coverImage: 'https://goodresearch.dev/_images/unicorn.png',
+                coverAlt: 'Real cover from og:image',
+                coverFit: 'cover'
+            },
+            {
+                id: 'transformer-circuits-mathematical-framework',
+                title: 'A Mathematical Framework for Transformer Circuits',
+                excerpt: 'The Transformer Circuits team, including Chris Olah, develops a linear-algebraic way to decompose attention-only transformers into QK and OV circuits, induction heads, and skip-trigram behavior.',
+                author: 'Nelson Elhage, Neel Nanda, Catherine Olsson, Chris Olah et al.',
+                authorAvatar: 'https://www.google.com/s2/favicons?domain=transformer-circuits.pub&sz=128',
+                category: 'Trustworthy AI',
+                tags: ['Mechanistic Interpretability', 'Transformer Circuits', 'Induction Heads', 'Attention'],
+                readTime: '45 min read',
+                publishDate: '2021-12-22',
+                sourceName: 'Transformer Circuits',
+                url: 'https://transformer-circuits.pub/2021/framework/index.html',
+                coverImage: 'https://cdn.sanity.io/images/4zrzovbb/website/6d4a0d28992ade92d6fa63646fd9c9d318245c6c-2400x1260.jpg',
+                coverAlt: 'Real cover from manual:anthropic-official-mirror',
+                coverFit: 'cover'
+            },
+            {
+                id: 'sara-hooker-hardware-lottery',
+                title: 'The Hardware Lottery',
+                excerpt: 'Sara Hooker explains how hardware and software availability shape which AI research ideas flourish, a durable systems lens on why some algorithms scale while others stall.',
+                author: 'Sara Hooker',
+                authorAvatar: 'https://www.google.com/s2/favicons?domain=hardwarelottery.github.io&sz=128',
+                category: 'Efficient AI',
+                tags: ['Hardware Lottery', 'AI Systems', 'Research Incentives', 'Compute'],
+                readTime: '22 min read',
+                publishDate: '2020-08-01',
+                sourceName: 'The Hardware Lottery',
+                url: 'https://hardwarelottery.github.io/',
+                coverImage: 'https://cdn.glitch.com/34a5d448-e59c-4ef1-bfad-458d185273e4%2Funnamed%20(7).jpg?v=1586843526885',
+                coverAlt: 'Real cover from twitter:image',
+                coverFit: 'cover'
+            },
+            {
+                id: 'francois-chollet-llm-prompt-engineering',
+                title: 'How I Think About LLM Prompt Engineering',
+                excerpt: 'François Chollet frames prompting as search through a continuous space of vector programs, connecting self-attention, embeddings, interpolation, and hallucination behavior.',
+                author: 'François Chollet',
+                authorAvatar: 'https://github.com/fchollet.png',
+                category: 'LLM & MLLM',
+                tags: ['Prompt Engineering', 'Vector Programs', 'Self-Attention', 'LLM Behavior'],
+                readTime: '12 min read',
+                publishDate: '2023-10-09',
+                sourceName: 'Sparks in the Wind',
+                url: 'https://fchollet.substack.com/p/how-i-think-about-llm-prompt-engineering',
+                coverImage: 'https://substackcdn.com/image/fetch/$s_!43kM!,w_1200,h_675,c_fill,f_jpg,q_auto:good,fl_progressive:steep,g_auto/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5a9ca68f-6b32-4dbc-a266-cb1a5b62f236_1024x1024.png',
+                coverAlt: 'Real cover from og:image',
+                coverFit: 'cover'
+            },
+            {
+                id: 'francois-chollet-limitations-deep-learning',
+                title: 'The Limitations of Deep Learning',
+                excerpt: 'François Chollet separates local generalization from human-like abstraction, laying out why deep learning systems struggle with reasoning, symbolic manipulation, and out-of-distribution recombination.',
+                author: 'François Chollet',
+                authorAvatar: 'https://github.com/fchollet.png',
+                category: 'Foundation Model',
+                tags: ['Generalization', 'Abstraction', 'Deep Learning Limits', 'Reasoning'],
+                readTime: '18 min read',
+                publishDate: '2017-07-17',
+                sourceName: 'Keras Blog',
+                url: 'https://blog.keras.io/the-limitations-of-deep-learning.html',
+                coverImage: 'https://blog.keras.io/img/deep_learning_with_python_cover_thumbnail.png',
+                coverAlt: 'Real cover from first-image',
+                coverFit: 'cover'
+            },
+            {
+                id: 'david-ha-weight-agnostic-networks',
+                title: 'Weight Agnostic Neural Networks',
+                excerpt: 'Adam Gaier and David Ha ask how much useful behavior can come from architecture alone, using shared random weights to probe inductive bias and architecture search.',
+                author: 'Adam Gaier, David Ha',
+                authorAvatar: 'https://github.com/hardmaru.png',
+                category: 'Efficient AI',
+                tags: ['Architecture Search', 'Inductive Bias', 'Neuroevolution', 'Random Weights'],
+                readTime: '18 min read',
+                publishDate: '2019-06-12',
+                sourceName: 'hardmaru / otoro',
+                url: 'https://weightagnostic.github.io/',
+                coverImage: 'https://weightagnostic.github.io/assets/img/wann_card_rect_v2.png',
+                coverAlt: 'Real cover from og:image',
+                coverFit: 'cover'
+            },
+            {
+                id: 'david-ha-world-models-experiments',
+                title: 'World Models Experiments',
+                excerpt: 'David Ha provides implementation-level notes for reproducing World Models, including environment setup, VAE and MDN-RNN training, CMA-ES controllers, and compute trade-offs.',
+                author: 'David Ha',
+                authorAvatar: 'https://github.com/hardmaru.png',
+                category: 'World Model',
+                tags: ['World Models', 'Reinforcement Learning', 'VAE', 'CMA-ES'],
+                readTime: '35 min read',
+                publishDate: '2018-06-09',
+                sourceName: 'hardmaru / otoro',
+                url: 'https://blog.otoro.net/2018/06/09/world-models-experiments/',
+                coverImage: 'https://blog.otoro.net/assets/card/slime_rect.png',
+                coverAlt: 'Real cover from og:image',
+                coverFit: 'cover'
+            },
+            {
+                id: 'karpathy-recipe-training-neural-networks',
+                title: 'A Recipe for Training Neural Networks',
+                excerpt: 'Andrej Karpathy lays out a practical debugging-first process for neural network training: inspect data, establish baselines, overfit small batches, regularize, tune, and measure carefully.',
+                author: 'Andrej Karpathy',
+                authorAvatar: 'https://www.google.com/s2/favicons?domain=karpathy.github.io&sz=128',
+                category: 'Research Craft',
+                tags: ['Training Practice', 'Debugging', 'Neural Networks', 'Experiment Design'],
+                readTime: '28 min read',
+                publishDate: '2019-04-25',
+                sourceName: 'Andrej Karpathy',
+                url: 'https://karpathy.github.io/2019/04/25/recipe/',
+                coverImage: 'assets/img/covers/real/karpathy-recipe-training-neural-networks.png',
+                coverAlt: 'Real cover from manual:original-page-screenshot',
+                coverFit: 'cover'
+            },
+            {
+                id: 'karpathy-unreasonable-rnns',
+                title: 'The Unreasonable Effectiveness of Recurrent Neural Networks',
+                excerpt: 'Andrej Karpathy gives an unusually vivid technical tour of character-level RNNs, sampling behavior, training dynamics, attention, and why simple sequence models can feel surprisingly powerful.',
+                author: 'Andrej Karpathy',
+                authorAvatar: 'https://www.google.com/s2/favicons?domain=karpathy.github.io&sz=128',
+                category: 'Foundation Model',
+                tags: ['RNN', 'Language Modeling', 'Sequence Models', 'Sampling'],
+                readTime: '32 min read',
+                publishDate: '2015-05-21',
+                sourceName: 'Andrej Karpathy',
+                url: 'https://karpathy.github.io/2015/05/21/rnn-effectiveness/',
+                coverImage: 'https://karpathy.github.io/assets/rnn/diags.jpeg',
+                coverAlt: 'Real cover from first-image',
+                coverFit: 'cover'
+            },
+            {
+                id: 'colah-understanding-lstms',
+                title: 'Understanding LSTM Networks',
+                excerpt: 'Chris Olah uses diagrams and step-by-step equations to explain recurrent networks, long-term dependencies, LSTM gates, variants, and the bridge toward attention.',
+                author: 'Chris Olah',
+                authorAvatar: 'https://github.com/colah.png',
+                category: 'Foundation Model',
+                tags: ['LSTM', 'RNN', 'Sequence Modeling', 'Visual Explanation'],
+                readTime: '22 min read',
+                publishDate: '2015-08-27',
+                sourceName: "colah's blog",
+                url: 'https://colah.github.io/posts/2015-08-Understanding-LSTMs/',
+                coverImage: 'https://colah.github.io/posts/2015-08-Understanding-LSTMs/img/RNN-rolled.png',
+                coverAlt: 'Real cover from first-image',
+                coverFit: 'cover'
+            },
             {
                 id: 'anthropic-managed-agents',
                 title: 'Scaling Managed Agents: Decoupling the Brain from the Hands',
@@ -2919,8 +3505,8 @@ class BlogXiv {
                 publishDate: '2026-04-08',
                 sourceName: 'Anthropic Engineering',
                 url: 'https://www.anthropic.com/engineering/managed-agents',
-                coverImage: 'assets/img/covers/cover-agent-runtime.svg',
-                coverAlt: 'Managed agent runtime with separated planning and execution cover',
+                coverImage: 'https://cdn.sanity.io/images/4zrzovbb/website/c4c716fb31cdbd336b628549cdac0f14e10d0099-2000x1050.heif',
+                coverAlt: 'Real cover from og:image',
                 coverFit: 'cover'
             },
             {
@@ -2935,8 +3521,8 @@ class BlogXiv {
                 publishDate: '2026-03-24',
                 sourceName: 'Anthropic Engineering',
                 url: 'https://www.anthropic.com/engineering/harness-design-long-running-apps',
-                coverImage: 'assets/img/covers/cover-agent-runtime.svg',
-                coverAlt: 'Long-running agent harness and checkpoint cover',
+                coverImage: 'https://cdn.sanity.io/images/4zrzovbb/website/84a488382e0428a5eebade574af047e5d3b610ab-2400x1260.png',
+                coverAlt: 'Real cover from og:image',
                 coverFit: 'cover'
             },
             {
@@ -2951,8 +3537,8 @@ class BlogXiv {
                 publishDate: '2026-03-06',
                 sourceName: 'Anthropic Engineering',
                 url: 'https://www.anthropic.com/engineering/eval-awareness-browsecomp',
-                coverImage: 'assets/img/covers/cover-evals-tracing.svg',
-                coverAlt: 'Benchmark trace and eval-awareness cover',
+                coverImage: 'https://cdn.sanity.io/images/4zrzovbb/website/82d2262129af025d98a46411fbd42ee970a95cb4-2400x1260.heif',
+                coverAlt: 'Real cover from og:image',
                 coverFit: 'cover'
             },
             {
@@ -2967,8 +3553,8 @@ class BlogXiv {
                 publishDate: '2026-01-23',
                 sourceName: 'OpenAI',
                 url: 'https://openai.com/index/unrolling-the-codex-agent-loop/',
-                coverImage: 'assets/img/covers/cover-agent-runtime.svg',
-                coverAlt: 'Coding-agent loop with tests and patches cover',
+                coverImage: 'https://images.ctfassets.net/kftzwdyauwt9/6o1H1yOkWlMxAOLzzsBAjJ/b45d21128635360c408f43da0138b319/Agent_loop_desktop-light.svg?q=90&w=3840',
+                coverAlt: 'Real cover from manual:openai-article-image',
                 coverFit: 'cover'
             },
             {
@@ -2983,8 +3569,8 @@ class BlogXiv {
                 publishDate: '2026-01-09',
                 sourceName: 'Anthropic Engineering',
                 url: 'https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents',
-                coverImage: 'assets/img/covers/cover-evals-tracing.svg',
-                coverAlt: 'Agent eval traces and rubric cover',
+                coverImage: 'https://cdn.sanity.io/images/4zrzovbb/website/412be842c5c6bae6b4bcd515c191b0aa5015e05f-2400x1260.png',
+                coverAlt: 'Real cover from og:image',
                 coverFit: 'cover'
             },
             {
@@ -2999,8 +3585,8 @@ class BlogXiv {
                 publishDate: '2026-01-21',
                 sourceName: 'Anthropic Engineering',
                 url: 'https://www.anthropic.com/engineering/AI-resistant-technical-evaluations',
-                coverImage: 'assets/img/covers/cover-evals-tracing.svg',
-                coverAlt: 'AI-resistant technical evaluation cover',
+                coverImage: 'https://cdn.sanity.io/images/4zrzovbb/website/19121280eda2955bdd2d0b12c4f61b1a89b6098f-2400x1260.png',
+                coverAlt: 'Real cover from og:image',
                 coverFit: 'cover'
             },
             {
@@ -3015,8 +3601,8 @@ class BlogXiv {
                 publishDate: '2026-01-27',
                 sourceName: 'Cursor Blog',
                 url: 'https://cursor.com/blog/secure-codebase-indexing',
-                coverImage: 'assets/img/covers/cover-codebase-index.svg',
-                coverAlt: 'Secure codebase index and retrieval tree cover',
+                coverImage: 'https://ptht05hbb1ssoooe.public.blob.vercel-storage.com/assets/uploads/secure-index-cover.png',
+                coverAlt: 'Real cover from og:image',
                 coverFit: 'cover'
             },
             {
@@ -3031,8 +3617,8 @@ class BlogXiv {
                 publishDate: '2025-12-16',
                 sourceName: 'Anthropic Alignment',
                 url: 'https://alignment.anthropic.com/2025/bloom-auto-evals/',
-                coverImage: 'assets/img/covers/cover-evals-tracing.svg',
-                coverAlt: 'Automated behavioral evaluation pipeline cover',
+                coverImage: 'https://alignment.anthropic.com/2025/bloom-auto-evals/fig1.png',
+                coverAlt: 'Real cover from first-image',
                 coverFit: 'cover'
             },
             {
@@ -3047,8 +3633,8 @@ class BlogXiv {
                 publishDate: '2025-11-26',
                 sourceName: 'Anthropic Engineering',
                 url: 'https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents',
-                coverImage: 'assets/img/covers/cover-agent-runtime.svg',
-                coverAlt: 'Resumable long-running agent harness cover',
+                coverImage: 'https://cdn.sanity.io/images/4zrzovbb/website/32ea71b3e8e87a990f6df4c4def2b9e52815e977-2400x1260.png',
+                coverAlt: 'Real cover from og:image',
                 coverFit: 'cover'
             },
             {
@@ -3063,8 +3649,8 @@ class BlogXiv {
                 publishDate: '2025-11-04',
                 sourceName: 'Anthropic Engineering',
                 url: 'https://www.anthropic.com/engineering/code-execution-with-mcp',
-                coverImage: 'assets/img/covers/cover-agent-tool-design.svg',
-                coverAlt: 'MCP code execution and compact tool outputs cover',
+                coverImage: 'https://cdn.sanity.io/images/4zrzovbb/website/8071ace7b1158ab6d3f8fa04679cef31234425ab-2400x1260.png',
+                coverAlt: 'Real cover from og:image',
                 coverFit: 'cover'
             },
             {
@@ -3079,8 +3665,8 @@ class BlogXiv {
                 publishDate: '2025-10-20',
                 sourceName: 'Anthropic Engineering',
                 url: 'https://www.anthropic.com/engineering/claude-code-sandboxing',
-                coverImage: 'assets/img/covers/cover-agent-tool-design.svg',
-                coverAlt: 'Sandboxed coding-agent tool permission cover',
+                coverImage: 'https://cdn.sanity.io/images/4zrzovbb/website/5140cdbe58c21cc117e5f90bfe17245893cbce8d-2400x1260.png',
+                coverAlt: 'Real cover from og:image',
                 coverFit: 'cover'
             },
             {
@@ -3095,8 +3681,8 @@ class BlogXiv {
                 publishDate: '2025-09-11',
                 sourceName: 'Anthropic Engineering',
                 url: 'https://www.anthropic.com/engineering/writing-tools-for-agents',
-                coverImage: 'assets/img/covers/cover-agent-tool-design.svg',
-                coverAlt: 'Agent tool schema and feedback loop cover',
+                coverImage: 'https://cdn.sanity.io/images/4zrzovbb/website/91df4759f1037fb6073de772278cb71e6e4ee37d-2400x1260.png',
+                coverAlt: 'Real cover from og:image',
                 coverFit: 'cover'
             },
             {
@@ -3111,8 +3697,8 @@ class BlogXiv {
                 publishDate: '2026-05-11',
                 sourceName: 'Braintrust Blog',
                 url: 'https://www.braintrust.dev/blog/traces-and-evals-same-place',
-                coverImage: 'assets/img/covers/cover-evals-tracing.svg',
-                coverAlt: 'Production logs feeding evaluation datasets cover',
+                coverImage: 'https://www.braintrust.dev/og?title=Why+your+traces+and+evals+belong+in+the+same+place&description=What+you+can+catch%2C+fix%2C+and+automate+when+traces+and+evals+live+in+the+same+platform.&template=blog&v=3',
+                coverAlt: 'Real cover from og:image',
                 coverFit: 'cover'
             },
             {
@@ -3127,8 +3713,8 @@ class BlogXiv {
                 publishDate: '2026-01-06',
                 sourceName: 'Cursor Blog',
                 url: 'https://cursor.com/blog/dynamic-context-discovery',
-                coverImage: 'assets/img/covers/cover-codebase-index.svg',
-                coverAlt: 'Dynamic codebase context discovery cover',
+                coverImage: 'https://cursor.com/marketing-static/_next/image?url=https%3A%2F%2Fptht05hbb1ssoooe.public.blob.vercel-storage.com%2Fassets%2Fblog%2Fpast-chats-light.png&w=3840&q=70',
+                coverAlt: 'Real cover from first-image',
                 coverFit: 'cover'
             },
             {
@@ -3143,8 +3729,8 @@ class BlogXiv {
                 publishDate: '2025-04-16',
                 sourceName: 'Hugging Face Blog',
                 url: 'https://huggingface.co/blog/tngtech/llm-performance-prefill-decode-concurrent-requests',
-                coverImage: 'assets/img/covers/cover-kv-cache-paged.svg',
-                coverAlt: 'Continuous batching and KV cache scheduling cover',
+                coverImage: 'https://cdn-thumbnails.huggingface.co/social-thumbnails/blog/tngtech/llm-performance-prefill-decode-concurrent-requests.png',
+                coverAlt: 'Real cover from twitter:image',
                 coverFit: 'cover'
             },
             {
@@ -3159,8 +3745,8 @@ class BlogXiv {
                 publishDate: '2025-10-16',
                 sourceName: 'Baseten Blog',
                 url: 'https://www.baseten.co/blog/how-baseten-achieved-2x-faster-inference-with-nvidia-dynamo/',
-                coverImage: 'assets/img/covers/cover-kv-cache-paged.svg',
-                coverAlt: 'KV cache-aware request routing cover',
+                coverImage: 'https://www.baseten.co/blog/how-baseten-achieved-2x-faster-inference-with-nvidia-dynamo/opengraph-image-w6ejn9?d279179c4f880b3f',
+                coverAlt: 'Real cover from og:image',
                 coverFit: 'cover'
             },
             {
@@ -3175,8 +3761,8 @@ class BlogXiv {
                 publishDate: '2024-07-05',
                 sourceName: 'Hugging Face Blog',
                 url: 'https://huggingface.co/blog/manu/colpali',
-                coverImage: 'assets/img/covers/cover-retrieval-late-interaction.svg',
-                coverAlt: 'Late-interaction visual document retrieval cover',
+                coverImage: 'https://cdn-thumbnails.huggingface.co/social-thumbnails/blog/manu/colpali.png',
+                coverAlt: 'Real cover from twitter:image',
                 coverFit: 'cover'
             },
             {
@@ -3191,8 +3777,8 @@ class BlogXiv {
                 publishDate: '2024-08-22',
                 sourceName: 'Jina AI Blog',
                 url: 'https://jina.ai/news/late-chunking-in-long-context-embedding-models/',
-                coverImage: 'assets/img/covers/cover-retrieval-late-interaction.svg',
-                coverAlt: 'Late chunking and contextual retrieval cover',
+                coverImage: 'https://jina.ai/blog-banner/late-chunking-in-long-context-embedding-models.webp',
+                coverAlt: 'Real cover from og:image',
                 coverFit: 'cover'
             },
             {
@@ -3207,8 +3793,8 @@ class BlogXiv {
                 publishDate: '2026-05-19',
                 sourceName: 'METR',
                 url: 'https://metr.org/blog/2026-05-19-frontier-risk-report/',
-                coverImage: 'assets/img/covers/cover-ai-risk-horizons.svg',
-                coverAlt: 'Risk horizon chart and monitoring gates cover',
+                coverImage: 'https://metr.org/assets/images/frontier-risk-report/frontier-risk-report-og.png',
+                coverAlt: 'Real cover from og:image',
                 coverFit: 'cover'
             },
             {
@@ -3223,8 +3809,8 @@ class BlogXiv {
                 publishDate: '2026-05-14',
                 sourceName: 'Claude Blog',
                 url: 'https://claude.com/blog/how-claude-code-works-in-large-codebases-best-practices-and-where-to-start',
-                coverImage: 'assets/img/covers/cover-agent-context-engineering.svg',
-                coverAlt: 'Coding agent context engineering cover',
+                coverImage: 'https://cdn.prod.website-files.com/68a44d4040f98a4adf2207b6/6a060215e86f555c3638a2a1_og_how-claude-code-works-in-large-codebases-best-practices-and-where-to-start.jpg',
+                coverAlt: 'Real cover from og:image',
                 coverFit: 'cover'
             },
             {
@@ -3239,8 +3825,8 @@ class BlogXiv {
                 publishDate: '2026-05-05',
                 sourceName: 'Goodfire Research',
                 url: 'https://www.goodfire.ai/research/interpreting-lm-parameters',
-                coverImage: 'assets/img/covers/cover-circuit-tracing.svg',
-                coverAlt: 'Attribution graph and parameter subcomponent cover',
+                coverImage: 'https://cdn.prod.website-files.com/67b6603da5471104daf6923a/69f9f0f54ed8b604b6817669_paper-hero-final.png',
+                coverAlt: 'Real cover from og:image',
                 coverFit: 'cover'
             },
             {
@@ -3255,8 +3841,8 @@ class BlogXiv {
                 publishDate: '2026-03-11',
                 sourceName: 'LangChain Blog',
                 url: 'https://www.langchain.com/blog/autonomous-context-compression',
-                coverImage: 'assets/img/covers/cover-agent-context-engineering.svg',
-                coverAlt: 'Agent context compression and memory cover',
+                coverImage: 'https://cdn.prod.website-files.com/65c81e88c254bb0f97633a71/69cba9a7649e3ebd9d13268e_Screenshot-2026-03-06-at-3.40.34---PM.png',
+                coverAlt: 'Real cover from og:image',
                 coverFit: 'cover'
             },
             {
@@ -3271,8 +3857,8 @@ class BlogXiv {
                 publishDate: '2026-02-27',
                 sourceName: 'Cognition Blog',
                 url: 'https://cognition.ai/blog/how-cognition-uses-devin-to-build-devin',
-                coverImage: 'assets/img/covers/cover-agent-runtime.svg',
-                coverAlt: 'Coding-agent operations and review loop cover',
+                coverImage: 'https://cdn.sanity.io/images/2mc9cv2v/production/840f0033d2af9f8f5657e1f6d8dc6c692dca4618-1800x900.png?w=1600&fit=max',
+                coverAlt: 'Real cover from first-image',
                 coverFit: 'cover'
             },
             {
@@ -3287,8 +3873,8 @@ class BlogXiv {
                 publishDate: '2026-02-25',
                 sourceName: 'Goodfire Blog',
                 url: 'https://www.goodfire.ai/blog/interpretability-infra-at-frontier-scale',
-                coverImage: 'assets/img/covers/cover-kv-cache-paged.svg',
-                coverAlt: 'Paged inference and activation harvesting cover',
+                coverImage: 'https://cdn.prod.website-files.com/67b6603da5471104daf6923a/699e7a10ca8fc4d5e7267241_inference-server-diagram.webp',
+                coverAlt: 'Real cover from og:image',
                 coverFit: 'cover'
             },
             {
@@ -3303,8 +3889,8 @@ class BlogXiv {
                 publishDate: '2026-02-11',
                 sourceName: 'Goodfire Research',
                 url: 'https://www.goodfire.ai/research/rlfr',
-                coverImage: 'assets/img/covers/cover-feature-rewards.svg',
-                coverAlt: 'Feature probes as reward signals cover',
+                coverImage: 'https://cdn.prod.website-files.com/67b6603da5471104daf6923a/69af36294584d45eb3f428da_rlfr-rollout-grid-recolor.webp',
+                coverAlt: 'Real cover from og:image',
                 coverFit: 'cover'
             },
             {
@@ -3319,8 +3905,8 @@ class BlogXiv {
                 publishDate: '2026-02-13',
                 sourceName: 'METR Notes',
                 url: 'https://metr.org/notes/2026-02-13-measuring-time-horizon-using-claude-code-and-codex/',
-                coverImage: 'assets/img/covers/cover-ai-risk-horizons.svg',
-                coverAlt: 'Agent scaffold time-horizon comparison cover',
+                coverImage: 'https://metr.org/assets/images/measuring-time-horizon-using-claude-code-and-codex/histograms.png',
+                coverAlt: 'Real cover from og:image',
                 coverFit: 'cover'
             },
             {
@@ -3335,8 +3921,8 @@ class BlogXiv {
                 publishDate: '2026-01-29',
                 sourceName: 'METR',
                 url: 'https://metr.org/blog/2026-1-29-time-horizon-1-1/',
-                coverImage: 'assets/img/covers/cover-ai-risk-horizons.svg',
-                coverAlt: 'Updated time horizon evaluation cover',
+                coverImage: 'https://metr.org/assets/images/time-horizon-1-1/time-horizon-1-vs-1-1-hybrid.png',
+                coverAlt: 'Real cover from og:image',
                 coverFit: 'cover'
             },
             {
@@ -3351,8 +3937,8 @@ class BlogXiv {
                 publishDate: '2026-01-22',
                 sourceName: 'METR',
                 url: 'https://metr.org/blog/2026-01-19-early-work-on-monitorability-evaluations/',
-                coverImage: 'assets/img/covers/cover-cot-monitoring.svg',
-                coverAlt: 'Monitorability eval and hidden side-task cover',
+                coverImage: 'https://metr.org/assets/images/monitorability-post/time_horizon_ratio_non_visible_reasoning.png',
+                coverAlt: 'Real cover from og:image',
                 coverFit: 'cover'
             },
             {
@@ -3367,8 +3953,8 @@ class BlogXiv {
                 publishDate: '2026-01-19',
                 sourceName: 'Apollo Research',
                 url: 'https://www.apolloresearch.ai/science/science-of-scheming/',
-                coverImage: 'assets/img/covers/cover-ai-risk-horizons.svg',
-                coverAlt: 'Scheming science and long-horizon risk cover',
+                coverImage: 'https://www.apolloresearch.ai/wp-content/uploads/2026/01/image.png',
+                coverAlt: 'Real cover from first-image',
                 coverFit: 'cover'
             },
             {
@@ -3383,8 +3969,8 @@ class BlogXiv {
                 publishDate: '2025-11-24',
                 sourceName: 'Apollo Research',
                 url: 'https://www.apolloresearch.ai/research/loss-of-control/',
-                coverImage: 'assets/img/covers/cover-ai-risk-horizons.svg',
-                coverAlt: 'Loss-of-control taxonomy and risk bands cover',
+                coverImage: 'https://www.apolloresearch.ai/wp-content/uploads/2025/11/Chapter-1_Graph_fullscreen_small-borders-1-scaled.png',
+                coverAlt: 'Real cover from og:image',
                 coverFit: 'cover'
             },
             {
@@ -3399,8 +3985,8 @@ class BlogXiv {
                 publishDate: '2025-09-04',
                 sourceName: 'LangChain Blog',
                 url: 'https://www.langchain.com/blog/building-langgraph',
-                coverImage: 'assets/img/covers/cover-agent-runtime.svg',
-                coverAlt: 'Durable agent runtime and checkpoint cover',
+                coverImage: 'https://cdn.prod.website-files.com/65c81e88c254bb0f97633a71/69cbaa7ebf847dfe35ef1650_How-We-Built-LangGraph--1-.png',
+                coverAlt: 'Real cover from og:image',
                 coverFit: 'cover'
             },
             {
@@ -3415,8 +4001,8 @@ class BlogXiv {
                 publishDate: '2025-07-18',
                 sourceName: 'Manus Blog',
                 url: 'https://manus.im/blog/Context-Engineering-for-AI-Agents-Lessons-from-Building-Manus',
-                coverImage: 'assets/img/covers/cover-agent-context-engineering.svg',
-                coverAlt: 'Stable context, tool masks, and file memory cover',
+                coverImage: 'https://files.manuscdn.com/assets/dashboard/materials/2025/07/18/eaafe9e6a174b29458c314ccc225dbdd39a7c9d66e60786235165d9aba23f578.webp',
+                coverAlt: 'Real cover from og:image',
                 coverFit: 'cover'
             },
             {
@@ -3431,8 +4017,8 @@ class BlogXiv {
                 publishDate: '2025-06-12',
                 sourceName: 'Cognition Blog',
                 url: 'https://cognition.ai/blog/dont-build-multi-agents',
-                coverImage: 'assets/img/covers/cover-agent-context-engineering.svg',
-                coverAlt: 'Single-threaded agent trace versus fragmented subagents cover',
+                coverImage: 'https://cdn.sanity.io/images/2mc9cv2v/production/721e44474051c62156e15b5ffb1a249c996f0607-1404x1228.png?w=1600&fit=max',
+                coverAlt: 'Real cover from first-image',
                 coverFit: 'cover'
             },
             {
@@ -3447,8 +4033,8 @@ class BlogXiv {
                 publishDate: '2025-03-27',
                 sourceName: 'Transformer Circuits',
                 url: 'https://transformer-circuits.pub/2025/attribution-graphs/methods.html',
-                coverImage: 'assets/img/covers/cover-circuit-tracing.svg',
-                coverAlt: 'Attribution graph nodes and circuit tracing cover',
+                coverImage: 'https://transformer-circuits.pub/2025/attribution-graphs/png/methods.png',
+                coverAlt: 'Real cover from og:image',
                 coverFit: 'cover'
             },
             {
@@ -3463,8 +4049,8 @@ class BlogXiv {
                 publishDate: '2023-06-20',
                 sourceName: 'vLLM Blog',
                 url: 'https://vllm.ai/blog/2023-06-20-vllm',
-                coverImage: 'assets/img/covers/cover-kv-cache-paged.svg',
-                coverAlt: 'Paged KV cache and shared prefix blocks cover',
+                coverImage: 'https://vllm.ai/og?title=vLLM%3A%20Easy%2C%20Fast%2C%20and%20Cheap%20LLM%20Serving%20with%20PagedAttention&authors=Woosuk%20Kwon*%2C%20Zhuohan%20Li*%2C%20Siyuan%20Zhuang%2C%20Ying%20Sheng%2C%20Lianmin%20Zheng%2C%20Cody%20Yu%2C%20Joey%20Gonzalez%2C%20Hao%20Zhang%2C%20and%20Ion%20Stoica%20(*%20Equal%20Contribution)&date=2023-06-20&path=/blog',
+                coverAlt: 'Real cover from og:image',
                 coverFit: 'cover'
             },
             {
@@ -3479,8 +4065,8 @@ class BlogXiv {
                 publishDate: '2026-05-05',
                 sourceName: 'Hugging Face Space',
                 url: 'https://huggingface.co/spaces/AdithyaSK/rl-environments-guide#introduction',
-                coverImage: 'assets/img/covers/cover-post-training-rl.svg',
-                coverAlt: 'Rollout loops and reward wiring cover for LLM RL environments',
+                coverImage: 'https://raw.githubusercontent.com/adithya-s-k/RL_Envs_101/refs/heads/main/assets/blog_thumbnail.png',
+                coverAlt: 'Real cover from twitter:image',
                 coverFit: 'cover'
             },
             {
@@ -3495,8 +4081,8 @@ class BlogXiv {
                 publishDate: '2026-05-13',
                 sourceName: 'LEAP Labs',
                 url: 'https://www.leap-labs.com/blog/exemplar-partitioning',
-                coverImage: 'assets/img/covers/cover-interpretability-geometry.svg',
-                coverAlt: 'Activation manifolds and exemplar regions cover',
+                coverImage: 'https://www.leap-labs.com/_next/image?url=%2Fimages%2Fresearch%2Fexemplar-partitioning-headline.png&w=1920&q=75',
+                coverAlt: 'Real cover from first-image',
                 coverFit: 'cover'
             },
             {
@@ -3511,8 +4097,8 @@ class BlogXiv {
                 publishDate: '2026-05-07',
                 sourceName: 'Goodfire Research',
                 url: 'https://www.goodfire.ai/research/the-world-inside-neural-networks#',
-                coverImage: 'assets/img/covers/cover-interpretability-geometry.svg',
-                coverAlt: 'Curved activation geometry cover',
+                coverImage: 'https://cdn.prod.website-files.com/67b6603da5471104daf6923a/69fc30812298558007959256_neural-geometry-opengraph.webp',
+                coverAlt: 'Real cover from og:image',
                 coverFit: 'cover'
             },
             {
@@ -3527,8 +4113,8 @@ class BlogXiv {
                 publishDate: '2026-05-07',
                 sourceName: 'OpenAI Alignment',
                 url: 'https://alignment.openai.com/accidental-cot-grading/',
-                coverImage: 'assets/img/covers/cover-cot-monitoring.svg',
-                coverAlt: 'Chain-of-thought monitorability and grading cover',
+                coverImage: 'https://alignment.openai.com/accidental-cot-grading/social-preview.png',
+                coverAlt: 'Real cover from og:image',
                 coverFit: 'cover'
             },
             {
@@ -3543,8 +4129,8 @@ class BlogXiv {
                 publishDate: '2026-04-23',
                 sourceName: 'OpenAI Alignment',
                 url: 'https://alignment.openai.com/monitorability-evals/',
-                coverImage: 'assets/img/covers/cover-cot-monitoring.svg',
-                coverAlt: 'Open-sourced chain-of-thought monitorability evaluations cover',
+                coverImage: 'https://alignment.openai.com/monitorability-evals/figures/results_intervention.png',
+                coverAlt: 'Real cover from first-image',
                 coverFit: 'cover'
             },
             {
@@ -3559,8 +4145,8 @@ class BlogXiv {
                 publishDate: '2026-05-07',
                 sourceName: 'LessWrong',
                 url: 'https://www.lesswrong.com/posts/juCHTdZpZBGooHKW4/a-review-of-investigating-the-consequences-of-accidentally',
-                coverImage: 'assets/img/covers/cover-cot-monitoring.svg',
-                coverAlt: 'External review of CoT monitorability evidence cover',
+                coverImage: 'assets/img/covers/real/lesswrong-review-accidental-cot-grading.png',
+                coverAlt: 'Real cover from manual:original-page-screenshot',
                 coverFit: 'cover'
             },
             {
@@ -3575,8 +4161,8 @@ class BlogXiv {
                 publishDate: '2026-05-07',
                 sourceName: 'Anthropic',
                 url: 'https://www.anthropic.com/research/natural-language-autoencoders',
-                coverImage: 'assets/img/covers/cover-interpretability-geometry.svg',
-                coverAlt: 'Natural-language explanation of model activations cover',
+                coverImage: 'https://cdn.sanity.io/images/4zrzovbb/website/645f8c90db35a5d392c816a90c806b2904ccad21-1280x720.png',
+                coverAlt: 'Real cover from og:image',
                 coverFit: 'cover'
             },
             {
@@ -3591,8 +4177,8 @@ class BlogXiv {
                 publishDate: '2026-05-07',
                 sourceName: 'Transformer Circuits',
                 url: 'https://transformer-circuits.pub/2026/nla/#introduction',
-                coverImage: 'assets/img/covers/cover-interpretability-geometry.svg',
-                coverAlt: 'Natural language autoencoder activation explanation cover',
+                coverImage: 'https://transformer-circuits.pub/2026/nla/png/img_648c99de89fe02c7.png',
+                coverAlt: 'Real cover from first-image',
                 coverFit: 'cover'
             },
             {
@@ -3607,8 +4193,8 @@ class BlogXiv {
                 publishDate: '2026-05-06',
                 sourceName: 'Sander Dieleman',
                 url: 'https://sander.ai/2026/05/06/flow-maps.html',
-                coverImage: 'assets/img/covers/cover-flow-maps.svg',
-                coverAlt: 'Flow-map trajectories from noise to data cover',
+                coverImage: 'https://sander.ai/images/map.jpg',
+                coverAlt: 'Real cover from twitter:image',
                 coverFit: 'cover'
             },
             {
@@ -3623,8 +4209,8 @@ class BlogXiv {
                 publishDate: '2026-05-06',
                 sourceName: 'Dylan Zhang',
                 url: 'https://dylanzsz.github.io/faulty-memory/',
-                coverImage: 'assets/img/covers/cover-agent-memory.svg',
-                coverAlt: 'Agent memory consolidation loop cover',
+                coverImage: 'https://dylanzsz.github.io/faulty-memory/figures/arc_19type_gpt54.png',
+                coverAlt: 'Real cover from first-image',
                 coverFit: 'cover'
             },
             {
@@ -3639,8 +4225,8 @@ class BlogXiv {
                 publishDate: '2026-05-01',
                 sourceName: 'PythagorAI',
                 url: 'https://pythagorai.substack.com/p/the-math-behind-the-cost-of-ai-agents',
-                coverImage: 'assets/img/covers/cover-agent-economics.svg',
-                coverAlt: 'Agent token cost curve cover',
+                coverImage: 'https://substackcdn.com/image/fetch/$s_!vmKo!,w_1200,h_675,c_fill,f_jpg,q_auto:good,fl_progressive:steep,g_auto/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2fd89125-4efb-4cd2-aa9e-a0eeabe76b79_600x400.jpeg',
+                coverAlt: 'Real cover from og:image',
                 coverFit: 'cover'
             },
             {
@@ -3655,8 +4241,8 @@ class BlogXiv {
                 publishDate: '2026-05-01',
                 sourceName: 'Tufa Labs',
                 url: 'https://tufalabs.ai/research/enhancing-reasoning-small-language-models/',
-                coverImage: 'assets/img/covers/llm-mllm.svg',
-                coverAlt: 'Small reasoning model cover',
+                coverImage: 'https://tufalabs.ai/assets/posts/enhancing-reasoning-small-language-models/figure-1.png',
+                coverAlt: 'Real cover from first-image',
                 coverFit: 'cover'
             },
             {
@@ -3671,8 +4257,8 @@ class BlogXiv {
                 publishDate: '2026-05-01',
                 sourceName: 'nrehiew',
                 url: 'https://nrehiew.github.io/blog/minimal_editing/',
-                coverImage: 'assets/img/covers/research-craft.svg',
-                coverAlt: 'Minimal edit research note cover',
+                coverImage: 'https://nrehiew.github.io/blog/minimal_editing/images/overediting.png',
+                coverAlt: 'Real cover from first-image',
                 coverFit: 'cover'
             },
             {
@@ -3687,8 +4273,8 @@ class BlogXiv {
                 publishDate: '2026-04-28',
                 sourceName: 'Anthropic Alignment',
                 url: 'https://alignment.anthropic.com/2026/introspection-adapters/',
-                coverImage: 'assets/img/covers/cover-cot-monitoring.svg',
-                coverAlt: 'Model self-reporting and auditing cover',
+                coverImage: 'https://alignment.anthropic.com/2026/introspection-adapters/fig1.png',
+                coverAlt: 'Real cover from first-image',
                 coverFit: 'cover'
             },
             {
@@ -3703,8 +4289,8 @@ class BlogXiv {
                 publishDate: '2026-04-27',
                 sourceName: 'ICLR Blogposts',
                 url: 'https://iclr-blogposts.github.io/2026/blog/2026/mdp-to-gcmdp/',
-                coverImage: 'assets/img/covers/cover-rl-goals.svg',
-                coverAlt: 'MDP to goal-conditioned MDP triangle cover',
+                coverImage: 'https://iclr-blogposts.github.io/2026/assets/img/2026-04-27-mdp-to-gcmdp/rl-ssp-gcrl-480.webp',
+                coverAlt: 'Real cover from first-image',
                 coverFit: 'cover'
             },
             {
@@ -3719,8 +4305,8 @@ class BlogXiv {
                 publishDate: '2026-04-22',
                 sourceName: 'NVIDIA Technical Blog',
                 url: 'https://developer.nvidia.com/blog/advancing-emerging-optimizers-for-accelerated-llm-training-with-nvidia-megatron/',
-                coverImage: 'assets/img/covers/cover-optimizers.svg',
-                coverAlt: 'Sharpness curves and distributed optimizer blocks cover',
+                coverImage: 'https://developer-blogs.nvidia.com/wp-content/uploads/2024/07/stacked-geometric-shapes-1.jpg',
+                coverAlt: 'Real cover from og:image',
                 coverFit: 'cover'
             },
             {
@@ -3735,8 +4321,8 @@ class BlogXiv {
                 publishDate: '2026-04-22',
                 sourceName: 'a16z',
                 url: 'https://a16z.com/why-we-need-continual-learning/',
-                coverImage: 'assets/img/covers/cover-continual-learning.svg',
-                coverAlt: 'Continual learning loop cover',
+                coverImage: 'https://d1lamhf6l6yk6d.cloudfront.net/uploads/2026/04/Why-we-need-continual-learning-1024x512-1.png',
+                coverAlt: 'Real cover from og:image',
                 coverFit: 'cover'
             },
             {
@@ -3751,8 +4337,8 @@ class BlogXiv {
                 publishDate: '2026-04-21',
                 sourceName: 'Ryan C. Briggs',
                 url: 'https://ryancbriggs.net/blog/as-ai-lowers-the-cost-of-research-adjudication-and-attention-will-become-the-bottlenecks/',
-                coverImage: 'assets/img/covers/cover-research-adjudication.svg',
-                coverAlt: 'Research adjudication bottleneck cover',
+                coverImage: 'https://ryancbriggs.net/blog/as-ai-lowers-the-cost-of-research-adjudication-and-attention-will-become-the-bottlenecks/hero.jpeg',
+                coverAlt: 'Real cover from first-image',
                 coverFit: 'cover'
             },
             {
@@ -3767,8 +4353,8 @@ class BlogXiv {
                 publishDate: '2026-03-10',
                 sourceName: 'Thoughtful',
                 url: 'https://www.thoughtfullab.com/posttrainbench.html',
-                coverImage: 'assets/img/covers/cover-post-training-rl.svg',
-                coverAlt: 'Post-training agent benchmark cover',
+                coverImage: 'https://www.thoughtfullab.com/assets/images/flow.png',
+                coverAlt: 'Real cover from first-image',
                 coverFit: 'cover'
             },
             {
@@ -3783,8 +4369,8 @@ class BlogXiv {
                 publishDate: '2026-04-03',
                 sourceName: 'Patrick Pynadath',
                 url: 'https://patrickpynadath1.github.io/blog/eval_methodology/',
-                coverImage: 'assets/img/covers/cover-diffusion-evals.svg',
-                coverAlt: 'Diffusion language model evaluation frontier cover',
+                coverImage: 'https://patrickpynadath1.github.io/images/recent_cont_dlm_content/entropy_ranking_demo.gif',
+                coverAlt: 'Real cover from first-image',
                 coverFit: 'cover'
             },
             {
@@ -3799,8 +4385,8 @@ class BlogXiv {
                 publishDate: '2026-05-14',
                 sourceName: 'Anyscale Blog',
                 url: 'https://www.anyscale.com/blog/anyscale-llm-post-training-skill',
-                coverImage: 'assets/img/covers/cover-post-training-rl.svg',
-                coverAlt: 'Agent-assisted LLM post-training workflow cover',
+                coverImage: 'https://images.ctfassets.net/xjan103pcp94/1WNlzahEg8Kv35ytWr41ya/8640c4518cfff5954957598d7054221d/anyscale-llm-post-training-skill-og.png',
+                coverAlt: 'Real cover from og:image',
                 coverFit: 'cover'
             },
             {
@@ -3815,8 +4401,8 @@ class BlogXiv {
                 publishDate: '2026-04-01',
                 sourceName: 'Thoughtful',
                 url: 'https://www.thoughtfullab.com/letting-ai-posttrain-ai.html',
-                coverImage: 'assets/img/covers/cover-post-training-rl.svg',
-                coverAlt: 'AI agents running post-training experiments cover',
+                coverImage: 'https://www.thoughtfullab.com/assets/images/article-og-ai-posttrain-ai.jpg',
+                coverAlt: 'Real cover from og:image',
                 coverFit: 'cover'
             },
             {
@@ -3831,8 +4417,8 @@ class BlogXiv {
                 publishDate: '2026-04-01',
                 sourceName: 'AI-OWLS',
                 url: 'https://akyrillidis.github.io/aiowls/stochastic_self_stabilization.html',
-                coverImage: 'assets/img/covers/cover-optimizers.svg',
-                coverAlt: 'Sharpness trajectories and SGD stability cover',
+                coverImage: 'https://akyrillidis.github.io/aiowls/assets/img/seos_fig1_trajectories.png',
+                coverAlt: 'Real cover from first-image',
                 coverFit: 'cover'
             },
             {
@@ -3847,8 +4433,8 @@ class BlogXiv {
                 publishDate: '2026-04-01',
                 sourceName: 'Noah Ziems',
                 url: 'https://noahziems.com/pedagogical-rl',
-                coverImage: 'assets/img/covers/cover-post-training-rl.svg',
-                coverAlt: 'Pedagogical reinforcement learning cover',
+                coverImage: 'https://hackmd.io/_uploads/rJupvuXyfx.png',
+                coverAlt: 'Real cover from first-image',
                 coverFit: 'cover'
             },
             {
@@ -3863,8 +4449,8 @@ class BlogXiv {
                 publishDate: '2026-01-06',
                 sourceName: 'DeepWiki',
                 url: 'https://deepwiki.com/XiaomiMiMo/MiMo-V2-Flash',
-                coverImage: 'assets/img/covers/cover-mimo-distillation.svg',
-                coverAlt: 'Multi-teacher distillation and MoE model cover',
+                coverImage: 'https://deepwiki.com/XiaomiMiMo/MiMo-V2-Flash/og-image.png?page=1',
+                coverAlt: 'Real cover from og:image',
                 coverFit: 'cover'
             },
             {
@@ -3879,8 +4465,8 @@ class BlogXiv {
                 publishDate: '2026-01-13',
                 sourceName: 'Emergent Mind',
                 url: 'https://api.emergentmind.com/topics/multi-teacher-on-policy-distillation-mopd',
-                coverImage: 'assets/img/covers/cover-mimo-distillation.svg',
-                coverAlt: 'Multi-teacher on-policy distillation cover',
+                coverImage: 'https://assets.emergentmind.com/assets/600px-a61320449b8c848bcc56e02826b033b5efa09fa52cc48b487e8f9a2eb8efd705.png',
+                coverAlt: 'Real cover from og:image',
                 coverFit: 'cover'
             },
             {
@@ -3895,8 +4481,8 @@ class BlogXiv {
                 publishDate: '2025-07-01',
                 sourceName: 'Goodfire Blog',
                 url: 'https://www.goodfire.ai/blog/on-optimism-for-interpretability',
-                coverImage: 'assets/img/covers/cover-interpretability-geometry.svg',
-                coverAlt: 'Interpretability fieldbuilding cover',
+                coverImage: 'https://cdn.prod.website-files.com/67b6603da5471104daf6923a/691e4fbeb58a24733d889c6f_Bonsai_(463459335).jpg',
+                coverAlt: 'Real cover from og:image',
                 coverFit: 'cover'
             },
             {
@@ -3911,8 +4497,8 @@ class BlogXiv {
                 publishDate: '2025-07-23',
                 sourceName: 'GeeksforGeeks',
                 url: 'https://www.geeksforgeeks.org/artificial-intelligence/knowledge-representation-in-ai/',
-                coverImage: 'assets/img/covers/cover-knowledge-representation.svg',
-                coverAlt: 'Semantic network knowledge representation cover',
+                coverImage: 'https://media.geeksforgeeks.org/wp-content/uploads/20260306104319974171/kr1.webp',
+                coverAlt: 'Real cover from og:image',
                 coverFit: 'cover'
             },
             {
@@ -3927,8 +4513,8 @@ class BlogXiv {
                 publishDate: '2026-05-12',
                 sourceName: 'OpenAI',
                 url: 'https://openai.com/index/what-parameter-golf-taught-us/',
-                coverImage: 'assets/img/covers/research-craft.svg',
-                coverAlt: 'Research challenge notes cover',
+                coverImage: 'https://images.ctfassets.net/kftzwdyauwt9/6PRLQARXtH3sfsTBcHlufc/ac545b82a82009609194d64e34538e62/SEO.png?fit=fill&h=900&w=1600',
+                coverAlt: 'Real cover from manual:openai-article-image',
                 coverFit: 'cover'
             },
             {
@@ -3943,8 +4529,8 @@ class BlogXiv {
                 publishDate: '2025-12-18',
                 sourceName: 'OpenAI',
                 url: 'https://openai.com/index/evaluating-chain-of-thought-monitorability/',
-                coverImage: 'assets/img/covers/cover-cot-monitoring.svg',
-                coverAlt: 'Chain-of-thought monitorability cover',
+                coverImage: 'https://images.ctfassets.net/kftzwdyauwt9/4x3EyD3VqsjaYK1Q8wOj1W/1d939bee7051a3ccb60abbdcbef156f4/CoT_Monitorability_Art_Card.png?w=1600&h=900&fit=fill',
+                coverAlt: 'Real cover from og:image',
                 coverFit: 'cover'
             },
             {
@@ -3975,8 +4561,8 @@ class BlogXiv {
                 publishDate: '2025-10-06',
                 sourceName: 'Google DeepMind',
                 url: 'https://deepmind.google/blog/introducing-codemender-an-ai-agent-for-code-security/',
-                coverImage: 'assets/img/covers/research-craft.svg',
-                coverAlt: 'AI code security cover',
+                coverImage: 'https://lh3.googleusercontent.com/k8UqDSugJHO4Rf-O3s7Hm9jxtuHtK93lQI1KFdoElscGZywC7x5Xuuw_LlzNTvt3fx_Shho1BjokMBVH5ACIt7hmx_y6P4PO0dfvwOlBj7JVAsC_Kg=w1200-h630-n-nu-rw',
+                coverAlt: 'Real cover from og:image',
                 coverFit: 'cover'
             },
             {
@@ -3991,8 +4577,8 @@ class BlogXiv {
                 publishDate: '2025-10-02',
                 sourceName: 'NVIDIA Technical Blog',
                 url: 'https://developer.nvidia.com/blog/practical-llm-security-advice-from-the-nvidia-ai-red-team/',
-                coverImage: 'assets/img/covers/research-craft.svg',
-                coverAlt: 'LLM security advice cover',
+                coverImage: 'https://developer-blogs.nvidia.com/wp-content/uploads/2025/10/Red-Team-LLM-Security-e1759353765401.jpg',
+                coverAlt: 'Real cover from og:image',
                 coverFit: 'cover'
             },
             {
@@ -4023,8 +4609,8 @@ class BlogXiv {
                 publishDate: '2025-07-08',
                 sourceName: 'Hugging Face Blog',
                 url: 'https://huggingface.co/blog/smollm3',
-                coverImage: 'assets/img/covers/foundation-model.svg',
-                coverAlt: 'Open model training recipe cover',
+                coverImage: 'https://huggingface.co/blog/assets/smollm3/image.png',
+                coverAlt: 'Real cover from twitter:image',
                 coverFit: 'cover'
             },
             {
@@ -4039,8 +4625,8 @@ class BlogXiv {
                 publishDate: '2025-06-20',
                 sourceName: 'Anthropic Research',
                 url: 'https://www.anthropic.com/research/agentic-misalignment',
-                coverImage: 'assets/img/covers/research-craft.svg',
-                coverAlt: 'Agentic misalignment cover',
+                coverImage: 'https://cdn.sanity.io/images/4zrzovbb/website/e7e28ca7cbe9c943af6e6041ec0f22241024c9d9-2401x1261.png',
+                coverAlt: 'Real cover from og:image',
                 coverFit: 'cover'
             },
             {
@@ -4055,8 +4641,8 @@ class BlogXiv {
                 publishDate: '2025-06-19',
                 sourceName: 'Apollo Research',
                 url: 'https://www.apolloresearch.ai/science/more-capable-models-are-better-at-in-context-scheming/',
-                coverImage: 'assets/img/covers/research-craft.svg',
-                coverAlt: 'Scheming evaluation cover',
+                coverImage: 'https://www.apolloresearch.ai/wp-content/uploads/2025/10/Evals_specific.png',
+                coverAlt: 'Real cover from og:image',
                 coverFit: 'cover'
             },
             {
@@ -4071,8 +4657,8 @@ class BlogXiv {
                 publishDate: '2025-06-16',
                 sourceName: 'Simon Willison',
                 url: 'https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/',
-                coverImage: 'assets/img/covers/research-craft.svg',
-                coverAlt: 'Agent security model cover',
+                coverImage: 'https://static.simonwillison.net/static/2025/lethaltrifecta.jpg',
+                coverAlt: 'Real cover from twitter:image',
                 coverFit: 'cover'
             },
             {
@@ -4119,8 +4705,8 @@ class BlogXiv {
                 publishDate: '2025-03-19',
                 sourceName: 'METR',
                 url: 'https://metr.org/blog/2025-03-19-measuring-ai-ability-to-complete-long-tasks/',
-                coverImage: 'assets/img/covers/research-craft.svg',
-                coverAlt: 'Long-task capability evaluation cover',
+                coverImage: 'https://metr.org/assets/images/measuring-ai-ability-to-complete-long-tasks/length-of-tasks-log.png',
+                coverAlt: 'Real cover from og:image',
                 coverFit: 'cover'
             },
             {
@@ -4135,8 +4721,8 @@ class BlogXiv {
                 publishDate: '2025-02-21',
                 sourceName: 'Hugging Face Space',
                 url: 'https://huggingface.co/spaces/nanotron/ultrascale-playbook?section=high-level_overview',
-                coverImage: 'assets/img/covers/efficient-ai.svg',
-                coverAlt: 'Distributed training playbook cover',
+                coverImage: 'https://huggingface.co/spaces/nanotron/ultrascale-playbook/resolve/main/screenshot.png',
+                coverAlt: 'Real cover from twitter:image',
                 coverFit: 'cover'
             },
             {
@@ -4151,8 +4737,8 @@ class BlogXiv {
                 publishDate: '2024-12-18',
                 sourceName: 'Anthropic Research',
                 url: 'https://www.anthropic.com/news/alignment-faking',
-                coverImage: 'assets/img/covers/research-craft.svg',
-                coverAlt: 'Alignment faking cover',
+                coverImage: 'https://cdn.sanity.io/images/4zrzovbb/website/9010435acf6891e5fd2e36268fdacca1c7c1d551-1800x1013.jpg',
+                coverAlt: 'Real cover from og:image',
                 coverFit: 'cover'
             },
             {
@@ -4167,8 +4753,8 @@ class BlogXiv {
                 publishDate: '2024-06-26',
                 sourceName: 'Hugging Face Space',
                 url: 'https://huggingface.co/spaces/HuggingFaceFW/blogpost-fineweb-v1',
-                coverImage: 'assets/img/covers/foundation-model.svg',
-                coverAlt: 'Pretraining data curation cover',
+                coverImage: 'https://huggingface.co/spaces/HuggingFaceFW/blogpost-fineweb-v1/resolve/main/screenshot.jpeg',
+                coverAlt: 'Real cover from twitter:image',
                 coverFit: 'cover'
             },
             {
@@ -9143,9 +9729,9 @@ class BlogXiv {
         this.displayedBlogs = 12;
     }
     
-    renderBlogs() {
-        const blogsGrid = document.getElementById('blogsGrid');
-        if (!blogsGrid) return;
+	    renderBlogs() {
+	        const blogsGrid = document.getElementById('blogsGrid');
+	        if (!blogsGrid) return;
         
         if (this.filteredBlogs.length === 0) {
             blogsGrid.innerHTML = `
@@ -9179,7 +9765,7 @@ class BlogXiv {
                     <p class="blog-excerpt">${blog.excerpt}</p>
                     <div class="blog-footer">
                         <div class="blog-author">
-                            <img class="author-avatar" src="${this.getMediaHref(blog.authorAvatar)}" alt="${blog.author}" loading="lazy" referrerpolicy="no-referrer">
+                            ${this.renderAuthorAvatar(blog.author, blog.authorAvatar, blog.url)}
                             <span class="author-name">${blog.author}</span>
                         </div>
                         <a class="blog-source-link" href="${blog.url}" target="_blank" rel="noopener noreferrer">Read original</a>
@@ -9214,11 +9800,206 @@ class BlogXiv {
             });
         });
         
-        // Update load more button visibility
-        this.updateLoadMoreButton(this.displayedBlogs < this.filteredBlogs.length);
+	        // Update load more button visibility
+	        this.updateLoadMoreButton(this.displayedBlogs < this.filteredBlogs.length);
+	    }
+
+    getHomepagePopularBloggerProfiles() {
+        return [
+            {
+                name: 'kalomaze',
+                institution: "kalomaze's kalomazing blog",
+                homepage: 'https://kalomaze.bearblog.dev/blog/',
+                avatar: 'https://www.google.com/s2/favicons?domain=kalomaze.bearblog.dev&sz=128',
+                matches: ['kalomaze'],
+                specialty: 'Trustworthy AI',
+                focus: ['GRPO', 'reward modeling', 'RL finetuning'],
+                qualityRank: 12
+            },
+            {
+                name: 'Sebastian Raschka',
+                institution: 'Lightning AI / University of Wisconsin-Madison',
+                homepage: 'https://sebastianraschka.com/',
+                avatar: 'https://sebastianraschka.com/images/logos/photo-2021-08-25_compressed.jpg',
+                matches: ['Sebastian Raschka', 'Ahead of AI'],
+                specialty: 'LLM & MLLM',
+                focus: ['LLM architecture', 'evaluation', 'coding agents'],
+                qualityRank: 12
+            },
+            {
+                name: 'Nathan Lambert',
+                institution: 'Ai2 / Interconnects',
+                homepage: 'https://www.interconnects.ai/',
+                avatar: 'https://github.com/natolambert.png',
+                matches: ['Nathan Lambert', 'Interconnects'],
+                specialty: 'Foundation Model',
+                focus: ['open models', 'RLHF', 'reasoning models'],
+                qualityRank: 11
+            },
+            {
+                name: 'Lilian Weng',
+                institution: "Lil'Log / former OpenAI",
+                homepage: 'https://lilianweng.github.io/',
+                avatar: 'https://github.com/lilianweng.png',
+                matches: ['Lilian Weng', "Lil'Log"],
+                specialty: 'Trustworthy AI',
+                focus: ['AI safety', 'human data', 'generative models'],
+                qualityRank: 11
+            },
+            {
+                name: 'Simon Willison',
+                institution: 'Datasette / Independent',
+                homepage: 'https://simonwillison.net/',
+                avatar: 'https://github.com/simonw.png',
+                matches: ['Simon Willison'],
+                specialty: 'LLM & MLLM',
+                focus: ['LLM tooling', 'agents', 'security'],
+                qualityRank: 10
+            },
+            {
+                name: 'Hamel Husain',
+                institution: "Hamel's Blog / Parlance Labs",
+                homepage: 'https://hamel.dev/',
+                avatar: 'https://hamel.dev/hamel_transparent.png',
+                matches: ['Hamel Husain', "Hamel's Blog"],
+                specialty: 'Research Craft',
+                focus: ['LLM evals', 'product reliability', 'AI engineering'],
+                qualityRank: 10
+            },
+            {
+                name: 'Andrej Karpathy',
+                institution: 'Eureka Labs / former OpenAI and Tesla',
+                homepage: 'https://karpathy.ai/',
+                avatar: 'https://karpathy.ai/assets/me_new.jpg',
+                matches: ['Andrej Karpathy', 'Karpathy'],
+                specialty: 'Foundation Model',
+                focus: ['deep learning systems', 'training practice', 'AI education'],
+                qualityRank: 10
+            },
+            {
+                name: 'Chris Olah',
+                institution: 'Anthropic / Transformer Circuits',
+                homepage: 'https://colah.github.io/',
+                avatar: 'https://github.com/colah.png',
+                matches: ['Chris Olah', "colah's blog", 'Transformer Circuits'],
+                specialty: 'Trustworthy AI',
+                focus: ['mechanistic interpretability', 'visual explanations', 'transformer circuits'],
+                qualityRank: 10
+            }
+        ];
     }
-    
-    formatDate(dateString) {
+
+    matchesBloggerProfile(blog, profile) {
+        const haystack = [
+            blog.author,
+            blog.sourceName,
+            blog.title,
+            blog.url
+        ].filter(Boolean).join(' ').toLowerCase();
+
+        return profile.matches.some((match) => haystack.includes(match.toLowerCase()));
+    }
+
+    getHomepagePopularBloggers() {
+        const indexedBlogs = this.blogs.length ? this.blogs : this.getCuratedCommunityBlogs();
+
+        return this.getHomepagePopularBloggerProfiles()
+            .map((profile) => {
+                const posts = indexedBlogs
+                    .filter((blog) => this.matchesBloggerProfile(blog, profile))
+                    .sort((a, b) => new Date(b.publishDate) - new Date(a.publishDate));
+                const categories = [...new Set(posts.map((post) => post.category).filter(Boolean))];
+                const latestPost = posts[0];
+                const primaryCategory = categories.includes(profile.specialty)
+                    ? profile.specialty
+                    : categories[0] || profile.specialty;
+                const categoryText = categories.slice(0, 2).join(' and ') || primaryCategory;
+
+                return {
+                    ...profile,
+                    specialty: primaryCategory,
+                    blogsCount: posts.length,
+                    categoriesCount: categories.length || 1,
+                    latestYear: latestPost ? String(new Date(latestPost.publishDate).getFullYear()) : '2026',
+                    latestBlog: latestPost?.title || profile.focus[0],
+                    tags: [...new Set([...profile.focus, ...categories])].slice(0, 4),
+                    postsUrl: `${this.getPageHref('explore.html')}?author=${encodeURIComponent(profile.matches[0])}`,
+                    score: profile.qualityRank * 100 + posts.length * 18 + categories.length * 8,
+                    summary: `${profile.focus.slice(0, 3).join(', ')} across ${posts.length || 'curated'} indexed pieces in ${categoryText}.`
+                };
+            })
+            .filter((blogger) => blogger.blogsCount > 0)
+            .sort((a, b) => b.score - a.score || b.blogsCount - a.blogsCount)
+            .slice(0, 6);
+    }
+
+    renderPopularBloggers() {
+        const bloggersGrid = document.getElementById('popularBloggersGrid');
+        if (!bloggersGrid) return;
+
+        const bloggers = this.getHomepagePopularBloggers();
+        if (!bloggers.length) {
+            bloggersGrid.innerHTML = '';
+            return;
+        }
+
+        bloggersGrid.innerHTML = bloggers.map((blogger) => `
+            <article class="popular-blogger-card" data-homepage="${this.escapeAttribute(blogger.homepage)}" tabindex="0" role="link" aria-label="Open ${this.escapeAttribute(blogger.name)} homepage">
+                <div class="popular-blogger-header">
+                    <img class="popular-blogger-avatar" src="${this.getMediaHref(blogger.avatar)}" alt="${this.escapeAttribute(blogger.name)}" loading="lazy" referrerpolicy="no-referrer">
+                    <div class="popular-blogger-info">
+                        <span class="popular-blogger-specialty">${this.escapeHTML(blogger.specialty)} Blogger</span>
+                        <h3 class="popular-blogger-name">${this.escapeHTML(blogger.name)}</h3>
+                        <p class="popular-blogger-institution">${this.escapeHTML(blogger.institution)}</p>
+                    </div>
+                </div>
+                <p class="popular-blogger-summary">${this.escapeHTML(blogger.summary)}</p>
+                <div class="popular-blogger-tags">
+                    ${blogger.tags.map((tag) => `<span class="tag">${this.escapeHTML(tag)}</span>`).join('')}
+                </div>
+                <div class="popular-blogger-stats">
+                    <div class="popular-blogger-stat">
+                        <span class="popular-blogger-stat-number">${blogger.blogsCount}</span>
+                        <span class="popular-blogger-stat-label">Indexed</span>
+                    </div>
+                    <div class="popular-blogger-stat">
+                        <span class="popular-blogger-stat-number">${blogger.categoriesCount}</span>
+                        <span class="popular-blogger-stat-label">Domains</span>
+                    </div>
+                    <div class="popular-blogger-stat">
+                        <span class="popular-blogger-stat-number">${this.escapeHTML(blogger.latestYear)}</span>
+                        <span class="popular-blogger-stat-label">Latest</span>
+                    </div>
+                </div>
+                <p class="popular-blogger-latest">${this.escapeHTML(blogger.latestBlog)}</p>
+                <div class="popular-blogger-actions">
+                    <a class="btn btn-outline" href="${this.escapeAttribute(blogger.postsUrl)}">Indexed Posts</a>
+                    <a class="btn btn-primary" href="${this.escapeAttribute(blogger.homepage)}" target="_blank" rel="noopener noreferrer">Homepage</a>
+                </div>
+            </article>
+        `).join('');
+
+        bloggersGrid.querySelectorAll('.popular-blogger-card').forEach((card) => {
+            card.addEventListener('click', (event) => {
+                if (event.target.closest('a')) return;
+                const homepage = card.dataset.homepage;
+                if (homepage) {
+                    window.open(homepage, '_blank', 'noopener,noreferrer');
+                }
+            });
+
+            card.addEventListener('keydown', (event) => {
+                if (event.key !== 'Enter' && event.key !== ' ') return;
+                event.preventDefault();
+                const homepage = card.dataset.homepage;
+                if (homepage) {
+                    window.open(homepage, '_blank', 'noopener,noreferrer');
+                }
+            });
+        });
+    }
+	    
+	    formatDate(dateString) {
         const date = new Date(dateString);
         const now = new Date();
         const diffTime = Math.abs(now - date);

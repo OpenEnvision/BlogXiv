@@ -28,7 +28,7 @@
             document.documentElement.style.colorScheme = theme;
         })();
     </script>
-    <link rel="stylesheet" href="assets/css/styles.css?v=theme-fix-1">
+    <link rel="stylesheet" href="assets/css/styles.css?v=theme-fix-2">
     <link rel="stylesheet" href="assets/css/enhancements.css?v=popular-real-blogs-expanded-15">
     <link rel="icon" type="image/svg+xml" href="assets/img/brand/icon.svg">
     <link rel="mask-icon" href="assets/img/brand/icon.svg" color="#7cacdc">
@@ -91,6 +91,11 @@
             </div>
             
             <div class="nav-actions">
+                <a class="github-nav-link" href="https://github.com/OpenEnvision/BlogXiv" target="_blank" rel="noopener noreferrer" aria-label="Open BlogXiv on GitHub" title="GitHub">
+                    <svg class="github-nav-icon" width="20" height="20" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+                        <path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82A7.65 7.65 0 0 1 8 4.58c.68.003 1.36.092 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                </a>
                 <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
                     <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <circle cx="12" cy="12" r="5"></circle>
@@ -124,9 +129,28 @@
                     <span class="gradient-text">Explore</span> 
                     Amazing Blogs
                 </h1>
+                <div class="hero-readership" aria-label="BlogXiv readership">
+                    <span class="hero-view-count" aria-label="BlogXiv views">
+                        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                            <path d="M2.25 12s3.5-6.5 9.75-6.5S21.75 12 21.75 12 18.25 18.5 12 18.5 2.25 12 2.25 12Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+                            <circle cx="12" cy="12" r="2.75" fill="none" stroke="currentColor" stroke-width="1.8"/>
+                        </svg>
+                        <span id="blogxivViewCount">222</span>
+                        <span>views</span>
+                    </span>
+                    <span class="hero-readership-meta">
+                        <span class="hero-readership-copy">AI Research Blog Discovery</span>
+                        <a class="hero-github-star" href="https://github.com/OpenEnvision/BlogXiv" target="_blank" rel="noopener noreferrer" aria-label="Star BlogXiv on GitHub">
+                            <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+                                <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82A7.65 7.65 0 0 1 8 4.58c.68.003 1.36.092 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path>
+                            </svg>
+                            <span>Star! 🙏</span>
+                        </a>
+                    </span>
+                </div>
                 <p class="hero-description">
-                    Discover high-quality research blogs across multimodal models, visual generation, and world models. 
-                    Follow the latest academic and industry work through curated, source-linked reading.
+                    Discover high-quality research blogs with broad technical insight across AI research and engineering. 
+                    Follow the latest academic and industry thinking through curated, source-linked reading.
                 </p>
                 <div class="hero-actions hero-actions-single">
                     <a href="explore.html" class="btn btn-primary btn-large btn-cta">Explore Blogs</a>
@@ -302,6 +326,47 @@
             </div>
             <div class="load-more">
                 <a href="explore.html" class="btn btn-outline">View All Blogs</a>
+            </div>
+
+            <div class="popular-bloggers-block">
+                <div class="section-header popular-bloggers-header">
+                    <h2 class="section-title">Popular Bloggers</h2>
+                    <p class="section-description">Writers with consistently high-signal technical analysis across the BlogXiv index</p>
+                </div>
+                <div class="popular-bloggers-grid" id="popularBloggersGrid">
+                    <!-- Popular blogger cards will be dynamically generated here -->
+                </div>
+                <div class="load-more">
+                    <a href="bloggers.html" class="btn btn-outline">View All Bloggers</a>
+                </div>
+
+                <div class="research-share-cta" aria-label="Share BlogXiv with your research network">
+                    <div class="research-share-copy">
+                        <div class="research-share-meta">
+                            <span class="research-share-kicker">Research dissemination</span>
+                        </div>
+                        <h3>Share BlogXiv with your research network</h3>
+                        <p>BlogXiv is an editorially curated index of high-quality technical writing on AI research.</p>
+                    </div>
+                    <div class="research-share-actions">
+                        <a class="research-share-button share-x" href="https://twitter.com/intent/tweet?text=BlogXiv%20is%20an%20editorially%20curated%20index%20of%20high-quality%20technical%20writing%20on%20AI%20research.&amp;url=https%3A%2F%2Fblogxiv.org%2F" target="_blank" rel="noopener noreferrer" aria-label="Share BlogXiv on X">
+                            <span class="research-share-icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" role="img" focusable="false">
+                                    <path d="M18.24 2.25h3.31l-7.23 8.26 8.5 11.24h-6.65l-5.21-6.82-5.97 6.82H1.68l7.73-8.84L1.25 2.25h6.83l4.71 6.23 5.45-6.23Zm-1.16 17.52h1.83L7.08 4.13H5.12l11.96 15.64Z"/>
+                                </svg>
+                            </span>
+                            <span>Share on X</span>
+                        </a>
+                        <a class="research-share-button share-linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fblogxiv.org%2F" target="_blank" rel="noopener noreferrer" aria-label="Share BlogXiv on LinkedIn">
+                            <span class="research-share-icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" role="img" focusable="false">
+                                    <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.95v5.66H9.34V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.26 2.37 4.26 5.45v6.29h.03ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12Zm1.78 13.02H3.55V9h3.57v11.45Z"/>
+                                </svg>
+                            </span>
+                            <span>Share on LinkedIn</span>
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>

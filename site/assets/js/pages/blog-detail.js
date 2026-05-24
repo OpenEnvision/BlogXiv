@@ -52,9 +52,20 @@ class BlogDetail {
         }
     }
 
+    normalizeTheme(theme) {
+        return theme === 'dark' || theme === 'light' ? theme : 'light';
+    }
+
+    getActiveTheme() {
+        return this.normalizeTheme(document.documentElement.getAttribute('data-theme') || this.currentTheme || this.getStoredTheme());
+    }
+
     applyTheme(theme) {
-        document.documentElement.setAttribute('data-theme', theme);
-        document.documentElement.style.colorScheme = theme;
+        const normalizedTheme = this.normalizeTheme(theme);
+        this.currentTheme = normalizedTheme;
+        document.documentElement.setAttribute('data-theme', normalizedTheme);
+        document.documentElement.style.colorScheme = normalizedTheme;
+        return normalizedTheme;
     }
 
     setupTheme() {
@@ -63,8 +74,9 @@ class BlogDetail {
     }
     
     toggleTheme() {
-        this.currentTheme = this.currentTheme === 'light' ? 'dark' : 'light';
-        this.applyTheme(this.currentTheme);
+        const activeTheme = this.getActiveTheme();
+        const nextTheme = activeTheme === 'light' ? 'dark' : 'light';
+        this.applyTheme(nextTheme);
         try {
             localStorage.setItem('theme', this.currentTheme);
         } catch (error) {
@@ -78,13 +90,18 @@ class BlogDetail {
         if (themeToggle) {
             const sunIcon = themeToggle.querySelector('.sun-icon');
             const moonIcon = themeToggle.querySelector('.moon-icon');
+            const activeTheme = this.getActiveTheme();
             
-            if (this.currentTheme === 'dark') {
-                sunIcon.style.display = 'none';
-                moonIcon.style.display = 'block';
+            if (activeTheme === 'dark') {
+                if (sunIcon) sunIcon.style.display = 'none';
+                if (moonIcon) moonIcon.style.display = 'block';
+                themeToggle.setAttribute('aria-pressed', 'true');
+                themeToggle.setAttribute('aria-label', 'Switch to light theme');
             } else {
-                sunIcon.style.display = 'block';
-                moonIcon.style.display = 'none';
+                if (sunIcon) sunIcon.style.display = 'block';
+                if (moonIcon) moonIcon.style.display = 'none';
+                themeToggle.setAttribute('aria-pressed', 'false');
+                themeToggle.setAttribute('aria-label', 'Switch to dark theme');
             }
         }
     }
@@ -488,12 +505,7 @@ x_quantized = q * scale + zero_point</code></pre>
         const avatar = document.querySelector('.blog-author-info .author-avatar');
         if (!avatar) return;
 
-        if (!this.blog.authorAvatar) {
-            avatar.innerHTML = '';
-            return;
-        }
-
-        avatar.innerHTML = `<img src="${this.escapeHTML(this.blog.authorAvatar)}" alt="${this.escapeHTML(this.blog.author)}" loading="lazy" referrerpolicy="no-referrer">`;
+        avatar.innerHTML = window.BlogXivAvatarUtils.renderAvatar(this.blog.author, this.blog.authorAvatar, { sourceUrl: this.blog.url });
     }
     
     renderTags() {
