@@ -271,21 +271,50 @@ class BlogXiv {
         const viewCountElement = document.getElementById('blogxivViewCount');
         if (!viewCountElement) return;
 
-        const baseViewCount = 222;
-        const storageKey = 'blogxiv:view-count';
-        let viewCount = baseViewCount;
+        const fallbackViewCount = 293;
+        const mapStatsEndpoint = 'https://mapmyvisitors.com/ajax/orange_dots?id=2245537';
+        const proxyEndpoint = 'https://api.codetabs.com/v1/proxy/?quest=';
+        const formatCount = (count) => Number(count).toLocaleString('en-US');
+        const setCount = (count) => {
+            const pageviews = Number.parseInt(count, 10);
+            if (!Number.isFinite(pageviews) || pageviews < fallbackViewCount) return false;
+            viewCountElement.textContent = formatCount(pageviews);
+            viewCountElement.dataset.source = 'mapmyvisitors';
+            viewCountElement.closest('.hero-view-count')?.setAttribute(
+                'title',
+                'Synced with MapMyVisitors Total Pageviews'
+            );
+            return true;
+        };
 
-        try {
-            const storedCount = Number.parseInt(window.localStorage.getItem(storageKey), 10);
-            const hasStoredCount = Number.isFinite(storedCount) && storedCount >= baseViewCount;
-            viewCount = hasStoredCount ? storedCount + 1 : baseViewCount;
-            window.localStorage.setItem(storageKey, String(viewCount));
-            window.sessionStorage.removeItem('blogxiv:view-counted-session');
-        } catch (error) {
-            viewCount = baseViewCount;
-        }
+        setCount(fallbackViewCount);
 
-        viewCountElement.textContent = viewCount.toLocaleString('en-US');
+        const fetchPageviews = async () => {
+            const controller = new AbortController();
+            const timeout = window.setTimeout(() => controller.abort(), 7000);
+            try {
+                const targetUrl = `${mapStatsEndpoint}&_=${Date.now()}`;
+                const response = await fetch(`${proxyEndpoint}${encodeURIComponent(targetUrl)}`, {
+                    cache: 'no-store',
+                    signal: controller.signal
+                });
+                if (!response.ok) {
+                    throw new Error(`MapMyVisitors sync failed: ${response.status}`);
+                }
+
+                const stats = await response.json();
+                const totalPageviews = Number.parseInt(stats.total_hits ?? stats.visits_count, 10);
+                if (!setCount(totalPageviews)) {
+                    throw new Error('MapMyVisitors response did not include a valid total pageview count');
+                }
+            } finally {
+                window.clearTimeout(timeout);
+            }
+        };
+
+        fetchPageviews().catch(() => {});
+        window.setTimeout(() => fetchPageviews().catch(() => {}), 2500);
+        window.setTimeout(() => fetchPageviews().catch(() => {}), 6500);
     }
 
     deferVisitorMap() {
