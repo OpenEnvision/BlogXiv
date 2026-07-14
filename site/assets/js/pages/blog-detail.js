@@ -143,7 +143,10 @@ class BlogDetail {
 
         document.getElementById('copyShareLink')?.addEventListener('click', () => this.copyShareLink());
         document.querySelectorAll('#shareMenu a').forEach(link => {
-            link.addEventListener('click', () => this.toggleShareMenu(false));
+            link.addEventListener('click', (event) => {
+                event.preventDefault();
+                this.navigateToSharePlatform(link.href);
+            });
         });
         document.addEventListener('click', (event) => {
             if (!event.target.closest('.share-control')) this.toggleShareMenu(false);
@@ -1327,6 +1330,17 @@ x_quantized = q * scale + zero_point</code></pre>
     getShareUrl() {
         const url = new URL(window.location.href);
         url.hash = '';
+
+        const isLocalPreview = url.protocol === 'file:'
+            || url.hostname === 'localhost'
+            || url.hostname === '127.0.0.1'
+            || url.hostname === '[::1]';
+        if (isLocalPreview) {
+            const publicUrl = new URL('https://openenvision.github.io/BlogXiv/site/blog-detail.html');
+            publicUrl.search = url.search;
+            return publicUrl.toString();
+        }
+
         return url.toString();
     }
 
@@ -1345,12 +1359,39 @@ x_quantized = q * scale + zero_point</code></pre>
         }
     }
 
+    navigateToSharePlatform(destination) {
+        let url;
+        try {
+            url = new URL(destination);
+        } catch (error) {
+            this.showNotification('The share link is invalid.', 'error');
+            return false;
+        }
+
+        const allowedHosts = new Set([
+            'www.linkedin.com',
+            'linkedin.com',
+            'x.com',
+            'www.x.com',
+            'twitter.com',
+            'www.twitter.com'
+        ]);
+        if (url.protocol !== 'https:' || !allowedHosts.has(url.hostname)) {
+            this.showNotification('The share destination is not allowed.', 'error');
+            return false;
+        }
+
+        window.location.href = url.toString();
+        return true;
+    }
+
     toggleShareMenu(force) {
         const button = document.getElementById('shareBtn');
         const menu = document.getElementById('shareMenu');
         if (!button || !menu) return;
 
         const shouldOpen = typeof force === 'boolean' ? force : menu.hidden;
+        if (shouldOpen) this.updateShareLinks();
         menu.hidden = !shouldOpen;
         button.setAttribute('aria-expanded', String(shouldOpen));
         if (shouldOpen) menu.querySelector('[role="menuitem"]')?.focus();

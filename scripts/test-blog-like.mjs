@@ -153,9 +153,28 @@ elements.set('shareLinkedIn', linkedInShare);
 elements.set('shareX', xShare);
 detail.blog = { title: 'Gemini Research', excerpt: 'Research excerpt' };
 detail.updateShareLinks();
+assert.match(linkedInShare.href, /^https:\/\/www\.linkedin\.com\/sharing\/share-offsite\//);
 assert.match(decodeURIComponent(linkedInShare.href), /blog-detail\.html\?id=card-blog$/);
+assert.match(xShare.href, /^https:\/\/twitter\.com\/intent\/tweet\?/);
 assert.match(decodeURIComponent(xShare.href), /Gemini Research - BlogrXiv/);
+assert.match(decodeURIComponent(xShare.href), /blog-detail\.html\?id=card-blog/);
 assert.doesNotMatch(decodeURIComponent(xShare.href), /#comments/);
+
+context.window.location.protocol = 'file:';
+context.window.location.href = 'file:///Users/example/BlogrXiv/site/blog-detail.html?id=card-blog#comments';
+assert.equal(detail.getShareUrl(), 'https://openenvision.github.io/BlogXiv/site/blog-detail.html?id=card-blog');
+detail.updateShareLinks();
+assert.match(decodeURIComponent(linkedInShare.href), /https:\/\/openenvision\.github\.io\/BlogXiv\/site\/blog-detail\.html\?id=card-blog$/);
+assert.match(decodeURIComponent(xShare.href), /https:\/\/openenvision\.github\.io\/BlogXiv\/site\/blog-detail\.html\?id=card-blog/);
+context.window.location.protocol = 'https:';
+context.window.location.href = 'https://openenvision.github.io/BlogXiv/site/blog-detail.html?id=card-blog#comments';
+
+detail.showNotification = (message, type) => detail.notifications.push({ message, type });
+assert.equal(detail.navigateToSharePlatform(linkedInShare.href), true);
+assert.match(context.window.location.href, /^https:\/\/www\.linkedin\.com\/sharing\/share-offsite\//);
+assert.equal(detail.navigateToSharePlatform('https://example.com/not-allowed'), false);
+assert.equal(detail.notifications.at(-1).type, 'error');
+context.window.location.href = 'https://openenvision.github.io/BlogXiv/site/blog-detail.html?id=card-blog#comments';
 
 const shareAttributes = new Map();
 let firstShareItemFocused = false;
