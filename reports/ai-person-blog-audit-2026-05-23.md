@@ -1,6 +1,6 @@
 # AI Person Blog Audit - 2026-05-23
 
-Scope: triage of the people list provided by the user, focused on durable, source-linked technical AI writing that fits BlogXiv. The editorial bar was mechanism-level explanation, implementation detail, experimental or systems insight, or a reusable research-craft lesson. Newsletters, journalism, investor commentary, launch posts, podcasts, and social-only commentary were treated as lower fit unless they contained a stable technical longform.
+Scope: triage of the people list provided by the user, focused on durable, source-linked technical AI writing that fits BlogrXiv. The editorial bar was mechanism-level explanation, implementation detail, experimental or systems insight, or a reusable research-craft lesson. Newsletters, journalism, investor commentary, launch posts, podcasts, and social-only commentary were treated as lower fit unless they contained a stable technical longform.
 
 ## Added to the Corpus
 
@@ -46,7 +46,7 @@ Added or expanded curated-blogger coverage for: Yao Fu, Andrej Karpathy, Chris O
 | Yao Fu | Added | High-quality longform Notion essay found and indexed. |
 | Sam Altman | Not a fit | Mostly company/product, strategy, and policy essays rather than technical research blogs. |
 | Yann LeCun | Watch/no add | Papers, talks, and social commentary; no stable technical blog found in this pass. |
-| Andrew Ng | Not a fit | The Batch is useful but mostly educational/newsletter commentary, not BlogXiv-grade technical longform. |
+| Andrew Ng | Not a fit | The Batch is useful but mostly educational/newsletter commentary, not BlogrXiv-grade technical longform. |
 | Francois Chollet | Added | Personal page lists several strong technical essays; two indexed. |
 | Karen Hao | Not a fit | High-quality journalism, but not technical research blogging. |
 | Andrej Karpathy | Added | Personal blog contains canonical technical training and sequence-model posts. |
@@ -54,7 +54,7 @@ Added or expanded curated-blogger coverage for: Yao Fu, Andrej Karpathy, Chris O
 | Sara Hooker | Added | Hardware Lottery is a durable systems/research-incentives essay. |
 | Demis Hassabis | Institutional | DeepMind blog has coverage; no personal technical blog added. |
 | Sarah Guo | Not a fit | Investor/startup writing rather than technical AI research. |
-| David Ha | Added | hardmaru/otoro and interactive papers are strong BlogXiv fits. |
+| David Ha | Added | hardmaru/otoro and interactive papers are strong BlogrXiv fits. |
 | Lilian Weng | Already covered | One of the strongest existing sources. |
 | Oriol Vinyals | Institutional | DeepMind/Google publications and posts; no personal blog found. |
 | Michael Black | Watch | Strong project pages and papers around human body modeling, but no high-signal blog source added. |
@@ -100,7 +100,7 @@ Added or expanded curated-blogger coverage for: Yao Fu, Andrej Karpathy, Chris O
 | Nathan Benaich | Not a fit | State of AI reports/newsletter, not technical blog. |
 | John McDonnell | No add | No durable AI technical blog found. |
 | Bojan Tunguz | Watch | Practical ML/Kaggle presence; no durable research-blog source added. |
-| Ben Goertzel | Not a fit | AGI commentary/philosophy more than BlogXiv technical source. |
+| Ben Goertzel | Not a fit | AGI commentary/philosophy more than BlogrXiv technical source. |
 | Chris Olah | Added | colah/Distill/Transformer Circuits are canonical. |
 | Ksenia Se | Not a fit | TheSequence is mostly newsletter/explainer format. |
 | Paul Graham | Not a fit | Startup essays. |
@@ -151,7 +151,7 @@ Added or expanded curated-blogger coverage for: Yao Fu, Andrej Karpathy, Chris O
 
 ## Follow-Up Candidates
 
-These are worth a second pass if BlogXiv wants broader institutional or mixed-media coverage rather than only canonical blog essays:
+These are worth a second pass if BlogrXiv wants broader institutional or mixed-media coverage rather than only canonical blog essays:
 
 - MosaicML technical blog for training systems and LLM efficiency, related to Naveen Rao.
 - Hugging Face posts by Thomas Wolf and Merve Noyan when they are primary technical explainers rather than release notes.

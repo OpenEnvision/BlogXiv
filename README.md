@@ -1,7 +1,7 @@
-# BlogXiv
+# BlogrXiv
 
 <p align="center">
-  <img src="site/assets/img/brand/blogxiv.svg" alt="BlogXiv" width="360">
+  <img src="site/assets/img/brand/blogrxiv.svg" alt="BlogrXiv" width="360">
 </p>
 
 <p align="center">
@@ -17,9 +17,9 @@
 
 ## Abstract
 
-**BlogXiv** is an editorially curated index of high-quality technical writing on artificial intelligence research. It is designed for researchers, engineers, graduate students, and research leaders who rely on research blogs, lab notes, technical essays, and conference blog-track articles as part of the modern AI knowledge infrastructure.
+**BlogrXiv** is an editorially curated index of high-quality technical writing on artificial intelligence research. It is designed for researchers, engineers, graduate students, and research leaders who rely on research blogs, lab notes, technical essays, and conference blog-track articles as part of the modern AI knowledge infrastructure.
 
-The project treats research blogs as a serious scholarly and engineering medium: faster than survey papers, more implementation-aware than abstracts, and often richer in methodological reflection than social media. BlogXiv therefore emphasizes technical insight, source attribution, taxonomic clarity, and durable discoverability rather than undifferentiated aggregation.
+The project treats research blogs as a serious scholarly and engineering medium: faster than survey papers, more implementation-aware than abstracts, and often richer in methodological reflection than social media. BlogrXiv therefore emphasizes technical insight, source attribution, taxonomic clarity, and durable discoverability rather than undifferentiated aggregation.
 
 Production URL:
 
@@ -36,7 +36,7 @@ https://github.com/OpenEnvision/BlogXiv
 ## Contents
 
 - [Motivation](#motivation)
-- [What BlogXiv Is](#what-blogxiv-is)
+- [What BlogrXiv Is](#what-blogrxiv-is)
 - [Scope](#scope)
 - [Editorial Standard](#editorial-standard)
 - [Selection Protocol](#selection-protocol)
@@ -56,18 +56,18 @@ https://github.com/OpenEnvision/BlogXiv
 
 AI research increasingly circulates through materials that sit between formal publication and informal commentary. Lab essays explain system design decisions; independent researchers publish careful methodological notes; conference blog tracks translate emerging papers into accessible but technically substantive narratives; engineering teams document failure modes, evaluation protocols, and deployment lessons that rarely appear in papers.
 
-This layer is valuable, but difficult to search, compare, and revisit. BlogXiv addresses this problem by constructing a curated, source-linked, taxonomy-aware index of technical AI research writing. The goal is not to replace papers, benchmarks, or bibliographic databases, but to preserve and organize the interpretive layer around them.
+This layer is valuable, but difficult to search, compare, and revisit. BlogrXiv addresses this problem by constructing a curated, source-linked, taxonomy-aware index of technical AI research writing. The goal is not to replace papers, benchmarks, or bibliographic databases, but to preserve and organize the interpretive layer around them.
 
-## What BlogXiv Is
+## What BlogrXiv Is
 
-BlogXiv is:
+BlogrXiv is:
 
 - A curated discovery system for AI research blogs and technical essays.
 - A static, auditable, source-linked index with no backend dependency.
 - A taxonomy for navigating technical writing across research areas.
 - A reading interface for researchers who value explanation, mechanism, and methodological detail.
 
-BlogXiv is not:
+BlogrXiv is not:
 
 - A paper mirror.
 - A news feed.
@@ -77,7 +77,7 @@ BlogXiv is not:
 
 ## Scope
 
-BlogXiv indexes technical blog posts, research notes, lab essays, conference blog-track articles, and engineering write-ups that make a substantive contribution to AI research understanding.
+BlogrXiv indexes technical blog posts, research notes, lab essays, conference blog-track articles, and engineering write-ups that make a substantive contribution to AI research understanding.
 
 The current corpus emphasizes:
 
@@ -95,7 +95,7 @@ The current corpus emphasizes:
 
 ## Editorial Standard
 
-BlogXiv prioritizes posts that satisfy at least one of the following criteria:
+BlogrXiv prioritizes posts that satisfy at least one of the following criteria:
 
 - They explain a mechanism, method, system, empirical result, or failure mode in a way that changes how a technical reader understands the topic.
 - They provide implementation-level detail, evaluation discipline, or design trade-offs that are useful for research or engineering practice.
@@ -121,7 +121,7 @@ Posts are not selected solely because they are recent, popular, affiliated with 
 
 ## Design Principles
 
-BlogXiv follows several design principles:
+BlogrXiv follows several design principles:
 
 | Principle | Implication |
 | --- | --- |
@@ -133,7 +133,7 @@ BlogXiv follows several design principles:
 
 ## Information Architecture
 
-BlogXiv is implemented as a static research index. The site has no server-side runtime, database, authentication layer, or package installation requirement.
+BlogrXiv is implemented as a static research index. The site has no server-side runtime, database, authentication layer, or package installation requirement.
 
 | Surface | Purpose |
 | --- | --- |
@@ -146,7 +146,7 @@ BlogXiv is implemented as a static research index. The site has no server-side r
 | `site/assets/js/app.js` | Canonical in-browser corpus, shared UI behavior, search behavior, filtering logic, and rendering utilities. |
 | `site/assets/js/pages/` | Page-specific controllers for explore, detail, category, blogger, author, and management surfaces. |
 | `site/assets/css/` | Global, enhancement, and page-specific stylesheets. |
-| `site/assets/img/brand/` | BlogXiv and OpenEnvision brand assets. |
+| `site/assets/img/brand/` | BlogrXiv and OpenEnvision brand assets. |
 | `site/assets/img/covers/` | Local thematic cover assets for indexed entries and category representation. |
 | `docs/ARCHITECTURE.md` | Repository structure, ownership boundaries, and maintenance guidance. |
 | `scripts/` | Local maintenance utilities for cover extraction and corpus upkeep. |
@@ -174,7 +174,7 @@ Each indexed entry follows a compact metadata schema:
 }
 ```
 
-The metadata model is intentionally small. BlogXiv favors transparent editorial structure over a complex ingestion pipeline, which keeps review, correction, and deployment lightweight.
+The metadata model is intentionally small. BlogrXiv favors transparent editorial structure over a complex ingestion pipeline, which keeps review, correction, and deployment lightweight.
 
 ## Search and Discovery Metadata
 
@@ -184,7 +184,7 @@ The repository includes public metadata for indexing and platform presentation:
 | --- | --- |
 | `site/robots.txt` | Allows indexing and points crawlers to the sitemap. |
 | `site/sitemap.xml` | Lists major public pages for crawler discovery. |
-| `site/site.webmanifest` | Declares the BlogXiv application name, theme color, and icon assets. |
+| `site/site.webmanifest` | Declares the BlogrXiv application name, theme color, and icon assets. |
 | Open Graph tags | Provide title, description, site name, and image metadata for rich previews. |
 | Twitter Card tags | Provide concise social preview metadata. |
 | Schema.org JSON-LD | Declares `WebSite`, site name, canonical URL, logo, publisher, and site search action. |
@@ -206,12 +206,12 @@ Before deployment, recommended checks are:
 | `node --check site/assets/js/app.js` | Verifies that the primary JavaScript bundle is syntactically valid. |
 | YAML parse of `.github/workflows/pages.yml` | Verifies that the GitHub Pages workflow is structurally valid. |
 | Local static server smoke test | Confirms that `site/index.html`, `site/robots.txt`, `site/sitemap.xml`, and `site/site.webmanifest` are directly accessible. |
-| Manual homepage inspection | Confirms that the BlogXiv logo, wordmark, navigation, search, and category links render as expected. |
+| Manual homepage inspection | Confirms that the BlogrXiv logo, wordmark, navigation, search, and category links render as expected. |
 | Metadata inspection | Confirms that canonical URL, Open Graph tags, Twitter Card tags, and Schema.org JSON-LD are present. |
 
 ## Attribution and Ethics
 
-BlogXiv indexes external writing and does not claim ownership of the original posts. Each entry should preserve the canonical source URL, author or lab attribution, source name, and enough context for readers to evaluate provenance.
+BlogrXiv indexes external writing and does not claim ownership of the original posts. Each entry should preserve the canonical source URL, author or lab attribution, source name, and enough context for readers to evaluate provenance.
 
 Summaries should be editorial and concise. They should not replace the original article, reproduce substantial portions of copyrighted content, or imply endorsement by the original author unless such endorsement is explicit.
 
@@ -259,13 +259,13 @@ If using the custom domain `blogxiv.org`, keep `site/CNAME` and configure DNS fo
 
 ## Repository Hygiene
 
-BlogXiv is static by design. There are no runtime secrets, server credentials, or installation-time dependencies. The `.gitignore` excludes local operating-system artifacts, caches, logs, environment files, and temporary audit outputs.
+BlogrXiv is static by design. There are no runtime secrets, server credentials, or installation-time dependencies. The `.gitignore` excludes local operating-system artifacts, caches, logs, environment files, and temporary audit outputs.
 
 Files such as `.DS_Store`, local reports under `reports/`, temporary crawl artifacts, and machine-specific caches should not be committed.
 
 ## Governance
 
-BlogXiv is maintained by **OpenEnvision** as a curated AI research discovery project. Editorial changes should preserve three invariants:
+BlogrXiv is maintained by **OpenEnvision** as a curated AI research discovery project. Editorial changes should preserve three invariants:
 
 1. Technical depth over breadth.
 2. Transparent source attribution.
@@ -275,11 +275,11 @@ New entries should be added only when their source, author, topic, cover treatme
 
 ## Citation
 
-If BlogXiv is useful in academic or technical work, please cite the project as:
+If BlogrXiv is useful in academic or technical work, please cite the project as:
 
 ```bibtex
 @misc{openenvision_blogxiv_2026,
-  title        = {BlogXiv},
+  title        = {BlogrXiv},
   author       = {{OpenEnvision}},
   year         = {2026},
   note         = {Curated research blog index}
@@ -288,4 +288,4 @@ If BlogXiv is useful in academic or technical work, please cite the project as:
 
 ## Acknowledgment
 
-BlogXiv recognizes the growing importance of research blogs, lab notes, conference blog tracks, and independent technical essays as part of the AI research record. The project is built to make that record easier to navigate, compare, and revisit.
+BlogrXiv recognizes the growing importance of research blogs, lab notes, conference blog tracks, and independent technical essays as part of the AI research record. The project is built to make that record easier to navigate, compare, and revisit.

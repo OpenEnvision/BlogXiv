@@ -126,10 +126,6 @@
     gap: var(--spacing-sm);
 }
 
-.blog-actions #sourceBtn[hidden] {
-    display: none;
-}
-
 .blog-actions #likeBtn.is-liked {
     background-color: var(--primary-blue);
     border-color: var(--primary-blue);
@@ -138,6 +134,85 @@
 
 .blog-actions #likeBtn.is-liked .icon {
     fill: currentColor;
+}
+
+.share-control {
+    position: relative;
+}
+
+.share-menu {
+    position: absolute;
+    z-index: 30;
+    top: calc(100% + 8px);
+    right: 0;
+    width: 178px;
+    padding: 6px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    background: var(--bg-primary);
+    box-shadow: var(--shadow-lg);
+}
+
+.share-menu[hidden] {
+    display: none;
+}
+
+.share-menu-item {
+    display: flex;
+    width: 100%;
+    min-height: 38px;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 10px;
+    border: 0;
+    border-radius: 4px;
+    background: transparent;
+    color: var(--text-primary);
+    font: inherit;
+    font-size: 0.84rem;
+    text-align: left;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.share-menu-item:hover,
+.share-menu-item:focus-visible {
+    outline: none;
+    background: var(--bg-secondary);
+}
+
+.share-menu-item > svg,
+.share-platform-icon {
+    width: 18px;
+    height: 18px;
+    flex: 0 0 18px;
+}
+
+.share-platform-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.72rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.share-platform-linkedin {
+    border-radius: 2px;
+    background: #0a66c2;
+    color: #fff;
+}
+
+.share-platform-x {
+    color: var(--text-primary);
+    font-size: 0.88rem;
+}
+
+@media (max-width: 480px) {
+    .share-menu {
+        right: auto;
+        left: 0;
+    }
 }
 
 /* Blog Content */
@@ -1515,9 +1590,47 @@
     border-top: 1px solid var(--border-color);
 }
 
-.comments-section h2 {
+.comments-section-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--spacing-md);
     margin-bottom: var(--spacing-xl);
+}
+
+.comments-section h2 {
+    margin: 0;
     color: var(--text-primary);
+}
+
+.manage-comments-link {
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    gap: 6px;
+    color: var(--text-secondary);
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.manage-comments-link:hover,
+.manage-comments-link:focus-visible {
+    color: var(--text-primary);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.manage-comments-link svg {
+    width: 14px;
+    height: 14px;
+}
+
+@media (max-width: 480px) {
+    .comments-section-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
 }
 
 .giscus-container {

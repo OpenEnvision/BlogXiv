@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 580 165" role="img" aria-labelledby="logo-title logo-description">
+  <title id="logo-title">BlogrXiv</title>
+  <desc id="logo-description">BlogrXiv wordmark with an abstract publication icon</desc>
+  <g fill="none" stroke="#7cacdc" stroke-width="16" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M8 125V30h35c21 0 33 8 33 22 0 11-7 19-19 23 15 2 23 11 23 24 0 17-13 26-36 26H8Z"/>
+    <path d="M25 56h30M25 78h25M25 100h30" stroke-width="12"/>
+  </g>
+  <g fill="#7cacdc">
+    <path d="M69 13v8c8 0 14 7 14 15h9c0-13-10-23-23-23Z"/>
+    <path d="M66 0v8c17 0 31 14 31 31h8C105 17 88 0 66 0Z"/>
+  </g>
+  <text x="110" y="132" fill="#39568d" font-family="Inter, Arial, sans-serif" font-size="108" font-weight="600" letter-spacing="0">BlogrXiv</text>
+</svg>

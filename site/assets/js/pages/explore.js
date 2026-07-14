@@ -542,7 +542,7 @@ class ExplorePage {
                         <span class="blog-meta-separator">•</span>
                         <span class="blog-date">${blog.publishDate}</span>
                     </div>
-                    <h3 class="blog-title">${blog.title}</h3>
+                    <h3 class="blog-title">${window.BlogXivHyphenation.hyphenateTitle(blog.title)}</h3>
                     <p class="blog-excerpt">${blog.excerpt}</p>
                     <div class="blog-footer">
                         <div class="blog-author">
@@ -570,7 +570,7 @@ class ExplorePage {
                         <span class="blog-meta-separator">•</span>
                         <span class="blog-date">${blog.publishDate}</span>
                     </div>
-                    <h3 class="blog-title">${blog.title}</h3>
+                    <h3 class="blog-title">${window.BlogXivHyphenation.hyphenateTitle(blog.title)}</h3>
                     <p class="blog-excerpt">${blog.excerpt}</p>
                     <div class="blog-footer">
                         <div class="blog-author">

@@ -31,6 +31,7 @@ class BlogDetail {
         this.handleAnnotationDocumentClick = this.handleAnnotationDocumentClick.bind(this);
         this.handleReadingNotesClick = this.handleReadingNotesClick.bind(this);
         this.handleLikeStorageChange = this.handleLikeStorageChange.bind(this);
+        this.handleGiscusMetadata = this.handleGiscusMetadata.bind(this);
         this.init();
     }
     
@@ -42,6 +43,7 @@ class BlogDetail {
         this.setupAnnotationTools();
         this.loadRelatedBlogs();
         window.addEventListener('storage', this.handleLikeStorageChange);
+        window.addEventListener('message', this.handleGiscusMetadata);
     }
     
     // Theme Management
@@ -133,8 +135,25 @@ class BlogDetail {
         // Share button
         const shareBtn = document.getElementById('shareBtn');
         if (shareBtn) {
-            shareBtn.addEventListener('click', () => this.shareBlog());
+            shareBtn.addEventListener('click', (event) => {
+                event.stopPropagation();
+                this.toggleShareMenu();
+            });
         }
+
+        document.getElementById('copyShareLink')?.addEventListener('click', () => this.copyShareLink());
+        document.querySelectorAll('#shareMenu a').forEach(link => {
+            link.addEventListener('click', () => this.toggleShareMenu(false));
+        });
+        document.addEventListener('click', (event) => {
+            if (!event.target.closest('.share-control')) this.toggleShareMenu(false);
+        });
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') {
+                this.toggleShareMenu(false);
+                shareBtn?.focus();
+            }
+        });
         
         // Related blog cards
         document.addEventListener('click', (e) => {
@@ -225,7 +244,7 @@ class BlogDetail {
             ` : ''}
             <h2>Curated Summary</h2>
             <p>${safeExcerpt}</p>
-            <p>This BlogXiv entry points to a trusted external article from <strong>${safeSource}</strong>. Use this page to save notes, comments, and related reading context, then continue to the original article for the full post.</p>
+            <p>This BlogrXiv entry points to a trusted external article from <strong>${safeSource}</strong>. Use this page to save notes, comments, and related reading context, then continue to the original article for the full post.</p>
             <h2>Why It Matters</h2>
             <p>The article sits in the <strong>${safeCategory}</strong> track, making it useful for readers following multimodal AI, generative media, and world-model research progress.</p>
             <h2>Topics</h2>
@@ -464,7 +483,7 @@ x_quantized = q * scale + zero_point</code></pre>
         if (!this.blog) return;
         
         // Update page title
-        document.getElementById('pageTitle').textContent = `${this.blog.title} - BlogXiv`;
+        document.getElementById('pageTitle').textContent = `${this.blog.title} - BlogrXiv`;
         
         // Update breadcrumb
         document.getElementById('breadcrumbCategory').textContent = this.blog.category;
@@ -474,14 +493,14 @@ x_quantized = q * scale + zero_point</code></pre>
         document.getElementById('blogCategory').textContent = this.blog.category;
         document.getElementById('blogReadTime').textContent = this.blog.readTime;
         document.getElementById('blogPublishDate').textContent = this.formatDate(this.blog.publishDate);
-        document.getElementById('blogTitle').textContent = this.blog.title;
+        document.getElementById('blogTitle').textContent = window.BlogXivHyphenation.hyphenateTitle(this.blog.title);
         document.getElementById('blogExcerpt').textContent = this.blog.excerpt;
+        this.updateShareLinks();
         
         // Update author info
         document.getElementById('authorName').textContent = this.blog.author;
         document.getElementById('authorBio').textContent = this.blog.authorBio || 'AI Researcher and Content Creator';
         this.renderAuthorAvatar();
-        this.renderSourceLink();
         
         // The static corpus supplies the base count; this browser can contribute once.
         this.renderLikeState();
@@ -506,12 +525,13 @@ x_quantized = q * scale + zero_point</code></pre>
 
         container.dataset.giscusLoaded = 'true';
         container.replaceChildren();
+        this.updateManageCommentsLink();
 
         if (window.location.protocol === 'file:') {
             const notice = document.createElement('p');
             notice.className = 'giscus-unavailable';
             notice.setAttribute('role', 'status');
-            notice.textContent = 'Comments are available when BlogXiv is served over HTTP.';
+            notice.textContent = 'Comments are available when BlogrXiv is served over HTTP.';
             container.appendChild(notice);
             return;
         }
@@ -528,12 +548,34 @@ x_quantized = q * scale + zero_point</code></pre>
         script.setAttribute('data-term', `blog:${this.blogId}`);
         script.setAttribute('data-strict', '1');
         script.setAttribute('data-reactions-enabled', '1');
-        script.setAttribute('data-emit-metadata', '0');
+        script.setAttribute('data-emit-metadata', '1');
         script.setAttribute('data-input-position', 'top');
         script.setAttribute('data-theme', this.getActiveTheme());
         script.setAttribute('data-lang', 'en');
         script.setAttribute('data-loading', 'lazy');
         container.appendChild(script);
+    }
+
+    getDiscussionSearchUrl() {
+        const query = `in:title \"blog:${this.blogId}\"`;
+        return `https://github.com/OpenEnvision/BlogXiv/discussions?discussions_q=${encodeURIComponent(query)}`;
+    }
+
+    updateManageCommentsLink(discussionUrl = '') {
+        const link = document.getElementById('manageCommentsLink');
+        if (!link) return;
+
+        const isRepositoryDiscussion = /^https:\/\/github\.com\/OpenEnvision\/BlogXiv\/discussions\/\d+(?:[/?#]|$)/.test(discussionUrl);
+        link.href = isRepositoryDiscussion ? discussionUrl : this.getDiscussionSearchUrl();
+        link.setAttribute('aria-label', 'Manage this blog\'s comments on GitHub');
+    }
+
+    handleGiscusMetadata(event) {
+        if (event.origin !== 'https://giscus.app') return;
+
+        const discussion = event.data?.giscus?.discussion;
+        const discussionUrl = discussion?.url || discussion?.html_url || '';
+        if (discussionUrl) this.updateManageCommentsLink(discussionUrl);
     }
 
     updateGiscusTheme() {
@@ -547,20 +589,6 @@ x_quantized = q * scale + zero_point</code></pre>
                 }
             }
         }, 'https://giscus.app');
-    }
-
-    renderSourceLink() {
-        const sourceBtn = document.getElementById('sourceBtn');
-        if (!sourceBtn) return;
-
-        if (this.blog?.url) {
-            sourceBtn.href = this.blog.url;
-            sourceBtn.hidden = false;
-            return;
-        }
-
-        sourceBtn.hidden = true;
-        sourceBtn.removeAttribute('href');
     }
 
     renderAuthorAvatar() {
@@ -597,7 +625,7 @@ x_quantized = q * scale + zero_point</code></pre>
         
         relatedContainer.innerHTML = relatedBlogs.map(blog => `
             <div class="related-blog-card" data-blog-id="${blog.id}">
-                <h3>${blog.title}</h3>
+                <h3>${window.BlogXivHyphenation.hyphenateTitle(blog.title)}</h3>
                 <p>${blog.excerpt}</p>
                 <div class="related-blog-author">
                     ${window.BlogXivAvatarUtils.renderAvatar(blog.author, blog.authorAvatar, { sourceUrl: blog.url })}
@@ -1296,18 +1324,46 @@ x_quantized = q * scale + zero_point</code></pre>
         }
     }
     
-    shareBlog() {
-        if (navigator.share) {
-            navigator.share({
-                title: this.blog.title,
-                text: this.blog.excerpt,
-                url: window.location.href
-            });
-        } else {
-            // Fallback: copy to clipboard
-            navigator.clipboard.writeText(window.location.href).then(() => {
-                this.showNotification('Link copied to clipboard!', 'success');
-            });
+    getShareUrl() {
+        const url = new URL(window.location.href);
+        url.hash = '';
+        return url.toString();
+    }
+
+    updateShareLinks() {
+        if (!this.blog) return;
+
+        const shareUrl = this.getShareUrl();
+        const linkedIn = document.getElementById('shareLinkedIn');
+        const x = document.getElementById('shareX');
+        if (linkedIn) {
+            linkedIn.href = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`;
+        }
+        if (x) {
+            const text = `${this.blog.title} - BlogrXiv`;
+            x.href = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(shareUrl)}`;
+        }
+    }
+
+    toggleShareMenu(force) {
+        const button = document.getElementById('shareBtn');
+        const menu = document.getElementById('shareMenu');
+        if (!button || !menu) return;
+
+        const shouldOpen = typeof force === 'boolean' ? force : menu.hidden;
+        menu.hidden = !shouldOpen;
+        button.setAttribute('aria-expanded', String(shouldOpen));
+        if (shouldOpen) menu.querySelector('[role="menuitem"]')?.focus();
+    }
+
+    async copyShareLink() {
+        try {
+            await navigator.clipboard.writeText(this.getShareUrl());
+            this.showNotification('Link copied to clipboard!', 'success');
+        } catch (error) {
+            this.showNotification('Unable to copy the link. Please copy it from the address bar.', 'error');
+        } finally {
+            this.toggleShareMenu(false);
         }
     }
     

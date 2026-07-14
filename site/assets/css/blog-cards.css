@@ -129,6 +129,11 @@
     font-weight: 650;
     line-height: 1.45;
     letter-spacing: 0;
+    text-wrap: wrap;
+    overflow-wrap: break-word;
+    word-break: normal;
+    -webkit-hyphens: manual;
+    hyphens: manual;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 3;
 }
@@ -418,6 +423,11 @@
     font-family: "Inter", system-ui, sans-serif;
     font-size: 1rem;
     font-weight: 650;
+    text-wrap: wrap;
+    overflow-wrap: break-word;
+    word-break: normal;
+    -webkit-hyphens: manual;
+    hyphens: manual;
     line-height: 1.45;
     letter-spacing: 0;
 }

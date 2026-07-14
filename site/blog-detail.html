@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="pageTitle">Blog Detail - BlogXiv</title>
-    <meta name="description" content="Read the full blog post on BlogXiv - AI Research Blog Platform">
+    <title id="pageTitle">Blog Detail - BlogrXiv</title>
+    <meta name="description" content="Read the full blog post on BlogrXiv - AI Research Blog Platform">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -23,10 +23,10 @@
         })();
     </script>
     <link rel="stylesheet" href="assets/css/styles.css?v=theme-fix-1">
-    <link rel="stylesheet" href="assets/css/blog-detail.css?v=giscus-origin-guard-1">
+    <link rel="stylesheet" href="assets/css/blog-detail.css?v=share-menu-1">
     <link rel="icon" type="image/svg+xml" href="assets/img/brand/icon.svg">
     <link rel="mask-icon" href="assets/img/brand/icon.svg" color="#7cacdc">
-    <link rel="stylesheet" href="assets/css/academic-pages.css?v=1">
+    <link rel="stylesheet" href="assets/css/academic-pages.css?v=fill-line-hyphens-1">
     <link rel="stylesheet" href="assets/css/blog-cards.css?v=1">
     <link rel="stylesheet" href="assets/css/unified-palette.css?v=3">
 </head>
@@ -35,8 +35,8 @@
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-brand">
-                <a href="index.html" class="brand-link" aria-label="BlogXiv home">
-                    <img src="assets/img/brand/blogxiv.svg" alt="BlogXiv" class="brand-logo" />
+                <a href="index.html" class="brand-link" aria-label="BlogrXiv home">
+                    <img src="assets/img/brand/blogrxiv.svg" alt="BlogrXiv" class="brand-logo" />
                 </a>
             </div>
             
@@ -51,7 +51,7 @@
             </div>
             
             <div class="nav-actions">
-                <a class="github-nav-link" href="https://github.com/OpenEnvision/BlogXiv" target="_blank" rel="noopener noreferrer" aria-label="Open BlogXiv on GitHub" title="GitHub">
+                <a class="github-nav-link" href="https://github.com/OpenEnvision/BlogXiv" target="_blank" rel="noopener noreferrer" aria-label="Open BlogrXiv on GitHub" title="GitHub">
                     <svg class="github-nav-icon" width="20" height="20" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
                         <path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82A7.65 7.65 0 0 1 8 4.58c.68.003 1.36.092 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path>
                     </svg>
@@ -113,14 +113,26 @@
                         <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
                         <span>Bookmark</span>
                     </button>
-                    <button class="btn btn-outline" id="shareBtn">
-                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><path d="M8.59 13.51l6.83 3.98"></path><path d="M15.41 6.51L8.59 10.5"></path></svg>
-                        <span>Share</span>
-                    </button>
-                    <a class="btn btn-primary" id="sourceBtn" href="#" target="_blank" rel="noopener noreferrer" hidden>
-                        <span>Read original</span>
-                        <span aria-hidden="true">↗</span>
-                    </a>
+                    <div class="share-control">
+                        <button class="btn btn-outline" id="shareBtn" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="shareMenu">
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><path d="M8.59 13.51l6.83 3.98"></path><path d="M15.41 6.51L8.59 10.5"></path></svg>
+                            <span>Share</span>
+                        </button>
+                        <div class="share-menu" id="shareMenu" role="menu" aria-label="Share this blog" hidden>
+                            <a class="share-menu-item" id="shareLinkedIn" href="#" target="_blank" rel="noopener noreferrer" role="menuitem">
+                                <span class="share-platform-icon share-platform-linkedin" aria-hidden="true">in</span>
+                                <span>LinkedIn</span>
+                            </a>
+                            <a class="share-menu-item" id="shareX" href="#" target="_blank" rel="noopener noreferrer" role="menuitem">
+                                <span class="share-platform-icon share-platform-x" aria-hidden="true">X</span>
+                                <span>X</span>
+                            </a>
+                            <button class="share-menu-item" id="copyShareLink" type="button" role="menuitem">
+                                <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                <span>Copy link</span>
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </header>
 
@@ -148,7 +160,13 @@
 
             <!-- Comments Section -->
             <section class="comments-section" aria-labelledby="commentsTitle">
-                <h2 id="commentsTitle">Comments</h2>
+                <div class="comments-section-header">
+                    <h2 id="commentsTitle">Comments</h2>
+                    <a class="manage-comments-link" id="manageCommentsLink" href="https://github.com/OpenEnvision/BlogXiv/discussions" target="_blank" rel="noopener noreferrer">
+                        Manage comments
+                        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg>
+                    </a>
+                </div>
                 <div class="giscus-container" id="giscusComments"></div>
             </section>
         </div>
@@ -160,8 +178,8 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <div class="footer-brand">
-                        <a href="index.html" class="brand-link" aria-label="BlogXiv home">
-                            <img src="assets/img/brand/blogxiv.svg" alt="BlogXiv" class="brand-logo" />
+                        <a href="index.html" class="brand-link" aria-label="BlogrXiv home">
+                            <img src="assets/img/brand/blogrxiv.svg" alt="BlogrXiv" class="brand-logo" />
                         </a>
                         <a href="https://github.com/OpenEnvision" class="brand-link" aria-label="OpenEnvision GitHub" target="_blank" rel="noopener noreferrer">
                             <img src="assets/img/brand/openenvision_logo_cropped.png" alt="OpenEnvision" class="brand-logo openenvision-logo" />
@@ -195,8 +213,8 @@
                 
                 <div class="footer-section footer-contribute-section">
                     <h3 class="footer-title">Contribute</h3>
-                    <div class="footer-actions" aria-label="Contribute to BlogXiv">
-                        <a class="footer-action-link footer-github-action" href="https://github.com/OpenEnvision/BlogXiv" target="_blank" rel="noopener noreferrer" aria-label="Star OpenEnvision slash BlogXiv on GitHub">
+                    <div class="footer-actions" aria-label="Contribute to BlogrXiv">
+                        <a class="footer-action-link footer-github-action" href="https://github.com/OpenEnvision/BlogXiv" target="_blank" rel="noopener noreferrer" aria-label="Star OpenEnvision slash BlogrXiv on GitHub">
                             <span class="footer-action-icon" aria-hidden="true">
                                 <svg viewBox="0 0 24 24" role="img" focusable="false">
                                     <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2.01c-3.2.7-3.87-1.36-3.87-1.36-.52-1.34-1.28-1.69-1.28-1.69-1.05-.72.08-.71.08-.71 1.16.08 1.77 1.2 1.77 1.2 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.23-1.28-5.23-5.68 0-1.25.45-2.28 1.19-3.08-.12-.29-.52-1.46.11-3.04 0 0 .97-.31 3.17 1.18a10.9 10.9 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.23 2.75.11 3.04.74.8 1.19 1.83 1.19 3.08 0 4.41-2.69 5.38-5.25 5.66.41.35.78 1.05.78 2.12v3.15c0 .31.21.67.8.56A11.52 11.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z" />
@@ -204,10 +222,10 @@
                             </span>
                             <span class="footer-action-copy">
                                 <span class="footer-action-label">Star on GitHub</span>
-                                <span class="footer-action-meta">OpenEnvision/BlogXiv</span>
+                                <span class="footer-action-meta">OpenEnvision / Repository</span>
                             </span>
                         </a>
-                        <a class="footer-action-link footer-mail-action" href="mailto:juanxitian1031@gmail.com?subject=BlogXiv%20Blog%20Submission&body=Please%20include%3A%0A-%20Blog%20title%3A%0A-%20URL%3A%0A-%20Author%20or%20lab%3A%0A-%20Suggested%20category%3A%0A-%20Why%20it%20is%20technically%20valuable%3A" aria-label="Submit a technical AI blog by email">
+                        <a class="footer-action-link footer-mail-action" href="mailto:juanxitian1031@gmail.com?subject=BlogrXiv%20Blog%20Submission&body=Please%20include%3A%0A-%20Blog%20title%3A%0A-%20URL%3A%0A-%20Author%20or%20lab%3A%0A-%20Suggested%20category%3A%0A-%20Why%20it%20is%20technically%20valuable%3A" aria-label="Submit a technical AI blog by email">
                             <span class="footer-action-icon" aria-hidden="true">
                                 <svg viewBox="0 0 24 24" fill="none" role="img" focusable="false">
                                     <path d="M4 6.75h16v10.5a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6.75Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" />
@@ -226,7 +244,7 @@
             
             <div class="footer-bottom">
                 <div class="footer-copyright">
-                    <p>&copy; 2026 OpenEnvision｜BlogXiv. All rights reserved.</p>
+                    <p>&copy; 2026 OpenEnvision｜BlogrXiv. All rights reserved.</p>
                 </div>
                 <div class="footer-legal">
                     <a href="#">Privacy Policy</a>
@@ -241,15 +259,16 @@
     <div class="loading-overlay" id="loadingOverlay">
         <div class="loading-container">
             <div class="loading-logo">
-                <img src="assets/img/brand/blogxiv.svg" alt="BlogXiv">
+                <img src="assets/img/brand/blogrxiv.svg" alt="BlogrXiv">
             </div>
             
             <div class="loading-text" id="loadingText">Loading blog details...</div>
         </div>
     </div>
 
+    <script src="assets/js/blog-hyphenation.js?v=2"></script>
     <script src="assets/js/app.js?v=theme-fix-1"></script>
-    <script src="assets/js/pages/blog-detail.js?v=giscus-origin-guard-1"></script>
+    <script src="assets/js/pages/blog-detail.js?v=share-menu-1"></script>
     <div class="visitor-map" aria-label="Visitor map and count"></div>
 </body>
 </html>

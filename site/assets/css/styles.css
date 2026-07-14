@@ -1266,40 +1266,6 @@ body.search-overlay-open {
     margin: 0 0 var(--spacing-lg);
 }
 
-.hero-view-count {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.48rem;
-    width: fit-content;
-    max-width: 100%;
-    padding: 0.64rem 0.84rem;
-    border: 1px solid rgba(37, 99, 235, 0.2);
-    border-radius: var(--radius-md);
-    background: rgba(255, 255, 255, 0.86);
-    color: var(--text-secondary);
-    box-shadow: 0 14px 30px rgba(15, 23, 42, 0.08);
-    font-size: 0.86rem;
-    font-weight: 800;
-    line-height: 1.2;
-    letter-spacing: 0;
-    text-transform: uppercase;
-    backdrop-filter: blur(12px);
-}
-
-.hero-view-count svg {
-    width: 18px;
-    height: 18px;
-    flex: 0 0 auto;
-    color: var(--primary-blue);
-}
-
-.hero-view-count #blogxivViewCount {
-    color: var(--text-primary);
-    font-size: 1.28rem;
-    line-height: 1;
-    font-variant-numeric: tabular-nums;
-}
-
 .hero-readership-copy {
     max-width: 19rem;
     color: var(--text-secondary);
@@ -1354,12 +1320,6 @@ body.search-overlay-open {
     flex: 0 0 auto;
     color: inherit;
     fill: currentColor;
-}
-
-[data-theme="dark"] .hero-view-count {
-    border-color: rgba(147, 197, 253, 0.22);
-    background: rgba(15, 23, 42, 0.72);
-    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.28);
 }
 
 [data-theme="dark"] .hero-github-star {
@@ -2959,10 +2919,6 @@ body.search-overlay-open {
         margin-bottom: var(--spacing-lg);
     }
 
-    .hero-view-count {
-        justify-content: center;
-    }
-
     .hero-readership-meta {
         width: 100%;
         justify-content: center;
@@ -4023,7 +3979,7 @@ a:focus-visible {
     50% { transform: translate(-50%, -50%) scale(1.06); opacity: 1; }
 }
 
-/* BlogXiv Logo 加载动画 */
+/* BlogrXiv Logo 加载动画 */
 .loading-logo {
     position: relative;
     width: 96px;
