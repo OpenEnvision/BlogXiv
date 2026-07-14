@@ -1,0 +1,438 @@
+/* Final color layer shared by the homepage and every inner page. */
+:root:root {
+    --unified-bg: #f4f8fc;
+    --unified-surface: #edf3f8;
+    --unified-surface-hover: #e6eef6;
+    --unified-surface-strong: #dce8f2;
+    --unified-text: #20384f;
+    --unified-muted: #5d7d9c;
+    --unified-border: #cfdae5;
+    --unified-border-strong: #adc2d5;
+    --unified-accent: #031f3c;
+    --unified-accent-hover: #1d518b;
+    --unified-accent-soft: #d9e8f5;
+    --unified-on-accent: #ffffff;
+    --unified-shadow-sm: 0 1px 2px rgba(32, 56, 79, 0.06), 0 7px 18px rgba(32, 56, 79, 0.07);
+    --unified-shadow-md: 0 2px 5px rgba(32, 56, 79, 0.08), 0 13px 30px rgba(32, 56, 79, 0.11);
+    --unified-shadow-inset: inset 0 1px 0 rgba(255, 255, 255, 0.72);
+
+    --primary-blue: var(--unified-accent);
+    --primary-blue-dark: var(--unified-accent-hover);
+    --secondary-blue: #3978ba;
+    --light-blue: #8ebbe1;
+    --dark-blue: var(--unified-text);
+    --accent-blue: var(--unified-accent);
+    --sky-blue: var(--unified-surface);
+    --ultra-light-blue: var(--unified-bg);
+    --bg-primary: var(--unified-bg);
+    --bg-secondary: var(--unified-surface);
+    --bg-tertiary: var(--unified-surface-strong);
+    --text-primary: var(--unified-text);
+    --text-secondary: var(--unified-muted);
+    --border-color: var(--unified-border);
+    --focus-ring: color-mix(in srgb, var(--unified-accent) 38%, transparent);
+
+    --page-paper: var(--unified-bg);
+    --page-paper-deep: var(--unified-surface);
+    --page-ink: var(--unified-text);
+    --page-muted: var(--unified-muted);
+    --page-rule: var(--unified-border);
+    --page-accent: var(--unified-accent);
+    --page-navy: var(--unified-accent);
+
+    --blog-card-bg: var(--unified-surface);
+    --blog-card-bg-hover: var(--unified-surface-hover);
+    --blog-card-image-bg: var(--unified-surface-strong);
+    --blog-card-border: var(--unified-border);
+    --blog-card-border-hover: var(--unified-border-strong);
+    --blog-card-text: var(--unified-text);
+    --blog-card-muted: var(--unified-muted);
+    --blog-card-avatar-bg: #f8fbfd;
+    --blog-card-active: var(--unified-accent);
+    --blog-card-active-text: var(--unified-on-accent);
+}
+
+:root:root[data-theme="dark"] {
+    --unified-bg: #202b35;
+    --unified-surface: #293744;
+    --unified-surface-hover: #30404e;
+    --unified-surface-strong: #344654;
+    --unified-text: #dce8f1;
+    --unified-muted: #a8bac8;
+    --unified-border: #415565;
+    --unified-border-strong: #587084;
+    --unified-accent: #79aee0;
+    --unified-accent-hover: #91bde5;
+    --unified-accent-soft: #374f63;
+    --unified-on-accent: #172533;
+    --unified-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.16), 0 8px 20px rgba(0, 0, 0, 0.16);
+    --unified-shadow-md: 0 2px 5px rgba(0, 0, 0, 0.2), 0 14px 32px rgba(0, 0, 0, 0.22);
+    --unified-shadow-inset: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+
+    --blog-card-avatar-bg: #e9f0f5;
+    --bg-primary: var(--unified-bg);
+    --bg-secondary: var(--unified-surface);
+    --bg-tertiary: var(--unified-surface-strong);
+    --text-primary: var(--unified-text);
+    --text-secondary: var(--unified-muted);
+    --border-color: var(--unified-border);
+}
+
+.academic-home {
+    --paper: var(--unified-bg);
+    --paper-deep: var(--unified-surface);
+    --ink: var(--unified-text);
+    --muted-ink: var(--unified-muted);
+    --rule: var(--unified-border);
+    --accent: var(--unified-accent);
+    --accent-dark: var(--unified-accent-hover);
+    --navy: var(--unified-accent);
+}
+
+body,
+.academic-home,
+.academic-home .popular-blogs,
+.academic-home .contributors,
+.academic-home .footer,
+.footer {
+    background-color: var(--unified-bg);
+}
+
+.navbar,
+.academic-home .navbar {
+    border-bottom-color: var(--unified-border);
+    background: color-mix(in srgb, var(--unified-bg) 94%, transparent);
+}
+
+.navbar.navbar-scrolled,
+.academic-home .navbar.navbar-scrolled {
+    border-bottom-color: var(--unified-border-strong);
+}
+
+.search-container,
+.github-nav-link,
+.theme-toggle,
+.academic-home .search-container,
+.academic-home .github-nav-link,
+.academic-home .theme-toggle {
+    border-color: var(--unified-border);
+}
+
+.github-nav-link:hover,
+.theme-toggle:hover,
+.academic-home .github-nav-link:hover,
+.academic-home .theme-toggle:hover,
+.nav-links a:hover,
+.academic-home .nav-links a:hover {
+    border-color: var(--unified-accent);
+    color: var(--unified-accent);
+}
+
+.academic-home .categories,
+.academic-home .contribute,
+.filters-section,
+.view-toggle {
+    background: var(--unified-surface);
+}
+
+.academic-home .standards {
+    background: var(--unified-accent);
+}
+
+.academic-home .standards .section-kicker,
+.academic-home .standards-list > li > span {
+    color: #dbeafa;
+}
+
+.btn-primary,
+.academic-home .btn-primary {
+    border-color: var(--unified-accent);
+    background: var(--unified-accent);
+    color: var(--unified-on-accent);
+}
+
+.btn-primary:hover,
+.academic-home .btn-primary:hover {
+    border-color: var(--unified-accent-hover);
+    background: var(--unified-accent-hover);
+    color: var(--unified-on-accent);
+}
+
+.btn-secondary:hover,
+.btn-outline:hover,
+.academic-home .btn-outline:hover,
+.text-link:hover,
+.academic-home .text-link:hover {
+    border-color: var(--unified-accent);
+    color: var(--unified-accent);
+}
+
+.section-kicker,
+.academic-home .section-kicker,
+.academic-home .index-facts dt,
+.blog-source-link,
+.category-link,
+.breadcrumb a {
+    color: var(--unified-accent);
+}
+
+.category-icon,
+.research-icon,
+.academic-home .category-number {
+    color: var(--unified-accent);
+}
+
+.academic-home .legacy-hero .research-icon {
+    color: #ffffff;
+}
+
+.academic-home .legacy-hero .research-icon svg,
+.academic-home .legacy-hero .research-icon svg * {
+    color: #ffffff;
+    stroke: #ffffff;
+}
+
+/* Subtle depth for the site's repeated framed elements. */
+:root:root .blog-card,
+:root:root .blog-list-item,
+:root:root .related-blog-card,
+.academic-home .legacy-hero .research-card,
+.academic-home .category-card,
+.academic-home .popular-blogger-card,
+.category-card,
+.author-card,
+.research-card,
+.stat-card,
+.form-container,
+.preview-blog,
+.comment-form,
+.comment-item,
+.footer-action-link {
+    box-shadow: var(--unified-shadow-sm), var(--unified-shadow-inset);
+}
+
+:root:root .blog-card:hover,
+:root:root .blog-list-item:hover,
+:root:root .related-blog-card:hover,
+.academic-home .legacy-hero .research-card:hover,
+.academic-home .category-card:hover,
+.academic-home .popular-blogger-card:hover,
+.category-card:hover,
+.author-card:hover,
+.research-card:hover,
+.footer-action-link:hover {
+    box-shadow: var(--unified-shadow-md), var(--unified-shadow-inset);
+    transform: translateY(-2px);
+}
+
+.filters-section,
+.search-container,
+.academic-home .search-container,
+.view-toggle,
+.newsletter-action,
+.footer-action-link,
+.academic-home .legacy-hero .hero-view-count,
+.academic-home .legacy-hero .hero-github-star {
+    box-shadow: var(--unified-shadow-inset), 0 4px 12px rgba(32, 56, 79, 0.05);
+}
+
+[data-theme="dark"] .filters-section,
+[data-theme="dark"] .search-container,
+[data-theme="dark"] .academic-home .search-container,
+[data-theme="dark"] .view-toggle,
+[data-theme="dark"] .newsletter-action,
+[data-theme="dark"] .footer-action-link,
+[data-theme="dark"] .academic-home .legacy-hero .hero-view-count,
+[data-theme="dark"] .academic-home .legacy-hero .hero-github-star {
+    box-shadow: var(--unified-shadow-inset), 0 5px 14px rgba(0, 0, 0, 0.13);
+}
+
+.category-card:hover .category-title,
+.academic-home .category-card:hover .category-title,
+.academic-home .category-card:hover .category-arrow {
+    color: var(--unified-accent);
+}
+
+/* A single quiet label treatment replaces the earlier multicolor tags. */
+:root:root .blog-card[data-blog-category] .blog-category,
+:root:root .blog-list-item[data-blog-category] .blog-category {
+    min-height: 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 11px;
+    border: 1px solid color-mix(in srgb, var(--unified-accent) 20%, transparent);
+    border-radius: 999px;
+    background: var(--unified-accent-soft);
+    color: var(--unified-accent-hover);
+    box-shadow: var(--unified-shadow-inset), 0 3px 8px rgba(32, 56, 79, 0.08);
+}
+
+:root:root[data-theme="dark"] .blog-card[data-blog-category] .blog-category,
+:root:root[data-theme="dark"] .blog-list-item[data-blog-category] .blog-category {
+    border-color: color-mix(in srgb, var(--unified-accent) 24%, transparent);
+    background: var(--unified-accent-soft);
+    color: var(--unified-accent);
+    box-shadow: var(--unified-shadow-inset), 0 3px 8px rgba(0, 0, 0, 0.16);
+}
+
+.academic-home .legacy-hero {
+    border-bottom-color: var(--unified-border);
+    background: linear-gradient(180deg, #edf7ff 0%, var(--unified-bg) 100%);
+}
+
+.academic-home .legacy-hero .gradient-text {
+    background: linear-gradient(135deg, var(--unified-accent-hover) 0%, #3e78d8 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+}
+
+.academic-home .legacy-hero .hero-view-count,
+.academic-home .legacy-hero .hero-github-star,
+.academic-home .legacy-hero .research-card {
+    border-color: var(--unified-border);
+}
+
+.academic-home .legacy-hero .btn-cta {
+    background: linear-gradient(135deg, var(--unified-accent-hover) 0%, #3472d8 100%);
+}
+
+.academic-home .legacy-hero .btn-cta:hover {
+    background: linear-gradient(135deg, #184676 0%, #2d62bd 100%);
+}
+
+[data-theme="dark"] .academic-home .legacy-hero {
+    background: linear-gradient(180deg, #243644 0%, var(--unified-bg) 100%);
+}
+
+[data-theme="dark"] .academic-home .legacy-hero .research-card {
+    border-color: var(--unified-border);
+    background: color-mix(in srgb, var(--unified-surface) 88%, transparent);
+}
+
+[data-theme="dark"] .academic-home .standards h2,
+[data-theme="dark"] .academic-home .standards h3,
+[data-theme="dark"] .academic-home .standards p {
+    color: var(--unified-on-accent);
+}
+
+/* Categories page: softer topic chips and a readable low-emphasis action. */
+.categories-page .categories-section .category-card {
+    min-height: 440px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 30px 28px 26px;
+    border-radius: 8px;
+}
+
+.categories-page .categories-section .category-icon {
+    margin-bottom: 22px;
+    border-color: var(--unified-border);
+    border-radius: 8px;
+    background: color-mix(in srgb, var(--unified-accent-soft) 58%, transparent);
+}
+
+.categories-page .categories-section .category-title {
+    margin-bottom: 10px;
+}
+
+.categories-page .categories-section .category-description {
+    min-height: 3.2em;
+    max-width: 34ch;
+    margin-bottom: 20px;
+}
+
+.categories-page .categories-section .category-tags {
+    min-height: 64px;
+    display: flex;
+    align-content: flex-start;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 7px;
+    width: 100%;
+    margin: 0 0 22px;
+}
+
+.categories-page .categories-section .category-tags .tag {
+    min-height: 28px;
+    display: inline-flex;
+    align-items: center;
+    padding: 5px 10px;
+    border: 1px solid color-mix(in srgb, var(--unified-accent) 13%, transparent);
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--unified-accent-soft) 72%, transparent);
+    color: var(--unified-muted);
+    font-family: "Inter", system-ui, sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    line-height: 1.2;
+    white-space: nowrap;
+}
+
+.categories-page .categories-section .category-link {
+    width: 100%;
+    min-height: 46px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    margin-top: auto;
+    padding: 11px 16px;
+    border: 1px solid color-mix(in srgb, var(--unified-accent) 22%, transparent);
+    border-radius: 7px;
+    background: color-mix(in srgb, var(--unified-accent-soft) 62%, transparent);
+    color: var(--unified-accent-hover);
+    font-family: "Inter", system-ui, sans-serif;
+    font-size: 0.76rem;
+    font-weight: 600;
+    line-height: 1.3;
+    text-align: center;
+    text-decoration: none;
+    box-shadow: var(--unified-shadow-inset);
+    transition: border-color 150ms ease, background-color 150ms ease, color 150ms ease, transform 150ms ease;
+}
+
+.categories-page .categories-section .category-link::after {
+    content: "\2192";
+    flex: 0 0 auto;
+    font-size: 0.92rem;
+    line-height: 1;
+}
+
+.categories-page .categories-section .category-link:hover {
+    border-color: color-mix(in srgb, var(--unified-accent) 38%, transparent);
+    background: color-mix(in srgb, var(--unified-accent-soft) 88%, transparent);
+    color: var(--unified-accent-hover);
+    box-shadow: var(--unified-shadow-inset), 0 5px 14px rgba(32, 56, 79, 0.06);
+    transform: translateY(-1px);
+}
+
+.categories-page .categories-section .category-link:focus-visible {
+    outline: 2px solid var(--unified-accent);
+    outline-offset: 3px;
+}
+
+[data-theme="dark"] .categories-page .categories-section .category-tags .tag {
+    border-color: color-mix(in srgb, var(--unified-accent) 18%, transparent);
+    background: color-mix(in srgb, var(--unified-accent-soft) 76%, transparent);
+    color: var(--unified-muted);
+}
+
+[data-theme="dark"] .categories-page .categories-section .category-link {
+    border-color: color-mix(in srgb, var(--unified-accent) 25%, transparent);
+    background: color-mix(in srgb, var(--unified-accent-soft) 72%, transparent);
+    color: var(--unified-accent);
+}
+
+@media (max-width: 480px) {
+    .categories-page .categories-section .category-card {
+        min-height: 0;
+        padding: 24px 20px;
+    }
+
+    .categories-page .categories-section .category-description,
+    .categories-page .categories-section .category-tags {
+        min-height: 0;
+    }
+}

@@ -23,9 +23,12 @@
         })();
     </script>
     <link rel="stylesheet" href="assets/css/styles.css?v=theme-fix-1">
-    <link rel="stylesheet" href="assets/css/blog-detail.css?v=popular-real-blogs-expanded-16">
+    <link rel="stylesheet" href="assets/css/blog-detail.css?v=giscus-origin-guard-1">
     <link rel="icon" type="image/svg+xml" href="assets/img/brand/icon.svg">
     <link rel="mask-icon" href="assets/img/brand/icon.svg" color="#7cacdc">
+    <link rel="stylesheet" href="assets/css/academic-pages.css?v=1">
+    <link rel="stylesheet" href="assets/css/blog-cards.css?v=1">
+    <link rel="stylesheet" href="assets/css/unified-palette.css?v=3">
 </head>
 <body>
     <!-- Navigation -->
@@ -102,7 +105,7 @@
                 </div>
 
                 <div class="blog-actions">
-                    <button class="btn btn-outline" id="likeBtn">
+                    <button class="btn btn-outline" id="likeBtn" type="button" aria-label="Like this blog" aria-pressed="false" title="Like this blog">
                         <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"></path></svg>
                         <span id="likeCount">0</span>
                     </button>
@@ -114,6 +117,10 @@
                         <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><path d="M8.59 13.51l6.83 3.98"></path><path d="M15.41 6.51L8.59 10.5"></path></svg>
                         <span>Share</span>
                     </button>
+                    <a class="btn btn-primary" id="sourceBtn" href="#" target="_blank" rel="noopener noreferrer" hidden>
+                        <span>Read original</span>
+                        <span aria-hidden="true">↗</span>
+                    </a>
                 </div>
             </header>
 
@@ -140,15 +147,9 @@
             </section>
 
             <!-- Comments Section -->
-            <section class="comments-section">
-                <h2>Comments</h2>
-                <form class="comment-form">
-                    <textarea placeholder="Share your thoughts..." class="comment-input" required></textarea>
-                    <button type="submit" class="btn btn-primary">Post Comment</button>
-                </form>
-                <div class="comments-list" id="commentsList">
-                    <!-- Comments will be dynamically loaded here -->
-                </div>
+            <section class="comments-section" aria-labelledby="commentsTitle">
+                <h2 id="commentsTitle">Comments</h2>
+                <div class="giscus-container" id="giscusComments"></div>
             </section>
         </div>
     </main>
@@ -248,7 +249,7 @@
     </div>
 
     <script src="assets/js/app.js?v=theme-fix-1"></script>
-    <script src="assets/js/pages/blog-detail.js?v=theme-fix-1"></script>
+    <script src="assets/js/pages/blog-detail.js?v=giscus-origin-guard-1"></script>
     <div class="visitor-map" aria-label="Visitor map and count"></div>
 </body>
 </html>

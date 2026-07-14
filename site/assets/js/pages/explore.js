@@ -6,6 +6,8 @@ class ExplorePage {
         this.filteredBlogs = [];
         this.displayedBlogs = 12; // Show 12 blogs initially
         this.blogsPerPage = 12; // Load 12 more blogs each time
+        this.currentPage = 1;
+        this.pageSize = 9;
         this.currentView = 'grid'; // 'grid' or 'list'
         this.searchQuery = '';
         this.currentFilters = {
@@ -370,6 +372,7 @@ class ExplorePage {
         
         this.filteredBlogs = filtered;
         this.displayedBlogs = 12; // Reset displayed count
+        this.currentPage = 1;
         this.updatePageHeader();
         this.updateSectionHeader();
         this.renderBlogs();
@@ -481,10 +484,18 @@ class ExplorePage {
                     <p>Try adjusting your search criteria or filters.</p>
                 </div>
             `;
+            document.getElementById('blogsGridPagination')?.remove();
+            this.updateLoadMoreButton();
             return;
         }
         
-        const blogsToShow = this.filteredBlogs.slice(0, this.displayedBlogs);
+        const totalPages = Math.max(1, Math.ceil(this.filteredBlogs.length / this.pageSize));
+        this.currentPage = Math.min(this.currentPage, totalPages);
+        const blogsToShow = window.BlogXivPagination.getPageItems(
+            this.filteredBlogs,
+            this.currentPage,
+            this.pageSize
+        );
         
         if (this.currentView === 'list') {
             blogsGrid.className = 'blogs-list';
@@ -494,66 +505,42 @@ class ExplorePage {
             blogsGrid.innerHTML = blogsToShow.map(blog => this.renderBlogCard(blog)).join('');
         }
         
-        // Add click event listeners to blog cards/items
-        this.attachBlogClickHandlers();
+        window.BlogXivPagination.render(blogsGrid, {
+            currentPage: this.currentPage,
+            totalItems: this.filteredBlogs.length,
+            pageSize: this.pageSize,
+            label: 'Explore blog pages',
+            onPageChange: (page) => this.changePage(page)
+        });
+        this.updateLoadMoreButton();
     }
-    
-    // Add click handlers for blog navigation
-    attachBlogClickHandlers() {
-        const blogCards = document.querySelectorAll('.blog-card, .blog-list-item');
-        blogCards.forEach(card => {
-            card.addEventListener('click', (e) => {
-                // Don't trigger if clicking on a link or button inside the card
-                if (e.target.closest('a') || e.target.tagName === 'BUTTON') {
-                    return;
-                }
 
-                const blogUrl = card.dataset.blogUrl;
-                if (blogUrl) {
-                    window.open(blogUrl, '_blank', 'noopener,noreferrer');
-                    return;
-                }
-
-                const blogId = card.dataset.blogId;
-                if (blogId) {
-                    window.location.href = `blog-detail.html?id=${blogId}`;
-                }
-            });
-            
-            // Add keyboard accessibility
-            card.setAttribute('role', 'article');
-            card.setAttribute('tabindex', '0');
-            card.addEventListener('keypress', (e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    const blogUrl = card.dataset.blogUrl;
-                    if (blogUrl) {
-                        window.open(blogUrl, '_blank', 'noopener,noreferrer');
-                        return;
-                    }
-                    const blogId = card.dataset.blogId;
-                    if (blogId) {
-                        window.location.href = `blog-detail.html?id=${blogId}`;
-                    }
-                }
+    changePage(page) {
+        const blogsGrid = document.getElementById('blogsGrid');
+        window.BlogXivPagination.transition(blogsGrid, () => {
+            this.currentPage = page;
+            this.renderBlogs();
+            document.querySelector('.blogs-header')?.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
             });
         });
     }
     
     renderBlogCard(blog) {
         return `
-            <article class="blog-card" data-blog-id="${blog.id}" data-blog-url="${blog.url || ''}">
+            <article class="blog-card" data-blog-id="${blog.id}" data-blog-url="${blog.url || ''}" data-blog-category="${blog.category}">
                 <div class="blog-image">
                     <img class="blog-cover-image ${blog.coverFit === 'contain' ? 'is-contain' : ''}" src="${blog.coverImage}" alt="${blog.coverAlt || blog.title}" loading="lazy" referrerpolicy="no-referrer">
                     <span class="blog-source-pill">${blog.sourceName}</span>
                 </div>
                 <div class="blog-content">
                     <div class="blog-meta">
-                        <span class="blog-category">${blog.category}</span>
-                        <span>•</span>
-                        <span>${blog.readTime}</span>
-                        <span>•</span>
-                        <span>${this.formatDate(blog.publishDate)}</span>
+                        <a class="blog-detail-link" href="blog-detail.html?id=${encodeURIComponent(blog.id)}">View details</a>
+                        <span class="blog-meta-separator">•</span>
+                        <span class="blog-read-time">${blog.readTime}</span>
+                        <span class="blog-meta-separator">•</span>
+                        <span class="blog-date">${blog.publishDate}</span>
                     </div>
                     <h3 class="blog-title">${blog.title}</h3>
                     <p class="blog-excerpt">${blog.excerpt}</p>
@@ -562,7 +549,10 @@ class ExplorePage {
                             ${this.renderAuthorAvatar(blog)}
                             <span class="author-name">${blog.author}</span>
                         </div>
-                        <a class="blog-source-link" href="${blog.url}" target="_blank" rel="noopener noreferrer">Read original</a>
+                        ${window.BlogXivLikes.renderButton(blog.id)}
+                    </div>
+                    <div class="blog-card-actions">
+                        <span class="blog-card-category">${blog.category}</span>
                     </div>
                 </div>
             </article>
@@ -571,14 +561,14 @@ class ExplorePage {
     
     renderBlogListItem(blog) {
         return `
-            <article class="blog-list-item" data-blog-id="${blog.id}" data-blog-url="${blog.url || ''}">
+            <article class="blog-list-item" data-blog-id="${blog.id}" data-blog-url="${blog.url || ''}" data-blog-category="${blog.category}">
                 <div class="blog-list-content">
                     <div class="blog-meta">
-                        <span class="blog-category">${blog.category}</span>
-                        <span>•</span>
-                        <span>${blog.readTime}</span>
-                        <span>•</span>
-                        <span>${this.formatDate(blog.publishDate)}</span>
+                        <a class="blog-detail-link" href="blog-detail.html?id=${encodeURIComponent(blog.id)}">View details</a>
+                        <span class="blog-meta-separator">•</span>
+                        <span class="blog-read-time">${blog.readTime}</span>
+                        <span class="blog-meta-separator">•</span>
+                        <span class="blog-date">${blog.publishDate}</span>
                     </div>
                     <h3 class="blog-title">${blog.title}</h3>
                     <p class="blog-excerpt">${blog.excerpt}</p>
@@ -587,7 +577,10 @@ class ExplorePage {
                             ${this.renderAuthorAvatar(blog)}
                             <span class="author-name">${blog.author}</span>
                         </div>
-                        <a class="blog-source-link" href="${blog.url}" target="_blank" rel="noopener noreferrer">Read original</a>
+                        ${window.BlogXivLikes.renderButton(blog.id)}
+                    </div>
+                    <div class="blog-card-actions">
+                        <span class="blog-card-category">${blog.category}</span>
                     </div>
                 </div>
             </article>
@@ -623,8 +616,7 @@ class ExplorePage {
     updateLoadMoreButton() {
         const loadMoreContainer = document.querySelector('.load-more');
         if (loadMoreContainer) {
-            const showButton = this.displayedBlogs < this.filteredBlogs.length;
-            loadMoreContainer.style.display = showButton ? 'block' : 'none';
+            loadMoreContainer.style.display = 'none';
         }
     }
     

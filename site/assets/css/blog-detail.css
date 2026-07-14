@@ -126,6 +126,20 @@
     gap: var(--spacing-sm);
 }
 
+.blog-actions #sourceBtn[hidden] {
+    display: none;
+}
+
+.blog-actions #likeBtn.is-liked {
+    background-color: var(--primary-blue);
+    border-color: var(--primary-blue);
+    color: var(--white);
+}
+
+.blog-actions #likeBtn.is-liked .icon {
+    fill: currentColor;
+}
+
 /* Blog Content */
 .blog-content {
     max-width: 800px;
@@ -259,6 +273,15 @@
 
 .external-source-callout .btn {
     flex: 0 0 auto;
+}
+
+.blog-content .external-source-callout .btn-primary,
+.blog-content .external-source-callout .btn-primary:visited,
+.blog-content .external-source-callout .btn-primary:hover,
+.blog-content .external-source-callout .btn-primary:focus-visible {
+    color: #ffffff;
+    -webkit-text-fill-color: #ffffff;
+    border-bottom-color: transparent;
 }
 
 @media (max-width: 640px) {
@@ -1487,12 +1510,32 @@
 /* Comments Section */
 .comments-section {
     max-width: 800px;
-    margin: 0 auto;
+    margin: var(--spacing-3xl) auto 0;
+    padding-top: var(--spacing-2xl);
+    border-top: 1px solid var(--border-color);
 }
 
 .comments-section h2 {
     margin-bottom: var(--spacing-xl);
     color: var(--text-primary);
+}
+
+.giscus-container {
+    width: 100%;
+    min-height: 220px;
+}
+
+.giscus-container .giscus,
+.giscus-container .giscus-frame {
+    width: 100%;
+}
+
+.giscus-unavailable {
+    margin: 0;
+    padding: var(--spacing-lg);
+    border: 1px solid var(--border-color);
+    background: var(--bg-secondary);
+    color: var(--text-secondary);
 }
 
 .comment-form {

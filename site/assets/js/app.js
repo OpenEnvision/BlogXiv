@@ -173,6 +173,93 @@
     };
 })(typeof window !== 'undefined' ? window : globalThis);
 
+window.BlogXivPagination = {
+    getPageItems(items, currentPage, pageSize) {
+        const start = (currentPage - 1) * pageSize;
+        return items.slice(start, start + pageSize);
+    },
+
+    render(container, options) {
+        if (!container) return;
+
+        const {
+            currentPage,
+            totalItems,
+            pageSize,
+            onPageChange,
+            label = 'Blog pages'
+        } = options;
+        const totalPages = Math.max(1, Math.ceil(totalItems / pageSize));
+        const paginationId = `${container.id || 'blogGrid'}Pagination`;
+        let pagination = document.getElementById(paginationId);
+
+        if (totalItems <= pageSize) {
+            pagination?.remove();
+            return;
+        }
+
+        if (!pagination) {
+            pagination = document.createElement('nav');
+            pagination.id = paginationId;
+            pagination.className = 'blog-pagination';
+            pagination.setAttribute('aria-label', label);
+            container.insertAdjacentElement('afterend', pagination);
+        }
+
+        const visiblePages = [];
+        for (let page = 1; page <= totalPages; page += 1) {
+            if (page === 1 || page === totalPages || Math.abs(page - currentPage) <= 1) {
+                visiblePages.push(page);
+            }
+        }
+
+        const pageControls = [];
+        visiblePages.forEach((page, index) => {
+            if (index > 0 && page - visiblePages[index - 1] > 1) {
+                pageControls.push('<span class="pagination-ellipsis" aria-hidden="true">...</span>');
+            }
+            pageControls.push(`
+                <button class="pagination-page${page === currentPage ? ' is-active' : ''}" type="button" data-page="${page}" aria-label="Page ${page}"${page === currentPage ? ' aria-current="page"' : ''}>${page}</button>
+            `);
+        });
+
+        pagination.innerHTML = `
+            <button class="pagination-arrow" type="button" data-page="${currentPage - 1}" aria-label="Previous page" ${currentPage === 1 ? 'disabled' : ''}>&larr;</button>
+            <div class="pagination-pages">${pageControls.join('')}</div>
+            <button class="pagination-arrow" type="button" data-page="${currentPage + 1}" aria-label="Next page" ${currentPage === totalPages ? 'disabled' : ''}>&rarr;</button>
+        `;
+
+        pagination.querySelectorAll('button[data-page]').forEach((button) => {
+            button.addEventListener('click', () => {
+                const nextPage = Number.parseInt(button.dataset.page, 10);
+                if (!Number.isFinite(nextPage) || nextPage === currentPage || nextPage < 1 || nextPage > totalPages) return;
+                onPageChange(nextPage);
+            });
+        });
+    },
+
+    transition(container, update) {
+        if (!container) {
+            update();
+            return;
+        }
+
+        const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (reduceMotion) {
+            update();
+            return;
+        }
+
+        container.classList.add('is-page-changing');
+        window.setTimeout(() => {
+            update();
+            window.requestAnimationFrame(() => {
+                container.classList.remove('is-page-changing');
+            });
+        }, 120);
+    }
+};
+
 class BlogXiv {
     constructor() {
         this.currentTheme = this.getStoredTheme();
@@ -181,6 +268,8 @@ class BlogXiv {
         this.filteredBlogs = [];
         this.displayedBlogs = 12; // Show a richer curated set on the homepage
         this.blogsPerPage = 6; // Load 6 more blogs each time
+        this.currentBlogPage = 1;
+        this.blogPageSize = 9;
         this.searchInput = null;
         this.suggestionsContainer = null;
         this.currentSuggestions = [];
@@ -467,6 +556,11 @@ class BlogXiv {
         const categoryCards = document.querySelectorAll('.category-card');
         categoryCards.forEach(card => {
             card.addEventListener('click', () => this.filterByCategory(card.dataset.category));
+            card.addEventListener('keydown', (event) => {
+                if (event.key !== 'Enter' && event.key !== ' ') return;
+                event.preventDefault();
+                this.filterByCategory(card.dataset.category);
+            });
         });
         
         // Smooth scrolling for anchor links
@@ -1018,12 +1112,7 @@ class BlogXiv {
 
     navigateToBlog(blogId) {
         this.closeSearchOverlay();
-        const blog = this.blogs.find(item => String(item.id) === String(blogId));
-        if (blog?.url) {
-            window.open(blog.url, '_blank', 'noopener,noreferrer');
-            return;
-        }
-        window.location.href = `${this.getPageHref('blog-detail.html')}?id=${blogId}`;
+        window.location.href = `${this.getPageHref('blog-detail.html')}?id=${encodeURIComponent(blogId)}`;
     }
     
     // Search Functionality
@@ -1036,6 +1125,7 @@ class BlogXiv {
             if (normalizedQuery.length < 2) {
                 this.filteredBlogs = this.blogs;
                 this.displayedBlogs = 12; // Reset to initial count
+                this.currentBlogPage = 1;
                 this.renderBlogs();
                 this.hideSearchSuggestions();
                 return;
@@ -1050,6 +1140,7 @@ class BlogXiv {
             );
 
             this.displayedBlogs = 12; // Reset to initial count
+            this.currentBlogPage = 1;
             this.renderBlogs();
             this.showSearchSuggestions(normalizedQuery);
         }, 300);
@@ -10258,6 +10349,7 @@ class BlogXiv {
 
         this.filteredBlogs = filtered;
         this.displayedBlogs = 12;
+        this.currentBlogPage = 1;
     }
     
 	    renderBlogs() {
@@ -10271,26 +10363,32 @@ class BlogXiv {
                     <p>Try adjusting your search criteria or browse different categories.</p>
                 </div>
             `;
+            document.getElementById('blogsGridPagination')?.remove();
             this.updateLoadMoreButton(false);
             return;
         }
         
-        // Show only the blogs up to displayedBlogs count
-        const blogsToShow = this.filteredBlogs.slice(0, this.displayedBlogs);
+        const totalPages = Math.max(1, Math.ceil(this.filteredBlogs.length / this.blogPageSize));
+        this.currentBlogPage = Math.min(this.currentBlogPage, totalPages);
+        const blogsToShow = window.BlogXivPagination.getPageItems(
+            this.filteredBlogs,
+            this.currentBlogPage,
+            this.blogPageSize
+        );
         
         blogsGrid.innerHTML = blogsToShow.map(blog => `
-            <article class="blog-card" data-blog-id="${blog.id}" data-blog-url="${blog.url || ''}" tabindex="0" role="link" aria-label="Open ${blog.title}">
+            <article class="blog-card" data-blog-id="${blog.id}" data-blog-url="${blog.url || ''}" data-blog-category="${this.escapeAttribute(blog.category)}">
                 <div class="blog-image">
                     <img class="blog-cover-image ${blog.coverFit === 'contain' ? 'is-contain' : ''}" src="${this.getMediaHref(blog.coverImage)}" alt="${blog.coverAlt || blog.title}" loading="lazy" referrerpolicy="no-referrer">
                     <span class="blog-source-pill">${blog.sourceName}</span>
                 </div>
                 <div class="blog-content">
                     <div class="blog-meta">
-                        <span class="blog-category">${blog.category}</span>
-                        <span>•</span>
-                        <span>${blog.readTime}</span>
-                        <span>•</span>
-                        <span>${this.formatDate(blog.publishDate)}</span>
+                        <a class="blog-detail-link" href="${this.getPageHref('blog-detail.html')}?id=${encodeURIComponent(blog.id)}">View details</a>
+                        <span class="blog-meta-separator">•</span>
+                        <span class="blog-read-time">${blog.readTime}</span>
+                        <span class="blog-meta-separator">•</span>
+                        <span class="blog-date">${blog.publishDate}</span>
                     </div>
                     <h3 class="blog-title">${blog.title}</h3>
                     <p class="blog-excerpt">${blog.excerpt}</p>
@@ -10299,41 +10397,36 @@ class BlogXiv {
                             ${this.renderAuthorAvatar(blog.author, blog.authorAvatar, blog.url)}
                             <span class="author-name">${blog.author}</span>
                         </div>
-                        <a class="blog-source-link" href="${blog.url}" target="_blank" rel="noopener noreferrer">Read original</a>
+                        ${window.BlogXivLikes.renderButton(blog.id)}
+                    </div>
+                    <div class="blog-card-actions">
+                        <span class="blog-card-category">${blog.category}</span>
                     </div>
                 </div>
             </article>
         `).join('');
         
-        // Add click handlers to blog cards
-        blogsGrid.querySelectorAll('.blog-card').forEach(card => {
-            card.addEventListener('click', (event) => {
-                if (event.target.closest('a')) return;
-                const blogUrl = card.dataset.blogUrl;
-                if (blogUrl) {
-                    window.open(blogUrl, '_blank', 'noopener,noreferrer');
-                    return;
-                }
-                const blogId = card.dataset.blogId;
-                window.location.href = `${this.getPageHref('blog-detail.html')}?id=${blogId}`;
-            });
-            card.addEventListener('keydown', (event) => {
-                if (event.key === 'Enter' || event.key === ' ') {
-                    event.preventDefault();
-                    const blogUrl = card.dataset.blogUrl;
-                    if (blogUrl) {
-                        window.open(blogUrl, '_blank', 'noopener,noreferrer');
-                        return;
-                    }
-                    const blogId = card.dataset.blogId;
-                    window.location.href = `${this.getPageHref('blog-detail.html')}?id=${blogId}`;
-                }
+        window.BlogXivPagination.render(blogsGrid, {
+            currentPage: this.currentBlogPage,
+            totalItems: this.filteredBlogs.length,
+            pageSize: this.blogPageSize,
+            label: 'Selected reading pages',
+            onPageChange: (page) => this.changeBlogPage(page)
+        });
+        this.updateLoadMoreButton(false);
+	    }
+
+    changeBlogPage(page) {
+        const blogsGrid = document.getElementById('blogsGrid');
+        window.BlogXivPagination.transition(blogsGrid, () => {
+            this.currentBlogPage = page;
+            this.renderBlogs();
+            blogsGrid?.closest('section')?.querySelector('.section-header')?.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
             });
         });
-        
-	        // Update load more button visibility
-	        this.updateLoadMoreButton(this.displayedBlogs < this.filteredBlogs.length);
-	    }
+    }
 
     getHomepagePopularBloggerProfiles() {
         return [
