@@ -23,6 +23,7 @@ function createButton() {
 
 const context = {
     console,
+    URL,
     localStorage: {
         getItem: (key) => values.get(key) ?? null,
         setItem: (key, value) => values.set(key, value)
@@ -39,7 +40,8 @@ const context = {
     window: {
         addEventListener: () => {},
         location: {
-            protocol: 'https:'
+            protocol: 'https:',
+            href: 'https://openenvision.github.io/BlogXiv/site/blog-detail.html?id=card-blog#comments'
         }
     }
 };
@@ -104,23 +106,6 @@ assert.equal(values.get('blog:card-blog:liked'), 'true');
 assert.match(context.window.BlogXivLikes.renderButton('card-blog'), /aria-pressed="true"/);
 assert.equal(context.window.BlogXivLikes.like('card-blog'), true);
 
-const sourceButton = {
-    hidden: true,
-    href: '',
-    removeAttribute(name) {
-        if (name === 'href') this.href = '';
-    }
-};
-elements.set('sourceBtn', sourceButton);
-detail.blog = { ...detail.blog, url: 'https://example.com/article' };
-detail.renderSourceLink();
-assert.equal(sourceButton.hidden, false);
-assert.equal(sourceButton.href, 'https://example.com/article');
-detail.blog = { likes: 12 };
-detail.renderSourceLink();
-assert.equal(sourceButton.hidden, true);
-assert.equal(sourceButton.href, '');
-
 const giscusAttributes = new Map();
 const giscusContainer = {
     dataset: {},
@@ -145,6 +130,57 @@ assert.equal(giscusAttributes.get('data-category-id'), 'DIC_kwDOSk05Gc4DBKN9');
 assert.equal(giscusAttributes.get('data-mapping'), 'specific');
 assert.equal(giscusAttributes.get('data-term'), 'blog:card-blog');
 assert.equal(giscusAttributes.get('data-theme'), 'light');
+assert.equal(giscusAttributes.get('data-emit-metadata'), '1');
+
+const manageCommentsLink = {
+    href: '',
+    setAttribute: () => {}
+};
+elements.set('manageCommentsLink', manageCommentsLink);
+detail.updateManageCommentsLink();
+assert.match(manageCommentsLink.href, /discussions\?discussions_q=/);
+assert.match(decodeURIComponent(manageCommentsLink.href), /blog:card-blog/);
+
+detail.handleGiscusMetadata({
+    origin: 'https://giscus.app',
+    data: { giscus: { discussion: { url: 'https://github.com/OpenEnvision/BlogXiv/discussions/42' } } }
+});
+assert.equal(manageCommentsLink.href, 'https://github.com/OpenEnvision/BlogXiv/discussions/42');
+
+const linkedInShare = { href: '' };
+const xShare = { href: '' };
+elements.set('shareLinkedIn', linkedInShare);
+elements.set('shareX', xShare);
+detail.blog = { title: 'Gemini Research', excerpt: 'Research excerpt' };
+detail.updateShareLinks();
+assert.match(decodeURIComponent(linkedInShare.href), /blog-detail\.html\?id=card-blog$/);
+assert.match(decodeURIComponent(xShare.href), /Gemini Research - BlogrXiv/);
+assert.doesNotMatch(decodeURIComponent(xShare.href), /#comments/);
+
+const shareAttributes = new Map();
+let firstShareItemFocused = false;
+const shareButton = {
+    setAttribute: (name, value) => shareAttributes.set(name, value)
+};
+const shareMenu = {
+    hidden: true,
+    querySelector: () => ({ focus: () => { firstShareItemFocused = true; } })
+};
+elements.set('shareBtn', shareButton);
+elements.set('shareMenu', shareMenu);
+detail.toggleShareMenu(true);
+assert.equal(shareMenu.hidden, false);
+assert.equal(shareAttributes.get('aria-expanded'), 'true');
+assert.equal(firstShareItemFocused, true);
+detail.toggleShareMenu(false);
+assert.equal(shareMenu.hidden, true);
+assert.equal(shareAttributes.get('aria-expanded'), 'false');
+
+detail.handleGiscusMetadata({
+    origin: 'https://example.com',
+    data: { giscus: { discussion: { url: 'https://github.com/OpenEnvision/BlogXiv/discussions/99' } } }
+});
+assert.equal(manageCommentsLink.href, 'https://github.com/OpenEnvision/BlogXiv/discussions/42');
 
 const localGiscusContainer = {
     dataset: {},
@@ -161,5 +197,18 @@ context.window.location.protocol = 'file:';
 detail.renderGiscus();
 assert.equal(localGiscusContainer.child.className, 'giscus-unavailable');
 assert.match(localGiscusContainer.child.textContent, /served over HTTP/);
+
+const hyphenationSource = fs.readFileSync('site/assets/js/blog-hyphenation.js', 'utf8');
+vm.runInContext(hyphenationSource, context);
+const hyphenateTitle = context.window.BlogXivHyphenation.hyphenateTitle;
+const hyphenatedResearch = hyphenateTitle('AI research');
+assert.equal(hyphenatedResearch.replaceAll('\u00AD', ''), 'AI research');
+assert.equal((hyphenatedResearch.match(/\u00AD/g) || []).length, 5);
+const hyphenatedGemini = hyphenateTitle('Gemini');
+assert.equal(hyphenatedGemini.replaceAll('\u00AD', ''), 'Gemini');
+assert.equal((hyphenatedGemini.match(/\u00AD/g) || []).length, 3);
+const hyphenatedDeployment = hyphenateTitle('Deployment');
+assert.equal(hyphenatedDeployment.replaceAll('\u00AD', ''), 'Deployment');
+assert.equal((hyphenatedDeployment.match(/\u00AD/g) || []).length, 7);
 
 console.log('blog like tests passed');

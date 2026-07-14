@@ -1,4 +1,4 @@
-// BlogXiv JavaScript
+// BlogrXiv JavaScript
 (function(global) {
     if (global.BlogXivAvatarUtils) return;
 
@@ -107,7 +107,7 @@
     };
 
     const getInitials = (author) => {
-        const cleaned = String(author || 'BlogXiv')
+        const cleaned = String(author || 'BlogrXiv')
             .replace(/\bet al\.?/gi, '')
             .replace(/\s+/g, ' ')
             .trim();
@@ -132,7 +132,7 @@
             ['#334155', '#94a3b8', '#ffffff']
         ];
         let hash = 0;
-        String(name || 'BlogXiv').split('').forEach((char) => {
+        String(name || 'BlogrXiv').split('').forEach((char) => {
             hash = ((hash << 5) - hash + char.charCodeAt(0)) | 0;
         });
         return palettes[Math.abs(hash) % palettes.length];
@@ -312,7 +312,6 @@ class BlogXiv {
         this.applyInitialUrlFilters();
         this.renderBlogs();
         this.renderPopularBloggers();
-        this.updateViewCount();
         this.setupAnimations();
         this.deferVisitorMap();
     }
@@ -354,56 +353,6 @@ class BlogXiv {
 
     renderAuthorAvatar(author, avatar, sourceUrl = '') {
         return window.BlogXivAvatarUtils.renderAvatar(author, this.getMediaHref(avatar), { sourceUrl });
-    }
-
-    updateViewCount() {
-        const viewCountElement = document.getElementById('blogxivViewCount');
-        if (!viewCountElement) return;
-
-        const fallbackViewCount = 293;
-        const mapStatsEndpoint = 'https://mapmyvisitors.com/ajax/orange_dots?id=2245537';
-        const proxyEndpoint = 'https://api.codetabs.com/v1/proxy/?quest=';
-        const formatCount = (count) => Number(count).toLocaleString('en-US');
-        const setCount = (count) => {
-            const pageviews = Number.parseInt(count, 10);
-            if (!Number.isFinite(pageviews) || pageviews < fallbackViewCount) return false;
-            viewCountElement.textContent = formatCount(pageviews);
-            viewCountElement.dataset.source = 'mapmyvisitors';
-            viewCountElement.closest('.hero-view-count')?.setAttribute(
-                'title',
-                'Synced with MapMyVisitors Total Pageviews'
-            );
-            return true;
-        };
-
-        setCount(fallbackViewCount);
-
-        const fetchPageviews = async () => {
-            const controller = new AbortController();
-            const timeout = window.setTimeout(() => controller.abort(), 7000);
-            try {
-                const targetUrl = `${mapStatsEndpoint}&_=${Date.now()}`;
-                const response = await fetch(`${proxyEndpoint}${encodeURIComponent(targetUrl)}`, {
-                    cache: 'no-store',
-                    signal: controller.signal
-                });
-                if (!response.ok) {
-                    throw new Error(`MapMyVisitors sync failed: ${response.status}`);
-                }
-
-                const stats = await response.json();
-                const totalPageviews = Number.parseInt(stats.total_hits ?? stats.visits_count, 10);
-                if (!setCount(totalPageviews)) {
-                    throw new Error('MapMyVisitors response did not include a valid total pageview count');
-                }
-            } finally {
-                window.clearTimeout(timeout);
-            }
-        };
-
-        fetchPageviews().catch(() => {});
-        window.setTimeout(() => fetchPageviews().catch(() => {}), 2500);
-        window.setTimeout(() => fetchPageviews().catch(() => {}), 6500);
     }
 
     deferVisitorMap() {
@@ -615,9 +564,9 @@ class BlogXiv {
             sidebar.innerHTML = `
                 <div class="sidebar-header">
                     <div class="sidebar-brand">
-                        <a href="index.html" class="brand-link" aria-label="BlogXiv home">
-                            <img src="${this.getAssetHref('assets/img/brand/blogxiv.svg')}" alt="BlogXiv" class="brand-logo sidebar-brand-logo" />
-                            <span class="brand-wordmark sidebar-brand-wordmark">BlogXiv</span>
+                        <a href="index.html" class="brand-link" aria-label="BlogrXiv home">
+                            <img src="${this.getAssetHref('assets/img/brand/blogrxiv.svg')}" alt="BlogrXiv" class="brand-logo sidebar-brand-logo" />
+                            <span class="brand-wordmark sidebar-brand-wordmark">BlogrXiv</span>
                         </a>
                     </div>
                     <button class="sidebar-close" data-no-loading="true" aria-label="Close sidebar">✕</button>
@@ -625,7 +574,7 @@ class BlogXiv {
                 <nav class="sidebar-nav">
                     <a class="sidebar-link" href="${this.getPageHref('about.html')}">
                         <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
-                        <span>About BlogXiv</span>
+                        <span>About BlogrXiv</span>
                     </a>
                     <a class="sidebar-link" href="${this.getPageHref('bloggers.html')}">
                         <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 12a5 5 0 1 0-5-5 5 5 0 0 0 5 5z"></path><path d="M20 21a8 8 0 0 0-16 0"></path></svg>
@@ -641,7 +590,7 @@ class BlogXiv {
                     </a>
                 </nav>
                 <div class="sidebar-footer">
-                    <div>© 2026 OpenEnvision｜BlogXiv</div>
+                    <div>© 2026 OpenEnvision｜BlogrXiv</div>
                 </div>
             `;
             document.body.appendChild(sidebar);
@@ -10390,7 +10339,7 @@ class BlogXiv {
                         <span class="blog-meta-separator">•</span>
                         <span class="blog-date">${blog.publishDate}</span>
                     </div>
-                    <h3 class="blog-title">${blog.title}</h3>
+                    <h3 class="blog-title">${window.BlogXivHyphenation.hyphenateTitle(blog.title)}</h3>
                     <p class="blog-excerpt">${blog.excerpt}</p>
                     <div class="blog-footer">
                         <div class="blog-author">

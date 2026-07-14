@@ -1,6 +1,6 @@
 {
-  "name": "BlogXiv",
-  "short_name": "BlogXiv",
+  "name": "BlogrXiv",
+  "short_name": "BlogrXiv",
   "description": "Curated AI research blogs and technical insight.",
   "start_url": "/",
   "display": "standalone",
@@ -13,7 +13,7 @@
       "type": "image/svg+xml"
     },
     {
-      "src": "assets/img/brand/blogxiv.svg",
+      "src": "assets/img/brand/blogrxiv.svg",
       "sizes": "any",
       "type": "image/svg+xml"
     }

@@ -376,9 +376,9 @@ class BloggersPage {
     }
 
     buildBio(profile, posts, categories) {
-        const countText = posts.length === 1 ? '1 indexed BlogXiv article' : `${posts.length} indexed BlogXiv articles`;
+        const countText = posts.length === 1 ? '1 indexed BlogrXiv article' : `${posts.length} indexed BlogrXiv articles`;
         const domains = categories.length ? categories.join(', ') : profile.specialty;
-        return `${profile.name} is highlighted for ${profile.focus.join(', ')}. BlogXiv currently indexes ${countText} spanning ${domains}.`;
+        return `${profile.name} is highlighted for ${profile.focus.join(', ')}. BlogrXiv currently indexes ${countText} spanning ${domains}.`;
     }
 
     applyFilters() {
