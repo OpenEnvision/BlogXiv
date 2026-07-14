@@ -4,7 +4,8 @@ class BlogDetail {
         this.currentTheme = this.getStoredTheme();
         this.blogId = this.getBlogIdFromURL();
         this.blog = null;
-        this.liked = false;
+        this.blogLikeKey = `blog:${this.blogId}:liked`;
+        this.liked = this.getStoredBlogLike();
         this.bookmarked = false;
         this.commentsKey = `blog:${this.blogId}:comments`;
         this.nextCommentIdKey = `blog:${this.blogId}:nextCommentId`;
@@ -29,6 +30,7 @@ class BlogDetail {
         this.handleContentClick = this.handleContentClick.bind(this);
         this.handleAnnotationDocumentClick = this.handleAnnotationDocumentClick.bind(this);
         this.handleReadingNotesClick = this.handleReadingNotesClick.bind(this);
+        this.handleLikeStorageChange = this.handleLikeStorageChange.bind(this);
         this.init();
     }
     
@@ -39,7 +41,7 @@ class BlogDetail {
         this.loadBlog();
         this.setupAnnotationTools();
         this.loadRelatedBlogs();
-        this.loadComments();
+        window.addEventListener('storage', this.handleLikeStorageChange);
     }
     
     // Theme Management
@@ -83,6 +85,7 @@ class BlogDetail {
             // Keep the current page theme even if storage is unavailable.
         }
         this.updateThemeIcon();
+        this.updateGiscusTheme();
     }
     
     updateThemeIcon() {
@@ -118,7 +121,7 @@ class BlogDetail {
         // Like button
         const likeBtn = document.getElementById('likeBtn');
         if (likeBtn) {
-            likeBtn.addEventListener('click', () => this.toggleLike());
+            likeBtn.addEventListener('click', () => this.likeBlog());
         }
         
         // Bookmark button
@@ -131,12 +134,6 @@ class BlogDetail {
         const shareBtn = document.getElementById('shareBtn');
         if (shareBtn) {
             shareBtn.addEventListener('click', () => this.shareBlog());
-        }
-        
-        // Comment form
-        const commentForm = document.querySelector('.comment-form');
-        if (commentForm) {
-            commentForm.addEventListener('submit', (e) => this.handleCommentSubmit(e));
         }
         
         // Related blog cards
@@ -484,9 +481,10 @@ x_quantized = q * scale + zero_point</code></pre>
         document.getElementById('authorName').textContent = this.blog.author;
         document.getElementById('authorBio').textContent = this.blog.authorBio || 'AI Researcher and Content Creator';
         this.renderAuthorAvatar();
+        this.renderSourceLink();
         
-        // Update like count
-        document.getElementById('likeCount').textContent = this.blog.likes;
+        // The static corpus supplies the base count; this browser can contribute once.
+        this.renderLikeState();
         
         // Update blog content
         const contentElement = document.getElementById('blogContent');
@@ -499,6 +497,70 @@ x_quantized = q * scale + zero_point</code></pre>
         this.renderTags();
         this.ensureReadingNotesSection();
         this.renderReadingNotes();
+        this.renderGiscus();
+    }
+
+    renderGiscus() {
+        const container = document.getElementById('giscusComments');
+        if (!container || container.dataset.giscusLoaded === 'true') return;
+
+        container.dataset.giscusLoaded = 'true';
+        container.replaceChildren();
+
+        if (window.location.protocol === 'file:') {
+            const notice = document.createElement('p');
+            notice.className = 'giscus-unavailable';
+            notice.setAttribute('role', 'status');
+            notice.textContent = 'Comments are available when BlogXiv is served over HTTP.';
+            container.appendChild(notice);
+            return;
+        }
+
+        const script = document.createElement('script');
+        script.src = 'https://giscus.app/client.js';
+        script.async = true;
+        script.crossOrigin = 'anonymous';
+        script.setAttribute('data-repo', 'OpenEnvision/BlogXiv');
+        script.setAttribute('data-repo-id', 'R_kgDOSk05GQ');
+        script.setAttribute('data-category', 'General');
+        script.setAttribute('data-category-id', 'DIC_kwDOSk05Gc4DBKN9');
+        script.setAttribute('data-mapping', 'specific');
+        script.setAttribute('data-term', `blog:${this.blogId}`);
+        script.setAttribute('data-strict', '1');
+        script.setAttribute('data-reactions-enabled', '1');
+        script.setAttribute('data-emit-metadata', '0');
+        script.setAttribute('data-input-position', 'top');
+        script.setAttribute('data-theme', this.getActiveTheme());
+        script.setAttribute('data-lang', 'en');
+        script.setAttribute('data-loading', 'lazy');
+        container.appendChild(script);
+    }
+
+    updateGiscusTheme() {
+        const frame = document.querySelector('iframe.giscus-frame');
+        if (!frame?.contentWindow) return;
+
+        frame.contentWindow.postMessage({
+            giscus: {
+                setConfig: {
+                    theme: this.getActiveTheme()
+                }
+            }
+        }, 'https://giscus.app');
+    }
+
+    renderSourceLink() {
+        const sourceBtn = document.getElementById('sourceBtn');
+        if (!sourceBtn) return;
+
+        if (this.blog?.url) {
+            sourceBtn.href = this.blog.url;
+            sourceBtn.hidden = false;
+            return;
+        }
+
+        sourceBtn.hidden = true;
+        sourceBtn.removeAttribute('href');
     }
 
     renderAuthorAvatar() {
@@ -537,6 +599,10 @@ x_quantized = q * scale + zero_point</code></pre>
             <div class="related-blog-card" data-blog-id="${blog.id}">
                 <h3>${blog.title}</h3>
                 <p>${blog.excerpt}</p>
+                <div class="related-blog-author">
+                    ${window.BlogXivAvatarUtils.renderAvatar(blog.author, blog.authorAvatar, { sourceUrl: blog.url })}
+                    <span>${blog.author}</span>
+                </div>
                 <div class="blog-meta">
                     <span>${blog.sourceName || blog.author}</span>
                     <span>•</span>
@@ -1163,20 +1229,56 @@ x_quantized = q * scale + zero_point</code></pre>
     }
     
     // Interactive Functions
-    toggleLike() {
-        this.liked = !this.liked;
+    getStoredBlogLike() {
+        try {
+            return localStorage.getItem(this.blogLikeKey) === 'true';
+        } catch (error) {
+            return false;
+        }
+    }
+
+    getBaseLikeCount() {
+        const count = Number(this.blog?.likes);
+        return Number.isFinite(count) ? Math.max(0, Math.trunc(count)) : 0;
+    }
+
+    renderLikeState() {
         const likeBtn = document.getElementById('likeBtn');
         const likeCount = document.getElementById('likeCount');
-        
-        if (this.liked) {
-            likeBtn.style.backgroundColor = 'var(--primary-blue)';
-            likeBtn.style.color = 'var(--white)';
-            likeCount.textContent = parseInt(likeCount.textContent) + 1;
-        } else {
-            likeBtn.style.backgroundColor = '';
-            likeBtn.style.color = '';
-            likeCount.textContent = parseInt(likeCount.textContent) - 1;
+
+        if (!likeBtn || !likeCount || !this.blog) return;
+
+        likeBtn.classList.toggle('is-liked', this.liked);
+        likeBtn.setAttribute('aria-pressed', String(this.liked));
+        likeBtn.setAttribute('aria-label', this.liked ? 'You liked this blog' : 'Like this blog');
+        likeBtn.title = this.liked ? 'You have already liked this blog' : 'Like this blog';
+        likeCount.textContent = String(this.getBaseLikeCount() + (this.liked ? 1 : 0));
+    }
+
+    likeBlog() {
+        if (this.liked || this.getStoredBlogLike()) {
+            this.liked = true;
+            this.renderLikeState();
+            this.showNotification('You have already liked this blog.', 'info');
+            return;
         }
+
+        try {
+            localStorage.setItem(this.blogLikeKey, 'true');
+        } catch (error) {
+            this.showNotification('Your like could not be saved in this browser.', 'error');
+            return;
+        }
+
+        this.liked = true;
+        this.renderLikeState();
+        this.showNotification('Thanks for liking this blog.', 'success');
+    }
+
+    handleLikeStorageChange(event) {
+        if (event.key !== this.blogLikeKey) return;
+        this.liked = event.newValue === 'true';
+        this.renderLikeState();
     }
     
     toggleBookmark() {
@@ -1427,6 +1529,8 @@ x_quantized = q * scale + zero_point</code></pre>
         const notification = document.createElement('div');
         notification.className = `notification notification-${type}`;
         notification.textContent = message;
+        notification.setAttribute('role', type === 'error' ? 'alert' : 'status');
+        notification.setAttribute('aria-live', type === 'error' ? 'assertive' : 'polite');
         
         notification.style.cssText = `
             position: fixed;

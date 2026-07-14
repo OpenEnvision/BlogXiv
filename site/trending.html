@@ -26,6 +26,9 @@
     <link rel="stylesheet" href="assets/css/enhancements.css?v=popular-real-blogs-expanded-15">
     <link rel="icon" type="image/svg+xml" href="assets/img/brand/icon.svg">
     <link rel="mask-icon" href="assets/img/brand/icon.svg" color="#7cacdc">
+    <link rel="stylesheet" href="assets/css/academic-pages.css?v=1">
+    <link rel="stylesheet" href="assets/css/blog-cards.css?v=1">
+    <link rel="stylesheet" href="assets/css/unified-palette.css?v=3">
 </head>
 <body>
     <!-- Navigation -->
@@ -264,8 +267,13 @@
             setText('trendingTopics', topics);
 
             if (topPostsGrid) {
-                topPostsGrid.innerHTML = topPosts.map(p => `
-                    <article class="blog-card" data-blog-url="${p.url}">
+                const trendingPageSize = 6;
+                let trendingPage = 1;
+                const renderTopPosts = (page = 1) => {
+                    trendingPage = page;
+                    const visiblePosts = window.BlogXivPagination.getPageItems(topPosts, trendingPage, trendingPageSize);
+                    topPostsGrid.innerHTML = visiblePosts.map(p => `
+                    <article class="blog-card" data-blog-url="${p.url}" data-blog-category="${p.category}">
                         <div class="blog-image">
                             <img class="blog-cover-image ${p.coverFit === 'contain' ? 'is-contain' : ''}" src="${p.coverImage}" alt="${p.coverAlt || p.title}" loading="lazy" referrerpolicy="no-referrer">
                             <span class="blog-source-pill">${p.sourceName}</span>
@@ -273,8 +281,9 @@
                         <div class="blog-content">
                             <div class="blog-meta">
                                 <span class="blog-category">${p.category}</span>
-                                <span>•</span>
-                                <span>${p.readTime}</span>
+                                <span class="blog-meta-separator">•</span>
+                                <span class="blog-read-time">${p.readTime}</span>
+                                <span class="blog-date">${p.publishDate}</span>
                             </div>
                             <h3 class="blog-title">${p.title}</h3>
                             <p class="blog-excerpt">${p.excerpt}</p>
@@ -287,13 +296,30 @@
                             </div>
                         </div>
                     </article>
-                `).join('');
-                topPostsGrid.querySelectorAll('.blog-card').forEach(card => {
-                    card.addEventListener('click', (event) => {
-                        if (event.target.closest('a')) return;
-                        window.open(card.dataset.blogUrl, '_blank', 'noopener,noreferrer');
+                    `).join('');
+                    topPostsGrid.querySelectorAll('.blog-card').forEach(card => {
+                        card.addEventListener('click', (event) => {
+                            if (event.target.closest('a')) return;
+                            window.open(card.dataset.blogUrl, '_blank', 'noopener,noreferrer');
+                        });
                     });
-                });
+                    window.BlogXivPagination.render(topPostsGrid, {
+                        currentPage: trendingPage,
+                        totalItems: topPosts.length,
+                        pageSize: trendingPageSize,
+                        label: 'Trending blog pages',
+                        onPageChange: (nextPage) => {
+                            window.BlogXivPagination.transition(topPostsGrid, () => {
+                                renderTopPosts(nextPage);
+                                topPostsGrid.closest('.blogs-section')?.querySelector('.blogs-header')?.scrollIntoView({
+                                    behavior: 'smooth',
+                                    block: 'start'
+                                });
+                            });
+                        }
+                    });
+                };
+                renderTopPosts();
             }
 
             if (risingTopicsGrid) {
