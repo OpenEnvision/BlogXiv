@@ -566,7 +566,6 @@ class BlogXiv {
                     <div class="sidebar-brand">
                         <a href="index.html" class="brand-link" aria-label="BlogrXiv home">
                             <img src="${this.getAssetHref('assets/img/brand/blogrxiv.svg')}" alt="BlogrXiv" class="brand-logo sidebar-brand-logo" />
-                            <span class="brand-wordmark sidebar-brand-wordmark">BlogrXiv</span>
                         </a>
                     </div>
                     <button class="sidebar-close" data-no-loading="true" aria-label="Close sidebar">✕</button>
@@ -596,15 +595,22 @@ class BlogXiv {
             document.body.appendChild(sidebar);
         }
 
-        // Insert toggle into nav-brand at far-left if missing
+        // Insert the toggle beside the brand link. On the home page .nav-brand
+        // is the link itself, so putting a button inside it would also trigger
+        // navigation to index.html when the button is clicked.
         const navBrand = document.querySelector('.nav-brand');
         if (navBrand && !document.querySelector('.sidebar-toggle')) {
             const toggle = document.createElement('button');
             toggle.className = 'sidebar-toggle';
+            toggle.type = 'button';
             toggle.setAttribute('aria-label', 'Open sidebar');
             toggle.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>';
             toggle.setAttribute('data-no-loading', 'true');
-            navBrand.insertBefore(toggle, navBrand.firstChild);
+            if (navBrand.matches('a')) {
+                navBrand.parentNode.insertBefore(toggle, navBrand);
+            } else {
+                navBrand.insertBefore(toggle, navBrand.firstChild);
+            }
         }
 
         // Bind events
@@ -681,7 +687,7 @@ class BlogXiv {
                     </div>
                     <div class="search-overlay-filters">
                         <button class="search-overlay-filter-toggle" type="button" aria-expanded="false">
-                            + 添加筛选
+                            + Add filters
                         </button>
                         <div class="search-overlay-filter-panel" aria-hidden="true">
                             <div class="search-overlay-filter-group">
@@ -900,8 +906,8 @@ class BlogXiv {
     updateFilterToggleState() {
         if (!this.searchFilterToggle) return;
         const filtersActive = this.hasActiveSearchFilters();
-        const baseLabel = this.filterPanelExpanded ? '收起筛选' : '+ 添加筛选';
-        this.searchFilterToggle.textContent = filtersActive ? `${baseLabel}（已应用）` : baseLabel;
+        const baseLabel = this.filterPanelExpanded ? 'Hide filters' : '+ Add filters';
+        this.searchFilterToggle.textContent = filtersActive ? `${baseLabel} (applied)` : baseLabel;
         this.searchFilterToggle.classList.toggle('has-active-filters', filtersActive);
         this.searchFilterToggle.setAttribute('aria-expanded', this.filterPanelExpanded ? 'true' : 'false');
     }
