@@ -24,13 +24,13 @@ The project treats research blogs as a serious scholarly and engineering medium:
 Production URL:
 
 ```text
-https://blogxiv.org/
+https://openenvision.github.io/BlogrXiv/site/index.html
 ```
 
 Repository:
 
 ```text
-https://github.com/OpenEnvision/BlogXiv
+https://github.com/OpenEnvision/BlogrXiv
 ```
 
 ## Contents
