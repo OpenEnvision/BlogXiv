@@ -306,8 +306,10 @@ class BlogXiv {
         this.ensureMainContentAnchor();
         this.injectSkipLink();
         this.injectSearchOverlay();
+        this.injectSubmitNavigation();
         this.setupEventListeners();
         this.injectSidebar();
+        this.setupRecommendationComposer();
         this.loadSampleBlogs();
         this.applyInitialUrlFilters();
         this.renderBlogs();
@@ -462,6 +464,29 @@ class BlogXiv {
             }
         }
     }
+
+    injectSubmitNavigation() {
+        const submitHref = this.getPageHref('submit.html');
+
+        document.querySelectorAll('.nav-links').forEach((navLinks) => {
+            if (navLinks.querySelector('a[href$="submit.html"]')) return;
+            const link = document.createElement('a');
+            link.href = submitHref;
+            link.textContent = 'Submit';
+            navLinks.appendChild(link);
+        });
+
+        document.querySelectorAll('.navbar').forEach((navbar) => {
+            if (navbar.querySelector('.nav-links')) return;
+            const actions = navbar.querySelector('.nav-actions');
+            if (!actions || actions.querySelector('a[href$="submit.html"]')) return;
+            const link = document.createElement('a');
+            link.href = submitHref;
+            link.className = 'btn btn-primary nav-submit-link';
+            link.textContent = 'Submit';
+            actions.appendChild(link);
+        });
+    }
     
     // Event Listeners
     setupEventListeners() {
@@ -587,6 +612,10 @@ class BlogXiv {
                         <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5z"></path></svg>
                         <span>Blogs</span>
                     </a>
+                    <a class="sidebar-link" href="${this.getPageHref('submit.html')}">
+                        <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13"></path><path d="m22 2-7 20-4-9-9-4 20-7z"></path></svg>
+                        <span>Submit</span>
+                    </a>
                 </nav>
                 <div class="sidebar-footer">
                     <div>© 2026 OpenEnvision｜BlogrXiv</div>
@@ -659,6 +688,66 @@ class BlogXiv {
         // Close after navigation
         document.querySelectorAll('.sidebar-link').forEach(link => {
             link.addEventListener('click', () => close());
+        });
+    }
+
+    setupRecommendationComposer() {
+        const form = document.getElementById('recommendationComposer');
+        if (!form || form.dataset.bound === 'true') return;
+        form.dataset.bound = 'true';
+
+        const getValues = () => {
+            const values = new FormData(form);
+            return {
+                title: values.get('title')?.toString().trim() || '',
+                url: values.get('url')?.toString().trim() || '',
+                author: values.get('author')?.toString().trim() || '',
+                category: values.get('category')?.toString().trim() || '',
+                summary: values.get('summary')?.toString().trim() || '',
+                value: values.get('value')?.toString().trim() || '',
+                tags: values.get('tags')?.toString().trim() || ''
+            };
+        };
+
+        const buildBody = (values) => [
+            `### Blog title\n${values.title}`,
+            `### Canonical URL\n${values.url}`,
+            `### Author / Lab / Organization\n${values.author}`,
+            `### Suggested BlogrXiv category\n${values.category}`,
+            `### Suggested tags\n${values.tags || 'Not specified'}`,
+            `### Short summary\n${values.summary}`,
+            `### Why is this technically valuable?\n${values.value}`
+        ].join('\n\n');
+
+        const validate = (values) => {
+            const missing = ['title', 'url', 'author', 'category', 'summary', 'value'].find((field) => !values[field]);
+            if (missing) {
+                form.querySelector(`[name="${missing}"]`)?.focus();
+                return false;
+            }
+            return true;
+        };
+
+        form.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const values = getValues();
+            if (!validate(values)) return;
+            const params = new URLSearchParams({
+                category: 'ideas',
+                title: `[Recommendation] ${values.title}`,
+                body: buildBody(values)
+            });
+            window.open(`https://github.com/OpenEnvision/BlogXiv/discussions/new?${params.toString()}`, '_blank', 'noopener,noreferrer');
+        });
+
+        document.getElementById('emailRecommendationDraft')?.addEventListener('click', () => {
+            const values = getValues();
+            if (!validate(values)) return;
+            const params = new URLSearchParams({
+                subject: `BlogrXiv Blog Link Recommendation: ${values.title}`,
+                body: buildBody(values)
+            });
+            window.location.href = `mailto:juanxitian1031@gmail.com,wanghanqing0424@gmail.com?${params.toString()}`;
         });
     }
 

@@ -1,0 +1,68 @@
+name: Original writing question
+description: Ask for help before submitting original writing through a pull request.
+title: "[Original writing]: "
+labels:
+  - original-writing
+  - pending-review
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Original writing should normally be submitted through a Pull Request using `submissions/template.md`.
+
+        Use this issue form if you want editorial guidance before preparing a Markdown submission.
+
+        New submissions start as pending review items. They are not published unless an editor accepts them and they are merged or indexed as static metadata.
+
+  - type: input
+    id: title
+    attributes:
+      label: Working title
+      placeholder: "Practical notes on ..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: abstract
+    attributes:
+      label: Proposed abstract
+      description: Briefly describe the article you want to submit.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: category
+    attributes:
+      label: Likely category
+      options:
+        - Foundation Model
+        - LLM & MLLM
+        - Multimodal Model
+        - Visual Generation
+        - World Model
+        - AI Agents
+        - Efficient AI
+        - Trustworthy AI
+        - Research Craft
+    validations:
+      required: true
+
+  - type: textarea
+    id: value
+    attributes:
+      label: Technical value
+      description: Explain what technical mechanism, method, evidence, implementation detail, or research lesson the article contributes.
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: confirmation
+    attributes:
+      label: Author confirmation
+      options:
+        - label: I wrote this work or have permission to submit it.
+          required: true
+        - label: I understand original writing should use the Markdown submission template before publication review.
+          required: true
+        - label: I understand this issue is a public review record and should not include private contact details that I do not want public.
+          required: true

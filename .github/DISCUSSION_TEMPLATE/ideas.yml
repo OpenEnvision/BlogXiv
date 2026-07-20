@@ -1,0 +1,119 @@
+title: "[Recommendation] "
+labels:
+  - submission
+  - pending-review
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Recommend a public technical AI research blog for BlogrXiv.
+
+        This GitHub Discussion uses the repository's Ideas category. The BlogrXiv research category is collected separately below.
+
+  - type: input
+    id: title
+    attributes:
+      label: Blog title
+      description: Title of the original post.
+      placeholder: "Understanding ..."
+    validations:
+      required: true
+
+  - type: input
+    id: url
+    attributes:
+      label: Canonical URL
+      description: Link to the original public source.
+      placeholder: "https://..."
+    validations:
+      required: true
+
+  - type: dropdown
+    id: authorship
+    attributes:
+      label: Are you the author?
+      options:
+        - "Yes, I wrote this post"
+        - "No, I am recommending someone else's post"
+    validations:
+      required: true
+
+  - type: input
+    id: author
+    attributes:
+      label: Author / Lab / Organization
+      placeholder: "Author name, lab, or organization"
+    validations:
+      required: true
+
+  - type: input
+    id: source
+    attributes:
+      label: Source name
+      placeholder: "Author blog, lab blog, conference blog, etc."
+    validations:
+      required: false
+
+  - type: dropdown
+    id: category
+    attributes:
+      label: Suggested BlogrXiv category
+      options:
+        - Foundation Model
+        - LLM & MLLM
+        - Multimodal Model
+        - Visual Generation
+        - World Model
+        - AI Agents
+        - Efficient AI
+        - Trustworthy AI
+        - Research Craft
+    validations:
+      required: true
+
+  - type: input
+    id: tags
+    attributes:
+      label: Suggested tags
+      description: Comma-separated tags.
+      placeholder: "Reasoning, Evaluation, Agents"
+    validations:
+      required: false
+
+  - type: textarea
+    id: summary
+    attributes:
+      label: Short summary
+      description: Summarize the post in 2-4 sentences.
+      placeholder: "This post explains..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: value
+    attributes:
+      label: Why is this technically valuable?
+      description: Explain the mechanism, implementation detail, evaluation insight, research lesson, or durable perspective that makes this worth indexing.
+      placeholder: "It provides..."
+    validations:
+      required: true
+
+  - type: input
+    id: related
+    attributes:
+      label: Related paper / code, optional
+      placeholder: "https://arxiv.org/... or https://github.com/..."
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: confirmation
+    attributes:
+      label: Submission confirmation
+      options:
+        - label: The submitted URL is publicly accessible.
+          required: true
+        - label: If I am the author, I confirm that I have the right to submit this post.
+          required: true
+        - label: I understand that BlogrXiv may accept, reject, summarize, categorize, or request revisions.
+          required: true
