@@ -46,6 +46,11 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://blogxiv.org/submit.html</loc>
+    <lastmod>2026-07-20</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://blogxiv.org/feedback.html</loc>
     <lastmod>2026-05-22</lastmod>
     <priority>0.5</priority>

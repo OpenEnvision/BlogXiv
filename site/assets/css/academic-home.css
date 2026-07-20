@@ -853,9 +853,14 @@
 
 .academic-home .contribute-layout {
     display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 48px;
-    align-items: center;
+    grid-template-columns: minmax(0, 820px);
+    justify-content: center;
+    gap: 28px;
+    align-items: start;
+}
+
+.academic-home .contribute-layout > div:first-child {
+    text-align: center;
 }
 
 .academic-home .contribute h2 {
@@ -875,6 +880,107 @@
     display: flex;
     align-items: center;
     gap: 22px;
+}
+
+.academic-home .recommendation-composer {
+    display: grid;
+    gap: 16px;
+    width: 100%;
+    padding: 22px;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    box-shadow: 0 18px 40px rgba(21, 23, 25, 0.07);
+}
+
+.academic-home .composer-header {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--rule);
+}
+
+.academic-home .composer-avatar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    flex: 0 0 38px;
+    color: var(--paper);
+    background: var(--navy);
+    border-radius: 50%;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 700;
+}
+
+.academic-home .composer-header strong {
+    display: block;
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: 1.04rem;
+    line-height: 1.2;
+}
+
+.academic-home .composer-header span:last-child {
+    display: block;
+    margin-top: 2px;
+    color: var(--muted-ink);
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    text-transform: uppercase;
+}
+
+.academic-home .composer-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.academic-home .recommendation-composer label {
+    display: grid;
+    gap: 6px;
+    color: var(--muted-ink);
+    font-family: var(--font-mono);
+    font-size: 0.64rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.academic-home .recommendation-composer input,
+.academic-home .recommendation-composer select,
+.academic-home .recommendation-composer textarea {
+    width: 100%;
+    min-height: 40px;
+    padding: 10px 11px;
+    color: var(--ink);
+    background: var(--paper-deep);
+    border: 1px solid var(--rule);
+    border-radius: 3px;
+    font: 500 0.88rem/1.4 var(--font-sans);
+    text-transform: none;
+}
+
+.academic-home .recommendation-composer textarea {
+    min-height: 86px;
+    resize: vertical;
+}
+
+.academic-home .recommendation-composer input:focus,
+.academic-home .recommendation-composer select:focus,
+.academic-home .recommendation-composer textarea:focus {
+    outline: 3px solid color-mix(in srgb, var(--accent) 24%, transparent);
+    border-color: var(--accent);
+}
+
+.academic-home .composer-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: flex-end;
+    padding-top: 4px;
 }
 
 .academic-home .footer {
@@ -1040,7 +1146,6 @@
     .academic-home .hero-container,
     .academic-home .section-header-row,
     .academic-home .standards-layout,
-    .academic-home .contribute-layout,
     .academic-home .footer-main {
         grid-template-columns: 1fr;
     }
@@ -1067,6 +1172,14 @@
     .academic-home .hero-actions .btn {
         width: auto;
         max-width: 100%;
+    }
+
+    .academic-home .composer-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .academic-home .composer-actions {
+        justify-content: flex-start;
     }
 
     .academic-home .index-facts {

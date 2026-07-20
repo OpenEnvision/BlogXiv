@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog Manager - BlogrXiv</title>
-    <meta name="description" content="Manage and add new blogs to BlogrXiv - AI Research Blog Platform">
+    <title>Maintainer Workflow - BlogrXiv</title>
+    <meta name="description" content="Maintainer workflow for reviewing BlogrXiv submissions through GitHub Discussions, Pull Requests, and email.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -29,6 +29,18 @@
         .blog-manager {
             padding: 2rem 0 4rem;
             margin-top: 80px;
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
         }
         
         .form-container {
@@ -143,9 +155,226 @@
             border-radius: var(--radius-lg);
             padding: var(--spacing-lg);
         }
+
+        .review-dashboard {
+            display: grid;
+            gap: var(--spacing-xl);
+        }
+
+        .moderation-stats {
+            display: grid;
+            grid-template-columns: repeat(5, minmax(0, 1fr));
+            gap: var(--spacing-md);
+        }
+
+        .moderation-stat {
+            padding: var(--spacing-lg);
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+        }
+
+        .moderation-stat span {
+            display: block;
+            margin-bottom: .35rem;
+            color: var(--text-secondary);
+            font-size: .78rem;
+            font-weight: 600;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+        }
+
+        .moderation-stat strong {
+            color: var(--text-primary);
+            font-size: 1.7rem;
+            line-height: 1;
+        }
+
+        .review-workspace {
+            display: grid;
+            grid-template-columns: minmax(280px, 0.9fr) minmax(0, 1.6fr);
+            gap: var(--spacing-xl);
+            align-items: start;
+        }
+
+        .queue-panel,
+        .detail-panel,
+        .submission-intake {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-lg);
+        }
+
+        .queue-toolbar {
+            display: grid;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .queue-toolbar select,
+        .queue-toolbar input,
+        .detail-panel textarea,
+        .submission-intake input,
+        .submission-intake select,
+        .submission-intake textarea {
+            width: 100%;
+            padding: var(--spacing-sm) var(--spacing-md);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            font: inherit;
+        }
+
+        .queue-list {
+            display: grid;
+            gap: var(--spacing-sm);
+            max-height: 680px;
+            overflow: auto;
+        }
+
+        .queue-item {
+            width: 100%;
+            padding: var(--spacing-md);
+            text-align: left;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            color: var(--text-primary);
+            cursor: pointer;
+        }
+
+        .queue-item.is-active {
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 3px rgba(30, 64, 175, .12);
+        }
+
+        .queue-item strong,
+        .detail-title {
+            display: block;
+            color: var(--text-primary);
+            line-height: 1.35;
+        }
+
+        .queue-item span,
+        .detail-meta,
+        .decision-log,
+        .empty-detail {
+            color: var(--text-secondary);
+            font-size: .86rem;
+            line-height: 1.55;
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            width: fit-content;
+            margin-bottom: .5rem;
+            padding: .22rem .55rem;
+            border-radius: var(--radius-sm);
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            font-size: .72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .status-badge.pending-review {
+            color: #9a5b00;
+            background: #fff7e6;
+            border-color: #ffd28a;
+        }
+
+        .status-badge.needs-info {
+            color: #075985;
+            background: #e0f2fe;
+            border-color: #7dd3fc;
+        }
+
+        .status-badge.accepted,
+        .status-badge.published {
+            color: #166534;
+            background: #dcfce7;
+            border-color: #86efac;
+        }
+
+        .status-badge.rejected,
+        .status-badge.hidden {
+            color: #991b1b;
+            background: #fee2e2;
+            border-color: #fca5a5;
+        }
+
+        .detail-header,
+        .detail-section,
+        .decision-actions,
+        .generated-output {
+            display: grid;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .detail-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: var(--spacing-md);
+        }
+
+        .detail-field {
+            padding: var(--spacing-md);
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+        }
+
+        .detail-field dt {
+            margin-bottom: .28rem;
+            color: var(--text-secondary);
+            font-size: .75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .detail-field dd {
+            margin: 0;
+            color: var(--text-primary);
+            line-height: 1.45;
+            overflow-wrap: anywhere;
+        }
+
+        .decision-actions {
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+        }
+
+        .generated-output textarea {
+            min-height: 220px;
+            font-family: "JetBrains Mono", monospace;
+            font-size: .82rem;
+        }
+
+        .submission-intake summary {
+            color: var(--text-primary);
+            cursor: pointer;
+            font-weight: 700;
+        }
+
+        .submission-intake form {
+            display: grid;
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-lg);
+        }
         
         @media (max-width: 768px) {
             .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .moderation-stats,
+            .review-workspace,
+            .detail-grid,
+            .decision-actions {
                 grid-template-columns: 1fr;
             }
             
@@ -197,106 +426,38 @@
         <div class="container">
             <!-- Page Header -->
             <header class="page-header">
-                <h1 class="page-title">Blog Manager</h1>
-                <p class="page-description">Add and manage your AI research blogs on BlogrXiv</p>
+                <h1 class="page-title">Maintainer Workflow</h1>
+                <p class="page-description">Review BlogrXiv submissions through GitHub Discussions, Pull Requests, and email fallbacks.</p>
             </header>
 
-            <!-- Blog Form -->
-            <div class="form-container">
-                <form id="blogForm">
-                    <div class="form-group">
-                        <label for="blogTitle">Blog Title *</label>
-                        <input type="text" id="blogTitle" name="title" required placeholder="Enter your blog title...">
+            <section class="review-panel" aria-labelledby="maintainerFlowTitle">
+                <h2 id="maintainerFlowTitle">GitHub Review Flow</h2>
+                <ol class="review-steps">
+                    <li><strong>1. Intake</strong><span>Recommended links arrive as Discussions; original writing arrives as Pull Requests. Email submissions are mirrored by maintainers when needed.</span></li>
+                    <li><strong>2. Triage</strong><span>Apply labels such as pending-review, needs-info, accepted, duplicate, rejected, or out-of-scope.</span></li>
+                    <li><strong>3. Publish</strong><span>Accepted links are converted with admin/new-blog-template.json and scripts/add_blog.mjs; accepted writing is merged or indexed.</span></li>
+                    <li><strong>4. Close</strong><span>After deployment, add published and reply to the Discussion or Pull Request with a concise decision record.</span></li>
+                </ol>
+            </section>
+
+            <section class="submission-grid" aria-label="Maintainer actions" style="margin-top: var(--spacing-2xl);">
+                <article class="submission-card">
+                    <h2 class="submission-title">Review Recommended Links</h2>
+                    <p class="submission-description">Use Discussions labeled submission and pending-review. Check the recommendation reason, summary, author, category, tags, source quality, and duplicate status.</p>
+                    <div class="submission-actions">
+                        <a class="btn btn-primary" href="https://github.com/OpenEnvision/BlogXiv/discussions?discussions_q=label%3Asubmission%20label%3Apending-review" target="_blank" rel="noopener noreferrer">Open Link Queue</a>
+                        <a class="btn btn-outline" href="docs/REVIEW_WORKFLOW.md">Workflow Doc</a>
                     </div>
-
-                    <div class="form-group">
-                        <label for="blogExcerpt">Blog Excerpt *</label>
-                        <textarea id="blogExcerpt" name="excerpt" required placeholder="Write a brief description of your blog..."></textarea>
+                </article>
+                <article class="submission-card">
+                    <h2 class="submission-title">Review Original Writing</h2>
+                    <p class="submission-description">Use Pull Requests with the original-writing label or the submissions template. Confirm author permission, technical value, references, and formatting before merge.</p>
+                    <div class="submission-actions">
+                        <a class="btn btn-primary" href="https://github.com/OpenEnvision/BlogXiv/pulls?q=is%3Apr%20label%3Aoriginal-writing" target="_blank" rel="noopener noreferrer">Open PR Queue</a>
+                        <a class="btn btn-outline" href="submissions/README.md">PR Guide</a>
                     </div>
-
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="blogAuthor">Author Name *</label>
-                            <input type="text" id="blogAuthor" name="author" required placeholder="Your name...">
-                        </div>
-                        <div class="form-group">
-                            <label for="blogCategory">Category *</label>
-                            <select id="blogCategory" name="category" required>
-                                <option value="">Select a category...</option>
-                                <option value="Multimodal Model">Multimodal Model</option>
-                                <option value="Visual Generation">Visual Generation</option>
-                                <option value="World Model">World Model</option>
-                                <option value="AI Agents">AI Agents</option>
-                                <option value="LLM & MLLM">LLM & MLLM</option>
-                                <option value="Foundation Model">Foundation Model</option>
-                                <option value="Efficient AI">Efficient AI</option>
-                                <option value="Trustworthy AI">Trustworthy AI</option>
-                                <option value="Research Craft">Research Craft</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="blogReadTime">Read Time</label>
-                            <input type="text" id="blogReadTime" name="readTime" placeholder="e.g., 10 min read">
-                        </div>
-                        <div class="form-group">
-                            <label for="blogPublishDate">Publish Date</label>
-                            <input type="date" id="blogPublishDate" name="publishDate">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="blogTags">Tags</label>
-                        <div class="tags-input">
-                            <input type="text" id="blogTags" class="tag-input" placeholder="Add tags (press Enter to add)...">
-                        </div>
-                        <div class="tag-preview" id="tagPreview"></div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="blogContent">Blog Content *</label>
-                        <textarea id="blogContent" name="content" class="large" required placeholder="Write your blog content here using HTML formatting...">
-<h2>Introduction</h2>
-<p>Start your blog with an engaging introduction...</p>
-
-<h2>Main Content</h2>
-<p>Add your main content here. You can use HTML tags for formatting:</p>
-
-<ul>
-    <li><strong>Bold text</strong> for emphasis</li>
-    <li><em>Italic text</em> for highlights</li>
-    <li>Links: <a href="#">example link</a></li>
-</ul>
-
-<blockquote>
-    "Use blockquotes for important quotes or callouts."
-</blockquote>
-
-<h3>Code Examples</h3>
-<pre><code># Your code here
-def example_function():
-    return "Hello, World!"</code></pre>
-
-<h2>Conclusion</h2>
-<p>Wrap up your blog with a strong conclusion...</p>
-                        </textarea>
-                    </div>
-
-                    <div class="form-actions">
-                        <button type="button" class="btn btn-outline" id="previewBtn">Preview</button>
-                        <button type="button" class="btn btn-secondary" id="saveDraftBtn">Save Draft</button>
-                        <button type="submit" class="btn btn-primary" id="publishBtn">Publish Blog</button>
-                    </div>
-                </form>
-
-                <!-- Preview Section -->
-                <div class="preview-section" id="previewSection" style="display: none;">
-                    <h3>Blog Preview</h3>
-                    <div class="preview-blog" id="previewContent"></div>
-                </div>
-            </div>
+                </article>
+            </section>
         </div>
     </main>
 
@@ -350,7 +511,7 @@ def example_function():
                                 <span class="footer-action-meta">OpenEnvision / Repository</span>
                             </span>
                         </a>
-                        <a class="footer-action-link footer-mail-action" href="mailto:juanxitian1031@gmail.com?subject=BlogrXiv%20Blog%20Submission&body=Please%20include%3A%0A-%20Blog%20title%3A%0A-%20URL%3A%0A-%20Author%20or%20lab%3A%0A-%20Suggested%20category%3A%0A-%20Why%20it%20is%20technically%20valuable%3A" aria-label="Submit a technical AI blog by email">
+                        <a class="footer-action-link footer-mail-action" href="submit.html" aria-label="Submit a technical AI blog">
                             <span class="footer-action-icon" aria-hidden="true">
                                 <svg viewBox="0 0 24 24" fill="none" role="img" focusable="false">
                                     <path d="M4 6.75h16v10.5a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6.75Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" />
@@ -359,7 +520,7 @@ def example_function():
                             </span>
                             <span class="footer-action-copy">
                                 <span class="footer-action-label">Submit a Blog</span>
-                                <span class="footer-action-meta">juanxitian1031@gmail.com</span>
+                                <span class="footer-action-meta">Links and original writing</span>
                             </span>
                         </a>
                     </div>
@@ -392,7 +553,6 @@ def example_function():
     </div>
 
     <script src="assets/js/app.js?v=sidebar-brand-fix-1"></script>
-    <script src="assets/js/pages/blog-manager.js?v=theme-fix-1"></script>
     <div class="visitor-map" aria-label="Visitor map and count"></div>
 </body>
 </html>

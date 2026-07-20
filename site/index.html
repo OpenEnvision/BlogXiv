@@ -74,6 +74,7 @@
                 <a href="categories.html">Categories</a>
                 <a href="bloggers.html">Bloggers</a>
                 <a href="about.html">About</a>
+                <a href="submit.html">Submit</a>
             </div>
 
             <div class="nav-actions">
@@ -242,12 +243,43 @@
                 <div>
                     <p class="section-kicker">Open index</p>
                     <h2 id="contributeTitle">Know a piece that belongs here?</h2>
-                    <p>Submit rigorous technical writing with a short note explaining its research value.</p>
+                    <p>Submit a public technical blog recommendation with enough context for editorial review.</p>
                 </div>
-                <div class="contribute-actions">
-                    <a class="btn btn-primary" href="mailto:juanxitian1031@gmail.com?subject=BlogrXiv%20Blog%20Submission&amp;body=Please%20include%3A%0A-%20Blog%20title%3A%0A-%20URL%3A%0A-%20Author%20or%20lab%3A%0A-%20Suggested%20category%3A%0A-%20Why%20it%20is%20technically%20valuable%3A">Submit a recommendation <span aria-hidden="true">→</span></a>
-                    <a class="text-link" href="https://github.com/OpenEnvision/BlogXiv" target="_blank" rel="noopener noreferrer">Contribute on GitHub <span aria-hidden="true">↗</span></a>
-                </div>
+                <form class="recommendation-composer" id="recommendationComposer">
+                    <div class="composer-header">
+                        <span class="composer-avatar" aria-hidden="true">BX</span>
+                        <div>
+                            <strong>Recommend a Blog</strong>
+                            <span>Opens a GitHub Discussion draft</span>
+                        </div>
+                    </div>
+                    <div class="composer-grid">
+                        <label>Title<input name="title" required placeholder="Post title"></label>
+                        <label>Canonical URL<input name="url" type="url" required placeholder="https://..."></label>
+                        <label>Author / Lab<input name="author" required placeholder="Author, lab, or organization"></label>
+                        <label>BlogrXiv Category
+                            <select name="category" required>
+                                <option value="">Select BlogrXiv category</option>
+                                <option value="Foundation Model">Foundation Model</option>
+                                <option value="LLM & MLLM">LLM & MLLM</option>
+                                <option value="Multimodal Model">Multimodal Model</option>
+                                <option value="Visual Generation">Visual Generation</option>
+                                <option value="World Model">World Model</option>
+                                <option value="AI Agents">AI Agents</option>
+                                <option value="Efficient AI">Efficient AI</option>
+                                <option value="Trustworthy AI">Trustworthy AI</option>
+                                <option value="Research Craft">Research Craft</option>
+                            </select>
+                        </label>
+                    </div>
+                    <label>Short summary<textarea name="summary" required placeholder="What does the post explain?"></textarea></label>
+                    <label>Recommendation reason<textarea name="value" required placeholder="What mechanism, method, implementation detail, evaluation insight, or research lesson makes it worth indexing?"></textarea></label>
+                    <label>Tags<input name="tags" placeholder="Reasoning, Evaluation, Agents"></label>
+                    <div class="composer-actions">
+                        <button class="btn btn-primary" type="submit">Open Discussion</button>
+                        <button class="btn btn-outline" type="button" id="emailRecommendationDraft">Email Draft</button>
+                    </div>
+                </form>
             </div>
         </section>
     </main>

@@ -208,6 +208,13 @@
     font-size: 0.88rem;
 }
 
+.share-platform-xhs {
+    border-radius: 4px;
+    background: #ff2442;
+    color: #fff;
+    font-size: 0.78rem;
+}
+
 @media (max-width: 480px) {
     .share-menu {
         right: auto;

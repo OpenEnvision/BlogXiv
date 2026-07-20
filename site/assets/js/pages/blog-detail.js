@@ -142,6 +142,7 @@ class BlogDetail {
         }
 
         document.getElementById('copyShareLink')?.addEventListener('click', () => this.copyShareLink());
+        document.getElementById('shareXiaohongshu')?.addEventListener('click', () => this.shareToXiaohongshu());
         document.querySelectorAll('#shareMenu a').forEach(link => {
             link.addEventListener('click', (event) => {
                 event.preventDefault();
@@ -1344,6 +1345,18 @@ x_quantized = q * scale + zero_point</code></pre>
         return url.toString();
     }
 
+    getShareText() {
+        if (!this.blog) return this.getShareUrl();
+
+        const parts = [
+            `${this.blog.title} - BlogrXiv`,
+            this.blog.excerpt,
+            this.getShareUrl()
+        ];
+
+        return parts.filter(Boolean).join('\n\n');
+    }
+
     updateShareLinks() {
         if (!this.blog) return;
 
@@ -1383,6 +1396,46 @@ x_quantized = q * scale + zero_point</code></pre>
 
         window.location.href = url.toString();
         return true;
+    }
+
+    async shareToXiaohongshu() {
+        try {
+            await navigator.clipboard.writeText(this.getShareText());
+            this.showNotification('Title and intro copied. Opening Xiaohongshu...', 'success');
+            this.openAppLinkWithFallback(
+                'xhsdiscover://post',
+                'https://creator.xiaohongshu.com/publish/publish'
+            );
+        } catch (error) {
+            this.showNotification('Unable to copy the title and intro.', 'error');
+        } finally {
+            this.toggleShareMenu(false);
+        }
+    }
+
+    openAppLinkWithFallback(appUrl, fallbackUrl) {
+        let appOpenWasAttempted = false;
+        const markAppAttempt = () => {
+            appOpenWasAttempted = true;
+        };
+        const handleVisibilityChange = () => {
+            if (document.hidden) markAppAttempt();
+        };
+
+        document.addEventListener('visibilitychange', handleVisibilityChange, { once: true });
+        window.addEventListener('blur', markAppAttempt, { once: true });
+        window.addEventListener('pagehide', markAppAttempt, { once: true });
+
+        window.location.href = appUrl;
+
+        window.setTimeout(() => {
+            document.removeEventListener('visibilitychange', handleVisibilityChange);
+            window.removeEventListener('blur', markAppAttempt);
+            window.removeEventListener('pagehide', markAppAttempt);
+            if (!appOpenWasAttempted && !document.hidden) {
+                window.location.href = fallbackUrl;
+            }
+        }, 2500);
     }
 
     toggleShareMenu(force) {
