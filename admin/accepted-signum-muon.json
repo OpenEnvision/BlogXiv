@@ -1,0 +1,22 @@
+{
+  "id": "finite-time-nonsmooth-signum-muon",
+  "title": "Finite-Time Nonsmooth Convergence of Signum and Muon",
+  "excerpt": "This article studies whether momentum alone can restore finite-time convergence for sign-based optimization in nonsmooth settings. It presents counterexamples for constrained projected Signum, fixed-momentum deterministic Signum, and adapted stochastic oracles, and explains how diagonal Muon dynamics inherit related Signum behavior.",
+  "author": "Dingzhi Yu, Yuxing Liu, Rui Pan, Lijun Zhang, Yang You, and Difan Zou",
+  "authorAvatar": "",
+  "category": "Efficient AI",
+  "tags": [
+    "Signum",
+    "Muon",
+    "Optimization",
+    "Nonsmooth Optimization",
+    "Momentum"
+  ],
+  "readTime": "12 min read",
+  "publishDate": "2026-07-21",
+  "sourceName": "LAMDA, Nanjing University",
+  "url": "https://www.lamda.nju.edu.cn/yudz/finite-time-nonsmooth-signum-muon.html",
+  "coverImage": "assets/img/covers/real/Muon_NJU.png",
+  "coverAlt": "Muon optimization illustration from the LAMDA Nanjing University article",
+  "coverFit": "cover"
+}
