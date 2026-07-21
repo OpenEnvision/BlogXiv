@@ -13,10 +13,10 @@ class AuthorsPage {
         this.init();
     }
 
-    init() {
+    async init() {
         this.setupTheme();
         this.setupEventListeners();
-        this.loadAuthors();
+        await this.loadAuthors();
         this.applyFilters();
     }
 
@@ -138,10 +138,13 @@ class AuthorsPage {
     }
 
     // Data Loading
-    loadAuthors() {
-        const blogs = typeof BlogXiv !== 'undefined'
+    async loadAuthors() {
+        const staticBlogs = typeof BlogXiv !== 'undefined'
             ? BlogXiv.prototype.getCuratedCommunityBlogs()
             : [];
+        const blogs = window.BlogXivData
+            ? await window.BlogXivData.getPublishedBlogs(staticBlogs)
+            : staticBlogs;
 
         const authorGroups = new Map();
 

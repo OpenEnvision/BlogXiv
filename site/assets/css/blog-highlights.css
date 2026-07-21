@@ -1,0 +1,187 @@
+.highlights-page {
+    min-height: 72vh;
+    padding: 104px 0 72px;
+}
+
+.highlights-header {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 22px;
+    padding-bottom: 18px;
+    border-bottom: 2px solid var(--page-navy);
+}
+
+.highlights-header h1 {
+    margin: 0 0 7px;
+    font-family: var(--page-serif);
+    font-size: 2.2rem;
+    letter-spacing: 0;
+}
+
+.highlights-header p {
+    margin: 0;
+    color: var(--page-muted);
+    font-size: 0.9rem;
+}
+
+.highlights-stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(120px, 1fr));
+    min-width: min(100%, 390px);
+    border: 1px solid var(--page-rule);
+    background: var(--page-rule);
+    gap: 1px;
+}
+
+.highlights-stat {
+    padding: 12px 14px;
+    background: var(--page-paper);
+}
+
+.highlights-stat strong,
+.highlights-stat span { display: block; }
+.highlights-stat strong { margin-bottom: 3px; font-size: 1.25rem; font-variant-numeric: tabular-nums; }
+.highlights-stat span { color: var(--page-muted); font-size: 0.7rem; font-weight: 650; }
+
+.highlights-list {
+    border-top: 1px solid var(--page-rule);
+}
+
+.highlight-item {
+    display: grid;
+    grid-template-columns: 54px minmax(150px, 220px) minmax(0, 1fr) 88px;
+    gap: 18px;
+    align-items: stretch;
+    min-height: 178px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--page-rule);
+}
+
+.highlight-rank {
+    padding-top: 5px;
+    color: var(--page-muted);
+    font-family: "JetBrains Mono", monospace;
+    font-size: 1rem;
+    font-variant-numeric: tabular-nums;
+}
+
+.highlight-item:nth-child(-n + 3) .highlight-rank {
+    color: #a8253f;
+    font-weight: 750;
+}
+
+.highlight-cover {
+    min-height: 140px;
+    overflow: hidden;
+    border: 1px solid var(--page-rule);
+    border-radius: 6px;
+    background: var(--blog-card-image-bg);
+}
+
+.highlight-cover img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+.highlight-content {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.highlight-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 14px;
+    margin-bottom: 8px;
+    color: var(--page-muted);
+    font-size: 0.72rem;
+    font-weight: 650;
+}
+
+.highlight-content h2 {
+    margin: 0 0 8px;
+    font-family: "Inter", system-ui, sans-serif;
+    font-size: 1.15rem;
+    line-height: 1.3;
+    letter-spacing: 0;
+}
+
+.highlight-content h2 a {
+    color: var(--page-ink);
+    text-decoration: none;
+}
+
+.highlight-content h2 a:hover { color: var(--page-accent); }
+
+.highlight-content p {
+    display: -webkit-box;
+    margin: 0 0 12px;
+    overflow: hidden;
+    color: var(--page-muted);
+    font-size: 0.82rem;
+    line-height: 1.5;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
+.highlight-author {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: auto;
+    color: var(--page-muted);
+    font-size: 0.76rem;
+}
+
+.highlight-author .author-avatar {
+    width: 26px;
+    height: 26px;
+    flex: 0 0 26px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.highlight-score {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+    padding-top: 4px;
+}
+
+.highlight-score > span {
+    color: var(--page-muted);
+    font-size: 0.68rem;
+    font-weight: 650;
+    text-transform: uppercase;
+}
+
+.highlight-score > strong {
+    font-size: 1.45rem;
+    font-variant-numeric: tabular-nums;
+}
+
+.highlight-score .blog-like-button {
+    margin-top: auto;
+}
+
+@media (max-width: 800px) {
+    .highlights-header { align-items: flex-start; flex-direction: column; }
+    .highlights-stats { width: 100%; }
+    .highlight-item { grid-template-columns: 42px 130px minmax(0, 1fr); }
+    .highlight-score { grid-column: 2 / -1; flex-direction: row; align-items: center; justify-content: flex-end; padding-top: 0; }
+    .highlight-score .blog-like-button { margin: 0 0 0 8px; }
+}
+
+@media (max-width: 560px) {
+    .highlights-page { padding-top: 88px; }
+    .highlight-item { grid-template-columns: 36px minmax(0, 1fr); gap: 12px; }
+    .highlight-cover { grid-column: 2; min-height: 0; aspect-ratio: 16 / 9; }
+    .highlight-content { grid-column: 2; }
+    .highlight-score { grid-column: 2; justify-content: flex-start; }
+}

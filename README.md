@@ -63,7 +63,7 @@ This layer is valuable, but difficult to search, compare, and revisit. BlogrXiv 
 BlogrXiv is:
 
 - A curated discovery system for AI research blogs and technical essays.
-- A static, auditable, source-linked index with no backend dependency.
+- An auditable, source-linked index backed by Supabase with a static corpus fallback.
 - A taxonomy for navigating technical writing across research areas.
 - A reading interface for researchers who value explanation, mechanism, and methodological detail.
 
@@ -125,7 +125,7 @@ BlogrXiv follows several design principles:
 
 | Principle | Implication |
 | --- | --- |
-| Static first | The site should remain inspectable, portable, and easy to deploy without infrastructure dependencies. |
+| Resilient data | Supabase is the published metadata source, while a static corpus fallback keeps the site inspectable and available during API failures. |
 | Source-linked | Every entry should point to its canonical source rather than duplicating or obscuring authorship. |
 | Taxonomy-aware | Discovery should be organized by research concept, not only by recency or popularity. |
 | Editorially conservative | Inclusion should be justified by technical value, not by trend pressure. |
@@ -143,7 +143,8 @@ BlogrXiv is implemented as a static research index. The site has no server-side 
 | `site/categories.html` | Taxonomy-level browsing and category descriptions. |
 | `site/bloggers.html` | Discovery page for high-quality researchers, labs, and technical writers represented in the corpus. |
 | `site/blog-detail.html` | Detail template for indexed entries. |
-| `site/assets/js/app.js` | Canonical in-browser corpus, shared UI behavior, search behavior, filtering logic, and rendering utilities. |
+| `site/assets/js/app.js` | Static fallback corpus, shared UI behavior, search behavior, filtering logic, and rendering utilities. |
+| `site/assets/js/blog-data.js` | Supabase REST client, database-field mapping, request cache, and static fallback selection. |
 | `site/assets/js/pages/` | Page-specific controllers for explore, detail, category, blogger, author, and management surfaces. |
 | `site/assets/css/` | Global, enhancement, and page-specific stylesheets. |
 | `site/assets/img/brand/` | BlogrXiv and OpenEnvision brand assets. |

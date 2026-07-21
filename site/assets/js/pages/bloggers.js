@@ -216,10 +216,10 @@ class BloggersPage {
         this.init();
     }
 
-    init() {
+    async init() {
         this.setupTheme();
         this.setupEventListeners();
-        this.loadBloggers();
+        await this.loadBloggers();
         this.applyFilters();
     }
 
@@ -325,10 +325,13 @@ class BloggersPage {
         });
     }
 
-    loadBloggers() {
-        const blogs = typeof BlogXiv !== 'undefined'
+    async loadBloggers() {
+        const staticBlogs = typeof BlogXiv !== 'undefined'
             ? BlogXiv.prototype.getCuratedCommunityBlogs()
             : [];
+        const blogs = window.BlogXivData
+            ? await window.BlogXivData.getPublishedBlogs(staticBlogs)
+            : staticBlogs;
 
         this.bloggers = this.profiles.map((profile) => {
             const posts = blogs.filter((blog) => this.matchesProfile(blog, profile));

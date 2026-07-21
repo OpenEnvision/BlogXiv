@@ -4,8 +4,9 @@ class BlogDetail {
         this.currentTheme = this.getStoredTheme();
         this.blogId = this.getBlogIdFromURL();
         this.blog = null;
+        this.curatedBlogs = [];
         this.blogLikeKey = `blog:${this.blogId}:liked`;
-        this.liked = this.getStoredBlogLike();
+        this.liked = window.BlogXivLikes?.isLiked(this.blogId) || this.getStoredBlogLike();
         this.bookmarked = false;
         this.commentsKey = `blog:${this.blogId}:comments`;
         this.nextCommentIdKey = `blog:${this.blogId}:nextCommentId`;
@@ -31,18 +32,22 @@ class BlogDetail {
         this.handleAnnotationDocumentClick = this.handleAnnotationDocumentClick.bind(this);
         this.handleReadingNotesClick = this.handleReadingNotesClick.bind(this);
         this.handleLikeStorageChange = this.handleLikeStorageChange.bind(this);
+        this.handleRealtimeLikeChange = this.handleRealtimeLikeChange.bind(this);
         this.handleGiscusMetadata = this.handleGiscusMetadata.bind(this);
         this.init();
     }
     
-    init() {
+    async init() {
         this.setupTheme();
         this.setupEventListeners();
         this.loadAnnotations();
+        await this.loadCuratedBlogs();
         this.loadBlog();
         this.setupAnnotationTools();
         this.loadRelatedBlogs();
         window.addEventListener('storage', this.handleLikeStorageChange);
+        window.addEventListener('blogxiv:likechange', this.handleRealtimeLikeChange);
+        window.BlogXivLikes?.init().then(() => this.renderLikeState());
         window.addEventListener('message', this.handleGiscusMetadata);
     }
     
@@ -203,13 +208,17 @@ class BlogDetail {
         return Array.from(byId.values());
     }
 
-    getCuratedBlogs() {
-        if (typeof BlogXiv === 'undefined' || !BlogXiv.prototype.getCuratedCommunityBlogs) {
-            return [];
-        }
+    async loadCuratedBlogs() {
+        const staticBlogs = typeof BlogXiv !== 'undefined' && BlogXiv.prototype.getCuratedCommunityBlogs
+            ? BlogXiv.prototype.getCuratedCommunityBlogs()
+            : [];
+        this.curatedBlogs = window.BlogXivData
+            ? await window.BlogXivData.getPublishedBlogs(staticBlogs)
+            : staticBlogs;
+    }
 
-        return BlogXiv.prototype
-            .getCuratedCommunityBlogs()
+    getCuratedBlogs() {
+        return this.curatedBlogs
             .map((blog, index) => this.createCuratedDetailBlog(blog, index));
     }
 
@@ -1262,16 +1271,12 @@ x_quantized = q * scale + zero_point</code></pre>
     
     // Interactive Functions
     getStoredBlogLike() {
+        if (window.BlogXivLikes) return window.BlogXivLikes.isLiked(this.blogId);
         try {
             return localStorage.getItem(this.blogLikeKey) === 'true';
         } catch (error) {
             return false;
         }
-    }
-
-    getBaseLikeCount() {
-        const count = Number(this.blog?.likes);
-        return Number.isFinite(count) ? Math.max(0, Math.trunc(count)) : 0;
     }
 
     renderLikeState() {
@@ -1284,32 +1289,38 @@ x_quantized = q * scale + zero_point</code></pre>
         likeBtn.setAttribute('aria-pressed', String(this.liked));
         likeBtn.setAttribute('aria-label', this.liked ? 'You liked this blog' : 'Like this blog');
         likeBtn.title = this.liked ? 'You have already liked this blog' : 'Like this blog';
-        likeCount.textContent = String(this.getBaseLikeCount() + (this.liked ? 1 : 0));
+        likeCount.textContent = String(window.BlogXivLikes?.getCount(this.blogId) || 0);
     }
 
-    likeBlog() {
-        if (this.liked || this.getStoredBlogLike()) {
-            this.liked = true;
-            this.renderLikeState();
-            this.showNotification('You have already liked this blog.', 'info');
+    async likeBlog() {
+        const likeBtn = document.getElementById('likeBtn');
+        if (!window.BlogXivLikes) {
+            this.showNotification('Realtime likes are unavailable.', 'error');
             return;
         }
 
+        likeBtn.disabled = true;
         try {
-            localStorage.setItem(this.blogLikeKey, 'true');
+            const result = await window.BlogXivLikes.toggle(this.blogId);
+            this.liked = result.liked;
+            this.renderLikeState();
+            this.showNotification(result.liked ? 'Thanks for liking this blog.' : 'Like removed.', 'success');
         } catch (error) {
-            this.showNotification('Your like could not be saved in this browser.', 'error');
-            return;
+            this.showNotification('The like could not be updated.', 'error');
+        } finally {
+            likeBtn.disabled = false;
         }
-
-        this.liked = true;
-        this.renderLikeState();
-        this.showNotification('Thanks for liking this blog.', 'success');
     }
 
     handleLikeStorageChange(event) {
         if (event.key !== this.blogLikeKey) return;
-        this.liked = event.newValue === 'true';
+        this.liked = window.BlogXivLikes?.isLiked(this.blogId) || event.newValue === 'true';
+        this.renderLikeState();
+    }
+
+    handleRealtimeLikeChange(event) {
+        if (event.detail?.blogId !== String(this.blogId)) return;
+        this.liked = Boolean(event.detail.liked);
         this.renderLikeState();
     }
     
