@@ -80,10 +80,10 @@ class ExplorePage {
         this.init();
     }
     
-    init() {
+    async init() {
         this.setupTheme();
         this.setupEventListeners();
-        this.loadSampleBlogs();
+        await this.loadSampleBlogs();
         this.populateCategoryFilter();
         this.loadFiltersFromURL();
         this.applyFilters();
@@ -273,8 +273,11 @@ class ExplorePage {
     }
     
     // Data Loading
-    loadSampleBlogs() {
-        this.blogs = BlogXiv.prototype.getCuratedCommunityBlogs();
+    async loadSampleBlogs() {
+        const staticBlogs = BlogXiv.prototype.getCuratedCommunityBlogs();
+        this.blogs = window.BlogXivData
+            ? await window.BlogXivData.getPublishedBlogs(staticBlogs)
+            : staticBlogs;
     }
 
     populateCategoryFilter() {

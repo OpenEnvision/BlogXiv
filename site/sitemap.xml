@@ -16,6 +16,11 @@
     <priority>0.85</priority>
   </url>
   <url>
+    <loc>https://blogxiv.org/highlights.html</loc>
+    <lastmod>2026-07-21</lastmod>
+    <priority>0.85</priority>
+  </url>
+  <url>
     <loc>https://blogxiv.org/categories.html</loc>
     <lastmod>2026-05-22</lastmod>
     <priority>0.8</priority>

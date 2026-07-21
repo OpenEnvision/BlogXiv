@@ -301,7 +301,7 @@ class BlogXiv {
         this.init();
     }
 
-    init() {
+    async init() {
         this.setupTheme();
         this.ensureMainContentAnchor();
         this.injectSkipLink();
@@ -310,7 +310,7 @@ class BlogXiv {
         this.setupEventListeners();
         this.injectSidebar();
         this.setupRecommendationComposer();
-        this.loadSampleBlogs();
+        await this.loadSampleBlogs();
         this.applyInitialUrlFilters();
         this.renderBlogs();
         this.renderPopularBloggers();
@@ -615,6 +615,10 @@ class BlogXiv {
                     <a class="sidebar-link" href="${this.getPageHref('updates.html')}">
                         <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h5l2-7 4 14 2-7h5"></path></svg>
                         <span>Updates</span>
+                    </a>
+                    <a class="sidebar-link" href="${this.getPageHref('highlights.html')}">
+                        <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2-5.6-2.9-5.6 2.9 1.1-6.2L3 9.6l6.2-.9L12 3Z"></path></svg>
+                        <span>Highlights</span>
                     </a>
                     <a class="sidebar-link" href="${this.getPageHref('submit.html')}">
                         <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13"></path><path d="m22 2-7 20-4-9-9-4 20-7z"></path></svg>
@@ -10471,8 +10475,13 @@ class BlogXiv {
         return null;
     }
 
-    loadSampleBlogs() {
-        this.blogs = [...this.getCuratedCommunityBlogs()]
+    async loadSampleBlogs() {
+        const staticBlogs = this.getCuratedCommunityBlogs();
+        const blogs = window.BlogXivData
+            ? await window.BlogXivData.getPublishedBlogs(staticBlogs)
+            : staticBlogs;
+
+        this.blogs = [...blogs]
             .sort((a, b) => new Date(b.publishDate) - new Date(a.publishDate));
         this.filteredBlogs = [...this.blogs];
         this.populateSearchFilterOptions();

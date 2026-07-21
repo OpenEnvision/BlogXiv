@@ -17,6 +17,7 @@ function createButton() {
         },
         setAttribute: (name, value) => attributes.set(name, value),
         getAttribute: (name) => attributes.get(name),
+        disabled: false,
         title: ''
     };
 }
@@ -25,7 +26,10 @@ const context = {
     console,
     URL,
     localStorage: {
+        get length() { return values.size; },
         getItem: (key) => values.get(key) ?? null,
+        key: (index) => [...values.keys()][index] ?? null,
+        removeItem: (key) => values.delete(key),
         setItem: (key, value) => values.set(key, value)
     },
     document: {
@@ -39,6 +43,7 @@ const context = {
     },
     window: {
         addEventListener: () => {},
+        dispatchEvent: () => {},
         location: {
             protocol: 'https:',
             href: 'https://openenvision.github.io/BlogXiv/site/blog-detail.html?id=card-blog#comments'
@@ -56,55 +61,101 @@ elements.set('likeBtn', likeButton);
 elements.set('likeCount', likeCount);
 
 const detail = Object.create(BlogDetail.prototype);
-detail.blog = { likes: 12 };
+detail.blog = {};
+detail.blogId = 'first';
 detail.blogLikeKey = 'blog:first:liked';
 detail.liked = false;
 detail.notifications = [];
 detail.showNotification = (message, type) => detail.notifications.push({ message, type });
 
+const detailCounts = new Map([['first', 12], ['second', 5]]);
+context.window.BlogXivLikes = {
+    getCount: (blogId) => detailCounts.get(String(blogId)) || 0,
+    isLiked: (blogId) => values.get(`blog:${blogId}:liked`) === 'true',
+    async toggle(blogId) {
+        const key = `blog:${blogId}:liked`;
+        const liked = values.get(key) !== 'true';
+        if (liked) values.set(key, 'true');
+        else values.delete(key);
+        detailCounts.set(blogId, Math.max(0, (detailCounts.get(blogId) || 0) + (liked ? 1 : -1)));
+        return { blogId, likeCount: detailCounts.get(blogId), liked };
+    }
+};
+
 detail.renderLikeState();
 assert.equal(likeCount.textContent, '12');
 assert.equal(likeButton.getAttribute('aria-pressed'), 'false');
 
-detail.likeBlog();
+await detail.likeBlog();
 assert.equal(values.get('blog:first:liked'), 'true');
 assert.equal(likeCount.textContent, '13');
 assert.equal(likeButton.getAttribute('aria-pressed'), 'true');
 assert.equal(likeButton.classList.contains('is-liked'), true);
 
-detail.likeBlog();
-assert.equal(likeCount.textContent, '13');
-assert.equal(detail.notifications.at(-1).message, 'You have already liked this blog.');
+await detail.likeBlog();
+assert.equal(likeCount.textContent, '12');
+assert.equal(likeButton.getAttribute('aria-pressed'), 'false');
+assert.equal(detail.notifications.at(-1).message, 'Like removed.');
 
 const refreshedDetail = Object.create(BlogDetail.prototype);
 refreshedDetail.blogLikeKey = 'blog:first:liked';
-assert.equal(refreshedDetail.getStoredBlogLike(), true);
+refreshedDetail.blogId = 'first';
+assert.equal(refreshedDetail.getStoredBlogLike(), false);
 
 const otherBlog = Object.create(BlogDetail.prototype);
 otherBlog.blogLikeKey = 'blog:second:liked';
+otherBlog.blogId = 'second';
 assert.equal(otherBlog.getStoredBlogLike(), false);
 
-const originalSetItem = context.localStorage.setItem;
-context.localStorage.setItem = () => { throw new Error('storage unavailable'); };
-otherBlog.blog = { likes: 5 };
+const originalToggle = context.window.BlogXivLikes.toggle;
+context.window.BlogXivLikes.toggle = async () => { throw new Error('offline'); };
+otherBlog.blog = {};
 otherBlog.liked = false;
 otherBlog.notifications = [];
 otherBlog.showNotification = (message, type) => otherBlog.notifications.push({ message, type });
-otherBlog.likeBlog();
+elements.set('likeBtn', likeButton);
+await otherBlog.likeBlog();
 assert.equal(otherBlog.liked, false);
 assert.equal(otherBlog.notifications.at(-1).type, 'error');
-context.localStorage.setItem = originalSetItem;
+context.window.BlogXivLikes.toggle = originalToggle;
 
 const cardLikeSource = fs.readFileSync('site/assets/js/blog-likes.js', 'utf8');
 context.document.querySelectorAll = () => [];
+context.window.document = context.document;
+context.window.localStorage = context.localStorage;
+context.window.crypto = { randomUUID: () => '11111111-1111-4111-8111-111111111111' };
+context.window.BlogXivData = { config: { url: 'https://example.supabase.co', publishableKey: 'public-key' } };
+let serverLikeCount = 7;
+const mockClient = {
+    from: () => ({
+        select: () => ({
+            range: async () => ({ data: [{ blog_id: 'card-blog', like_count: serverLikeCount }], error: null })
+        })
+    }),
+    channel: () => {
+        const channel = { on: () => channel, subscribe: () => channel };
+        return channel;
+    },
+    rpc: async (_name, params) => {
+        serverLikeCount += params.p_liked ? 1 : -1;
+        return { data: [{ blog_id: params.p_blog_id, like_count: serverLikeCount, liked: params.p_liked }], error: null };
+    }
+};
+context.window.supabase = { createClient: () => mockClient };
+context.CustomEvent = class CustomEvent { constructor(type, options) { this.type = type; this.detail = options.detail; } };
 vm.runInContext(cardLikeSource, context);
 
+await context.window.BlogXivLikes.init();
 assert.match(context.window.BlogXivLikes.renderButton('card-blog'), /data-blog-like="card-blog"/);
 assert.match(context.window.BlogXivLikes.renderButton('card-blog'), /aria-pressed="false"/);
-assert.equal(context.window.BlogXivLikes.like('card-blog'), true);
+assert.match(context.window.BlogXivLikes.renderButton('card-blog'), />7<\/span>/);
+await context.window.BlogXivLikes.toggle('card-blog');
 assert.equal(values.get('blog:card-blog:liked'), 'true');
 assert.match(context.window.BlogXivLikes.renderButton('card-blog'), /aria-pressed="true"/);
-assert.equal(context.window.BlogXivLikes.like('card-blog'), true);
+assert.match(context.window.BlogXivLikes.renderButton('card-blog'), />8<\/span>/);
+await context.window.BlogXivLikes.toggle('card-blog');
+assert.equal(values.get('blog:card-blog:liked'), undefined);
+assert.equal(context.window.BlogXivLikes.getCount('card-blog'), 7);
 
 const giscusAttributes = new Map();
 const giscusContainer = {

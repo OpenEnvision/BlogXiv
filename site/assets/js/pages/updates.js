@@ -21,18 +21,21 @@ class BlogUpdatesPage {
         this.init();
     }
 
-    init() {
-        this.loadBlogs();
+    async init() {
+        await this.loadBlogs();
         this.render();
         this.bindCategoryRail();
         this.observeSections();
         this.updateStats();
     }
 
-    loadBlogs() {
-        const source = typeof BlogXiv !== 'undefined'
+    async loadBlogs() {
+        const staticBlogs = typeof BlogXiv !== 'undefined'
             ? BlogXiv.prototype.getCuratedCommunityBlogs()
             : [];
+        const source = window.BlogXivData
+            ? await window.BlogXivData.getPublishedBlogs(staticBlogs)
+            : staticBlogs;
 
         this.blogs = [...source].sort((a, b) => this.getDateValue(b.publishDate) - this.getDateValue(a.publishDate));
         const groupsByCategory = this.blogs.reduce((groups, blog) => {

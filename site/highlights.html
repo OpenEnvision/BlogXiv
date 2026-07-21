@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Highlights - BlogrXiv</title>
+    <meta name="description" content="Discover the most liked technical AI research blogs on BlogrXiv.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script>
+        (function() {
+            var theme = 'light';
+            try {
+                var storedTheme = localStorage.getItem('theme');
+                theme = storedTheme === 'dark' || storedTheme === 'light' ? storedTheme : 'light';
+            } catch (error) {}
+            document.documentElement.setAttribute('data-theme', theme);
+            document.documentElement.style.colorScheme = theme;
+        })();
+    </script>
+    <link rel="stylesheet" href="assets/css/styles.css?v=theme-fix-2">
+    <link rel="stylesheet" href="assets/css/enhancements.css?v=popular-real-blogs-expanded-15">
+    <link rel="stylesheet" href="assets/css/academic-pages.css?v=1">
+    <link rel="stylesheet" href="assets/css/blog-cards.css?v=realtime-likes-1">
+    <link rel="stylesheet" href="assets/css/unified-palette.css?v=3">
+    <link rel="stylesheet" href="assets/css/blog-highlights.css?v=1">
+    <link rel="icon" type="image/svg+xml" href="assets/img/brand/icon.svg">
+</head>
+<body>
+    <nav class="navbar" aria-label="Primary navigation">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="index.html" class="brand-link" aria-label="BlogrXiv home">
+                    <img src="assets/img/brand/blogrxiv.svg" alt="BlogrXiv" class="brand-logo">
+                </a>
+            </div>
+            <div class="nav-search">
+                <div class="search-container">
+                    <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.35-4.35"></path></svg>
+                    <input type="search" id="searchInput" class="search-input" placeholder="Search blogs, topics, or authors..." aria-label="Search BlogrXiv">
+                    <div class="search-suggestions" id="searchSuggestions"></div>
+                </div>
+            </div>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle theme">
+                    <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path></svg>
+                    <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                </button>
+                <a href="explore.html" class="btn btn-secondary">Explore</a>
+                <a href="updates.html" class="btn btn-secondary">Updates</a>
+                <a href="categories.html" class="btn btn-primary">Categories</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="highlights-page" id="mainContent">
+        <div class="container">
+            <header class="highlights-header">
+                <div>
+                    <h1>Highlights</h1>
+                    <p>Community-ranked technical AI research writing.</p>
+                </div>
+                <div class="highlights-stats" aria-label="Highlight summary">
+                    <div class="highlights-stat"><strong id="highlightsTotalLikes">0</strong><span>Total likes</span></div>
+                    <div class="highlights-stat"><strong id="highlightsLikedBlogs">0</strong><span>Liked blogs</span></div>
+                    <div class="highlights-stat"><strong id="highlightsTopScore">0</strong><span>Top score</span></div>
+                </div>
+            </header>
+            <section class="highlights-list" id="highlightsList" aria-live="polite" aria-label="Blogs ranked by likes"></section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-brand"><a href="index.html" class="brand-link"><img src="assets/img/brand/blogrxiv.svg" alt="BlogrXiv" class="brand-logo"></a></div>
+                    <p class="footer-description">A curated index for technical AI research writing.</p>
+                </div>
+                <div class="footer-section"><h3 class="footer-title">Index</h3><ul class="footer-links"><li><a href="explore.html">Explore</a></li><li><a href="updates.html">Updates</a></li><li><a href="highlights.html">Highlights</a></li><li><a href="categories.html">Categories</a></li></ul></div>
+                <div class="footer-section"><h3 class="footer-title">Project</h3><ul class="footer-links"><li><a href="about.html">About</a></li><li><a href="submit.html">Submit</a></li><li><a href="blog-manager.html">Admin</a></li></ul></div>
+            </div>
+            <div class="footer-bottom"><div class="footer-copyright"><p>&copy; 2026 OpenEnvision | BlogrXiv.</p></div></div>
+        </div>
+    </footer>
+
+    <script src="assets/js/blog-hyphenation.js?v=2"></script>
+    <script src="assets/js/blog-data.js?v=2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="assets/js/blog-likes.js?v=realtime-1"></script>
+    <script src="assets/js/app.js?v=supabase-data-1"></script>
+    <script src="assets/js/pages/highlights.js?v=3"></script>
+</body>
+</html>

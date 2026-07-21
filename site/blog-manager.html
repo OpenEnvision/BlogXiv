@@ -390,6 +390,7 @@
     <link rel="stylesheet" href="assets/css/academic-pages.css?v=1">
     <link rel="stylesheet" href="assets/css/blog-cards.css?v=1">
     <link rel="stylesheet" href="assets/css/unified-palette.css?v=3">
+    <link rel="stylesheet" href="assets/css/blog-manager.css?v=1">
 </head>
 <body>
     <!-- Navigation -->
@@ -422,41 +423,115 @@
     </nav>
 
     <!-- Main Content -->
-    <main class="blog-manager">
+    <main class="manager-page">
         <div class="container">
-            <!-- Page Header -->
-            <header class="page-header">
-                <h1 class="page-title">Maintainer Workflow</h1>
-                <p class="page-description">Review BlogrXiv submissions through GitHub Discussions, Pull Requests, and email fallbacks.</p>
+            <header class="manager-header">
+                <div>
+                    <h1>Blog Data Manager</h1>
+                    <p>Supabase editorial database</p>
+                </div>
+                <a class="btn btn-outline" href="updates.html">View published updates</a>
             </header>
 
-            <section class="review-panel" aria-labelledby="maintainerFlowTitle">
-                <h2 id="maintainerFlowTitle">GitHub Review Flow</h2>
-                <ol class="review-steps">
-                    <li><strong>1. Intake</strong><span>Recommended links arrive as Discussions; original writing arrives as Pull Requests. Email submissions are mirrored by maintainers when needed.</span></li>
-                    <li><strong>2. Triage</strong><span>Apply labels such as pending-review, needs-info, accepted, duplicate, rejected, or out-of-scope.</span></li>
-                    <li><strong>3. Publish</strong><span>Accepted links are converted with admin/new-blog-template.json and scripts/add_blog.mjs; accepted writing is merged or indexed.</span></li>
-                    <li><strong>4. Close</strong><span>After deployment, add published and reply to the Discussion or Pull Request with a concise decision record.</span></li>
-                </ol>
+            <div class="manager-message" id="managerMessage" role="status" aria-live="polite"></div>
+
+            <section class="manager-auth" id="managerAuth" aria-labelledby="managerAuthTitle">
+                <h2 id="managerAuthTitle">Administrator sign in</h2>
+                <form class="manager-auth-form" id="managerAuthForm">
+                    <label class="manager-field">
+                        <span>Email</span>
+                        <input id="managerEmail" type="email" autocomplete="username" required>
+                    </label>
+                    <label class="manager-field">
+                        <span>Password</span>
+                        <input id="managerPassword" type="password" autocomplete="current-password" required>
+                    </label>
+                    <button class="btn btn-primary" id="managerSignIn" type="submit">Sign in</button>
+                </form>
             </section>
 
-            <section class="submission-grid" aria-label="Maintainer actions" style="margin-top: var(--spacing-2xl);">
-                <article class="submission-card">
-                    <h2 class="submission-title">Review Recommended Links</h2>
-                    <p class="submission-description">Use Discussions labeled submission and pending-review. Check the recommendation reason, summary, author, category, tags, source quality, and duplicate status.</p>
-                    <div class="submission-actions">
-                        <a class="btn btn-primary" href="https://github.com/OpenEnvision/BlogXiv/discussions?discussions_q=label%3Asubmission%20label%3Apending-review" target="_blank" rel="noopener noreferrer">Open Link Queue</a>
-                        <a class="btn btn-outline" href="docs/REVIEW_WORKFLOW.md">Workflow Doc</a>
+            <section class="manager-app" id="managerApp" hidden>
+                <div class="manager-topbar">
+                    <span class="manager-session-email" id="managerSessionEmail"></span>
+                    <div class="manager-topbar-actions">
+                        <button class="btn btn-primary" id="managerNewBlog" type="button">New blog</button>
+                        <button class="btn btn-outline" id="managerSignOut" type="button">Sign out</button>
                     </div>
-                </article>
-                <article class="submission-card">
-                    <h2 class="submission-title">Review Original Writing</h2>
-                    <p class="submission-description">Use Pull Requests with the original-writing label or the submissions template. Confirm author permission, technical value, references, and formatting before merge.</p>
-                    <div class="submission-actions">
-                        <a class="btn btn-primary" href="https://github.com/OpenEnvision/BlogXiv/pulls?q=is%3Apr%20label%3Aoriginal-writing" target="_blank" rel="noopener noreferrer">Open PR Queue</a>
-                        <a class="btn btn-outline" href="submissions/README.md">PR Guide</a>
-                    </div>
-                </article>
+                </div>
+
+                <div class="manager-stats" aria-label="Blog database summary">
+                    <div class="manager-stat"><strong id="managerTotalCount">0</strong><span>Total</span></div>
+                    <div class="manager-stat"><strong id="managerPublishedCount">0</strong><span>Published</span></div>
+                    <div class="manager-stat"><strong id="managerDraftCount">0</strong><span>Draft / pending</span></div>
+                    <div class="manager-stat"><strong id="managerHiddenCount">0</strong><span>Hidden</span></div>
+                </div>
+
+                <div class="manager-workspace">
+                    <section class="manager-list-panel" aria-labelledby="managerListTitle">
+                        <div class="manager-panel-header"><h2 id="managerListTitle">Blogs</h2></div>
+                        <div class="manager-toolbar">
+                            <input id="managerSearch" type="search" placeholder="Search title, author, or ID" aria-label="Search blogs">
+                            <select id="managerStatusFilter" aria-label="Filter by status">
+                                <option value="all">All statuses</option>
+                                <option value="published">Published</option>
+                                <option value="draft">Draft</option>
+                                <option value="pending">Pending</option>
+                                <option value="hidden">Hidden</option>
+                            </select>
+                        </div>
+                        <div class="manager-blog-list" id="managerBlogList"></div>
+                    </section>
+
+                    <section class="manager-editor" aria-labelledby="managerEditorTitle">
+                        <div class="manager-panel-header"><h2 id="managerEditorTitle">Blog editor</h2></div>
+                        <form class="manager-form" id="managerBlogForm">
+                            <div class="manager-form-grid">
+                                <label class="manager-field"><span>ID</span><input name="id" required></label>
+                                <label class="manager-field"><span>Publish date</span><input name="publish_date" type="date" required></label>
+                                <label class="manager-field is-wide"><span>Title</span><input name="title" required></label>
+                                <label class="manager-field is-wide"><span>Excerpt</span><textarea name="excerpt" required></textarea></label>
+                                <label class="manager-field"><span>Author</span><input name="author" required></label>
+                                <label class="manager-field"><span>Author avatar</span><input name="author_avatar"></label>
+                                <label class="manager-field"><span>Category</span>
+                                    <select name="category" required>
+                                        <option>Foundation Model</option><option>LLM &amp; MLLM</option><option>Multimodal Model</option>
+                                        <option>Visual Generation</option><option>World Model</option><option>AI Agents</option>
+                                        <option>Efficient AI</option><option>Trustworthy AI</option><option>Research Craft</option>
+                                    </select>
+                                </label>
+                                <label class="manager-field"><span>Tags, comma separated</span><input name="tags"></label>
+                                <label class="manager-field"><span>Read time</span><input name="read_time"></label>
+                                <label class="manager-field"><span>Source name</span><input name="source_name" required></label>
+                                <label class="manager-field is-wide"><span>Canonical URL</span><input name="url" type="url" required></label>
+                                <div class="manager-cover-editor is-wide">
+                                    <div class="manager-cover-preview" id="managerCoverPreview">
+                                        <img id="managerCoverPreviewImage" alt="" hidden>
+                                        <span id="managerCoverPreviewEmpty">No cover selected</span>
+                                    </div>
+                                    <div class="manager-cover-fields">
+                                        <label class="manager-field"><span>Cover image URL or path</span><input name="cover_image" id="managerCoverImage" inputmode="url"></label>
+                                        <label class="manager-field"><span>Upload cover image</span><input id="managerCoverFile" type="file" accept="image/jpeg,image/png,image/webp,image/avif"></label>
+                                        <div class="manager-cover-actions">
+                                            <button class="btn btn-outline" id="managerUploadCover" type="button">Upload image</button>
+                                            <button class="btn btn-outline" id="managerClearCover" type="button">Clear</button>
+                                        </div>
+                                        <p class="manager-field-note">JPEG, PNG, WebP, or AVIF. Maximum 5 MB.</p>
+                                    </div>
+                                </div>
+                                <label class="manager-field is-wide"><span>Cover alt text</span><input name="cover_alt"></label>
+                                <label class="manager-field"><span>Cover fit</span><select name="cover_fit"><option value="cover">Cover</option><option value="contain">Contain</option></select></label>
+                                <label class="manager-field"><span>Status</span><select name="status"><option value="draft">Draft</option><option value="pending">Pending</option><option value="published">Published</option><option value="hidden">Hidden</option></select></label>
+                                <label class="manager-checkbox"><input name="featured" type="checkbox"> Featured</label>
+                            </div>
+                            <div class="manager-form-actions">
+                                <button class="btn btn-outline manager-delete-button" id="managerDeleteBlog" type="button">Delete</button>
+                                <button class="btn btn-outline" id="managerResetForm" type="button">Reset</button>
+                                <button class="btn btn-outline" id="managerSaveBlog" type="submit" name="intent" value="save">Save</button>
+                                <button class="btn btn-primary" id="managerPublishBlog" type="submit" name="intent" value="publish">Publish now</button>
+                            </div>
+                        </form>
+                    </section>
+                </div>
             </section>
         </div>
     </main>
@@ -552,7 +627,10 @@
         </div>
     </div>
 
-    <script src="assets/js/app.js?v=sidebar-brand-fix-1"></script>
+    <script src="assets/js/blog-data.js?v=2"></script>
+    <script src="assets/js/app.js?v=supabase-data-1"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="assets/js/pages/blog-manager.js?v=supabase-manager-3"></script>
     <div class="visitor-map" aria-label="Visitor map and count"></div>
 </body>
 </html>
