@@ -612,6 +612,10 @@ class BlogXiv {
                         <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5z"></path></svg>
                         <span>Blogs</span>
                     </a>
+                    <a class="sidebar-link" href="${this.getPageHref('updates.html')}">
+                        <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h5l2-7 4 14 2-7h5"></path></svg>
+                        <span>Updates</span>
+                    </a>
                     <a class="sidebar-link" href="${this.getPageHref('submit.html')}">
                         <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13"></path><path d="m22 2-7 20-4-9-9-4 20-7z"></path></svg>
                         <span>Submit</span>
@@ -3430,6 +3434,118 @@ class BlogXiv {
 
     getRecentCommunityBlogAdditions() {
         return [
+            {
+                id: 'openai-separating-signal-from-noise-coding-evaluations',
+                title: 'Separating Signal from Noise in Coding Evaluations',
+                excerpt: 'OpenAI examines how benchmark design, task selection, infrastructure, and evaluation variance can obscure real progress in coding models, and outlines practices for producing more reliable and decision-useful measurements.',
+                author: 'OpenAI',
+                authorAvatar: 'https://www.google.com/s2/favicons?domain=openai.com&sz=128',
+                category: 'Research Craft',
+                tags: ['Coding Evaluations', 'Benchmarks', 'Measurement', 'Software Engineering'],
+                readTime: '12 min read',
+                publishDate: '2026-07-21',
+                sourceName: 'OpenAI',
+                url: 'https://openai.com/zh-Hans-CN/index/separating-signal-from-noise-coding-evaluations/',
+                coverImage: 'assets/img/covers/real/separating-signal-from-noise-coding-evaluations.png',
+                coverAlt: 'OpenAI coding evaluations article cover',
+                coverFit: 'cover'
+            },
+            {
+                id: 'openai-gpt-5-6',
+                title: 'Introducing GPT-5.6',
+                excerpt: 'OpenAI introduces GPT-5.6 and presents the model\'s updated capabilities, evaluation results, availability, and guidance for using it across professional and technical workloads.',
+                author: 'OpenAI',
+                authorAvatar: 'https://www.google.com/s2/favicons?domain=openai.com&sz=128',
+                category: 'Foundation Model',
+                tags: ['GPT-5.6', 'Foundation Models', 'Reasoning', 'Model Release'],
+                readTime: '8 min read',
+                publishDate: '2026-07-20',
+                sourceName: 'OpenAI',
+                url: 'https://openai.com/zh-Hans-CN/index/gpt-5-6/',
+                coverImage: 'assets/img/covers/real/gpt-5.6.png',
+                coverAlt: 'OpenAI GPT-5.6 model release cover',
+                coverFit: 'cover'
+            },
+            {
+                id: 'openai-gpt-red-self-improvement-robustness',
+                title: 'GPT-Red: Unlocking Self-Improvement for Robustness',
+                excerpt: 'OpenAI presents GPT-Red, a research approach that uses increasingly capable model-generated attacks and feedback to improve robustness, connecting automated red teaming with iterative model self-improvement.',
+                author: 'OpenAI',
+                authorAvatar: 'https://www.google.com/s2/favicons?domain=openai.com&sz=128',
+                category: 'Trustworthy AI',
+                tags: ['GPT-Red', 'Robustness', 'Red Teaming', 'Self-Improvement'],
+                readTime: '12 min read',
+                publishDate: '2026-07-20',
+                sourceName: 'OpenAI',
+                url: 'https://openai.com/index/unlocking-self-improvement-gpt-red/',
+                coverImage: 'assets/img/covers/real/GPT‑Red- Unlocking Self-Improvement for Robustness.png',
+                coverAlt: 'GPT-Red self-improvement for robustness article cover',
+                coverFit: 'cover'
+            },
+            {
+                id: 'kimi-k3-open-frontier-intelligence',
+                title: 'Kimi K3: Open Frontier Intelligence',
+                excerpt: 'Kimi introduces K3, an open 2.8-trillion-parameter model built with Kimi Delta Attention, Attention Residuals, native multimodality, and a one-million-token context for coding, reasoning, and knowledge work.',
+                author: 'Kimi Team',
+                authorAvatar: 'https://www.google.com/s2/favicons?domain=kimi.com&sz=128',
+                category: 'Foundation Model',
+                tags: ['Kimi K3', 'Mixture of Experts', 'Multimodal', 'Long Context'],
+                readTime: '18 min read',
+                publishDate: '2026-07-17',
+                sourceName: 'Kimi',
+                url: 'https://www.kimi.com/blog/kimi-k3',
+                coverImage: 'assets/img/covers/real/Kimi K3- Open Frontier Intelligence .png',
+                coverAlt: 'Kimi K3 open frontier intelligence article cover',
+                coverFit: 'cover'
+            },
+            {
+                id: 'thinking-machines-inkling-open-weights-model',
+                title: 'Inkling: Our Open-Weights Model',
+                excerpt: 'Thinking Machines Lab introduces Inkling, its first open-weights multimodal mixture-of-experts model, with controllable reasoning effort, long-context options, and support for fine-tuning through Tinker.',
+                author: 'Thinking Machines Lab',
+                authorAvatar: 'https://www.google.com/s2/favicons?domain=thinkingmachines.ai&sz=128',
+                category: 'Foundation Model',
+                tags: ['Inkling', 'Open Weights', 'Multimodal', 'Mixture of Experts'],
+                readTime: '28 min read',
+                publishDate: '2026-07-15',
+                sourceName: 'Thinking Machines Lab',
+                url: 'https://thinkingmachines.ai/news/introducing-inkling/',
+                coverImage: 'assets/img/covers/real/Inkling.png',
+                coverAlt: 'Inkling open-weights model article cover',
+                coverFit: 'cover'
+            },
+            {
+                id: 'thinking-machines-replicate-expert-judgment-finance',
+                title: 'Learning to Replicate Expert Judgment in Financial Tasks',
+                excerpt: 'Thinking Machines Lab shows how expert-labeled data and fine-tuning on Tinker can produce a custom model that outperforms frontier LLMs on financial information-filtering tasks at a fraction of the cost.',
+                author: 'Thinking Machines Lab',
+                authorAvatar: 'https://www.google.com/s2/favicons?domain=thinkingmachines.ai&sz=128',
+                category: 'Efficient AI',
+                tags: ['Fine-Tuning', 'Expert Judgment', 'Financial AI', 'Tinker'],
+                readTime: '10 min read',
+                publishDate: '2026-06-30',
+                sourceName: 'Thinking Machines Lab',
+                url: 'https://thinkingmachines.ai/news/learning-to-replicate-expert-judgment-in-financial-tasks/',
+                coverImage: 'assets/img/covers/real/Learning to Replicate Expert Judgment in Financial Tasks.png',
+                coverAlt: 'Expert judgment in financial tasks article cover',
+                coverFit: 'cover'
+            },
+            {
+                id: 'finite-time-nonsmooth-signum-muon',
+                title: 'Finite-Time Nonsmooth Convergence of Signum and Muon',
+                excerpt: 'This article studies whether momentum alone can restore finite-time convergence for sign-based optimization in nonsmooth settings. It presents counterexamples for constrained projected Signum, fixed-momentum deterministic Signum, and adapted stochastic oracles, and explains how diagonal Muon dynamics inherit related Signum behavior.',
+                author: 'Dingzhi Yu, Yuxing Liu, Rui Pan, Lijun Zhang, Yang You, and Difan Zou',
+                authorAvatar: 'https://www.google.com/s2/favicons?domain=lamda.nju.edu.cn&sz=128',
+                category: 'Efficient AI',
+                tags: ['Signum', 'Muon', 'Optimization', 'Nonsmooth Optimization', 'Momentum'],
+                readTime: '12 min read',
+                publishDate: '2026-07-21',
+                sourceName: 'LAMDA, Nanjing University',
+                url: 'https://www.lamda.nju.edu.cn/yudz/finite-time-nonsmooth-signum-muon.html',
+                coverImage: 'assets/img/covers/real/Muon_NJU.png',
+                coverAlt: 'Muon optimization illustration from the LAMDA Nanjing University article',
+                coverFit: 'cover'
+            },
             {
                 id: 'openai-deployment-simulation',
                 title: 'Predicting Model Behavior Before Release by Simulating Deployment',

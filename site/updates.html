@@ -3,12 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Explore Blogs - BlogrXiv</title>
-    <meta name="description" content="Explore all AI research blogs on BlogrXiv - Discover the latest insights in AI research">
+    <title>Blog Updates - BlogrXiv</title>
+    <meta name="description" content="Browse the newest BlogrXiv blog updates grouped by AI research category.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <!-- Theme bootstrap -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <script>
         (function() {
             var theme = "light";
@@ -29,9 +28,9 @@
     <link rel="stylesheet" href="assets/css/academic-pages.css?v=1">
     <link rel="stylesheet" href="assets/css/blog-cards.css?v=fill-line-hyphens-1">
     <link rel="stylesheet" href="assets/css/unified-palette.css?v=3">
+    <link rel="stylesheet" href="assets/css/blog-updates.css?v=2">
 </head>
 <body>
-    <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-brand">
@@ -39,7 +38,7 @@
                     <img src="assets/img/brand/blogrxiv.svg" alt="BlogrXiv" class="brand-logo" />
                 </a>
             </div>
-            
+
             <div class="nav-search">
                 <div class="search-container">
                     <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -50,7 +49,7 @@
                     <div class="search-suggestions" id="searchSuggestions"></div>
                 </div>
             </div>
-            
+
             <div class="nav-actions">
                 <a class="github-nav-link" href="https://github.com/OpenEnvision/BlogXiv" target="_blank" rel="noopener noreferrer" aria-label="Open BlogrXiv on GitHub" title="GitHub">
                     <svg class="github-nav-icon" width="20" height="20" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
@@ -66,136 +65,41 @@
                         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                     </svg>
                 </button>
-                <a href="updates.html" class="btn btn-secondary">Updates</a>
+                <a href="explore.html" class="btn btn-secondary">Explore</a>
                 <a href="categories.html" class="btn btn-primary">Categories</a>
             </div>
         </div>
     </nav>
 
-    <!-- Main Content -->
-    <main class="explore-page">
+    <main class="updates-page" id="mainContent">
         <div class="container">
-            <!-- Page Header -->
             <header class="page-header">
-                <h1 class="page-title">Explore All Blogs</h1>
-                <p class="page-description">Discover the latest AI research insights and breakthroughs from our community</p>
+                <h1 class="page-title">Blog Updates</h1>
+                <p class="page-description">Newest BlogrXiv entries grouped by research category, ordered by publication date inside each category.</p>
             </header>
 
-            <!-- Filters -->
-            <div class="filters-section">
-                <div class="filter-group">
-                    <label for="categoryFilter">Category</label>
-                    <div class="filter-select-wrap">
-                        <select id="categoryFilter" class="filter-select">
-                            <option value="all">All Categories</option>
-                            <option value="Multimodal Model">Multimodal Model</option>
-                            <option value="Visual Generation">Visual Generation</option>
-                            <option value="World Model">World Model</option>
-                            <option value="AI Agents">AI Agents</option>
-                            <option value="LLM & MLLM">LLM & MLLM</option>
-                            <option value="Foundation Model">Foundation Model</option>
-                            <option value="Efficient AI">Efficient AI</option>
-                            <option value="Trustworthy AI">Trustworthy AI</option>
-                            <option value="Research Craft">Research Craft</option>
-                        </select>
-                        <svg class="filter-select-chevron" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="m6 9 6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                        </svg>
-                    </div>
-                </div>
-                
-                <div class="filter-group">
-                    <label for="sortFilter">Sort by</label>
-                    <div class="filter-select-wrap">
-                        <select id="sortFilter" class="filter-select">
-                            <option value="newest">Newest First</option>
-                            <option value="oldest">Oldest First</option>
-                            <option value="title">Title A-Z</option>
-                            <option value="source">Source A-Z</option>
-                        </select>
-                        <svg class="filter-select-chevron" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="m6 9 6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                        </svg>
-                    </div>
-                </div>
-                
-                <div class="filter-group">
-                    <label for="timeFilter">Time Range</label>
-                    <div class="filter-select-wrap">
-                        <select id="timeFilter" class="filter-select">
-                            <option value="all">All Time</option>
-                            <option value="2026">2026</option>
-                            <option value="2025">2025</option>
-                            <option value="2024">2024</option>
-                            <option value="week">Past Week</option>
-                            <option value="month">Past Month</option>
-                            <option value="year">Past Year</option>
-                        </select>
-                        <svg class="filter-select-chevron" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="m6 9 6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                        </svg>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Stats -->
-            <div class="stats-section">
+            <div class="stats-section" aria-label="Blog update summary">
                 <div class="stat-card">
-                    <div class="stat-number" id="totalBlogs">0</div>
-                    <div class="stat-label">Total Blogs</div>
+                    <div class="stat-number" id="updatesTotalBlogs">0</div>
+                    <div class="stat-label">Indexed Blogs</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-number" id="totalAuthors">0</div>
-                    <div class="stat-label">Authors</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number" id="totalCategories">0</div>
+                    <div class="stat-number" id="updatesTotalCategories">0</div>
                     <div class="stat-label">Categories</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-number" id="totalViews">Curated</div>
-                    <div class="stat-label">Selection</div>
+                    <div class="stat-number" id="updatesNewestDate">Curated</div>
+                    <div class="stat-label">Newest Date</div>
                 </div>
             </div>
 
-            <!-- Blogs Grid -->
-            <section class="blogs-section">
-                <div class="blogs-header">
-                    <h2>All Blogs</h2>
-                    <div class="view-toggle">
-                        <button class="view-btn active" data-view="grid" aria-label="Grid view">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <rect x="3" y="3" width="7" height="7"></rect>
-                                <rect x="14" y="3" width="7" height="7"></rect>
-                                <rect x="14" y="14" width="7" height="7"></rect>
-                                <rect x="3" y="14" width="7" height="7"></rect>
-                            </svg>
-                        </button>
-                        <button class="view-btn" data-view="list" aria-label="List view">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <line x1="8" y1="6" x2="21" y2="6"></line>
-                                <line x1="8" y1="12" x2="21" y2="12"></line>
-                                <line x1="8" y1="18" x2="21" y2="18"></line>
-                                <line x1="3" y1="6" x2="3.01" y2="6"></line>
-                                <line x1="3" y1="12" x2="3.01" y2="12"></line>
-                                <line x1="3" y1="18" x2="3.01" y2="18"></line>
-                            </svg>
-                        </button>
-                    </div>
-                </div>
-                
-                <div class="blogs-grid" id="blogsGrid">
-                    <!-- Blogs will be dynamically loaded here -->
-                </div>
-                
-                <div class="load-more">
-                    <button class="btn btn-outline" id="loadMoreBtn">Load More Blogs</button>
-                </div>
-            </section>
+            <div class="updates-shell">
+                <nav class="updates-rail" id="updatesCategoryRail" aria-label="Blog update categories"></nav>
+                <div class="updates-content" id="updatesContent" aria-live="polite"></div>
+            </div>
         </div>
     </main>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
@@ -209,21 +113,21 @@
                         </a>
                     </div>
                     <p class="footer-description">
-                        Discover, share, and explore amazing AI research blogs across different domains. 
+                        Discover, share, and explore amazing AI research blogs across different domains.
                         Join our community of knowledge seekers and content creators.
                     </p>
                 </div>
-                
+
                 <div class="footer-section">
                     <h3 class="footer-title">Platform</h3>
                     <ul class="footer-links">
                         <li><a href="explore.html">Explore</a></li>
+                        <li><a href="updates.html">Updates</a></li>
                         <li><a href="categories.html">Categories</a></li>
                         <li><a href="bloggers.html">Bloggers</a></li>
-                        <li><a href="trending.html">Trending</a></li>
                     </ul>
                 </div>
-                
+
                 <div class="footer-section">
                     <h3 class="footer-title">Community</h3>
                     <ul class="footer-links">
@@ -233,7 +137,7 @@
                         <li><a href="feedback.html">Feedback</a></li>
                     </ul>
                 </div>
-                
+
                 <div class="footer-section footer-contribute-section">
                     <h3 class="footer-title">Contribute</h3>
                     <div class="footer-actions" aria-label="Contribute to BlogrXiv">
@@ -264,7 +168,7 @@
                     <p class="footer-contribute-note">Research blogs are reviewed for technical depth, clarity, and durable insight.</p>
                 </div>
             </div>
-            
+
             <div class="footer-bottom">
                 <div class="footer-copyright">
                     <p>&copy; 2026 OpenEnvision｜BlogrXiv. All rights reserved.</p>
@@ -278,21 +182,19 @@
         </div>
     </footer>
 
-    <!-- Loading animation overlay -->
     <div class="loading-overlay" id="loadingOverlay">
         <div class="loading-container">
             <div class="loading-logo">
                 <img src="assets/img/brand/blogrxiv.svg" alt="BlogrXiv">
             </div>
-            
-            <div class="loading-text" id="loadingText">Exploring amazing content...</div>
+            <div class="loading-text" id="loadingText">Loading blog updates...</div>
         </div>
     </div>
 
     <script src="assets/js/blog-hyphenation.js?v=2"></script>
     <script src="assets/js/blog-likes.js?v=1"></script>
     <script src="assets/js/app.js?v=sidebar-brand-fix-1"></script>
-    <script src="assets/js/pages/explore.js?v=hyphenated-titles-1"></script>
+    <script src="assets/js/pages/updates.js?v=4"></script>
     <div class="visitor-map" aria-label="Visitor map and count"></div>
 </body>
 </html>
