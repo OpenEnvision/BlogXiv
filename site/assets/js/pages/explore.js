@@ -52,6 +52,14 @@ class ExplorePage {
             {
                 name: 'Research Craft',
                 description: 'Evaluation, AI engineering practice, benchmark design, product evals, and researcher workflows'
+            },
+            {
+                name: 'Frontier Developments',
+                description: 'North America, China, and global AI research frontiers, model releases, ecosystem shifts, and deployment directions'
+            },
+            {
+                name: 'Research Experience',
+                description: 'Research workflows, paper reading, reproduction notes, writing practice, collaboration habits, and career lessons'
             }
         ];
         this.categoryAliases = {
@@ -74,7 +82,16 @@ class ExplorePage {
             'research-craft': 'Research Craft',
             'how-to-become-a-researcher': 'Research Craft',
             'gen-ai': 'Foundation Model',
-            'generative-ai': 'Visual Generation'
+            'generative-ai': 'Visual Generation',
+            'frontier-developments': 'Frontier Developments',
+            'frontier-development': 'Frontier Developments',
+            'frontier': 'Frontier Developments',
+            'ai-frontier': 'Frontier Developments',
+            'global-ai': 'Frontier Developments',
+            'research-experience': 'Research Experience',
+            'research-experiences': 'Research Experience',
+            'research-advice': 'Research Experience',
+            'research-notes': 'Research Experience'
         };
         
         this.init();
@@ -125,7 +142,6 @@ class ExplorePage {
         if (category && category !== 'all') {
             this.currentFilters.category = this.normalizeCategory(category);
             
-            // Update the category filter dropdown
             const categoryFilter = document.getElementById('categoryFilter');
             if (categoryFilter) {
                 categoryFilter.value = this.currentFilters.category;
@@ -236,7 +252,7 @@ class ExplorePage {
                 this.applyFilters();
             });
         }
-        
+
         const sortFilter = document.getElementById('sortFilter');
         if (sortFilter) {
             sortFilter.addEventListener('change', (e) => {
@@ -275,9 +291,11 @@ class ExplorePage {
     // Data Loading
     async loadSampleBlogs() {
         const staticBlogs = BlogXiv.prototype.getCuratedCommunityBlogs();
-        this.blogs = window.BlogXivData
+        const blogs = window.BlogXivData
             ? await window.BlogXivData.getPublishedBlogs(staticBlogs)
             : staticBlogs;
+        const categoryReassignments = BlogXiv.prototype.getCategoryReassignments();
+        this.blogs = blogs.map(blog => BlogXiv.prototype.applyCategoryReassignments(blog, categoryReassignments));
     }
 
     populateCategoryFilter() {
@@ -289,17 +307,20 @@ class ExplorePage {
             counts.set(blog.category, (counts.get(blog.category) || 0) + 1);
             return counts;
         }, new Map());
-        const categories = Array.from(categoryCounts.keys())
+        const categories = Array.from(new Set([
+            ...this.categoryTaxonomy.map(category => category.name),
+            ...categoryCounts.keys()
+        ]))
             .sort((a, b) => this.getCategoryOrder(a) - this.getCategoryOrder(b) || a.localeCompare(b));
 
         categoryFilter.innerHTML = `
             <option value="all">All Categories (${this.blogs.length})</option>
-            ${categories.map(category => `<option value="${category}">${category} (${categoryCounts.get(category)})</option>`).join('')}
+            ${categories.map(category => `<option value="${category}">${category} (${categoryCounts.get(category) || 0})</option>`).join('')}
         `;
 
         categoryFilter.value = categories.includes(selectedValue) ? selectedValue : 'all';
     }
-    
+
     // Filtering and Sorting
     applyFilters() {
         let filtered = [...this.blogs];
@@ -589,7 +610,7 @@ class ExplorePage {
             </article>
         `;
     }
-    
+
     // View Management
     updateViewToggle() {
         const viewBtns = document.querySelectorAll('.view-btn');

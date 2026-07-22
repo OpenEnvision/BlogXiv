@@ -1366,7 +1366,16 @@ class BlogXiv {
             'gen-ai': 'Foundation Model',
             'optimization': 'Optimization',
             'how-to-become-a-researcher': 'Research Craft',
-            'research-craft': 'Research Craft'
+            'research-craft': 'Research Craft',
+            'frontier-developments': 'Frontier Developments',
+            'frontier-development': 'Frontier Developments',
+            'frontier': 'Frontier Developments',
+            'ai-frontier': 'Frontier Developments',
+            'global-ai': 'Frontier Developments',
+            'research-experience': 'Research Experience',
+            'research-experiences': 'Research Experience',
+            'research-advice': 'Research Experience',
+            'research-notes': 'Research Experience'
         };
         
         const mappedCategory = categoryMap[category.toLowerCase()] || category;
@@ -1374,7 +1383,7 @@ class BlogXiv {
         // Direct redirect without loading animation
         window.location.href = `${this.getPageHref('explore.html')}?category=${encodeURIComponent(mappedCategory)}`;
     }
-    
+
     scrollToSection(selector) {
         const section = document.querySelector(selector);
         if (section) {
@@ -3900,22 +3909,6 @@ class BlogXiv {
                 url: 'https://www.sh-reya.com/blog/ai-qual-analysis/',
                 coverImage: 'https://www.sh-reya.com/blogimages/ai-qual-analysis/generic1.png',
                 coverAlt: 'Real cover from first-image',
-                coverFit: 'cover'
-            },
-            {
-                id: 'complex-systems-visualizer',
-                title: 'Complex Systems Visualizer',
-                excerpt: 'Complex Systems Visualizer turns concepts from complex-systems science into an explorable browser companion, with interactive scenes for bifurcations, heavy tails, SIR dynamics, boundaries, and case-study essays.',
-                author: 'Complex Systems Visualizer',
-                authorAvatar: 'https://www.google.com/s2/favicons?domain=complexsystems.replit.app&sz=128',
-                category: 'Research Craft',
-                tags: ['Complex Systems', 'Interactive Visualization', 'Simulation', 'Systems Thinking'],
-                readTime: '20 min read',
-                publishDate: '2026-06-01',
-                sourceName: 'Complex Systems Visualizer',
-                url: 'https://complexsystems.replit.app/',
-                coverImage: 'https://folded.replit.app/opengraph.jpg',
-                coverAlt: 'Real cover from og:image',
                 coverFit: 'cover'
             },
             {
@@ -10313,7 +10306,110 @@ class BlogXiv {
             }
         ];
 
-        return blogs.map(blog => this.enhanceCuratedBlogCover(blog));
+        const categoryReassignments = this.getCategoryReassignments();
+        return blogs.map(blog => this.applyCategoryReassignments(this.enhanceCuratedBlogCover(blog), categoryReassignments));
+    }
+
+    getCategoryReassignments() {
+        const frontierDevelopments = [
+            'openai-gpt-5-6',
+            'kimi-k3-open-frontier-intelligence',
+            'thinking-machines-inkling-open-weights-model',
+            'openai-deployment-simulation',
+            'metr-frontier-risk-report-2026',
+            'interconnects-open-models-mid-2026',
+            'interconnects-open-models-next-phase',
+            'interconnects-state-open-models-2025',
+            'stanford-ai-index-2025',
+            'sebastian-state-llms-2025',
+            'simon-year-in-llms-2025',
+            'simon-5-minute-llms-2026',
+            'simon-llms-in-2024',
+            'claude-opus-47',
+            'claude-4',
+            'claude-37-sonnet-code',
+            'open-r1',
+            'jay-illustrated-deepseek-r1',
+            'sebastian-deepseek-v32-architecture',
+            'hf-state-open-source-ai-spring-2026',
+            'llama-31-open-source-ai',
+            'gemma-2-open-models',
+            'olmo2-open-language-model',
+            'deepwiki-mimo-v2-flash',
+            'google-palm-scaling-pathways',
+            'qwen2-vl',
+            'qwen3-omni',
+            'qvq-72b-preview',
+            'qwen-vl-visual-language',
+            'deepseek-ocr',
+            'glm-45v',
+            'minicpm-o-45',
+            'bagel-unified-multimodal',
+            'open-sora-plan',
+            'nvlm-10',
+            'mistral-medium-3',
+            'google-agentic-rag-sufficient-context',
+            'alphaevolve-coding-agent',
+            'sima-2-virtual-worlds',
+            'robocat-self-improving-agent',
+            'rt-1-robotics-transformer',
+            'thinking-machines-interaction-models'
+        ];
+        const researchExperience = [
+            'patrick-mineault-good-research-code',
+            'karpathy-recipe-training-neural-networks',
+            'openai-separating-signal-from-noise-coding-evaluations',
+            'huggingface-olmo-eval-workbench',
+            'hylak-how-to-eval-ai-agents',
+            'davies-ai-agent-evaluation-frameworks',
+            'openai-macro-evals-agentic-systems',
+            'anthropic-demystifying-evals-agents',
+            'anthropic-ai-resistant-technical-evaluations',
+            'braintrust-logs-evals-same-place',
+            'hamel-evals-skills-coding-agents',
+            'hamel-llm-evals-faq',
+            'hamel-llm-judge-guide',
+            'hamel-ai-product-needs-evals',
+            'eugene-product-evals',
+            'eugene-long-context-qa-evals',
+            'sebastian-llm-evaluation-4-approaches',
+            'nrehiew-minimal-editing',
+            'ryan-briggs-research-adjudication',
+            'openai-parameter-golf',
+            'thoughtful-letting-ai-posttrain-ai',
+            'shreya-agent-assisted-qualitative-analysis',
+            'greg-goal-engineering',
+            'dair-context-engineering-guide',
+            'manus-context-engineering-agents',
+            'anthropic-multi-agent-research-system',
+            'claude-code-large-codebases',
+            'hf-rl-environments-guide',
+            'iclr2026-why-ai-evaluations-need-error-bars',
+            'iclr2025-towards-more-rigorous-llm-evals',
+            'iclr2025-opt-summary',
+            'iclr2025-do-not-write-jailbreak-papers',
+            'iclr2025-visualizing-training',
+            'iclr2025-linear-gnn-convergence-restated',
+            'iclr2026-unigramlm-manual',
+            'iclr2026-rl-with-gnns',
+            'iclr2024-the-n-implementation-details-of-rlhf-with-ppo',
+            'iclr2024-bench-hvp',
+            'iclr2024-diffusion-theory-from-scratch'
+        ];
+
+        const assignments = new Map();
+        frontierDevelopments.forEach(id => assignments.set(id, 'Frontier Developments'));
+        researchExperience.forEach(id => assignments.set(id, 'Research Experience'));
+        return assignments;
+    }
+
+    applyCategoryReassignments(blog, assignments = this.getCategoryReassignments()) {
+        const category = assignments.get(blog.id) || blog.category;
+
+        return {
+            ...blog,
+            category
+        };
     }
 
     enhanceCuratedBlogCover(blog) {
@@ -10480,8 +10576,10 @@ class BlogXiv {
         const blogs = window.BlogXivData
             ? await window.BlogXivData.getPublishedBlogs(staticBlogs)
             : staticBlogs;
+        const categoryReassignments = this.getCategoryReassignments();
 
         this.blogs = [...blogs]
+            .map(blog => this.applyCategoryReassignments(blog, categoryReassignments))
             .sort((a, b) => new Date(b.publishDate) - new Date(a.publishDate));
         this.filteredBlogs = [...this.blogs];
         this.populateSearchFilterOptions();

@@ -212,9 +212,15 @@ class BlogDetail {
         const staticBlogs = typeof BlogXiv !== 'undefined' && BlogXiv.prototype.getCuratedCommunityBlogs
             ? BlogXiv.prototype.getCuratedCommunityBlogs()
             : [];
-        this.curatedBlogs = window.BlogXivData
+        const blogs = window.BlogXivData
             ? await window.BlogXivData.getPublishedBlogs(staticBlogs)
             : staticBlogs;
+        if (typeof BlogXiv !== 'undefined' && BlogXiv.prototype.getCategoryReassignments && BlogXiv.prototype.applyCategoryReassignments) {
+            const categoryReassignments = BlogXiv.prototype.getCategoryReassignments();
+            this.curatedBlogs = blogs.map(blog => BlogXiv.prototype.applyCategoryReassignments(blog, categoryReassignments));
+            return;
+        }
+        this.curatedBlogs = blogs;
     }
 
     getCuratedBlogs() {
@@ -259,7 +265,7 @@ class BlogDetail {
             <p>${safeExcerpt}</p>
             <p>This BlogrXiv entry points to a trusted external article from <strong>${safeSource}</strong>. Use this page to save notes, comments, and related reading context, then continue to the original article for the full post.</p>
             <h2>Why It Matters</h2>
-            <p>The article sits in the <strong>${safeCategory}</strong> track, making it useful for readers following multimodal AI, generative media, and world-model research progress.</p>
+            <p>The article sits in the <strong>${safeCategory}</strong> category, making it useful for readers following multimodal AI, generative media, and world-model research progress.</p>
             <h2>Topics</h2>
             ${topicList}
             <div class="external-source-callout">

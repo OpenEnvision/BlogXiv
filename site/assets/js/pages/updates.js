@@ -13,9 +13,11 @@ class BlogUpdatesPage {
             'AI Agents',
             'LLM & MLLM',
             'Foundation Model',
+            'Frontier Developments',
             'Efficient AI',
             'Trustworthy AI',
-            'Research Craft'
+            'Research Craft',
+            'Research Experience'
         ];
 
         this.init();
@@ -36,8 +38,15 @@ class BlogUpdatesPage {
         const source = window.BlogXivData
             ? await window.BlogXivData.getPublishedBlogs(staticBlogs)
             : staticBlogs;
+        const categoryReassignments = typeof BlogXiv !== 'undefined' && BlogXiv.prototype.getCategoryReassignments
+            ? BlogXiv.prototype.getCategoryReassignments()
+            : new Map();
 
-        this.blogs = [...source].sort((a, b) => this.getDateValue(b.publishDate) - this.getDateValue(a.publishDate));
+        this.blogs = [...source]
+            .map(blog => typeof BlogXiv !== 'undefined' && BlogXiv.prototype.applyCategoryReassignments
+                ? BlogXiv.prototype.applyCategoryReassignments(blog, categoryReassignments)
+                : blog)
+            .sort((a, b) => this.getDateValue(b.publishDate) - this.getDateValue(a.publishDate));
         const groupsByCategory = this.blogs.reduce((groups, blog) => {
             const category = blog.category || 'Research';
             if (!groups.has(category)) groups.set(category, []);
