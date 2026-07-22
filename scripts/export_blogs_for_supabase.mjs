@@ -17,7 +17,9 @@ const categories = new Set([
   'AI Agents',
   'Efficient AI',
   'Trustworthy AI',
-  'Research Craft'
+  'Research Craft',
+  'Frontier Developments',
+  'Research Experience'
 ]);
 
 const createElementStub = () => ({

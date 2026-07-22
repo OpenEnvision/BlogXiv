@@ -57,6 +57,10 @@ node scripts/export_blogs_for_supabase.mjs
 
 The generated `admin/blogs-supabase-import.csv` is ignored by Git because it duplicates the static corpus. The exporter validates required fields, taxonomy values, date formats, tag arrays, cover-fit values, duplicate IDs, and duplicate canonical URLs before writing.
 
+When frontend taxonomy or cover metadata changes, regenerate this CSV and import it into `public.blogs` so Supabase stays aligned with the static fallback. This is especially important when moving existing posts into a new `category` or replacing a bad `cover_image`; public pages prefer Supabase rows when the API is available.
+
+For a surgical fix, update the affected rows directly in the Supabase SQL Editor, then regenerate the CSV afterward so the static fallback and database remain aligned.
+
 ## Verification
 
 ```sql
