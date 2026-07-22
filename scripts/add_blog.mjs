@@ -15,8 +15,8 @@ const categories = new Set([
   'Efficient AI',
   'Trustworthy AI',
   'Research Craft',
-  'Frontier Developments',
-  'Research Experience'
+  'Frontier',
+  'How to Research'
 ]);
 
 const usage = `Usage:

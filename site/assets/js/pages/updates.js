@@ -13,11 +13,11 @@ class BlogUpdatesPage {
             'AI Agents',
             'LLM & MLLM',
             'Foundation Model',
-            'Frontier Developments',
+            'Frontier',
             'Efficient AI',
             'Trustworthy AI',
             'Research Craft',
-            'Research Experience'
+            'How to Research'
         ];
 
         this.init();
