@@ -325,6 +325,7 @@ class ExplorePage {
     // Filtering and Sorting
     applyFilters() {
         let filtered = [...this.blogs];
+        this.currentFilters.category = this.normalizeCategory(this.currentFilters.category);
         
         // Category filter
         if (this.currentFilters.category !== 'all') {
@@ -458,6 +459,7 @@ class ExplorePage {
 
     updateURL() {
         const params = new URLSearchParams(window.location.search);
+        this.currentFilters.category = this.normalizeCategory(this.currentFilters.category);
 
         if (this.currentFilters.category === 'all') {
             params.delete('category');
