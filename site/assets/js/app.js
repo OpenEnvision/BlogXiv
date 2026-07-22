@@ -1367,15 +1367,16 @@ class BlogXiv {
             'optimization': 'Optimization',
             'how-to-become-a-researcher': 'Research Craft',
             'research-craft': 'Research Craft',
-            'frontier-developments': 'Frontier Developments',
-            'frontier-development': 'Frontier Developments',
-            'frontier': 'Frontier Developments',
-            'ai-frontier': 'Frontier Developments',
-            'global-ai': 'Frontier Developments',
-            'research-experience': 'Research Experience',
-            'research-experiences': 'Research Experience',
-            'research-advice': 'Research Experience',
-            'research-notes': 'Research Experience'
+            'frontier': 'Frontier',
+            'frontier-developments': 'Frontier',
+            'frontier-development': 'Frontier',
+            'ai-frontier': 'Frontier',
+            'global-ai': 'Frontier',
+            'how-to-research': 'How to Research',
+            'research-experience': 'How to Research',
+            'research-experiences': 'How to Research',
+            'research-advice': 'How to Research',
+            'research-notes': 'How to Research'
         };
         
         const mappedCategory = categoryMap[category.toLowerCase()] || category;
@@ -10311,7 +10312,7 @@ class BlogXiv {
     }
 
     getCategoryReassignments() {
-        const frontierDevelopments = [
+        const frontier = [
             'openai-gpt-5-6',
             'kimi-k3-open-frontier-intelligence',
             'thinking-machines-inkling-open-weights-model',
@@ -10355,51 +10356,19 @@ class BlogXiv {
             'rt-1-robotics-transformer',
             'thinking-machines-interaction-models'
         ];
-        const researchExperience = [
+        const howToResearch = [
             'patrick-mineault-good-research-code',
             'karpathy-recipe-training-neural-networks',
-            'openai-separating-signal-from-noise-coding-evaluations',
-            'huggingface-olmo-eval-workbench',
-            'hylak-how-to-eval-ai-agents',
-            'davies-ai-agent-evaluation-frameworks',
-            'openai-macro-evals-agentic-systems',
-            'anthropic-demystifying-evals-agents',
-            'anthropic-ai-resistant-technical-evaluations',
-            'braintrust-logs-evals-same-place',
-            'hamel-evals-skills-coding-agents',
-            'hamel-llm-evals-faq',
-            'hamel-llm-judge-guide',
-            'hamel-ai-product-needs-evals',
-            'eugene-product-evals',
-            'eugene-long-context-qa-evals',
-            'sebastian-llm-evaluation-4-approaches',
-            'nrehiew-minimal-editing',
             'ryan-briggs-research-adjudication',
             'openai-parameter-golf',
             'thoughtful-letting-ai-posttrain-ai',
             'shreya-agent-assisted-qualitative-analysis',
-            'greg-goal-engineering',
-            'dair-context-engineering-guide',
-            'manus-context-engineering-agents',
-            'anthropic-multi-agent-research-system',
-            'claude-code-large-codebases',
-            'hf-rl-environments-guide',
-            'iclr2026-why-ai-evaluations-need-error-bars',
-            'iclr2025-towards-more-rigorous-llm-evals',
-            'iclr2025-opt-summary',
-            'iclr2025-do-not-write-jailbreak-papers',
-            'iclr2025-visualizing-training',
-            'iclr2025-linear-gnn-convergence-restated',
-            'iclr2026-unigramlm-manual',
-            'iclr2026-rl-with-gnns',
-            'iclr2024-the-n-implementation-details-of-rlhf-with-ppo',
-            'iclr2024-bench-hvp',
-            'iclr2024-diffusion-theory-from-scratch'
+            'iclr2025-do-not-write-jailbreak-papers'
         ];
 
         const assignments = new Map();
-        frontierDevelopments.forEach(id => assignments.set(id, 'Frontier Developments'));
-        researchExperience.forEach(id => assignments.set(id, 'Research Experience'));
+        frontier.forEach(id => assignments.set(id, 'Frontier'));
+        howToResearch.forEach(id => assignments.set(id, 'How to Research'));
         return assignments;
     }
 

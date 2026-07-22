@@ -54,12 +54,12 @@ class ExplorePage {
                 description: 'Evaluation, AI engineering practice, benchmark design, product evals, and researcher workflows'
             },
             {
-                name: 'Frontier Developments',
-                description: 'North America, China, and global AI research frontiers, model releases, ecosystem shifts, and deployment directions'
+                name: 'Frontier',
+                description: 'Frontier AI model releases, open-model shifts, lab roadmaps, global ecosystem movement, and deployment-facing capability updates'
             },
             {
-                name: 'Research Experience',
-                description: 'Research workflows, paper reading, reproduction notes, writing practice, collaboration habits, and career lessons'
+                name: 'How to Research',
+                description: 'Research experience only: paper writing, research taste, experiment habits, reproducibility, research code, and scientific workflow reflections'
             }
         ];
         this.categoryAliases = {
@@ -83,15 +83,16 @@ class ExplorePage {
             'how-to-become-a-researcher': 'Research Craft',
             'gen-ai': 'Foundation Model',
             'generative-ai': 'Visual Generation',
-            'frontier-developments': 'Frontier Developments',
-            'frontier-development': 'Frontier Developments',
-            'frontier': 'Frontier Developments',
-            'ai-frontier': 'Frontier Developments',
-            'global-ai': 'Frontier Developments',
-            'research-experience': 'Research Experience',
-            'research-experiences': 'Research Experience',
-            'research-advice': 'Research Experience',
-            'research-notes': 'Research Experience'
+            'frontier': 'Frontier',
+            'frontier-developments': 'Frontier',
+            'frontier-development': 'Frontier',
+            'ai-frontier': 'Frontier',
+            'global-ai': 'Frontier',
+            'how-to-research': 'How to Research',
+            'research-experience': 'How to Research',
+            'research-experiences': 'How to Research',
+            'research-advice': 'How to Research',
+            'research-notes': 'How to Research'
         };
         
         this.init();
