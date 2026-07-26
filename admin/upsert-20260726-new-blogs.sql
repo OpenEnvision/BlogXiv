@@ -31,7 +31,7 @@ insert into public.blogs (
   '2026-07-26',
   'Diffusion Toy Examples',
   'https://diffusiontoy.github.io/',
-  'assets/img/covers/real/What Makes a Good Toy Example for Diffusion Models? .png',
+  'assets/img/covers/real/what-makes-a-good-toy-example-for-diffusion-models.png',
   'What Makes a Good Toy Example for Diffusion Models article cover',
   'cover',
   'published',

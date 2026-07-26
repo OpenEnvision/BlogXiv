@@ -3460,7 +3460,7 @@ class BlogXiv {
                 publishDate: '2026-07-26',
                 sourceName: 'Diffusion Toy Examples',
                 url: 'https://diffusiontoy.github.io/',
-                coverImage: 'assets/img/covers/real/What Makes a Good Toy Example for Diffusion Models? .png',
+                coverImage: 'assets/img/covers/real/what-makes-a-good-toy-example-for-diffusion-models.png',
                 coverAlt: 'What Makes a Good Toy Example for Diffusion Models article cover',
                 coverFit: 'cover'
             },
