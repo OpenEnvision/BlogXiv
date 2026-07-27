@@ -1,0 +1,795 @@
+{
+  "generatedAt": "2026-07-27T03:20:33.051Z",
+  "processed": 51,
+  "successes": [
+    {
+      "id": "codelion-scaling-pedagogical-pre-training-from-optimal-mixing-to-10-billio",
+      "title": "Scaling Pedagogical Pre-training: From Optimal Mixing to 10 Billion Tokens",
+      "url": "https://cdn-uploads.huggingface.co/production/uploads/62f32eab52ad88c930bb3f3b/qy1yxbPc5Lj8Rpszo1mPS.png",
+      "coverImage": "assets/img/covers/real/a-plus/scaling-pedagogical-pre-training-from-optimal-mixing-to-10-billion-tokens.png",
+      "source": "twitter:image",
+      "bytes": 552418
+    },
+    {
+      "id": "llm360-introducing-llm360-fully-transparent-open-source-llms",
+      "title": "Introducing LLM360: Fully Transparent Open-Source LLMs",
+      "url": "https://www.llm360.ai/images/open-graph-image.jpg",
+      "coverImage": "assets/img/covers/real/a-plus/introducing-llm360-fully-transparent-open-source-llms.jpg",
+      "source": "og:image",
+      "bytes": 90627
+    },
+    {
+      "id": "ai2-blog-investigating-pretraining-dynamics-and-stability-with-olmo-checkp",
+      "title": "Investigating pretraining dynamics and stability with OLMo checkpoints",
+      "url": "https://www.datocms-assets.com/64837/1721916693-gettyimages-1472031694-processed.jpg?dpr=0.25&fit=crop&h=525&w=430",
+      "coverImage": "assets/img/covers/real/a-plus/investigating-pretraining-dynamics-and-stability-with-olmo-checkpoints.jpg",
+      "source": "first-image",
+      "bytes": 8006
+    },
+    {
+      "id": "minimax-blog-internal-investigation-of-sparse-token-forgetting",
+      "title": "Internal Investigation of Sparse Token Forgetting",
+      "url": "https://filecdn.minimax.chat/public/sparse-token-forgetting-community-discussion-1779698066579.jpg",
+      "coverImage": "assets/img/covers/real/a-plus/internal-investigation-of-sparse-token-forgetting.jpg",
+      "source": "og:image",
+      "bytes": 730548
+    },
+    {
+      "id": "hazy-research-efficient-language-models-as-arithmetic-circuits",
+      "title": "Efficient Language Models as Arithmetic Circuits",
+      "url": "https://hazyresearch.stanford.edu/static/posts/2024-06-22-ac/landscape.jpg",
+      "coverImage": "assets/img/covers/real/a-plus/efficient-language-models-as-arithmetic-circuits.jpg",
+      "source": "first-image",
+      "bytes": 203010
+    },
+    {
+      "id": "hugging-face-blog-vision-language-models-better-faster-stronger",
+      "title": "Vision Language Models (Better, Faster, Stronger)",
+      "url": "https://huggingface.co/blog/assets/vlms2/vlms2.png",
+      "coverImage": "assets/img/covers/real/a-plus/vision-language-models-better-faster-stronger.png",
+      "source": "twitter:image",
+      "bytes": 205122
+    },
+    {
+      "id": "hugging-face-blog-one-adapter-both-modalities-field-notes-from-building-an",
+      "title": "One Adapter, Both Modalities: Field Notes from Building and Serving a Multimodal Reranker",
+      "url": "https://cdn-thumbnails.huggingface.co/social-thumbnails/blog/lightonai/lighton-rerank.png",
+      "coverImage": "assets/img/covers/real/a-plus/one-adapter-both-modalities-field-notes-from-building-and-serving-a-multim.png",
+      "source": "twitter:image",
+      "bytes": 58148
+    },
+    {
+      "id": "sander-dieleman-generative-modelling-in-latent-space",
+      "title": "Generative Modelling in Latent Space",
+      "url": "https://sander.ai/images/nebula.jpg",
+      "coverImage": "assets/img/covers/real/a-plus/generative-modelling-in-latent-space.jpg",
+      "source": "twitter:image",
+      "bytes": 113660
+    },
+    {
+      "id": "yang-song-generative-modeling-by-estimating-gradients-of-the-data-distribu",
+      "title": "Generative Modeling by Estimating Gradients of the Data Distribution",
+      "url": "https://yang-song.net/assets/img/score/implicit_models.png",
+      "coverImage": "assets/img/covers/real/a-plus/generative-modeling-by-estimating-gradients-of-the-data-distribution.png",
+      "source": "first-image",
+      "bytes": 387595
+    },
+    {
+      "id": "google-research-blog-bringing-3d-shoppable-products-online-with-generative",
+      "title": "Bringing 3D Shoppable Products Online with Generative AI",
+      "url": "https://storage.googleapis.com/gweb-research2023-media/images/HO_previewImage1.width-800.format-jpeg.jpg",
+      "coverImage": "assets/img/covers/real/a-plus/bringing-3d-shoppable-products-online-with-generative-ai.jpg",
+      "source": "og:image",
+      "bytes": 18049
+    },
+    {
+      "id": "ai2-blog-molmomotion-language-guided-3d-motion-forecasting",
+      "title": "MolmoMotion: Language-Guided 3D Motion Forecasting",
+      "url": "https://www.datocms-assets.com/64837/1781624762-ai2-molmomotion-graphic-development-v14.png",
+      "coverImage": "assets/img/covers/real/a-plus/molmomotion-language-guided-3d-motion-forecasting.png",
+      "source": "og:image",
+      "bytes": 5370274
+    },
+    {
+      "id": "hugging-face-blog-continuous-batching-from-first-principles",
+      "title": "Continuous Batching from First Principles",
+      "url": "https://huggingface.co/blog/assets/continuous_batching/thumbnail.png",
+      "coverImage": "assets/img/covers/real/a-plus/continuous-batching-from-first-principles.png",
+      "source": "twitter:image",
+      "bytes": 293653
+    },
+    {
+      "id": "nvidia-technical-blog-run-high-performance-llm-inference-kernels-from-nvid",
+      "title": "Run High-Performance LLM Inference Kernels from NVIDIA Using FlashInfer",
+      "url": "https://developer-blogs.nvidia.com/wp-content/uploads/2025/06/FlashInfer-e1749840325535.jpg",
+      "coverImage": "assets/img/covers/real/a-plus/run-high-performance-llm-inference-kernels-from-nvidia-using-flashinfer.jpg",
+      "source": "og:image",
+      "bytes": 61162
+    },
+    {
+      "id": "pytorch-blog-training-moes-at-scale-with-pytorch",
+      "title": "Training MoEs at Scale with PyTorch",
+      "url": "https://pytorch.org/wp-content/uploads/2024/06/fg1.png",
+      "coverImage": "assets/img/covers/real/a-plus/training-moes-at-scale-with-pytorch.png",
+      "source": "first-image",
+      "bytes": 86842
+    },
+    {
+      "id": "vllm-blog-a-first-comprehensive-study-of-turboquant-accuracy-and-performan",
+      "title": "A First Comprehensive Study of TurboQuant: Accuracy and Performance",
+      "url": "https://vllm.ai/og?title=A%20First%20Comprehensive%20Study%20of%20TurboQuant%3A%20Accuracy%20and%20Performance&authors=Eldar%20Kurti%C4%87%2C%20Michael%20Goin%2C%20Alexandre%20Marques%20(Red%20Hat%20AI)&date=2026-05-11&path=/blog",
+      "coverImage": "assets/img/covers/real/a-plus/a-first-comprehensive-study-of-turboquant-accuracy-and-performance.png",
+      "source": "og:image",
+      "bytes": 53555
+    },
+    {
+      "id": "modal-docs-high-performance-llm-inference",
+      "title": "High-Performance LLM Inference",
+      "url": "https://modal.com/docs/social-image.png?title=High-performance+LLM+inference&socialType=docs",
+      "coverImage": "assets/img/covers/real/a-plus/high-performance-llm-inference.png",
+      "source": "og:image",
+      "bytes": 74918
+    },
+    {
+      "id": "modal-blog-achieve-state-of-the-art-inference-latencies-with-speculative-d",
+      "title": "Achieve State-of-the-Art Inference Latencies with Speculative Decoding",
+      "url": "https://modal-cdn.com/charles-frye.jpg",
+      "coverImage": "assets/img/covers/real/a-plus/achieve-state-of-the-art-inference-latencies-with-speculative-decoding.jpg",
+      "source": "first-image",
+      "bytes": 26293
+    },
+    {
+      "id": "hazy-research-flashattention-fast-transformer-training-with-long-sequences",
+      "title": "FlashAttention: Fast Transformer Training with Long Sequences",
+      "url": "https://hazyresearch.stanford.edu/hazy-logo.png",
+      "coverImage": "assets/img/covers/real/a-plus/flashattention-fast-transformer-training-with-long-sequences.png",
+      "source": "og:image",
+      "bytes": 26535
+    },
+    {
+      "id": "microsoft-research-blog-zero-and-deepspeed-new-system-optimizations-enable",
+      "title": "ZeRO & DeepSpeed: New system optimizations enable training models with over 100 billion parameters",
+      "url": "https://www.microsoft.com/en-us/research/wp-content/uploads/2020/02/MSResearch_20200207_DeepZeroBlogGraphic_r2t3_1400x788-1.png",
+      "coverImage": "assets/img/covers/real/a-plus/zero-and-deepspeed-new-system-optimizations-enable-training-models-with-ov.png",
+      "source": "og:image",
+      "bytes": 50906
+    },
+    {
+      "id": "pytorch-blog-introducing-pytorch-fully-sharded-data-parallel-fsdp-api",
+      "title": "Introducing PyTorch Fully Sharded Data Parallel (FSDP) API",
+      "url": "https://pytorch.org/wp-content/uploads/2024/11/fsdp_workflow.png",
+      "coverImage": "assets/img/covers/real/a-plus/introducing-pytorch-fully-sharded-data-parallel-fsdp-api.png",
+      "source": "first-image",
+      "bytes": 419793
+    },
+    {
+      "id": "hazy-research-flashattention-2-faster-attention-with-better-parallelism-an",
+      "title": "FlashAttention-2: Faster Attention with Better Parallelism and Work Partitioning",
+      "url": "https://hazyresearch.stanford.edu/hazy-logo.png",
+      "coverImage": "assets/img/covers/real/a-plus/flashattention-2-faster-attention-with-better-parallelism-and-work-partiti.png",
+      "source": "og:image",
+      "bytes": 26535
+    },
+    {
+      "id": "anthropic-alignment-agentic-misalignment-in-summer-2026",
+      "title": "Agentic Misalignment in Summer 2026",
+      "url": "https://alignment.anthropic.com/2026/agentic-misalignment-summer-2026/fig-sabotage-stacked-bar.png",
+      "coverImage": "assets/img/covers/real/a-plus/agentic-misalignment-in-summer-2026.png",
+      "source": "first-image",
+      "bytes": 117631
+    },
+    {
+      "id": "uk-aisi-blog-cheating-behaviour-in-frontier-model-evaluations",
+      "title": "Cheating behaviour in frontier model evaluations",
+      "url": "https://cdn.prod.website-files.com/663bd486c5e4c81588db7a48/6a61f87ae396ae8b92cfdaff_Copy%20of%20Metacard%20(8).png",
+      "coverImage": "assets/img/covers/real/a-plus/cheating-behaviour-in-frontier-model-evaluations.png",
+      "source": "og:image",
+      "bytes": 105907
+    },
+    {
+      "id": "uk-aisi-blog-how-our-new-control-red-team-is-stress-testing-frontier-monit",
+      "title": "How our new Control Red Team is stress-testing frontier monitors",
+      "url": "https://cdn.prod.website-files.com/663bd486c5e4c81588db7a1d/663bd707cb0214d8b72951b5_5a103bfcb506b52b4e099f3dc675c649_AISI%20Logo%20Colour%20Dark.svg",
+      "coverImage": "assets/img/covers/real/a-plus/how-our-new-control-red-team-is-stress-testing-frontier-monitors.svg",
+      "source": "first-image",
+      "bytes": 7361
+    },
+    {
+      "id": "redwood-research-introducing-linuxarena",
+      "title": "Introducing LinuxArena",
+      "url": "https://substackcdn.com/image/fetch/$s_!AS1V!,f_auto,q_auto:best,fl_progressive:steep/https%3A%2F%2Fredwoodresearch.substack.com%2Fapi%2Fv1%2Fpost_preview%2F194826548%2Ftwitter.jpg%3Fversion%3D4",
+      "coverImage": "assets/img/covers/real/a-plus/introducing-linuxarena.jpg",
+      "source": "twitter:image",
+      "bytes": 104793
+    },
+    {
+      "id": "uk-aisi-blog-more-compute-more-capability-why-ai-agent-evaluations-need-to",
+      "title": "More compute, more capability: Why AI agent evaluations need to account for test-time compute",
+      "url": "https://cdn.prod.website-files.com/663bd486c5e4c81588db7a48/6a46260b4be378c1bd5e2125_Copy%20of%20Metacard%20(4).png",
+      "coverImage": "assets/img/covers/real/a-plus/more-compute-more-capability-why-ai-agent-evaluations-need-to-account-for-.png",
+      "source": "og:image",
+      "bytes": 130080
+    },
+    {
+      "id": "uk-aisi-blog-a-pipeline-for-transcript-analysis-using-inspect-scout",
+      "title": "A pipeline for transcript analysis using Inspect Scout",
+      "url": "https://cdn.prod.website-files.com/663bd486c5e4c81588db7a48/699f1a69e6b49105baf2ac61_Screenshot%202026-02-25%20155050.png",
+      "coverImage": "assets/img/covers/real/a-plus/a-pipeline-for-transcript-analysis-using-inspect-scout.png",
+      "source": "og:image",
+      "bytes": 374311
+    },
+    {
+      "id": "hamel-dev-a-field-guide-to-rapidly-improving-ai-products",
+      "title": "A Field Guide to Rapidly Improving AI Products",
+      "url": "https://hamel.dev/blog/posts/field-guide/images/field_guide_2.png",
+      "coverImage": "assets/img/covers/real/a-plus/a-field-guide-to-rapidly-improving-ai-products.png",
+      "source": "og:image",
+      "bytes": 1726963
+    },
+    {
+      "id": "eugene-yan-evaluating-the-effectiveness-of-llm-evaluators-aka-llm-as-judge",
+      "title": "Evaluating the Effectiveness of LLM-Evaluators (aka LLM-as-Judge)",
+      "url": "https://eugeneyan.com/assets/og_image/llm-eval-tree.jpg",
+      "coverImage": "assets/img/covers/real/a-plus/evaluating-the-effectiveness-of-llm-evaluators-aka-llm-as-judge.jpg",
+      "source": "og:image",
+      "bytes": 137151
+    },
+    {
+      "id": "google-research-blog-introducing-the-model-card-toolkit-for-easier-model-t",
+      "title": "Introducing the Model Card Toolkit for Easier Model Transparency Reporting",
+      "url": "https://storage.googleapis.com/gweb-research2023-media/images/7df9aeb540f0bce5a4ef37079d13a900-i.width-800.format-jpeg.jpg",
+      "coverImage": "assets/img/covers/real/a-plus/introducing-the-model-card-toolkit-for-easier-model-transparency-reporting.jpg",
+      "source": "og:image",
+      "bytes": 15247
+    },
+    {
+      "id": "google-research-blog-data-centric-ml-benchmarking-announcing-dataperf-s-20",
+      "title": "Data-centric ML benchmarking: Announcing DataPerf’s 2023 challenges",
+      "url": "https://storage.googleapis.com/gweb-research2023-media/images/a6359f5488b529d2e853cfe5b27259e0-D.width-800.format-jpeg.jpg",
+      "coverImage": "assets/img/covers/real/a-plus/data-centric-ml-benchmarking-announcing-dataperf-s-2023-challenges.jpg",
+      "source": "og:image",
+      "bytes": 12456
+    },
+    {
+      "id": "hugging-face-blog-j-space-yet-another-llm-mind-reader",
+      "title": "J-Space: Yet Another LLM Mind Reader?",
+      "url": "https://cdn-thumbnails.huggingface.co/social-thumbnails/blog/dlouapre/j-space.png",
+      "coverImage": "assets/img/covers/real/a-plus/j-space-yet-another-llm-mind-reader.png",
+      "source": "twitter:image",
+      "bytes": 38156
+    },
+    {
+      "id": "google-deepmind-blog-introducing-gemini-3-5-flash-cyber",
+      "title": "Introducing Gemini 3.5 Flash Cyber",
+      "url": "https://lh3.googleusercontent.com/esSD0-kSrZ8K07XxNkSKL3OGlcx1Cf3M-qiQut0q_vArHMiK2L1CpUIGVkjuQrhu_m0g8UMVflVQpDp7VFAJSubDdCjSXsPJPDeK-PUtaPbqA8W1=w1200-h630-n-nu-rw",
+      "coverImage": "assets/img/covers/real/a-plus/introducing-gemini-3-5-flash-cyber.webp",
+      "source": "og:image",
+      "bytes": 17726
+    },
+    {
+      "id": "noise-lab-how-to-do-great-research",
+      "title": "How to Do Great Research",
+      "url": "https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png",
+      "coverImage": "assets/img/covers/real/a-plus/how-to-do-great-research.png",
+      "source": "first-image",
+      "bytes": 1628
+    },
+    {
+      "id": "jacob-steinhardt-research-as-a-stochastic-decision-process",
+      "title": "Research as a Stochastic Decision Process",
+      "url": "https://cs.stanford.edu/~jsteinhardt/images/Research-as7.png",
+      "coverImage": "assets/img/covers/real/a-plus/research-as-a-stochastic-decision-process.png",
+      "source": "first-image",
+      "bytes": 10858
+    },
+    {
+      "id": "denny-britz-replication-issues-in-ai-research",
+      "title": "Replication Issues in AI Research",
+      "url": "https://dennybritz.com/img/ai-replication/metric-learning.png",
+      "coverImage": "assets/img/covers/real/a-plus/replication-issues-in-ai-research.png",
+      "source": "first-image",
+      "bytes": 255529
+    },
+    {
+      "id": "phd-in-ai-becoming-an-ai-researcher-practical-advice-for-graduate-students",
+      "title": "Becoming an AI Researcher: Practical Advice for Graduate Students",
+      "url": "https://phd-in-ai.com/phdinai-book-cover.png",
+      "coverImage": "assets/img/covers/real/a-plus/becoming-an-ai-researcher-practical-advice-for-graduate-students.png",
+      "source": "og:image",
+      "bytes": 165438
+    },
+    {
+      "id": "microsoft-research-how-to-write-a-great-research-paper",
+      "title": "How to Write a Great Research Paper",
+      "url": "https://www.microsoft.com/en-us/research/wp-content/uploads/2016/07/VK51E3gHENc.jpg",
+      "coverImage": "assets/img/covers/real/a-plus/how-to-write-a-great-research-paper.jpg",
+      "source": "og:image",
+      "bytes": 13913
+    }
+  ],
+  "failures": [
+    {
+      "id": "jay-alammar-the-illustrated-retrieval-transformer",
+      "title": "The Illustrated Retrieval Transformer",
+      "url": "https://jalammar.github.io/illustrated-retrieval-transformer/",
+      "coverImage": "assets/img/covers/a-plus/the-illustrated-retrieval-transformer.svg",
+      "reason": "Command failed: /bin/zsh -lc curl '-L' '-sS' '--retry' '2' '--retry-delay' '1' '--max-time' '30' '-A' 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125 Safari/537.36' 'https://jalammar.github.io/illustrated-retrieval-transformer/'\ncurl: (35) LibreSSL SSL_connect: SSL_ERROR_SYSCALL in connection to jalammar.github.io:443 \n"
+    },
+    {
+      "id": "meta-ai-blog-open-sourcing-touch-representations-and-models-for-robot-dext",
+      "title": "Open-Sourcing Touch Representations and Models for Robot Dexterity",
+      "url": "https://ai.meta.com/blog/fair-robotics-open-source/",
+      "coverImage": "assets/img/covers/a-plus/open-sourcing-touch-representations-and-models-for-robot-dexterity.svg",
+      "reason": "No useful image found in page metadata or article images"
+    },
+    {
+      "id": "meta-ai-blog-partnr-and-new-models-for-human-robot-collaboration",
+      "title": "PARTNR and New Models for Human-Robot Collaboration",
+      "url": "https://ai.meta.com/blog/machine-intelligence-research-new-models/",
+      "coverImage": "assets/img/covers/a-plus/partnr-and-new-models-for-human-robot-collaboration.svg",
+      "reason": "No useful image found in page metadata or article images"
+    },
+    {
+      "id": "anthropic-engineering-quantifying-infrastructure-noise-in-agentic-coding-e",
+      "title": "Quantifying Infrastructure Noise in Agentic Coding Evals",
+      "url": "https://www.anthropic.com/engineering/infrastructure-noise",
+      "coverImage": "assets/img/covers/a-plus/quantifying-infrastructure-noise-in-agentic-coding-evals.svg",
+      "reason": "Command failed: /bin/zsh -lc curl '-L' '-sS' '--retry' '2' '--retry-delay' '1' '--max-time' '30' '-A' 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125 Safari/537.36' 'https://www.anthropic.com/engineering/infrastructure-noise'\ncurl: (35) LibreSSL SSL_connect: SSL_ERROR_SYSCALL in connection to www.anthropic.com:443 \n"
+    },
+    {
+      "id": "hugging-face-blog-is-it-agentic-enough-benchmarking-open-models-on-your-ow",
+      "title": "Is It Agentic Enough? Benchmarking Open Models on Your Own Tooling",
+      "url": "https://huggingface.co/blog/is-it-agentic-enough",
+      "coverImage": "assets/img/covers/a-plus/is-it-agentic-enough-benchmarking-open-models-on-your-own-tooling.svg",
+      "reason": "Command failed: /bin/zsh -lc curl '-L' '-sS' '--retry' '2' '--retry-delay' '1' '--max-time' '30' '-A' 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125 Safari/537.36' 'https://huggingface.co/blog/is-it-agentic-enough'\ncurl: (16) Error in the HTTP2 framing layer\n"
+    },
+    {
+      "id": "google-research-blog-gspmd-general-and-scalable-parallelization-for-ml-com",
+      "title": "GSPMD: General and Scalable Parallelization for ML Computation Graphs",
+      "url": "https://research.google/blog/general-and-scalable-parallelization-for-neural-networks/",
+      "coverImage": "assets/img/covers/a-plus/gspmd-general-and-scalable-parallelization-for-ml-computation-graphs.svg",
+      "reason": "Image candidates found but downloads were unusable",
+      "candidates": [
+        {
+          "url": "https://storage.googleapis.com/gweb-research2023-media/images/4876da673388e51e9f052fa78409a2d4-A.width-800.format-jpeg.jpg",
+          "source": "og:image"
+        },
+        {
+          "url": "https://storage.googleapis.com/gweb-research2023-media/original_images/earth_AI_nav.svg",
+          "source": "first-image"
+        },
+        {
+          "url": "https://storage.googleapis.com/gweb-research2023-media/original_images/health_AI_nav.svg",
+          "source": "first-image"
+        },
+        {
+          "url": "https://storage.googleapis.com/gweb-research2023-media/original_images/science_AI_nav.svg",
+          "source": "first-image"
+        },
+        {
+          "url": "https://storage.googleapis.com/gweb-research2023-media/original_images/sustainability_crisis_resilience_nav.svg",
+          "source": "first-image"
+        },
+        {
+          "url": "https://storage.googleapis.com/gweb-research2023-media/original_images/algorithms_theory_nav.svg",
+          "source": "first-image"
+        },
+        {
+          "url": "https://storage.googleapis.com/gweb-research2023-media/original_images/information_retrieval_nav.svg",
+          "source": "first-image"
+        },
+        {
+          "url": "https://storage.googleapis.com/gweb-research2023-media/original_images/machine_intelligence_nav.svg",
+          "source": "first-image"
+        },
+        {
+          "url": "https://storage.googleapis.com/gweb-research2023-media/original_images/machine_perception_nav.svg",
+          "source": "first-image"
+        },
+        {
+          "url": "https://storage.googleapis.com/gweb-research2023-media/original_images/NLP_nav.svg",
+          "source": "first-image"
+        },
+        {
+          "url": "https://storage.googleapis.com/gweb-research2023-media/original_images/human_computer_interaction_nav.svg",
+          "source": "first-image"
+        },
+        {
+          "url": "https://storage.googleapis.com/gweb-research2023-media/original_images/networking_nav.svg",
+          "source": "first-image"
+        },
+        {
+          "url": "https://storage.googleapis.com/gweb-research2023-media/original_images/quantum_AI_nav.svg",
+          "source": "first-image"
+        },
+        {
+          "url": "https://storage.googleapis.com/gweb-research2023-media/original_images/responsible_AI_nav.svg",
+          "source": "first-image"
+        },
+        {
+          "url": "https://storage.googleapis.com/gweb-research2023-media/original_images/anti_abuse_nav.svg",
+          "source": "first-image"
+        },
+        {
+          "url": "https://storage.googleapis.com/gweb-research2023-media/original_images/software_engineering_nav.svg",
+          "source": "first-image"
+        },
+        {
+          "url": "https://storage.googleapis.com/gweb-research2023-media/original_images/software_systems_nav.svg",
+          "source": "first-image"
+        },
+        {
+          "url": "https://storage.googleapis.com/gweb-research2023-media/original_images/publications_nav.svg",
+          "source": "first-image"
+        },
+        {
+          "url": "https://storage.googleapis.com/gweb-research2023-media/original_images/projects_nav.svg",
+          "source": "first-image"
+        },
+        {
+          "url": "https://storage.googleapis.com/gweb-research2023-media/original_images/dataset_nav.svg",
+          "source": "first-image"
+        },
+        {
+          "url": "https://storage.googleapis.com/gweb-research2023-media/original_images/models_products_nav.svg",
+          "source": "first-image"
+        },
+        {
+          "url": "https://storage.googleapis.com/gweb-research2023-media/original_images/faculty_programs_nav.svg",
+          "source": "first-image"
+        },
+        {
+          "url": "https://storage.googleapis.com/gweb-research2023-media/original_images/student_programs_nav.svg",
+          "source": "first-image"
+        },
+        {
+          "url": "https://storage.googleapis.com/gweb-research2023-media/original_images/locations_nav.svg",
+          "source": "first-image"
+        },
+        {
+          "url": "https://storage.googleapis.com/gweb-research2023-media/original_images/teams_nav.svg",
+          "source": "first-image"
+        },
+        {
+          "url": "https://storage.googleapis.com/gweb-research2023-media/original_images/4876da673388e51e9f052fa78409a2d4-AVvXsEiTROQQHvLtckX-ENIhhplOmB5OZbqdjexSejkJi",
+          "source": "first-image"
+        },
+        {
+          "url": "https://blogger.googleusercontent.com/img/a/AVvXsEiTROQQHvLtckX-ENIhhplOmB5OZbqdjexSejkJiuRxhiUshl4yh1dYgFjqf9_wteN2CSJ1YSptreFkrOpoXy91SRsoYSOJsvqfR6e3TQYrwHYFnWH90_1PqM9v1fetbR61nf32QLSOTB9QqtywRpeGy6wOE5w1FE_qGLDWx8Msi9eiSjteXAixuzgHuA=w640-h506",
+          "source": "first-image"
+        },
+        {
+          "url": "https://blogger.googleusercontent.com/img/a/AVvXsEgJHiquuVdXMh1SGL6bPuYa1D-hdrR01gzH49LZGDvXO9BRi7gFoOJ44rJnn7how4Jyaimzsuw-h96e7vlhlRAHMsWUUgR7lSB3R88I7T81GR5tLAFV9fNhopsUzr_fq_j7Gr822FI0_pHTs5QgKLoplxrPMpPdm9Kl-IG1vos6zKJS95WEZV5GMXZWwA=w640-h346",
+          "source": "first-image"
+        },
+        {
+          "url": "https://storage.googleapis.com/gweb-research2023-media/original_images/RL_for__QEC-2.png",
+          "source": "first-image"
+        },
+        {
+          "url": "https://storage.googleapis.com/gweb-research2023-media/original_images/Interpolation-effect-1.gif",
+          "source": "first-image"
+        },
+        {
+          "url": "https://storage.googleapis.com/gweb-research2023-media/original_images/hero_blog_sensorfm.png",
+          "source": "first-image"
+        }
+      ]
+    },
+    {
+      "id": "nvidia-technical-blog-scaling-language-model-training-to-a-trillion-parame",
+      "title": "Scaling Language Model Training to a Trillion Parameters Using Megatron",
+      "url": "https://developer.nvidia.com/blog/scaling-language-model-training-to-a-trillion-parameters-using-megatron/",
+      "coverImage": "assets/img/covers/a-plus/scaling-language-model-training-to-a-trillion-parameters-using-megatron.svg",
+      "reason": "Command failed: /bin/zsh -lc curl '-L' '-sS' '--retry' '2' '--retry-delay' '1' '--max-time' '30' '-A' 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125 Safari/537.36' 'https://developer.nvidia.com/blog/scaling-language-model-training-to-a-trillion-parameters-using-megatron/'\ncurl: (35) LibreSSL SSL_connect: SSL_ERROR_SYSCALL in connection to developer.nvidia.com:443 \n"
+    },
+    {
+      "id": "metr-blog-we-are-changing-our-developer-productivity-experiment-design",
+      "title": "We are Changing our Developer Productivity Experiment Design",
+      "url": "https://metr.org/blog/2026-02-24-uplift-update/",
+      "coverImage": "assets/img/covers/a-plus/we-are-changing-our-developer-productivity-experiment-design.svg",
+      "reason": "Command failed: /bin/zsh -lc curl '-L' '-sS' '--retry' '2' '--retry-delay' '1' '--max-time' '30' '-A' 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125 Safari/537.36' 'https://metr.org/blog/2026-02-24-uplift-update/'\ncurl: (35) LibreSSL SSL_connect: SSL_ERROR_SYSCALL in connection to metr.org:443 \n"
+    },
+    {
+      "id": "mit-ai-lab-how-to-do-research-at-the-mit-ai-lab",
+      "title": "How to do Research At the MIT AI Lab",
+      "url": "https://dspace.mit.edu/bitstream/handle/1721.1/41487/AI_WP_316.pdf",
+      "coverImage": "assets/img/covers/a-plus/how-to-do-research-at-the-mit-ai-lab.svg",
+      "reason": "PDF source; keeping generated SVG cover"
+    },
+    {
+      "id": "jacob-steinhardt-film-study-for-research",
+      "title": "Film Study for Research",
+      "url": "https://jsteinhardt.stat.berkeley.edu/blog/film-study",
+      "coverImage": "assets/img/covers/a-plus/film-study-for-research.svg",
+      "reason": "No useful image found in page metadata or article images"
+    },
+    {
+      "id": "richard-hamming-you-and-your-research",
+      "title": "You and Your Research",
+      "url": "https://www.cs.virginia.edu/~robins/YouAndYourResearch.html",
+      "coverImage": "assets/img/covers/a-plus/you-and-your-research.svg",
+      "reason": "Command failed: /bin/zsh -lc curl '-L' '-sS' '--retry' '2' '--retry-delay' '1' '--max-time' '30' '-A' 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125 Safari/537.36' 'https://www.cs.virginia.edu/~robins/YouAndYourResearch.html'\ncurl: (52) Empty reply from server\n"
+    },
+    {
+      "id": "michael-nielsen-principles-of-effective-research",
+      "title": "Principles of Effective Research",
+      "url": "https://michaelnielsen.org/blog/principles-of-effective-research/",
+      "coverImage": "assets/img/covers/a-plus/principles-of-effective-research.svg",
+      "reason": "No useful image found in page metadata or article images"
+    },
+    {
+      "id": "university-of-cambridge-how-to-read-a-paper",
+      "title": "How to Read a Paper",
+      "url": "https://svr-sk818-web.cl.cam.ac.uk/keshav/publications/htrap.html",
+      "coverImage": "assets/img/covers/a-plus/how-to-read-a-paper.svg",
+      "reason": "No useful image found in page metadata or article images"
+    }
+  ],
+  "finalizedAt": "2026-07-27T03:57:43.117Z",
+  "finalRealCoverBlogs": [
+    {
+      "id": "codelion-scaling-pedagogical-pre-training-from-optimal-mixing-to-10-billio",
+      "title": "Scaling Pedagogical Pre-training: From Optimal Mixing to 10 Billion Tokens",
+      "coverImage": "assets/img/covers/real/a-plus/scaling-pedagogical-pre-training-from-optimal-mixing-to-10-billion-tokens.png"
+    },
+    {
+      "id": "llm360-introducing-llm360-fully-transparent-open-source-llms",
+      "title": "Introducing LLM360: Fully Transparent Open-Source LLMs",
+      "coverImage": "assets/img/covers/real/a-plus/introducing-llm360-fully-transparent-open-source-llms.jpg"
+    },
+    {
+      "id": "ai2-blog-investigating-pretraining-dynamics-and-stability-with-olmo-checkp",
+      "title": "Investigating pretraining dynamics and stability with OLMo checkpoints",
+      "coverImage": "assets/img/covers/real/a-plus/investigating-pretraining-dynamics-and-stability-with-olmo-checkpoints.jpg"
+    },
+    {
+      "id": "minimax-blog-internal-investigation-of-sparse-token-forgetting",
+      "title": "Internal Investigation of Sparse Token Forgetting",
+      "coverImage": "assets/img/covers/real/a-plus/internal-investigation-of-sparse-token-forgetting.jpg"
+    },
+    {
+      "id": "hazy-research-efficient-language-models-as-arithmetic-circuits",
+      "title": "Efficient Language Models as Arithmetic Circuits",
+      "coverImage": "assets/img/covers/real/a-plus/efficient-language-models-as-arithmetic-circuits.jpg"
+    },
+    {
+      "id": "hugging-face-blog-vision-language-models-better-faster-stronger",
+      "title": "Vision Language Models (Better, Faster, Stronger)",
+      "coverImage": "assets/img/covers/real/a-plus/vision-language-models-better-faster-stronger.png"
+    },
+    {
+      "id": "hugging-face-blog-one-adapter-both-modalities-field-notes-from-building-an",
+      "title": "One Adapter, Both Modalities: Field Notes from Building and Serving a Multimodal Reranker",
+      "coverImage": "assets/img/covers/real/a-plus/one-adapter-both-modalities-field-notes-from-building-and-serving-a-multim.png"
+    },
+    {
+      "id": "sander-dieleman-generative-modelling-in-latent-space",
+      "title": "Generative Modelling in Latent Space",
+      "coverImage": "assets/img/covers/real/a-plus/generative-modelling-in-latent-space.jpg"
+    },
+    {
+      "id": "yang-song-generative-modeling-by-estimating-gradients-of-the-data-distribu",
+      "title": "Generative Modeling by Estimating Gradients of the Data Distribution",
+      "coverImage": "assets/img/covers/real/a-plus/generative-modeling-by-estimating-gradients-of-the-data-distribution.png"
+    },
+    {
+      "id": "google-research-blog-bringing-3d-shoppable-products-online-with-generative",
+      "title": "Bringing 3D Shoppable Products Online with Generative AI",
+      "coverImage": "assets/img/covers/real/a-plus/bringing-3d-shoppable-products-online-with-generative-ai.jpg"
+    },
+    {
+      "id": "ai2-blog-molmomotion-language-guided-3d-motion-forecasting",
+      "title": "MolmoMotion: Language-Guided 3D Motion Forecasting",
+      "coverImage": "assets/img/covers/real/a-plus/molmomotion-language-guided-3d-motion-forecasting.png"
+    },
+    {
+      "id": "hugging-face-blog-continuous-batching-from-first-principles",
+      "title": "Continuous Batching from First Principles",
+      "coverImage": "assets/img/covers/real/a-plus/continuous-batching-from-first-principles.png"
+    },
+    {
+      "id": "nvidia-technical-blog-run-high-performance-llm-inference-kernels-from-nvid",
+      "title": "Run High-Performance LLM Inference Kernels from NVIDIA Using FlashInfer",
+      "coverImage": "assets/img/covers/real/a-plus/run-high-performance-llm-inference-kernels-from-nvidia-using-flashinfer.jpg"
+    },
+    {
+      "id": "pytorch-blog-training-moes-at-scale-with-pytorch",
+      "title": "Training MoEs at Scale with PyTorch",
+      "coverImage": "assets/img/covers/real/a-plus/training-moes-at-scale-with-pytorch.png"
+    },
+    {
+      "id": "vllm-blog-a-first-comprehensive-study-of-turboquant-accuracy-and-performan",
+      "title": "A First Comprehensive Study of TurboQuant: Accuracy and Performance",
+      "coverImage": "assets/img/covers/real/a-plus/a-first-comprehensive-study-of-turboquant-accuracy-and-performance.png"
+    },
+    {
+      "id": "modal-docs-high-performance-llm-inference",
+      "title": "High-Performance LLM Inference",
+      "coverImage": "assets/img/covers/real/a-plus/high-performance-llm-inference.png"
+    },
+    {
+      "id": "microsoft-research-blog-zero-and-deepspeed-new-system-optimizations-enable",
+      "title": "ZeRO & DeepSpeed: New system optimizations enable training models with over 100 billion parameters",
+      "coverImage": "assets/img/covers/real/a-plus/zero-and-deepspeed-new-system-optimizations-enable-training-models-with-ov.png"
+    },
+    {
+      "id": "pytorch-blog-introducing-pytorch-fully-sharded-data-parallel-fsdp-api",
+      "title": "Introducing PyTorch Fully Sharded Data Parallel (FSDP) API",
+      "coverImage": "assets/img/covers/real/a-plus/introducing-pytorch-fully-sharded-data-parallel-fsdp-api.png"
+    },
+    {
+      "id": "anthropic-alignment-agentic-misalignment-in-summer-2026",
+      "title": "Agentic Misalignment in Summer 2026",
+      "coverImage": "assets/img/covers/real/a-plus/agentic-misalignment-in-summer-2026.png"
+    },
+    {
+      "id": "uk-aisi-blog-cheating-behaviour-in-frontier-model-evaluations",
+      "title": "Cheating behaviour in frontier model evaluations",
+      "coverImage": "assets/img/covers/real/a-plus/cheating-behaviour-in-frontier-model-evaluations.png"
+    },
+    {
+      "id": "redwood-research-introducing-linuxarena",
+      "title": "Introducing LinuxArena",
+      "coverImage": "assets/img/covers/real/a-plus/introducing-linuxarena.jpg"
+    },
+    {
+      "id": "uk-aisi-blog-more-compute-more-capability-why-ai-agent-evaluations-need-to",
+      "title": "More compute, more capability: Why AI agent evaluations need to account for test-time compute",
+      "coverImage": "assets/img/covers/real/a-plus/more-compute-more-capability-why-ai-agent-evaluations-need-to-account-for-.png"
+    },
+    {
+      "id": "uk-aisi-blog-a-pipeline-for-transcript-analysis-using-inspect-scout",
+      "title": "A pipeline for transcript analysis using Inspect Scout",
+      "coverImage": "assets/img/covers/real/a-plus/a-pipeline-for-transcript-analysis-using-inspect-scout.png"
+    },
+    {
+      "id": "hamel-dev-a-field-guide-to-rapidly-improving-ai-products",
+      "title": "A Field Guide to Rapidly Improving AI Products",
+      "coverImage": "assets/img/covers/real/a-plus/a-field-guide-to-rapidly-improving-ai-products.png"
+    },
+    {
+      "id": "eugene-yan-evaluating-the-effectiveness-of-llm-evaluators-aka-llm-as-judge",
+      "title": "Evaluating the Effectiveness of LLM-Evaluators (aka LLM-as-Judge)",
+      "coverImage": "assets/img/covers/real/a-plus/evaluating-the-effectiveness-of-llm-evaluators-aka-llm-as-judge.jpg"
+    },
+    {
+      "id": "google-research-blog-introducing-the-model-card-toolkit-for-easier-model-t",
+      "title": "Introducing the Model Card Toolkit for Easier Model Transparency Reporting",
+      "coverImage": "assets/img/covers/real/a-plus/introducing-the-model-card-toolkit-for-easier-model-transparency-reporting.jpg"
+    },
+    {
+      "id": "google-research-blog-data-centric-ml-benchmarking-announcing-dataperf-s-20",
+      "title": "Data-centric ML benchmarking: Announcing DataPerf’s 2023 challenges",
+      "coverImage": "assets/img/covers/real/a-plus/data-centric-ml-benchmarking-announcing-dataperf-s-2023-challenges.jpg"
+    },
+    {
+      "id": "hugging-face-blog-j-space-yet-another-llm-mind-reader",
+      "title": "J-Space: Yet Another LLM Mind Reader?",
+      "coverImage": "assets/img/covers/real/a-plus/j-space-yet-another-llm-mind-reader.png"
+    },
+    {
+      "id": "google-deepmind-blog-introducing-gemini-3-5-flash-cyber",
+      "title": "Introducing Gemini 3.5 Flash Cyber",
+      "coverImage": "assets/img/covers/real/a-plus/introducing-gemini-3-5-flash-cyber.webp"
+    },
+    {
+      "id": "noise-lab-how-to-do-great-research",
+      "title": "How to Do Great Research",
+      "coverImage": "assets/img/covers/real/a-plus/how-to-do-great-research.png"
+    },
+    {
+      "id": "jacob-steinhardt-research-as-a-stochastic-decision-process",
+      "title": "Research as a Stochastic Decision Process",
+      "coverImage": "assets/img/covers/real/a-plus/research-as-a-stochastic-decision-process.png"
+    },
+    {
+      "id": "denny-britz-replication-issues-in-ai-research",
+      "title": "Replication Issues in AI Research",
+      "coverImage": "assets/img/covers/real/a-plus/replication-issues-in-ai-research.png"
+    },
+    {
+      "id": "phd-in-ai-becoming-an-ai-researcher-practical-advice-for-graduate-students",
+      "title": "Becoming an AI Researcher: Practical Advice for Graduate Students",
+      "coverImage": "assets/img/covers/real/a-plus/becoming-an-ai-researcher-practical-advice-for-graduate-students.png"
+    },
+    {
+      "id": "microsoft-research-how-to-write-a-great-research-paper",
+      "title": "How to Write a Great Research Paper",
+      "coverImage": "assets/img/covers/real/a-plus/how-to-write-a-great-research-paper.jpg"
+    }
+  ],
+  "removedFallbackBlogs": [
+    {
+      "id": "jay-alammar-the-illustrated-retrieval-transformer",
+      "title": "The Illustrated Retrieval Transformer",
+      "coverImage": "assets/img/covers/a-plus/the-illustrated-retrieval-transformer.svg"
+    },
+    {
+      "id": "meta-ai-blog-open-sourcing-touch-representations-and-models-for-robot-dext",
+      "title": "Open-Sourcing Touch Representations and Models for Robot Dexterity",
+      "coverImage": "assets/img/covers/a-plus/open-sourcing-touch-representations-and-models-for-robot-dexterity.svg"
+    },
+    {
+      "id": "meta-ai-blog-partnr-and-new-models-for-human-robot-collaboration",
+      "title": "PARTNR and New Models for Human-Robot Collaboration",
+      "coverImage": "assets/img/covers/a-plus/partnr-and-new-models-for-human-robot-collaboration.svg"
+    },
+    {
+      "id": "anthropic-engineering-quantifying-infrastructure-noise-in-agentic-coding-e",
+      "title": "Quantifying Infrastructure Noise in Agentic Coding Evals",
+      "coverImage": "assets/img/covers/a-plus/quantifying-infrastructure-noise-in-agentic-coding-evals.svg"
+    },
+    {
+      "id": "hugging-face-blog-is-it-agentic-enough-benchmarking-open-models-on-your-ow",
+      "title": "Is It Agentic Enough? Benchmarking Open Models on Your Own Tooling",
+      "coverImage": "assets/img/covers/a-plus/is-it-agentic-enough-benchmarking-open-models-on-your-own-tooling.svg"
+    },
+    {
+      "id": "modal-blog-achieve-state-of-the-art-inference-latencies-with-speculative-d",
+      "title": "Achieve State-of-the-Art Inference Latencies with Speculative Decoding",
+      "coverImage": "assets/img/covers/a-plus/achieve-state-of-the-art-inference-latencies-with-speculative-decoding.svg"
+    },
+    {
+      "id": "hazy-research-flashattention-fast-transformer-training-with-long-sequences",
+      "title": "FlashAttention: Fast Transformer Training with Long Sequences",
+      "coverImage": "assets/img/covers/a-plus/flashattention-fast-transformer-training-with-long-sequences.svg"
+    },
+    {
+      "id": "hazy-research-flashattention-2-faster-attention-with-better-parallelism-an",
+      "title": "FlashAttention-2: Faster Attention with Better Parallelism and Work Partitioning",
+      "coverImage": "assets/img/covers/a-plus/flashattention-2-faster-attention-with-better-parallelism-and-work-partiti.svg"
+    },
+    {
+      "id": "google-research-blog-gspmd-general-and-scalable-parallelization-for-ml-com",
+      "title": "GSPMD: General and Scalable Parallelization for ML Computation Graphs",
+      "coverImage": "assets/img/covers/a-plus/gspmd-general-and-scalable-parallelization-for-ml-computation-graphs.svg"
+    },
+    {
+      "id": "nvidia-technical-blog-scaling-language-model-training-to-a-trillion-parame",
+      "title": "Scaling Language Model Training to a Trillion Parameters Using Megatron",
+      "coverImage": "assets/img/covers/a-plus/scaling-language-model-training-to-a-trillion-parameters-using-megatron.svg"
+    },
+    {
+      "id": "uk-aisi-blog-how-our-new-control-red-team-is-stress-testing-frontier-monit",
+      "title": "How our new Control Red Team is stress-testing frontier monitors",
+      "coverImage": "assets/img/covers/a-plus/how-our-new-control-red-team-is-stress-testing-frontier-monitors.svg"
+    },
+    {
+      "id": "metr-blog-we-are-changing-our-developer-productivity-experiment-design",
+      "title": "We are Changing our Developer Productivity Experiment Design",
+      "coverImage": "assets/img/covers/a-plus/we-are-changing-our-developer-productivity-experiment-design.svg"
+    },
+    {
+      "id": "mit-ai-lab-how-to-do-research-at-the-mit-ai-lab",
+      "title": "How to do Research At the MIT AI Lab",
+      "coverImage": "assets/img/covers/a-plus/how-to-do-research-at-the-mit-ai-lab.svg"
+    },
+    {
+      "id": "jacob-steinhardt-film-study-for-research",
+      "title": "Film Study for Research",
+      "coverImage": "assets/img/covers/a-plus/film-study-for-research.svg"
+    },
+    {
+      "id": "richard-hamming-you-and-your-research",
+      "title": "You and Your Research",
+      "coverImage": "assets/img/covers/a-plus/you-and-your-research.svg"
+    },
+    {
+      "id": "michael-nielsen-principles-of-effective-research",
+      "title": "Principles of Effective Research",
+      "coverImage": "assets/img/covers/a-plus/principles-of-effective-research.svg"
+    },
+    {
+      "id": "university-of-cambridge-how-to-read-a-paper",
+      "title": "How to Read a Paper",
+      "coverImage": "assets/img/covers/a-plus/how-to-read-a-paper.svg"
+    }
+  ],
+  "finalCounts": {
+    "keptRealCoverBlogs": 34,
+    "removedFallbackBlogs": 17,
+    "deletedFallbackFiles": 51,
+    "deletedUnreferencedReal": 4
+  }
+}
