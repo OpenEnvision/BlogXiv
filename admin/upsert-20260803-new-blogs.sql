@@ -1,0 +1,138 @@
+-- Add the August 2026 BlogrXiv posts to Supabase.
+-- Run this in the Supabase SQL Editor for the project backing the public site.
+
+insert into public.blogs (
+  id,
+  title,
+  excerpt,
+  author,
+  author_avatar,
+  category,
+  tags,
+  read_time,
+  publish_date,
+  source_name,
+  url,
+  cover_image,
+  cover_alt,
+  cover_fit,
+  status,
+  featured
+) values
+(
+  'openai-chatgpt-for-academic-researchers',
+  'Accelerating scientific discovery with ChatGPT for Academic Researchers',
+  'OpenAI introduces ChatGPT for Academic Researchers, a program giving selected academic researchers free access to frontier models, Codex, expanded deep research, larger context windows, training, and research support.',
+  'OpenAI',
+  'https://www.google.com/s2/favicons?domain=openai.com&sz=128',
+  'Research Craft',
+  array['ChatGPT', 'Academic Research', 'Scientific Discovery', 'Research Workflows'],
+  '8 min read',
+  '2026-07-29',
+  'OpenAI',
+  'https://openai.com/index/chatgpt-for-academic-researchers/',
+  'assets/img/covers/real/Accelerating scientific discovery with ChatGPT for Academic Researchers.png',
+  'ChatGPT for Academic Researchers article cover',
+  'cover',
+  'published',
+  false
+),
+(
+  'openai-scientific-computing-agentic-ai',
+  'Scientific computing in the age of agentic AI',
+  'OpenAI shares a field report on agent-assisted scientific computing projects, showing how coding agents can modernize research software while leaving verification, stewardship, and scientific judgment with researchers.',
+  'OpenAI',
+  'https://www.google.com/s2/favicons?domain=openai.com&sz=128',
+  'AI Agents',
+  array['Agentic AI', 'Scientific Computing', 'Codex', 'Research Software'],
+  '10 min read',
+  '2026-07-28',
+  'OpenAI',
+  'https://openai.com/index/scientific-computing-agentic-ai/',
+  'assets/img/covers/real/Scientific computing in the age of agentic AI.png',
+  'Scientific computing in the age of agentic AI article cover',
+  'cover',
+  'published',
+  false
+),
+(
+  'google-deepmind-gemini-robotics-2-whole-body-intelligence',
+  'Gemini Robotics 2 brings whole-body intelligence to robots',
+  'Google DeepMind introduces Gemini Robotics 2, extending robot foundation models toward full-body control, dexterous manipulation, embodied reasoning, multi-step tasks, and safer operation across humanoid platforms.',
+  'Google DeepMind',
+  'https://www.google.com/s2/favicons?domain=deepmind.google&sz=128',
+  'Frontier',
+  array['Gemini Robotics', 'Embodied AI', 'Robotics', 'Whole-Body Control'],
+  '7 min read',
+  '2026-07-31',
+  'Google DeepMind',
+  'https://deepmind.google/blog/gemini-robotics-2-brings-whole-body-intelligence-to-robots/',
+  'assets/img/covers/real/gemini_robo_2.png',
+  'Gemini Robotics 2 article cover',
+  'cover',
+  'published',
+  false
+),
+(
+  'deepseek-ai-deepseek-v4-pro',
+  'DeepSeek-V4-Pro',
+  'DeepSeek releases DeepSeek-V4-Pro on Hugging Face as a 1.6T-parameter MoE model with 49B activated parameters, one-million-token context, hybrid attention, mHC connections, Muon training, and an MIT license.',
+  'DeepSeek-AI',
+  'https://www.google.com/s2/favicons?domain=deepseek.com&sz=128',
+  'Frontier',
+  array['DeepSeek-V4', 'Long Context', 'Mixture of Experts', 'Open Weights'],
+  '6 min read',
+  '2026-06-27',
+  'Hugging Face',
+  'https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro',
+  'assets/img/covers/real/deepseek-v4.png',
+  'DeepSeek-V4-Pro model card cover',
+  'cover',
+  'published',
+  false
+),
+(
+  'minimax-minimax-h3-modelscope',
+  'MiniMax-H3',
+  'MiniMax publishes MiniMax-H3 on ModelScope, adding another frontier Chinese model release to the open model ecosystem and giving practitioners a direct model hub entry for evaluation and deployment.',
+  'MiniMax',
+  'https://www.google.com/s2/favicons?domain=minimax.io&sz=128',
+  'Frontier',
+  array['MiniMax', 'ModelScope', 'Open Model', 'Frontier Model'],
+  '5 min read',
+  '2026-07-30',
+  'ModelScope',
+  'https://modelscope.cn/models/MiniMax/MiniMax-H3/summary',
+  'assets/img/covers/real/minimax-hl3.png',
+  'MiniMax-H3 ModelScope cover',
+  'cover',
+  'published',
+  false
+)
+on conflict (id) do update set
+  title = excluded.title,
+  excerpt = excluded.excerpt,
+  author = excluded.author,
+  author_avatar = excluded.author_avatar,
+  category = excluded.category,
+  tags = excluded.tags,
+  read_time = excluded.read_time,
+  publish_date = excluded.publish_date,
+  source_name = excluded.source_name,
+  url = excluded.url,
+  cover_image = excluded.cover_image,
+  cover_alt = excluded.cover_alt,
+  cover_fit = excluded.cover_fit,
+  status = excluded.status,
+  featured = excluded.featured;
+
+select id, title, publish_date, status
+from public.blogs
+where id in (
+  'openai-chatgpt-for-academic-researchers',
+  'openai-scientific-computing-agentic-ai',
+  'google-deepmind-gemini-robotics-2-whole-body-intelligence',
+  'deepseek-ai-deepseek-v4-pro',
+  'minimax-minimax-h3-modelscope'
+)
+order by publish_date desc;
