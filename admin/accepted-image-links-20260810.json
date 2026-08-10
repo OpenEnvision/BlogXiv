@@ -1,0 +1,78 @@
+[
+  {
+    "id": "meta-circle-ophis-autoresearch",
+    "title": "Ophis: A New Paradigm for Autoresearch",
+    "excerpt": "Meta Circle introduces Ophis and a new autoresearch workflow for using AI systems to explore, execute, and refine research ideas with less manual orchestration.",
+    "author": "Meta Circle",
+    "category": "AI Agents",
+    "tags": [
+      "Autoresearch",
+      "Research Agents",
+      "Automation",
+      "Scientific Discovery"
+    ],
+    "readTime": "10 min read",
+    "publishDate": "2026-08-10",
+    "sourceName": "Meta Circle",
+    "url": "https://meta-circle.com/blog/ophis-a-new-paradigm-for-autoresearch",
+    "coverImage": "assets/img/covers/real/Towards Mechanistic Auto-Research.png",
+    "coverAlt": "Real article cover downloaded from the source page"
+  },
+  {
+    "id": "lesswrong-ai-generated-content-mechanistic-analysis",
+    "title": "An Analysis of AI-Generated Content at the Mechanistic Level",
+    "excerpt": "A mechanistic investigation of AI-generated content that examines internal model behavior rather than relying only on surface-level output characteristics.",
+    "author": "LessWrong Community",
+    "category": "Trustworthy AI",
+    "tags": [
+      "Mechanistic Interpretability",
+      "AI-Generated Content",
+      "Model Analysis",
+      "Interpretability"
+    ],
+    "readTime": "12 min read",
+    "publishDate": "2026-08-10",
+    "sourceName": "LessWrong",
+    "url": "https://www.lesswrong.com/posts/r7FBQ8XDs6qBYc4K4/an-analysis-of-ai-generated-content-at-the-mechanistic",
+    "coverImage": "assets/img/covers/real/An analysis of AI-generated content at the Mechanistic Interpretability Workshop.png",
+    "coverAlt": "Real article cover downloaded from the source page"
+  },
+  {
+    "id": "ruhan-wang-harness-handbook",
+    "title": "Harness Handbook",
+    "excerpt": "A practical handbook for understanding and building agent harnesses, covering the execution environment, tools, context, feedback, and evaluation around an underlying model.",
+    "author": "Ruhan Wang",
+    "category": "AI Agents",
+    "tags": [
+      "Agent Harnesses",
+      "Coding Agents",
+      "Tool Use",
+      "Evaluation"
+    ],
+    "readTime": "15 min read",
+    "publishDate": "2026-08-10",
+    "sourceName": "Ruhan Wang",
+    "url": "https://ruhan-wang.github.io/Harness-Handbook/",
+    "coverImage": "assets/img/covers/real/Harness Handbook.png",
+    "coverAlt": "Real article cover downloaded from the source page"
+  },
+  {
+    "id": "01-research-interaction-scaling",
+    "title": "Interaction Scaling",
+    "excerpt": "A research exploration of interaction scaling and how increasing iterative exchanges between models, tools, environments, or users can unlock additional capability.",
+    "author": "01 Research",
+    "category": "Foundation Model",
+    "tags": [
+      "Interaction Scaling",
+      "Reasoning",
+      "Test-Time Compute",
+      "Model Capability"
+    ],
+    "readTime": "10 min read",
+    "publishDate": "2026-08-10",
+    "sourceName": "01 Research",
+    "url": "https://01.me/research/interaction-scaling/#idea",
+    "coverImage": "assets/img/covers/real/What if the model could check its work — and why you’d never know it helped.png",
+    "coverAlt": "Real article cover downloaded from the source page"
+  }
+]

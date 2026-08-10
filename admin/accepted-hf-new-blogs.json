@@ -1,0 +1,58 @@
+[
+  {
+    "id": "sergiopaniego-trl-openenv-harness-training",
+    "title": "Training a coding agent using the OpenCode harness in remote HF sandboxes with TRL and OpenEnv",
+    "excerpt": "Sergio Paniego shows how to train a coding agent with the OpenCode harness in remote Hugging Face sandboxes, combining TRL and OpenEnv for reproducible agent training workflows.",
+    "author": "Sergio Paniego",
+    "category": "AI Agents",
+    "tags": ["Coding Agents", "TRL", "OpenEnv", "Reinforcement Learning"],
+    "readTime": "10 min read",
+    "publishDate": "2026-08-10",
+    "sourceName": "Hugging Face Blog",
+    "url": "https://huggingface.co/blog/sergiopaniego/trl-openenv-harness-training",
+    "coverImage": "assets/img/covers/real/Training a coding agent using the OpenCode harness in remote HF sandboxes with TRL and OpenEnv.png",
+    "coverAlt": "OpenCode harness training article cover"
+  },
+  {
+    "id": "liquidai-lfm2-5-2-6b",
+    "title": "Deploy local agents everywhere with LFM2.5-2.6B",
+    "excerpt": "Liquid AI introduces LFM2.5-2.6B, a compact multimodal language model designed to bring capable local agents to more devices and deployment environments.",
+    "author": "Liquid AI",
+    "category": "Foundation Model",
+    "tags": ["LFM2.5", "Small Language Models", "Local AI", "Agents"],
+    "readTime": "8 min read",
+    "publishDate": "2026-08-10",
+    "sourceName": "Hugging Face Blog",
+    "url": "https://huggingface.co/blog/LiquidAI/lfm2-5-2-6b",
+    "coverImage": "assets/img/covers/real/Deploy local agents everywhere with LFM2.5-2.6B.png",
+    "coverAlt": "LFM2.5-2.6B article cover"
+  },
+  {
+    "id": "jinaai-jina-reranker-v3-5-faster-listwise-reranking",
+    "title": "jina-reranker-v3.5: Faster Listwise Reranking with Hybrid Attention and Self-Distillation",
+    "excerpt": "Jina AI presents jina-reranker-v3.5, improving listwise retrieval reranking speed and quality with hybrid attention and self-distillation.",
+    "author": "Jina AI",
+    "category": "Efficient AI",
+    "tags": ["Reranking", "Information Retrieval", "Hybrid Attention", "Distillation"],
+    "readTime": "9 min read",
+    "publishDate": "2026-08-10",
+    "sourceName": "Hugging Face Blog",
+    "url": "https://huggingface.co/blog/jinaai/jina-reranker-v3-5-faster-listwise-reranking",
+    "coverImage": "assets/img/covers/real/jina-reranker-v3.5- Faster Listwise Reranking with Hybrid Attention and Self-Distillation.png",
+    "coverAlt": "jina-reranker-v3.5 article cover"
+  },
+  {
+    "id": "lightonai-mdenseon-mlateon",
+    "title": "mDenseOn with the mLateOn: Open Multilingual, Long-Context, and Code Retrieval Models",
+    "excerpt": "LightOn AI releases mDenseOn and mLateOn, open multilingual retrieval models built for long-context and code search across dense and late-interaction architectures.",
+    "author": "LightOn AI",
+    "category": "Efficient AI",
+    "tags": ["Retrieval", "Multilingual Models", "Long Context", "Code Search"],
+    "readTime": "10 min read",
+    "publishDate": "2026-08-10",
+    "sourceName": "Hugging Face Blog",
+    "url": "https://huggingface.co/blog/lightonai/mdenseon-mlateon",
+    "coverImage": "assets/img/covers/real/mDenseOn with the mLateOn- Open Multilingual, Long-Context, and Code Retrieval Models.png",
+    "coverAlt": "mDenseOn and mLateOn article cover"
+  }
+]
