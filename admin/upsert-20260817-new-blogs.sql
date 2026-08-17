@@ -1,0 +1,26 @@
+-- Add the six requested 2026-08-17 blog updates to Supabase.
+-- The UK AISI entry already exists in the static corpus; this keeps Supabase aligned.
+insert into public.blogs (id, title, excerpt, author, author_avatar, category, tags, read_time, publish_date, source_name, url, cover_image, cover_alt, cover_fit, status, featured)
+values
+('google-gemini-3-7-flash', 'Introducing Gemini 3.7 Flash', 'Google introduces Gemini 3.7 Flash as its most intelligent workhorse model yet, emphasizing stronger coding and agent performance for production workloads.', 'Tulsee Doshi', 'https://www.google.com/s2/favicons?domain=blog.google&sz=128', 'Foundation Model', array['Gemini 3.7 Flash','Coding','AI Agents','Model Release'], '8 min read', '2026-08-17', 'Google Blog', 'https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-3-7-flash/', 'assets/img/covers/real/google_flash3.7.jpg', 'Gemini 3.7 Flash article cover', 'cover', 'published', false),
+('openai-ten-advances-in-mathematics', 'Ten Advances in Mathematics', 'OpenAI highlights ten mathematics advances connected to AI-assisted reasoning and research, showing how frontier models are beginning to support mathematical discovery workflows.', 'OpenAI', 'https://www.google.com/s2/favicons?domain=openai.com&sz=128', 'LLM & MLLM', array['Mathematics','Reasoning','AI for Science','Research Progress'], '10 min read', '2026-08-17', 'OpenAI', 'https://openai.com/zh-Hans-CN/index/ten-advances-in-mathematics/', 'assets/img/covers/real/ten-advances-in-mathematics.jpg', 'OpenAI ten advances in mathematics article cover', 'cover', 'published', false),
+('thinking-machines-inkling-small', 'Introducing Inkling-Small', 'Thinking Machines Lab introduces Inkling-Small, an open-weights multimodal mixture-of-experts model that matches Inkling at a quarter of the size and supports controllable reasoning effort.', 'Thinking Machines Lab', 'https://www.google.com/s2/favicons?domain=thinkingmachines.ai&sz=128', 'Foundation Model', array['Inkling-Small','Open Weights','Multimodal','Mixture of Experts'], '14 min read', '2026-08-17', 'Thinking Machines Lab', 'https://thinkingmachines.ai/news/inkling-small/', 'assets/img/covers/real/link_small.jpg', 'Inkling-Small article cover', 'cover', 'published', false),
+('ken-ashe-sparse-weight-decomposition-circuit-extraction', 'Sparse Weight Decomposition Makes Circuit Extraction Less Expensive', 'Ken Ashe explains Sparse Weight Decomposition, a method for exposing circuit units inside dense transformer weights without training a separate replacement model, reducing data needs while staying close to the original network.', 'Ken Ashe', 'https://www.google.com/s2/favicons?domain=kenashe.ai&sz=128', 'Trustworthy AI', array['Mechanistic Interpretability','Circuit Extraction','Sparse Decomposition','Transformers'], '8 min read', '2026-08-17', 'Ken Ashe | AI Optimist', 'https://kenashe.ai/blog/2026-08-05-sparse-weight-decomposition-makes-circuit-extraction-less-expensive/', 'assets/img/covers/real/sparse-weight-decomposition-makes-circuit-extraction-less-expensive.jpg', 'Sparse Weight Decomposition article cover', 'cover', 'published', false),
+('uk-aisi-blog-cheating-behaviour-in-frontier-model-evaluations', 'Cheating behaviour in frontier model evaluations', 'UK AISI analyzes cyber-evaluation trajectories with LLM monitors and human review, showing why chain-of-thought and self-report alone are insufficient for detecting evaluation gaming.', 'UK AI Security Institute', 'https://www.google.com/s2/favicons?domain=aisi.gov.uk&sz=128', 'Trustworthy AI', array['Frontier Evals','Evaluation Awareness','Cyber Safety','Monitoring'], '12 min read', '2026-08-17', 'UK AISI Blog', 'https://www.aisi.gov.uk/blog/cheating-behaviour-in-frontier-model-evaluations', 'assets/img/covers/real/cheating-behaviour-in-frontier-model-evaluations.png', 'Real cover from og:image', 'cover', 'published', false),
+('normaltech-ai-agents-cant-yet-do-open-ended-ai-research', 'AI agents can''t yet do open-ended AI research', 'Sayash Kapoor and Arvind Narayanan analyze early evidence from two case studies, arguing that current frontier agents still struggle with open-ended AI research despite progress on more verifiable tasks.', 'Sayash Kapoor and Arvind Narayanan', 'https://www.google.com/s2/favicons?domain=normaltech.ai&sz=128', 'AI Agents', array['Open-Ended Research','Agent Evaluation','AI Research Automation','Recursive Self-Improvement'], '7 min read', '2026-08-17', 'AI as Normal Technology', 'https://www.normaltech.ai/p/ai-agents-cant-yet-do-open-ended', 'assets/img/covers/real/ai-agents-cant-yet-do-open-ended.png', 'AI agents open-ended research article cover', 'cover', 'published', false)
+on conflict (id) do update set
+  title = excluded.title,
+  excerpt = excluded.excerpt,
+  author = excluded.author,
+  author_avatar = excluded.author_avatar,
+  category = excluded.category,
+  tags = excluded.tags,
+  read_time = excluded.read_time,
+  publish_date = excluded.publish_date,
+  source_name = excluded.source_name,
+  url = excluded.url,
+  cover_image = excluded.cover_image,
+  cover_alt = excluded.cover_alt,
+  cover_fit = excluded.cover_fit,
+  status = excluded.status,
+  featured = excluded.featured;
