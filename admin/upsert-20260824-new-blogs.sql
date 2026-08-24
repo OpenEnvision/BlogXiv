@@ -1,0 +1,138 @@
+-- Add the requested 2026-08-24 BlogrXiv updates to Supabase.
+-- Run this in the Supabase SQL Editor for the project backing the public site.
+
+insert into public.blogs (
+  id,
+  title,
+  excerpt,
+  author,
+  author_avatar,
+  category,
+  tags,
+  read_time,
+  publish_date,
+  source_name,
+  url,
+  cover_image,
+  cover_alt,
+  cover_fit,
+  status,
+  featured
+) values
+(
+  'gen-1-5-generalist-ai',
+  'GEN-1.5',
+  'Generalist AI presents GEN-1.5, an embodied foundation model focused on one-shot learning and broader generalization from minimal task exposure.',
+  'Generalist AI',
+  'https://www.google.com/s2/favicons?domain=generalistai.com&sz=128',
+  'Foundation Model',
+  array['GEN-1.5','Embodied AI','One-shot Learning','Foundation Model'],
+  '8 min read',
+  '2026-08-24',
+  'Generalist AI',
+  'https://generalistai.com/blog/gen-1.5',
+  'assets/img/covers/real/gen-1.5.png',
+  'GEN-1.5 article cover',
+  'cover',
+  'published',
+  false
+),
+(
+  'deepseek-harness',
+  'DeepSeek Harness',
+  'DeepSeek releases a developer-preview agent harness that makes models, tools, sessions, sandboxes, storage, and UI layers swappable and composable.',
+  'DeepSeek',
+  'https://www.google.com/s2/favicons?domain=deepseek.com&sz=128',
+  'AI Agents',
+  array['DeepSeek Harness','Agent Harness','Tool Use','Developer Preview'],
+  '9 min read',
+  '2026-08-24',
+  'DeepSeek',
+  'https://www.deepseek.com/harness/en/',
+  'assets/img/covers/real/deepseek-harness.png',
+  'DeepSeek Harness developer preview cover',
+  'cover',
+  'published',
+  false
+),
+(
+  'mureka-v9-5',
+  'Mureka V9.5',
+  'Mureka updates its music generation stack with stronger prompt control, richer creative direction, and a more polished workflow for song creation.',
+  'Mureka',
+  'https://www.google.com/s2/favicons?domain=mureka.ai&sz=128',
+  'Multimodal Model',
+  array['Mureka V9.5','Music Generation','Audio','Creative Tools'],
+  '8 min read',
+  '2026-08-24',
+  'Mureka',
+  'https://www.mureka.ai/mureka-9-5',
+  'assets/img/covers/real/mureka.png',
+  'Mureka V9.5 launch cover',
+  'cover',
+  'published',
+  false
+),
+(
+  'minimax-design',
+  'MiniMax Design',
+  'MiniMax Design presents a visual design experience centered on semantic layout, high-level composition, and faster creative iteration.',
+  'MiniMax',
+  'https://www.google.com/s2/favicons?domain=design.minimax.io&sz=128',
+  'Visual Generation',
+  array['MiniMax Design','Design Tools','Image Generation','Creative AI'],
+  '7 min read',
+  '2026-08-24',
+  'MiniMax Design',
+  'https://design.minimax.io/',
+  'assets/img/covers/real/minimax-design.png',
+  'MiniMax Design launch cover',
+  'cover',
+  'published',
+  false
+),
+(
+  'glm-5-3-z-ai',
+  'GLM-5.3',
+  'Z.ai introduces GLM-5.3, a frontier coding model with emergent cyber capabilities and a stronger agent-oriented tooling story.',
+  'Z.ai',
+  'https://www.google.com/s2/favicons?domain=z.ai&sz=128',
+  'Foundation Model',
+  array['GLM-5.3','Coding','Cyber Capabilities','Foundation Model'],
+  '10 min read',
+  '2026-08-19',
+  'Z.ai',
+  'https://z.ai/blog/glm-5.3',
+  'assets/img/covers/real/glm-5.3.png',
+  'GLM-5.3 launch cover',
+  'cover',
+  'published',
+  false
+)
+on conflict (id) do update set
+  title = excluded.title,
+  excerpt = excluded.excerpt,
+  author = excluded.author,
+  author_avatar = excluded.author_avatar,
+  category = excluded.category,
+  tags = excluded.tags,
+  read_time = excluded.read_time,
+  publish_date = excluded.publish_date,
+  source_name = excluded.source_name,
+  url = excluded.url,
+  cover_image = excluded.cover_image,
+  cover_alt = excluded.cover_alt,
+  cover_fit = excluded.cover_fit,
+  status = excluded.status,
+  featured = excluded.featured;
+
+select id, title, category, publish_date, status
+from public.blogs
+where id in (
+  'gen-1-5-generalist-ai',
+  'deepseek-harness',
+  'mureka-v9-5',
+  'minimax-design',
+  'glm-5-3-z-ai'
+)
+order by publish_date desc, id asc;
