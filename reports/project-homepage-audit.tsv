@@ -1,4 +1,11 @@
 id	publishDate	category	sourceName	url	title
+generalistai-gen-1-5	2026-08-24	Foundation Model	Generalist AI	https://generalistai.com/blog/gen-1.5	GEN-1.5
+deepseek-harness	2026-08-24	AI Agents	DeepSeek	https://www.deepseek.com/harness/en/	DeepSeek Harness
+mureka-v9-5	2026-08-24	Frontier	Mureka	https://www.mureka.ai/mureka-9-5	Mureka V9.5
+minimax-design	2026-08-24	Frontier	MiniMax Design	https://design.minimax.io/	MiniMax Design
+glm-5-3	2026-08-19	Foundation Model	Z.ai	https://z.ai/blog/glm-5.3	GLM-5.3
+github-homepage	2026-08-24	AI Agents	GitHub	https://github.com/	GitHub
+supabase-homepage	2026-08-24	Efficient AI	Supabase	https://supabase.com/	Supabase
 causal-forcing-video	2026-02-04	Visual Generation	Causal Forcing Project	https://causal-forcing.github.io/	Causal Forcing: Next-Token Prediction Meets Full-Sequence Diffusion
 depthvlm	2026-05-15	Multimodal Model	DepthVLM Project	https://depthvlm.github.io/	DepthVLM: Dense Metric Depth Estimation in VLMs
 procvlm	2026-05-09	World Model	ProcVLM Project	https://procvlm.github.io/	ProcVLM: Procedure-Grounded Progress Rewards

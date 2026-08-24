@@ -9,9 +9,11 @@
 
 
 - [ ] **A** · [The 1 Billion Token Challenge: Finding the Perfect Pre-training Mix](https://huggingface.co/blog/codelion/optimal-dataset-mixing) — Asankhaya Sharma / CodeLion · 2025-11-03。以 50+ 受控实验比较混合与课程策略并开放产物；70M GPT-2、1B-token 结论未必外推前沿规模。
+- [ ] **A** · [GEN-1.5](https://generalistai.com/blog/gen-1.5) — Generalist AI · 2026-08-24。Embodied foundation model 页面，强调 one-shot learning 与更强的通用化；更像项目发布页而非论文式长文。
 - [ ] **A+** · [Scaling Pedagogical Pre-training: From Optimal Mixing to 10 Billion Tokens](https://huggingface.co/blog/codelion/scaling-pedagogical-pretraining-10-billion-tokens) — Asankhaya Sharma / CodeLion · 2026-03-06。公开 10.2B-token 教育语料生成、质量筛选和 30.6B-token 训练；核心验证仍为 69M 模型。
 - [ ] **A+** · [Introducing LLM360: Fully Transparent Open-Source LLMs](https://www.llm360.ai/news/introducing-llm360-fully-transparent-open-source-llms.html) — LLM360 Team · 2023 · `开放研究团队`
 - [ ] **A** · [The Joy and Pain of Training an LLM from Scratch](https://huggingface.co/blog/giux78/slm-zagreus-nesso) — Alessandro Ercolani / MII-LLM community · 2026 · `社区训练复盘`
+- [ ] **A** · [GLM-5.3](https://z.ai/blog/glm-5.3) — Z.ai · 2026-08-19。Frontier coding 页面，主打 emergent cyber capabilities 与 agentic tooling，更接近模型发布与能力展示。
 - [ ] **A** · [Techniques for Training Large Neural Networks](https://openai.com/index/techniques-for-training-large-neural-networks/) — OpenAI
 - [ ] **A** · [Dolma: 3 Trillion Tokens for Open LLM Research](https://allenai.org/blog/dolma-3-trillion-tokens-open-llm-corpus-9a0ff4b8da64) — Ai2
 - [ ] **A** · [Introducing the Third Generation of Apple’s Foundation Models](https://machinelearning.apple.com/research/introducing-third-generation-of-apple-foundation-models) — Apple Machine Learning Research · 2026-06-08
@@ -36,6 +38,7 @@
 
 
 - [ ] **A** · [Visual Language Models on NVIDIA Hardware with VILA](https://developer.nvidia.com/blog/visual-language-models-on-nvidia-hardware-with-vila/) — NVIDIA & MIT · 2024-05-03。拆解 VILA 的训练配方、多图/视频 QA 与 AWQ 边缘部署；比较重点偏 NVIDIA 硬件。
+- [ ] **A** · [Mureka V9.5](https://www.mureka.ai/mureka-9-5) — Mureka · 2026-08-24。音乐生成页面，突出 prompt 控制与创作流程，适合放在多模态而非纯视觉或纯语言类别。
 - [ ] **A+** · [Vision Language Models (Better, Faster, Stronger)](https://huggingface.co/blog/vlms-2025) — Hugging Face community team · 2025 · `开放生态年度综述`
 - [ ] **A** · [Demystifying Multimodal Learning: Enabling Vision in Language Models](https://huggingface.co/blog/MatteoNulli/de-mystifying-multimodal-learning-enabiling-vision) — Matteo Nulli · 2026 · `独立技术教程`
 - [ ] **A+** · [One Adapter, Both Modalities: Field Notes from Building and Serving a Multimodal Reranker](https://huggingface.co/blog/lightonai/lighton-rerank) — LightOn AI · 2026 · `模型作者实录`
@@ -45,6 +48,7 @@
 ## Visual Generation
 
 - [ ] **A+** · [Generative Modelling in Latent Space](https://sander.ai/2025/04/15/latents.html) — Sander Dieleman · 2025-04-15。系统分析 latent 容量、可建模性、重建、shaping 与端到端路线；是高质量综述而非单一新实验。
+- [ ] **A** · [MiniMax Design](https://design.minimax.io/) — MiniMax Design · 2026-08-24。以 design 语义、版式和创意迭代为核心的产品页，偏视觉生成与设计工作流展示。
 
 - [ ] **A** · [Perspectives on Diffusion: Noise Schedules](https://sander.ai/2024/06/14/noise-schedules.html) — Sander Dieleman
 - [ ] **A** · [The Diffusion Model Paradox](https://sander.ai/2024/02/28/paradox.html) — Sander Dieleman
@@ -68,6 +72,7 @@
 ## AI Agents
 
 - [ ] **A+** · [Quantifying Infrastructure Noise in Agentic Coding Evals](https://www.anthropic.com/engineering/infrastructure-noise) — Anthropic / Gian Segato · 2026-02-05。受控量化 CPU、内存、存储和网络配额如何改变 coding-agent 分数，证明基础设施必须成为评测变量；主要围绕 Anthropic 栈。
+- [ ] **A** · [DeepSeek Harness](https://www.deepseek.com/harness/en/) — DeepSeek · 2026-08-24。developer preview 页面把模型、工具、会话、沙箱、存储和 UI 组件都做成可插拔模块，偏 agent harness 设计。
 
 - [ ] **A** · [Agent Arena: Causal Evaluation of Agents in the Real World](https://arena.ai/blog/agent-arena-methodology) — Arena Team · 2026-06-04。基于真实交互用因果设计隔离 orchestrator 与模型影响；平台自有数据和采样尚不能完全独立复现。
 - [ ] **A** · [Evaluating the GitHub Copilot Agentic Harness Across Models and Tasks](https://github.blog/ai-and-ml/github-copilot/evaluating-performance-and-efficiency-of-the-github-copilot-agentic-harness-across-models-and-tasks/) — GitHub · 2026-06-25。固定模型、任务与预算比较多种 coding harness，并同时报告成功率、token、成本和耗时；部分内部数据不公开。
