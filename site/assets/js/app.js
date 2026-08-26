@@ -16513,66 +16513,7 @@ class BlogXiv {
                 specialty: 'Trustworthy AI',
                 focus: ['mechanistic interpretability', 'visual explanations', 'transformer circuits'],
                 qualityRank: 10
-            },
-            {
-                name: 'Google DeepMind',
-                institution: 'Google DeepMind Blog',
-                homepage: 'https://deepmind.google/discover/blog/',
-                avatar: 'https://github.com/google-deepmind.png',
-                matches: ['Google DeepMind', 'DeepMind'],
-                specialty: 'Frontier',
-                focus: ['frontier safety', 'science of AI', 'multimodal agents'],
-                qualityRank: 10
-            },
-            {
-                name: 'Tri Dao',
-                institution: 'Princeton / Dao AI Lab',
-                homepage: 'https://tridao.me/',
-                avatar: 'https://tridao.me/assets/img/tri_photo_2021_04.jpeg?v=70239a90f4a7b7f7fce95223cab772a2',
-                matches: ['Tri Dao', 'Dao AI Lab'],
-                specialty: 'Efficient AI',
-                focus: ['FlashAttention', 'hardware-aware algorithms', 'efficient training'],
-                qualityRank: 9
-            },
-            {
-                name: 'David Ha',
-                institution: 'hardmaru / former Google Brain',
-                homepage: 'https://otoro.net/',
-                avatar: 'https://github.com/hardmaru.png',
-                matches: ['David Ha', 'hardmaru', 'otoro'],
-                specialty: 'World Model',
-                focus: ['world models', 'neuroevolution', 'generative agents'],
-                qualityRank: 8
-            },
-            {
-                name: 'Sergey Levine',
-                institution: 'UC Berkeley / BAIR',
-                homepage: 'https://people.eecs.berkeley.edu/~svlevine/',
-                avatar: 'https://www.google.com/s2/favicons?domain=berkeley.edu&sz=128',
-                matches: ['Sergey Levine'],
-                specialty: 'AI Agents',
-                focus: ['offline RL', 'robot learning', 'decision making'],
-                qualityRank: 8
-            },
-            {
-                name: 'Black Forest Labs',
-                institution: 'Black Forest Labs / FLUX',
-                homepage: 'https://bfl.ai/',
-                avatar: 'https://github.com/black-forest-labs.png',
-                matches: ['Black Forest Labs'],
-                specialty: 'Visual Generation',
-                focus: ['FLUX models', 'image editing', 'latent flow matching'],
-                qualityRank: 7
-            },
-            {
-                name: 'ByteDance Seed',
-                institution: 'ByteDance Seed Research',
-                homepage: 'https://seed.bytedance.com/',
-                avatar: 'https://www.google.com/s2/favicons?domain=seed.bytedance.com&sz=128',
-                matches: ['ByteDance Seed'],
-                specialty: 'Multimodal Model',
-                focus: ['unified multimodal models', 'vision-language', 'video generation'],
-                qualityRank: 7            }
+            }
         ];
     }
 
@@ -16590,7 +16531,7 @@ class BlogXiv {
     getHomepagePopularBloggers() {
         const indexedBlogs = this.blogs.length ? this.blogs : this.getCuratedCommunityBlogs();
 
-        const rankedBloggers = this.getHomepagePopularBloggerProfiles()
+        return this.getHomepagePopularBloggerProfiles()
             .map((profile) => {
                 const posts = indexedBlogs
                     .filter((blog) => this.matchesBloggerProfile(blog, profile))
@@ -16616,26 +16557,8 @@ class BlogXiv {
                 };
             })
             .filter((blogger) => blogger.blogsCount > 0)
-            .sort((a, b) => b.score - a.score || b.blogsCount - a.blogsCount);
-
-        // Diversity-first shelf: seat the top blogger from each specialty
-        // before any specialty claims a second of the six slots.
-        const seatedSpecialties = new Set();
-        const diversePicks = [];
-        const overflowPicks = [];
-
-        rankedBloggers.forEach((blogger) => {
-            if (seatedSpecialties.has(blogger.specialty)) {
-                overflowPicks.push(blogger);
-            } else {
-                seatedSpecialties.add(blogger.specialty);
-                diversePicks.push(blogger);
-            }
-        });
-
-        return [...diversePicks, ...overflowPicks]
-            .slice(0, 6)
-            .sort((a, b) => b.score - a.score || b.blogsCount - a.blogsCount);
+            .sort((a, b) => b.score - a.score || b.blogsCount - a.blogsCount)
+            .slice(0, 6);
     }
 
     renderPopularBloggers() {
