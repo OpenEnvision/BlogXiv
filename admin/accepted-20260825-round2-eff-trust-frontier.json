@@ -1,0 +1,254 @@
+[
+  {
+    "id": "epoch-ai-how-much-does-it-cost-to-train-frontier-ai-models",
+    "title": "How Much Does It Cost to Train Frontier AI Models?",
+    "excerpt": "Epoch AI estimates the amortized hardware and energy cost of frontier training runs, finding it has grown around 2.4x per year since 2016 and projecting billion-dollar runs if the trend holds. The figures are reconstructions from chip counts, run durations, and power draw, with wide uncertainty bands, and they deliberately exclude staff and the experiments behind each flagship run.",
+    "author": "Ben Cottier, Robi Rahman, et al.",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=epoch.ai&sz=128",
+    "category": "Frontier",
+    "tags": [
+      "Training Costs",
+      "Compute Trends",
+      "Frontier Models",
+      "Forecasting"
+    ],
+    "readTime": "14 min read",
+    "publishDate": "2024-06-03",
+    "sourceName": "Epoch AI",
+    "url": "https://epoch.ai/publications/how-much-does-it-cost-to-train-frontier-ai-models",
+    "coverImage": "assets/img/covers/real/epoch-ai-how-much-does-it-cost-to-train-frontier-ai-models.png",
+    "coverAlt": "Epoch AI frontier training cost report banner chart",
+    "coverFit": "cover"
+  },
+  {
+    "id": "epoch-ai-algorithmic-progress-in-language-models",
+    "title": "Algorithmic Progress in Language Models",
+    "excerpt": "Analyzing over 200 language-model evaluations from 2012 to 2023, Epoch AI estimates that the compute needed to reach a fixed performance level halves roughly every eight months — faster than Moore’s law — while most realized capability gains still came from scaling compute itself. The estimate covers pre-training perplexity benchmarks only, so post-training advances like RLHF and tool use sit outside it.",
+    "author": "Anson Ho, Tamay Besiroglu, Ege Erdil, et al.",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=epoch.ai&sz=128",
+    "category": "Frontier",
+    "tags": [
+      "Algorithmic Progress",
+      "Scaling",
+      "Compute Efficiency",
+      "Trends"
+    ],
+    "readTime": "12 min read",
+    "publishDate": "2024-03-12",
+    "sourceName": "Epoch AI",
+    "url": "https://epoch.ai/publications/algorithmic-progress-in-language-models",
+    "coverImage": "assets/img/covers/real/epoch-ai-algorithmic-progress-in-language-models.png",
+    "coverAlt": "Epoch AI algorithmic progress report banner chart",
+    "coverFit": "cover"
+  },
+  {
+    "id": "epoch-ai-will-we-run-out-of-data",
+    "title": "Will We Run Out of Data? Limits of LLM Scaling Based on Human-Generated Data",
+    "excerpt": "Epoch AI sizes the effective stock of public human-generated text at roughly 300 trillion tokens and projects that frontier training could fully utilize it sometime between 2026 and 2032, depending on overtraining and multi-epoch practices. The bottleneck analysis is deliberately narrow: synthetic data, multimodal corpora, and private data could each loosen the constraint substantially.",
+    "author": "Pablo Villalobos, Anson Ho, Jaime Sevilla, et al.",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=epoch.ai&sz=128",
+    "category": "Frontier",
+    "tags": [
+      "Data Scaling",
+      "Training Data",
+      "Scaling Limits",
+      "Forecasting"
+    ],
+    "readTime": "15 min read",
+    "publishDate": "2024-06-06",
+    "sourceName": "Epoch AI",
+    "url": "https://epoch.ai/publications/will-we-run-out-of-data-limits-of-llm-scaling-based-on-human-generated-data",
+    "coverImage": "assets/img/covers/real/epoch-ai-will-we-run-out-of-data.png",
+    "coverAlt": "Epoch AI data stock projection banner chart",
+    "coverFit": "cover"
+  },
+  {
+    "id": "metr-early-2025-ai-developer-productivity-rct",
+    "title": "Measuring the Impact of Early-2025 AI on Experienced Open-Source Developer Productivity",
+    "excerpt": "METR ran a randomized controlled trial with 16 experienced open-source developers across 246 real tasks and found that allowing early-2025 AI tools made developers 19% slower — even as the developers themselves believed the AI had sped them up by about 20%. The authors are explicit that the setting is unusually unfavorable to AI (mature repositories the developers know deeply), so the result bounds a specific regime rather than condemning AI coding tools in general.",
+    "author": "Joel Becker, Nate Rush, Beth Barnes, David Rein",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=metr.org&sz=128",
+    "category": "Frontier",
+    "tags": [
+      "RCT",
+      "Developer Productivity",
+      "AI Coding Tools",
+      "Measurement"
+    ],
+    "readTime": "18 min read",
+    "publishDate": "2025-07-10",
+    "sourceName": "METR Blog",
+    "url": "https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/",
+    "coverImage": "assets/img/covers/real/metr-early-2025-ai-developer-productivity-rct.png",
+    "coverAlt": "METR forecasted versus observed speedup chart from the developer productivity RCT",
+    "coverFit": "cover"
+  },
+  {
+    "id": "deepmind-ai-solves-imo-problems-at-silver-medal-level",
+    "title": "AI Achieves Silver-Medal Standard Solving International Mathematical Olympiad Problems",
+    "excerpt": "DeepMind’s AlphaProof, a reinforcement-learning system that writes formal proofs in Lean, and AlphaGeometry 2 together solved four of the six 2024 IMO problems for 28 of 42 points — the first AI result at silver-medal standard. Two important asterisks: humans first translated the problems into formal language, and some solutions took days of compute rather than the contest’s two 4.5-hour sessions.",
+    "author": "AlphaProof and AlphaGeometry teams",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=deepmind.google&sz=128",
+    "category": "Frontier",
+    "tags": [
+      "AlphaProof",
+      "Formal Reasoning",
+      "Mathematics",
+      "Lean"
+    ],
+    "readTime": "10 min read",
+    "publishDate": "2024-07-25",
+    "sourceName": "Google DeepMind Blog",
+    "url": "https://deepmind.google/blog/ai-solves-imo-problems-at-silver-medal-level/",
+    "coverImage": "assets/img/covers/real/deepmind-ai-solves-imo-problems-at-silver-medal-level.webp",
+    "coverAlt": "DeepMind IMO silver medal announcement cover art",
+    "coverFit": "cover"
+  },
+  {
+    "id": "uk-aisi-predeployment-evaluation-claude-3-5-sonnet",
+    "title": "Pre-Deployment Evaluation of Anthropic’s Upgraded Claude 3.5 Sonnet",
+    "excerpt": "The first joint pre-deployment evaluation by the UK and US AI Safety Institutes tested the upgraded Claude 3.5 Sonnet on cyber, biological, and software capabilities and on safeguard robustness, finding that built-in refusal safeguards could be routinely circumvented. The institutes stress the exercise’s limits — a short evaluation window and a narrow capability slice — and frame it as evidence-gathering, not a safety certification.",
+    "author": "UK AISI and US AISI",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=aisi.gov.uk&sz=128",
+    "category": "Frontier",
+    "tags": [
+      "Pre-Deployment Evaluation",
+      "Frontier Models",
+      "Safeguards",
+      "Government Evals"
+    ],
+    "readTime": "11 min read",
+    "publishDate": "2024-11-19",
+    "sourceName": "UK AISI Blog",
+    "url": "https://www.aisi.gov.uk/blog/pre-deployment-evaluation-of-anthropics-upgraded-claude-3-5-sonnet",
+    "coverImage": "assets/img/covers/real/uk-aisi-predeployment-evaluation-claude-3-5-sonnet.png",
+    "coverAlt": "UK AISI pre-deployment evaluation article cover",
+    "coverFit": "cover"
+  },
+  {
+    "id": "deepmind-chinchilla-compute-optimal-training",
+    "title": "An Empirical Analysis of Compute-Optimal Large Language Model Training",
+    "excerpt": "The Chinchilla study trained over 400 models to show that parameters and training tokens should scale in roughly equal proportion, and that a 70B model trained on 4x more data outperforms the 4x-larger Gopher across benchmarks. Its prescription targets pre-training loss per unit of training compute; once inference costs dominate, over-training smaller models past the Chinchilla point is often the economically better choice.",
+    "author": "Jordan Hoffmann, Sebastian Borgeaud, et al.",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=deepmind.google&sz=128",
+    "category": "Efficient AI",
+    "tags": [
+      "Chinchilla",
+      "Scaling Laws",
+      "Compute-Optimal Training",
+      "LLM Training"
+    ],
+    "readTime": "9 min read",
+    "publishDate": "2022-04-12",
+    "sourceName": "Google DeepMind Blog",
+    "url": "https://deepmind.google/blog/an-empirical-analysis-of-compute-optimal-large-language-model-training/",
+    "coverImage": "assets/img/covers/real/deepmind-chinchilla-compute-optimal-training.webp",
+    "coverAlt": "DeepMind compute-optimal training blog cover art",
+    "coverFit": "cover"
+  },
+  {
+    "id": "tim-dettmers-llm-int8-emergent-features",
+    "title": "LLM.int8() and Emergent Features",
+    "excerpt": "Tim Dettmers explains LLM.int8(): vector-wise 8-bit quantization plus a mixed-precision path for the outlier features that emerge systematically around the 6.7B-parameter scale, enabling degradation-free inference of 175B models on consumer-accessible hardware. The emergent-outlier analysis outlived the specific kernels — the post predates today’s 4-bit methods, and its speed numbers no longer reflect current implementations.",
+    "author": "Tim Dettmers",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=timdettmers.com&sz=128",
+    "category": "Efficient AI",
+    "tags": [
+      "Quantization",
+      "int8",
+      "Outlier Features",
+      "Inference"
+    ],
+    "readTime": "16 min read",
+    "publishDate": "2022-08-17",
+    "sourceName": "timdettmers.com",
+    "url": "https://timdettmers.com/2022/08/17/llm-int8-and-emergent-features/",
+    "coverImage": "assets/img/covers/real/tim-dettmers-llm-int8-emergent-features.png",
+    "coverAlt": "LLM.int8() zero-shot accuracy versus scale chart",
+    "coverFit": "cover"
+  },
+  {
+    "id": "character-ai-optimizing-inference",
+    "title": "Optimizing AI Inference at Character.AI",
+    "excerpt": "Character.AI details how multi-query attention, hybrid local-global attention layers, and cross-layer KV sharing shrink the KV cache by more than 20x, and how int8 quantization-aware training and a 95%-hit-rate session cache support serving over 20,000 queries per second. The reported 33x cost reduction is self-measured and specific to their consumer chat workload, where long persistent conversations make cache reuse unusually effective.",
+    "author": "Character.AI",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=character.ai&sz=128",
+    "category": "Efficient AI",
+    "tags": [
+      "Inference Serving",
+      "KV Cache",
+      "Multi-Query Attention",
+      "Quantization"
+    ],
+    "readTime": "9 min read",
+    "publishDate": "2024-06-20",
+    "sourceName": "Character.AI Blog",
+    "url": "https://blog.character.ai/optimizing-ai-inference-at-character-ai/",
+    "coverImage": "assets/img/covers/real/character-ai-optimizing-inference.png",
+    "coverAlt": "Character.AI inference optimization blog cover",
+    "coverFit": "cover"
+  },
+  {
+    "id": "anthropic-towards-monosemanticity",
+    "title": "Towards Monosemanticity: Decomposing Language Models With Dictionary Learning",
+    "excerpt": "Anthropic uses sparse autoencoders to decompose a transformer’s polysemantic neuron activations into thousands of far more interpretable features — Arabic script, DNA sequences, base64 strings — providing the first strong evidence that dictionary learning can unpick superposition. The demonstration is on a one-layer toy model; scaling the technique to frontier models became its own research program in the follow-up work.",
+    "author": "Trenton Bricken, Adly Templeton, Joshua Batson, et al.",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=transformer-circuits.pub&sz=128",
+    "category": "Trustworthy AI",
+    "tags": [
+      "Sparse Autoencoders",
+      "Superposition",
+      "Mechanistic Interpretability",
+      "Features"
+    ],
+    "readTime": "60 min read",
+    "publishDate": "2023-10-04",
+    "sourceName": "Transformer Circuits",
+    "url": "https://transformer-circuits.pub/2023/monosemantic-features/index.html",
+    "coverImage": "assets/img/covers/real/anthropic-towards-monosemanticity.png",
+    "coverAlt": "Real cover from Transformer Circuits page screenshot: Towards Monosemanticity title card",
+    "coverFit": "cover"
+  },
+  {
+    "id": "anthropic-constitutional-ai-harmlessness",
+    "title": "Constitutional AI: Harmlessness from AI Feedback",
+    "excerpt": "Anthropic trains a harmless assistant by having the model critique and revise its own outputs against a written constitution, then applying RL from AI feedback — replacing human harmfulness labels and producing less evasive, more transparent refusals. The method still depends on human helpfulness labels, and choosing the constitution itself remains a normative decision the technique cannot settle.",
+    "author": "Anthropic",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128",
+    "category": "Trustworthy AI",
+    "tags": [
+      "Constitutional AI",
+      "RLAIF",
+      "Harmlessness",
+      "Alignment"
+    ],
+    "readTime": "14 min read",
+    "publishDate": "2022-12-15",
+    "sourceName": "Anthropic Research",
+    "url": "https://www.anthropic.com/research/constitutional-ai-harmlessness-from-ai-feedback",
+    "coverImage": "assets/img/covers/real/anthropic-constitutional-ai-harmlessness.jpg",
+    "coverAlt": "Constitutional AI research page cover",
+    "coverFit": "cover"
+  },
+  {
+    "id": "deepmind-taking-a-responsible-path-to-agi",
+    "title": "Taking a Responsible Path to AGI",
+    "excerpt": "Google DeepMind summarizes its AGI safety approach — organized around misuse and misalignment, with amplified oversight, access controls, interpretability, and an internal AGI Safety Council — and argues transformative capabilities are plausible within a few years. It is a strategy document accompanying a 100+ page technical paper: the timelines are contested, and the plan presumes the current training paradigm continues to hold.",
+    "author": "Google DeepMind",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=deepmind.google&sz=128",
+    "category": "Trustworthy AI",
+    "tags": [
+      "AGI Safety",
+      "Misalignment",
+      "Frontier Safety",
+      "Governance"
+    ],
+    "readTime": "9 min read",
+    "publishDate": "2025-04-02",
+    "sourceName": "Google DeepMind Blog",
+    "url": "https://deepmind.google/blog/taking-a-responsible-path-to-agi/",
+    "coverImage": "assets/img/covers/real/deepmind-taking-a-responsible-path-to-agi.webp",
+    "coverAlt": "DeepMind responsible path to AGI blog cover art",
+    "coverFit": "cover"
+  }
+]

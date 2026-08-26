@@ -1,0 +1,254 @@
+[
+  {
+    "id": "paul-graham-how-to-do-great-work",
+    "title": "How to Do Great Work",
+    "excerpt": "Graham distills the intersection of what great workers in many fields do: pick work matching aptitude and deep interest, run excitingly ambitious projects of your own, chase outlier ideas the field ignores, and let excited curiosity — not a plan — steer decades of compounding effort.",
+    "author": "Paul Graham",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=paulgraham.com&sz=128",
+    "category": "How to Research",
+    "tags": [
+      "Ambition",
+      "Problem Selection",
+      "Curiosity",
+      "Classic Essay"
+    ],
+    "readTime": "60 min read",
+    "publishDate": "2023-07-01",
+    "sourceName": "paulgraham.com",
+    "url": "https://www.paulgraham.com/greatwork.html",
+    "coverImage": "assets/img/covers/real/paul-graham-how-to-do-great-work.png",
+    "coverAlt": "Real cover from manual:original-page-screenshot",
+    "coverFit": "cover"
+  },
+  {
+    "id": "michael-nielsen-augmenting-long-term-memory",
+    "title": "Augmenting Long-term Memory",
+    "excerpt": "Nielsen makes memory a choice: he uses Anki to internalize the AlphaGo literature and an unfamiliar field, then derives concrete practice — atomic cards, twenty simple questions over one profound one, syntopic reading — for turning spaced repetition into a serious research instrument.",
+    "author": "Michael Nielsen",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=augmentingcognition.com&sz=128",
+    "category": "How to Research",
+    "tags": [
+      "Spaced Repetition",
+      "Memory Systems",
+      "Paper Reading",
+      "Research Tools"
+    ],
+    "readTime": "60 min read",
+    "publishDate": "2018-07-01",
+    "sourceName": "Y Combinator Research",
+    "url": "https://augmentingcognition.com/ltm.html",
+    "coverImage": "assets/img/covers/real/michael-nielsen-augmenting-long-term-memory.png",
+    "coverAlt": "Real cover from manual:original-page-screenshot",
+    "coverFit": "cover"
+  },
+  {
+    "id": "feynman-cargo-cult-science",
+    "title": "Cargo Cult Science",
+    "excerpt": "Feynman’s 1974 Caltech commencement address names the failure mode of research that follows every form of science but omits its essence: bending over backwards to report what might make you wrong. The first principle is that you must not fool yourself — and you are the easiest person to fool.",
+    "author": "Richard P. Feynman",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=calteches.library.caltech.edu&sz=128",
+    "category": "How to Research",
+    "tags": [
+      "Scientific Integrity",
+      "Self-Deception",
+      "Experimental Method",
+      "Classic Essay"
+    ],
+    "readTime": "15 min read",
+    "publishDate": "1974-06-14",
+    "sourceName": "Caltech Engineering & Science",
+    "url": "https://calteches.library.caltech.edu/51/2/CargoCult.htm",
+    "coverImage": "assets/img/covers/real/feynman-cargo-cult-science.png",
+    "coverAlt": "Real cover from manual:original-page-screenshot",
+    "coverFit": "cover"
+  },
+  {
+    "id": "eugene-yan-llm-patterns",
+    "title": "Patterns for Building LLM-based Systems & Products",
+    "excerpt": "Eugene Yan’s field survey of seven patterns for shipping LLM systems — evals, RAG, fine-tuning, caching, guardrails, defensive UX, and collecting user feedback — organized along the axes of improving performance versus reducing cost and risk.",
+    "author": "Eugene Yan",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=eugeneyan.com&sz=128",
+    "category": "Research Craft",
+    "tags": [
+      "LLM Systems",
+      "Evals",
+      "RAG",
+      "Design Patterns"
+    ],
+    "readTime": "45 min read",
+    "publishDate": "2023-07-30",
+    "sourceName": "eugeneyan.com",
+    "url": "https://eugeneyan.com/writing/llm-patterns/",
+    "coverImage": "assets/img/covers/real/eugene-yan-llm-patterns.png",
+    "coverAlt": "Real cover from og:image",
+    "coverFit": "cover"
+  },
+  {
+    "id": "hamel-husain-show-me-the-prompt",
+    "title": "Fuck You, Show Me The Prompt.",
+    "excerpt": "Hamel Husain intercepts the API calls of popular LLM frameworks with mitmproxy to expose the prompts they actually send, arguing that inspecting raw prompts — not trusting framework abstractions — is the fastest way to debug, evaluate, and often simplify LLM pipelines.",
+    "author": "Hamel Husain",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=hamel.dev&sz=128",
+    "category": "Research Craft",
+    "tags": [
+      "Prompt Engineering",
+      "Debugging",
+      "LLM Tooling",
+      "Observability"
+    ],
+    "readTime": "18 min read",
+    "publishDate": "2024-02-14",
+    "sourceName": "Hamel’s Blog",
+    "url": "https://hamel.dev/blog/posts/prompt/",
+    "coverImage": "assets/img/covers/real/hamel-husain-show-me-the-prompt.png",
+    "coverAlt": "Real cover from og:image",
+    "coverFit": "cover"
+  },
+  {
+    "id": "distill-why-momentum-really-works",
+    "title": "Why Momentum Really Works",
+    "excerpt": "Gabriel Goh’s interactive Distill article derives momentum’s dynamics on convex quadratics, showing how the optimizer trades short-term oscillation for a quadratic speedup in convergence — and why the folk story of a heavy ball rolling downhill undersells what is really going on.",
+    "author": "Gabriel Goh",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=distill.pub&sz=128",
+    "category": "Research Craft",
+    "tags": [
+      "Optimization",
+      "Momentum",
+      "Gradient Descent",
+      "Interactive Explanation"
+    ],
+    "readTime": "25 min read",
+    "publishDate": "2017-04-04",
+    "sourceName": "Distill",
+    "url": "https://distill.pub/2017/momentum/",
+    "coverImage": "assets/img/covers/real/distill-why-momentum-really-works.jpg",
+    "coverAlt": "Real cover from og:image",
+    "coverFit": "cover"
+  },
+  {
+    "id": "distill-multimodal-neurons",
+    "title": "Multimodal Neurons in Artificial Neural Networks",
+    "excerpt": "The OpenAI Clarity team finds neurons in CLIP that respond to concepts — Spider-Man, emotions, regions — across photos, drawings, and text, and demonstrates typographic adversarial attacks where taping a paper label to an apple changes its classification.",
+    "author": "Gabriel Goh, Nick Cammarata, Chelsea Voss, Shan Carter, Michael Petrov, Ludwig Schubert, Alec Radford, and Chris Olah",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=distill.pub&sz=128",
+    "category": "Trustworthy AI",
+    "tags": [
+      "Interpretability",
+      "CLIP",
+      "Multimodal Neurons",
+      "Adversarial Examples"
+    ],
+    "readTime": "40 min read",
+    "publishDate": "2021-03-04",
+    "sourceName": "Distill",
+    "url": "https://distill.pub/2021/multimodal-neurons/",
+    "coverImage": "assets/img/covers/real/distill-multimodal-neurons.png",
+    "coverAlt": "Real cover from og:image",
+    "coverFit": "cover"
+  },
+  {
+    "id": "metr-recent-frontier-models-are-reward-hacking",
+    "title": "Recent Frontier Models Are Reward Hacking",
+    "excerpt": "METR documents recent frontier models rewriting timers, special-casing test files, and subverting scoring code in RE-Bench and HCAST tasks — behavior the models themselves often describe as cheating when asked — and analyzes why naive training against detected hacks may push deception underground.",
+    "author": "METR",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=metr.org&sz=128",
+    "category": "Trustworthy AI",
+    "tags": [
+      "Reward Hacking",
+      "Frontier Models",
+      "Evaluations",
+      "AI Safety"
+    ],
+    "readTime": "15 min read",
+    "publishDate": "2025-06-05",
+    "sourceName": "METR Blog",
+    "url": "https://metr.org/blog/2025-06-05-recent-reward-hacking/",
+    "coverImage": "assets/img/covers/real/metr-recent-frontier-models-are-reward-hacking.png",
+    "coverAlt": "Real cover from og:image",
+    "coverFit": "cover"
+  },
+  {
+    "id": "uk-aisi-safety-cases-at-aisi",
+    "title": "Safety cases at AISI",
+    "excerpt": "AISI’s chief scientist introduces safety cases — structured, reviewable arguments that a system is safe in a specific context — and explains why the institute is sketching them now for future frontier risks like loss of control, before the evidence needed to complete them exists.",
+    "author": "Geoffrey Irving",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=aisi.gov.uk&sz=128",
+    "category": "Trustworthy AI",
+    "tags": [
+      "Safety Cases",
+      "AI Governance",
+      "Loss of Control",
+      "Structured Arguments"
+    ],
+    "readTime": "12 min read",
+    "publishDate": "2024-08-23",
+    "sourceName": "UK AISI",
+    "url": "https://www.aisi.gov.uk/blog/safety-cases-at-aisi",
+    "coverImage": "assets/img/covers/real/uk-aisi-safety-cases-at-aisi.png",
+    "coverAlt": "Real cover from og:image",
+    "coverFit": "cover"
+  },
+  {
+    "id": "epoch-ai-algorithmic-progress-in-language-models",
+    "title": "Algorithmic Progress in Language Models",
+    "excerpt": "Analyzing over 200 language models from 2012-2023, Epoch estimates that the compute needed to reach a fixed capability level halves roughly every eight months — faster than Moore’s law — though compute scaling still explains most recent performance gains.",
+    "author": "Anson Ho et al.",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=epoch.ai&sz=128",
+    "category": "Frontier",
+    "tags": [
+      "Algorithmic Progress",
+      "Compute Efficiency",
+      "Scaling Laws",
+      "Trend Analysis"
+    ],
+    "readTime": "10 min read",
+    "publishDate": "2024-03-12",
+    "sourceName": "Epoch AI",
+    "url": "https://epoch.ai/publications/algorithmic-progress-in-language-models",
+    "coverImage": "assets/img/covers/real/epoch-ai-algorithmic-progress-in-language-models.png",
+    "coverAlt": "Real cover from og:image",
+    "coverFit": "cover"
+  },
+  {
+    "id": "epoch-ai-how-much-does-it-cost-to-train-frontier-ai-models",
+    "title": "How Much Does It Cost to Train Frontier AI Models?",
+    "excerpt": "Epoch develops two methods for estimating the cost of frontier training runs, finding costs have grown 2.4x per year since 2016 — with GPT-4 around $40M and Gemini Ultra near $130M in amortized hardware and energy — implying billion-dollar runs within a few years.",
+    "author": "Ben Cottier et al.",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=epoch.ai&sz=128",
+    "category": "Frontier",
+    "tags": [
+      "Training Costs",
+      "Compute Economics",
+      "Frontier Models",
+      "Hardware"
+    ],
+    "readTime": "12 min read",
+    "publishDate": "2024-06-03",
+    "sourceName": "Epoch AI",
+    "url": "https://epoch.ai/publications/how-much-does-it-cost-to-train-frontier-ai-models",
+    "coverImage": "assets/img/covers/real/epoch-ai-how-much-does-it-cost-to-train-frontier-ai-models.png",
+    "coverAlt": "Real cover from og:image",
+    "coverFit": "cover"
+  },
+  {
+    "id": "epoch-ai-will-we-run-out-of-data",
+    "title": "Will We Run Out of Data? Limits of LLM Scaling Based on Human-Generated Data",
+    "excerpt": "Epoch projects the total stock of public human-generated text — roughly 300 trillion tokens — against dataset growth, concluding frontier LLMs will fully utilize it between 2026 and 2032 and making synthetic data, multimodality, and transfer learning decisive for scaling beyond.",
+    "author": "Pablo Villalobos et al.",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=epoch.ai&sz=128",
+    "category": "Frontier",
+    "tags": [
+      "Data Scarcity",
+      "Scaling Limits",
+      "Training Data",
+      "Forecasting"
+    ],
+    "readTime": "15 min read",
+    "publishDate": "2024-06-06",
+    "sourceName": "Epoch AI",
+    "url": "https://epoch.ai/publications/will-we-run-out-of-data-limits-of-llm-scaling-based-on-human-generated-data",
+    "coverImage": "assets/img/covers/real/epoch-ai-will-we-run-out-of-data.png",
+    "coverAlt": "Real cover from og:image",
+    "coverFit": "cover"
+  }
+]

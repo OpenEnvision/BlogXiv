@@ -1,0 +1,50 @@
+[
+  {
+    "id": "jalammar-illustrated-word2vec",
+    "title": "The Illustrated Word2vec",
+    "excerpt": "Jay Alammar visualizes Word2vec's skip-gram and negative-sampling training, showing how vector arithmetic emerges from predicting context words. It remains the clearest introduction to static embeddings even though modern LLMs largely replaced explicit word2vec in production pipelines.",
+    "author": "Jay Alammar",
+    "authorAvatar": "https://github.com/jalammar.png",
+    "category": "LLM & MLLM",
+    "tags": ["Word2vec", "Embeddings", "Skip-gram", "Illustrated Guide"],
+    "readTime": "20 min read",
+    "publishDate": "2019-04-13",
+    "sourceName": "Jay Alammar",
+    "url": "https://jalammar.github.io/illustrated-word2vec/",
+    "coverImage": "assets/img/covers/real/expand-parent/jalammar-illustrated-gpt2.png",
+    "coverAlt": "Illustrated Word2vec diagram",
+    "coverFit": "cover"
+  },
+  {
+    "id": "distill-augmented-rnns",
+    "title": "Attention and Augmented Recurrent Neural Networks",
+    "excerpt": "Chris Olah and Shan Carter explain attention interfaces, neural Turing machines, and adaptive computation time as extensions of recurrent networks with interactive diagrams. The architectures predate transformers but clarify the attention intuition transformers later scaled globally.",
+    "author": "Chris Olah, Shan Carter",
+    "authorAvatar": "https://github.com/colah.png",
+    "category": "LLM & MLLM",
+    "tags": ["Attention", "RNNs", "Neural Turing Machines", "Distill"],
+    "readTime": "25 min read",
+    "publishDate": "2016-09-06",
+    "sourceName": "Distill",
+    "url": "https://distill.pub/2016/augmented-rnns/",
+    "coverImage": "assets/img/covers/real/expand-parent-5/augmented-rnns.png",
+    "coverAlt": "Distill augmented RNNs cover",
+    "coverFit": "cover"
+  },
+  {
+    "id": "distill-momentum",
+    "title": "Why Momentum Really Works",
+    "excerpt": "Gabriel Goh decomposes SGD with momentum into a physical spring-damper system and spectral analysis, giving intuition for why momentum accelerates optimization in curved valleys. The analysis is pedagogical rather than state-of-the-art optimizer guidance for billion-parameter LLMs.",
+    "author": "Gabriel Goh",
+    "authorAvatar": "https://github.com/colah.png",
+    "category": "Efficient AI",
+    "tags": ["Momentum", "Optimization", "SGD", "Distill"],
+    "readTime": "15 min read",
+    "publishDate": "2017-04-06",
+    "sourceName": "Distill",
+    "url": "https://distill.pub/2017/momentum/",
+    "coverImage": "assets/img/covers/real/expand-parent-5/momentum.png",
+    "coverAlt": "Distill momentum optimization cover",
+    "coverFit": "cover"
+  }
+]

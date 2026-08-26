@@ -1,0 +1,383 @@
+[
+  {
+    "id": "giux78-joy-pain-training-llm-from-scratch",
+    "title": "The Joy and Pain of Training an LLM from Scratch",
+    "excerpt": "Alessandro Ercolani documents the full pipeline behind the Zagreus and Nesso small language model families, from framework selection with Nanotron through tokenizer data engineering and Slurm-driven pretraining to multilingual evaluation, with honest notes on what broke along the way.",
+    "author": "Alessandro Ercolani",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=huggingface.co&sz=128",
+    "category": "Foundation Model",
+    "tags": [
+      "Small Language Models",
+      "Pretraining",
+      "Nanotron",
+      "Multilingual",
+      "Training Report"
+    ],
+    "readTime": "25 min read",
+    "publishDate": "2026-04-02",
+    "sourceName": "Hugging Face Blog",
+    "url": "https://huggingface.co/blog/giux78/slm-zagreus-nesso",
+    "coverImage": "assets/img/covers/real/giux78-joy-pain-training-llm-from-scratch.png",
+    "coverAlt": "Zagreus and Nesso training report cover",
+    "coverFit": "cover"
+  },
+  {
+    "id": "openai-techniques-training-large-neural-networks",
+    "title": "Techniques for Training Large Neural Networks",
+    "excerpt": "OpenAI walks through the parallelism toolbox for training large models, explaining how data, pipeline, tensor, and expert parallelism each split computation across GPUs, where the communication costs land, and which memory-saving tricks make the pieces fit.",
+    "author": "Lilian Weng and Justin Jay Wang",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=openai.com&sz=128",
+    "category": "Foundation Model",
+    "tags": [
+      "Distributed Training",
+      "Data Parallelism",
+      "Pipeline Parallelism",
+      "Tensor Parallelism",
+      "Mixture of Experts"
+    ],
+    "readTime": "10 min read",
+    "publishDate": "2022-06-09",
+    "sourceName": "OpenAI",
+    "url": "https://openai.com/index/techniques-for-training-large-neural-networks/",
+    "coverImage": "assets/img/covers/real/openai-techniques-training-large-neural-networks.webp",
+    "coverAlt": "Parallelism techniques diagram from OpenAI",
+    "coverFit": "cover"
+  },
+  {
+    "id": "ai2-dolma-3-trillion-token-open-corpus",
+    "title": "Dolma: 3 Trillion Token Open Corpus for Language Model Pretraining",
+    "excerpt": "Ai2 explains how it assembled Dolma, a 3-trillion-token openly licensed pretraining corpus, walking through source selection, language and quality filtering, deduplication, and toxicity decisions, and releases the toolkit so the pipeline can be audited or remixed.",
+    "author": "Luca Soldaini",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=allenai.org&sz=128",
+    "category": "Foundation Model",
+    "tags": [
+      "Pretraining Data",
+      "Open Corpus",
+      "Data Curation",
+      "Deduplication"
+    ],
+    "readTime": "12 min read",
+    "publishDate": "2023-08-18",
+    "sourceName": "Ai2 Blog",
+    "url": "https://allenai.org/blog/dolma-3-trillion-tokens-open-llm-corpus-9a0ff4b8da64",
+    "coverImage": "assets/img/covers/real/ai2-dolma-3-trillion-token-open-corpus.jpg",
+    "coverAlt": "Dolma open pretraining corpus cover",
+    "coverFit": "cover"
+  },
+  {
+    "id": "apple-third-generation-foundation-models",
+    "title": "Introducing the Third Generation of Apple's Foundation Models",
+    "excerpt": "Apple details its third-generation foundation model family: a 3B dense on-device model, a 20B sparse on-device model that activates only 1-4B parameters per request, and three server models on Private Cloud Compute, with privacy-preserving deployment as a first-class design constraint.",
+    "author": "Apple Machine Learning Research",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=machinelearning.apple.com&sz=128",
+    "category": "Foundation Model",
+    "tags": [
+      "Apple Foundation Models",
+      "On-Device AI",
+      "Sparse Models",
+      "Private Cloud Compute"
+    ],
+    "readTime": "11 min read",
+    "publishDate": "2026-06-08",
+    "sourceName": "Apple Machine Learning Research",
+    "url": "https://machinelearning.apple.com/research/introducing-third-generation-of-apple-foundation-models",
+    "coverImage": "assets/img/covers/real/apple-third-generation-foundation-models.png",
+    "coverAlt": "Apple Foundation Models third generation hero image",
+    "coverFit": "cover"
+  },
+  {
+    "id": "google-multi-token-prediction-gemma-4",
+    "title": "Accelerating Gemma 4: Faster Inference with Multi-Token Prediction Drafters",
+    "excerpt": "Google engineers explain how Multi-Token Prediction drafters give Gemma 4 up to a 3x decoding speedup through a specialized speculative decoding architecture, covering why standard LLM inference is memory-bandwidth bound and how draft-and-verify preserves output quality.",
+    "author": "Olivier Lacombe and Maarten Grootendorst",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=blog.google&sz=128",
+    "category": "Foundation Model",
+    "tags": [
+      "Gemma 4",
+      "Multi-Token Prediction",
+      "Speculative Decoding",
+      "Inference"
+    ],
+    "readTime": "8 min read",
+    "publishDate": "2026-05-05",
+    "sourceName": "Google Blog",
+    "url": "https://blog.google/innovation-and-ai/technology/developers-tools/multi-token-prediction-gemma-4/",
+    "coverImage": "assets/img/covers/real/google-multi-token-prediction-gemma-4.png",
+    "coverAlt": "Gemma 4 multi-token prediction cover",
+    "coverFit": "cover"
+  },
+  {
+    "id": "hazyresearch-structured-state-spaces-s4",
+    "title": "Structured State Spaces: Combining Continuous-Time, Recurrent, and Convolutional Models",
+    "excerpt": "Albert Gu, Karan Goel, and Chris Re unpack the S4 architecture, showing how one state space model can be computed as a continuous-time system, a recurrence, or a convolution, and why switching between the three views unlocks efficient long-range sequence modeling.",
+    "author": "Albert Gu, Karan Goel, and Chris Re",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=hazyresearch.stanford.edu&sz=128",
+    "category": "Foundation Model",
+    "tags": [
+      "State Space Models",
+      "S4",
+      "Long-Range Dependencies",
+      "Sequence Modeling"
+    ],
+    "readTime": "15 min read",
+    "publishDate": "2022-01-14",
+    "sourceName": "Stanford Hazy Research",
+    "url": "https://hazyresearch.stanford.edu/blog/2022-01-14-s4-3",
+    "coverImage": "assets/img/covers/real/hazyresearch-structured-state-spaces-s4.png",
+    "coverAlt": "State space model diagram from the S4 blog",
+    "coverFit": "cover"
+  },
+  {
+    "id": "openai-learning-to-reason-with-llms",
+    "title": "Learning to Reason with LLMs",
+    "excerpt": "OpenAI describes how o1 was trained with large-scale reinforcement learning to produce a private chain of thought before answering, and shows accuracy climbing smoothly with both train-time and test-time compute across competition math, coding, and science benchmarks.",
+    "author": "OpenAI",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=openai.com&sz=128",
+    "category": "LLM & MLLM",
+    "tags": [
+      "Reasoning",
+      "Reinforcement Learning",
+      "Chain of Thought",
+      "Test-Time Compute",
+      "o1"
+    ],
+    "readTime": "12 min read",
+    "publishDate": "2024-09-12",
+    "sourceName": "OpenAI",
+    "url": "https://openai.com/index/learning-to-reason-with-llms/",
+    "coverImage": "assets/img/covers/real/openai-learning-to-reason-with-llms.png",
+    "coverAlt": "OpenAI o1 reasoning article cover",
+    "coverFit": "cover"
+  },
+  {
+    "id": "minimax-maxproof-math-proof-evolution",
+    "title": "MaxProof: Scaling Mathematical Proof with Generative-Verifier RL and Evolutionary Search",
+    "excerpt": "MiniMax details the framework that pushed its M3 model past the human gold-medal threshold on IMO 2025 and USAMO 2026, combining a stronger base prover, an aligned generative verifier, refinement training, and evolutionary search at test time.",
+    "author": "MiniMax",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=minimax.io&sz=128",
+    "category": "LLM & MLLM",
+    "tags": [
+      "Theorem Proving",
+      "Generative Verifier",
+      "Reinforcement Learning",
+      "Test-Time Scaling"
+    ],
+    "readTime": "14 min read",
+    "publishDate": "2026-06-09",
+    "sourceName": "MiniMax Research",
+    "url": "https://www.minimax.io/blog/minimax-maxproof-math-proof-evolution",
+    "coverImage": "assets/img/covers/real/minimax-maxproof-math-proof-evolution.png",
+    "coverAlt": "MaxProof mathematical proof framework cover",
+    "coverFit": "cover"
+  },
+  {
+    "id": "jalammar-illustrated-retrieval-transformer",
+    "title": "The Illustrated Retrieval Transformer",
+    "excerpt": "Jay Alammar visualizes DeepMind's RETRO, explaining step by step how a 7.5B-parameter model backed by a trillion-token retrieval database can match far larger models by separating world-knowledge lookup from language modeling.",
+    "author": "Jay Alammar",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=jalammar.github.io&sz=128",
+    "category": "LLM & MLLM",
+    "tags": [
+      "RETRO",
+      "Retrieval-Augmented Generation",
+      "Retrieval",
+      "Transformers"
+    ],
+    "readTime": "10 min read",
+    "publishDate": "2022-01-03",
+    "sourceName": "Jay Alammar",
+    "url": "https://jalammar.github.io/illustrated-retrieval-transformer/",
+    "coverImage": "assets/img/covers/real/jalammar-illustrated-retrieval-transformer.png",
+    "coverAlt": "RETRO retrieval transformer illustration",
+    "coverFit": "cover"
+  },
+  {
+    "id": "jalammar-illustrated-transformer",
+    "title": "The Illustrated Transformer",
+    "excerpt": "The canonical visual walkthrough of the Transformer, building up self-attention, multi-head attention, positional encoding, and the encoder-decoder stack one diagram at a time - still the fastest way to develop intuition for the architecture behind modern LLMs.",
+    "author": "Jay Alammar",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=jalammar.github.io&sz=128",
+    "category": "LLM & MLLM",
+    "tags": [
+      "Transformers",
+      "Self-Attention",
+      "Architecture",
+      "Visualization"
+    ],
+    "readTime": "18 min read",
+    "publishDate": "2018-06-27",
+    "sourceName": "Jay Alammar",
+    "url": "https://jalammar.github.io/illustrated-transformer/",
+    "coverImage": "assets/img/covers/real/jalammar-illustrated-transformer.png",
+    "coverAlt": "Illustrated Transformer architecture diagram",
+    "coverFit": "cover"
+  },
+  {
+    "id": "anthropic-mapping-mind-language-model",
+    "title": "Mapping the Mind of a Large Language Model",
+    "excerpt": "Anthropic reports the first detailed look inside a production LLM, using sparse autoencoders to extract millions of interpretable features from Claude 3 Sonnet - including safety-relevant ones - and showing that amplifying or suppressing features causally changes behavior.",
+    "author": "Anthropic",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128",
+    "category": "LLM & MLLM",
+    "tags": [
+      "Interpretability",
+      "Sparse Autoencoders",
+      "Features",
+      "Claude"
+    ],
+    "readTime": "12 min read",
+    "publishDate": "2024-05-21",
+    "sourceName": "Anthropic",
+    "url": "https://www.anthropic.com/research/mapping-mind-language-model",
+    "coverImage": "assets/img/covers/real/anthropic-mapping-mind-language-model.jpg",
+    "coverAlt": "Vintage head diagrams representing concept mapping inside an AI model",
+    "coverFit": "cover"
+  },
+  {
+    "id": "google-chain-of-thought-reasoning",
+    "title": "Language Models Perform Reasoning via Chain of Thought",
+    "excerpt": "Jason Wei and Denny Zhou show that simply prompting large models to produce intermediate reasoning steps unlocks major gains on arithmetic, commonsense, and symbolic reasoning - and that chain-of-thought ability emerges only past a certain model scale.",
+    "author": "Jason Wei and Denny Zhou",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=research.google&sz=128",
+    "category": "LLM & MLLM",
+    "tags": [
+      "Chain of Thought",
+      "Prompting",
+      "Reasoning",
+      "Emergent Abilities"
+    ],
+    "readTime": "7 min read",
+    "publishDate": "2022-05-11",
+    "sourceName": "Google Research Blog",
+    "url": "https://research.google/blog/language-models-perform-reasoning-via-chain-of-thought/",
+    "coverImage": "assets/img/covers/real/google-chain-of-thought-reasoning.jpg",
+    "coverAlt": "Chain-of-thought prompting illustration from Google Research",
+    "coverFit": "cover"
+  },
+  {
+    "id": "hf-whats-going-on-open-llm-leaderboard",
+    "title": "What's Going On with the Open LLM Leaderboard?",
+    "excerpt": "Hugging Face's evaluation team dissects why three implementations of the same MMLU benchmark give wildly different LLaMA scores, tracing the gaps to prompt formatting and log-likelihood versus generation-based scoring - a cautionary tale for anyone comparing eval numbers.",
+    "author": "Clementine Fourrier, Nathan Habib, Julien Launay, and Thomas Wolf",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=huggingface.co&sz=128",
+    "category": "LLM & MLLM",
+    "tags": [
+      "Evaluation",
+      "MMLU",
+      "Benchmarks",
+      "Reproducibility"
+    ],
+    "readTime": "13 min read",
+    "publishDate": "2023-06-23",
+    "sourceName": "Hugging Face Blog",
+    "url": "https://huggingface.co/blog/open-llm-leaderboard-mmlu",
+    "coverImage": "assets/img/covers/real/hf-whats-going-on-open-llm-leaderboard.png",
+    "coverAlt": "Open LLM Leaderboard MMLU deep dive cover",
+    "coverFit": "cover"
+  },
+  {
+    "id": "hf-illustrating-rlhf",
+    "title": "Illustrating Reinforcement Learning from Human Feedback (RLHF)",
+    "excerpt": "Nathan Lambert and collaborators break RLHF into its three trainable stages - a base language model, a human-preference reward model, and PPO-based policy optimization - clarifying what each stage actually optimizes and where the open research problems sit.",
+    "author": "Nathan Lambert, Louis Castricato, Leandro von Werra, and Alex Havrilla",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=huggingface.co&sz=128",
+    "category": "LLM & MLLM",
+    "tags": [
+      "RLHF",
+      "Reward Models",
+      "PPO",
+      "Post-Training"
+    ],
+    "readTime": "11 min read",
+    "publishDate": "2022-12-09",
+    "sourceName": "Hugging Face Blog",
+    "url": "https://huggingface.co/blog/rlhf",
+    "coverImage": "assets/img/covers/real/hf-illustrating-rlhf.png",
+    "coverAlt": "Illustrated RLHF training pipeline cover",
+    "coverFit": "cover"
+  },
+  {
+    "id": "matteo-nulli-demystifying-multimodal-learning",
+    "title": "Demystifying Multimodal Learning: Enabling Vision in Language Models",
+    "excerpt": "Matteo Nulli builds vision-language models up from first principles: the mathematical formulation, ViT-CLIP vision encoders, contrastive alignment of image and text embeddings, and the architectural flow that turns raw pixels into tokens an LLM can attend to.",
+    "author": "Matteo Nulli",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=huggingface.co&sz=128",
+    "category": "Multimodal Model",
+    "tags": [
+      "Vision-Language Models",
+      "CLIP",
+      "Contrastive Learning",
+      "Vision Encoders"
+    ],
+    "readTime": "14 min read",
+    "publishDate": "2026-02-17",
+    "sourceName": "Hugging Face Blog",
+    "url": "https://huggingface.co/blog/MatteoNulli/de-mystifying-multimodal-learning-enabiling-vision",
+    "coverImage": "assets/img/covers/real/matteo-nulli-demystifying-multimodal-learning.png",
+    "coverAlt": "VLM architecture overview from the demystifying multimodal learning post",
+    "coverFit": "cover"
+  },
+  {
+    "id": "lilian-weng-generalized-visual-language-models",
+    "title": "Generalized Visual Language Models",
+    "excerpt": "Lilian Weng surveys four families of visually-augmented language models - joint training on image-text pairs, learned visual prefixes, cross-attention fusion, and frozen-LLM approaches - comparing how each injects vision into a text backbone and what it costs.",
+    "author": "Lilian Weng",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=lilianweng.github.io&sz=128",
+    "category": "Multimodal Model",
+    "tags": [
+      "Vision-Language Models",
+      "Multimodal",
+      "Image Captioning",
+      "Survey"
+    ],
+    "readTime": "20 min read",
+    "publishDate": "2022-06-09",
+    "sourceName": "Lil'Log",
+    "url": "https://lilianweng.github.io/posts/2022-06-09-vlm/",
+    "coverImage": "assets/img/covers/real/lilian-weng-generalized-visual-language-models.png",
+    "coverAlt": "VisualBERT architecture diagram from Generalized Visual Language Models",
+    "coverFit": "cover"
+  },
+  {
+    "id": "chip-huyen-multimodality-large-multimodal-models",
+    "title": "Multimodality and Large Multimodal Models (LMMs)",
+    "excerpt": "Chip Huyen maps the large multimodal model landscape, working through CLIP's contrastive pretraining and Flamingo's vision-language fusion in detail, then cataloging the data, architecture, and training choices that separate today's LMM systems.",
+    "author": "Chip Huyen",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=huyenchip.com&sz=128",
+    "category": "Multimodal Model",
+    "tags": [
+      "Large Multimodal Models",
+      "CLIP",
+      "Flamingo",
+      "Multimodal Systems"
+    ],
+    "readTime": "25 min read",
+    "publishDate": "2023-10-10",
+    "sourceName": "Chip Huyen",
+    "url": "https://huyenchip.com/2023/10/10/multimodal.html",
+    "coverImage": "assets/img/covers/real/chip-huyen-multimodality-large-multimodal-models.png",
+    "coverAlt": "CLIP architecture diagram from the LMM overview",
+    "coverFit": "cover"
+  },
+  {
+    "id": "hf-accelerating-document-ai",
+    "title": "Accelerating Document AI",
+    "excerpt": "Rajiv Shah, Niels Rogge, and Nicholas Broad organize document AI into six practical use cases - from OCR and classification to layout analysis, document QA, and table extraction - matching each with open-source models like LayoutLM and Donut and the licensing realities practitioners face.",
+    "author": "Rajiv Shah, Niels Rogge, and Nicholas Broad",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=huggingface.co&sz=128",
+    "category": "Multimodal Model",
+    "tags": [
+      "Document AI",
+      "LayoutLM",
+      "OCR",
+      "Document QA"
+    ],
+    "readTime": "12 min read",
+    "publishDate": "2022-11-21",
+    "sourceName": "Hugging Face Blog",
+    "url": "https://huggingface.co/blog/document-ai",
+    "coverImage": "assets/img/covers/real/hf-accelerating-document-ai.png",
+    "coverAlt": "Document AI use cases cover",
+    "coverFit": "cover"
+  }
+]

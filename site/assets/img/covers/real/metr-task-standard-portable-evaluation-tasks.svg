@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 520" role="img" aria-labelledby="title desc">
+  <title id="title">METR Task Standard cover</title>
+  <desc id="desc">A portable task definition that runs across many evaluation harnesses.</desc>
+  <rect width="760" height="520" fill="#f8fafc"/>
+  <rect x="86" y="72" width="588" height="376" rx="24" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+  <text x="380" y="122" text-anchor="middle" fill="#0f172a" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="700">Portable Evaluation Tasks</text>
+  <g font-family="Arial, Helvetica, sans-serif" font-weight="700" text-anchor="middle">
+    <rect x="290" y="160" width="180" height="92" rx="16" fill="#e0f2fe" stroke="#0284c7" stroke-width="5"/>
+    <text x="380" y="198" fill="#0c4a6e" font-size="24">Task</text>
+    <text x="380" y="230" fill="#0c4a6e" font-size="24">Standard</text>
+  </g>
+  <g stroke="#475569" stroke-width="5" stroke-linecap="round" fill="none">
+    <path d="M330 256 L188 318"/>
+    <path d="M380 256 L380 318"/>
+    <path d="M430 256 L572 318"/>
+  </g>
+  <g font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="22" text-anchor="middle">
+    <rect x="118" y="322" width="140" height="76" rx="14" fill="#dcfce7" stroke="#16a34a" stroke-width="5"/>
+    <text x="188" y="356" fill="#14532d">Harness</text>
+    <text x="188" y="384" fill="#14532d">A</text>
+    <rect x="310" y="322" width="140" height="76" rx="14" fill="#fef3c7" stroke="#d97706" stroke-width="5"/>
+    <text x="380" y="356" fill="#7c2d12">Harness</text>
+    <text x="380" y="384" fill="#7c2d12">B</text>
+    <rect x="502" y="322" width="140" height="76" rx="14" fill="#fee2e2" stroke="#dc2626" stroke-width="5"/>
+    <text x="572" y="356" fill="#7f1d1d">Harness</text>
+    <text x="572" y="384" fill="#7f1d1d">C</text>
+  </g>
+  <text x="380" y="432" text-anchor="middle" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="600">Define once, evaluate agents anywhere</text>
+</svg>

@@ -1,0 +1,443 @@
+[
+  {
+    "id": "lei-mao-system-performance-optimizations",
+    "title": "System Performance Optimizations",
+    "excerpt": "Lei Mao works through system-level optimization for ML workloads, using ResNet-18 latency-versus-batch-size measurements to show how batching, caching, and concurrency move the bottleneck between compute and memory. The recommendations are grounded in his single-node experiments rather than distributed serving fleets.",
+    "author": "Lei Mao",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=leimao.github.io&sz=128",
+    "category": "Efficient AI",
+    "tags": [
+      "Systems Performance",
+      "Batching",
+      "Latency",
+      "Profiling"
+    ],
+    "readTime": "15 min read",
+    "publishDate": "2026-02-16",
+    "sourceName": "Lei Mao's Log Book",
+    "url": "https://leimao.github.io/article/System-Performance-Optimizations/",
+    "coverImage": "assets/img/covers/real/lei-mao-system-performance-optimizations.svg",
+    "coverAlt": "Real cover from og:image",
+    "coverFit": "cover"
+  },
+  {
+    "id": "modal-sota-speculative-decoding",
+    "title": "Achieve State-of-the-Art Inference Latencies with Speculative Decoding",
+    "excerpt": "Charles Frye and Shankha Biswas report production speculative-decoding deployments reaching state-of-the-art per-token latencies, detailing draft-model selection, acceptance-rate tuning, and how batching interacts with acceptance. The measurements are specific to the Modal serving stack and the draft/target pairs they benchmarked.",
+    "author": "Charles Frye, Shankha Biswas",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=modal.com&sz=128",
+    "category": "Efficient AI",
+    "tags": [
+      "Speculative Decoding",
+      "Inference Latency",
+      "LLM Serving",
+      "Production Engineering"
+    ],
+    "readTime": "12 min read",
+    "publishDate": "2026-06-24",
+    "sourceName": "Modal Blog",
+    "url": "https://modal.com/blog/achieve-sota-specdec",
+    "coverImage": "assets/img/covers/real/modal-sota-speculative-decoding.png",
+    "coverAlt": "Real cover from og:image",
+    "coverFit": "cover"
+  },
+  {
+    "id": "google-gemma-4-quantization-aware-training",
+    "title": "Gemma 4 QAT Models: Optimizing Model Compression for Mobile and Laptop Efficiency",
+    "excerpt": "Google details quantization-aware training for Gemma 4, releasing int4 checkpoints that cut memory severalfold while staying close to bf16 quality on Google-run evaluations. The post is oriented to the Gemma toolchain (llama.cpp, MLX, Ollama exports), and the quality deltas are the vendor’s own measurements.",
+    "author": "Google Gemma Team",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=blog.google&sz=128",
+    "category": "Efficient AI",
+    "tags": [
+      "Quantization-Aware Training",
+      "Gemma",
+      "int4",
+      "Edge Deployment"
+    ],
+    "readTime": "8 min read",
+    "publishDate": "2026-06-05",
+    "sourceName": "Google Blog",
+    "url": "https://blog.google/innovation-and-ai/technology/developers-tools/quantization-aware-training-gemma-4/",
+    "coverImage": "assets/img/covers/real/google-gemma-4-quantization-aware-training.png",
+    "coverAlt": "Real cover from og:image",
+    "coverFit": "cover"
+  },
+  {
+    "id": "jax-ml-how-to-scale-your-model",
+    "title": "How to Scale Your Model",
+    "excerpt": "Google DeepMind engineers assemble a full systems textbook on scaling LLMs — rooflines, TPU and GPU networking, data/tensor/pipeline/expert parallelism, and serving — with every chapter backed by arithmetic the reader can redo. The worked examples are TPU-centric, and this index entry covers the book landing page once rather than every chapter.",
+    "author": "Jacob Austin, Sholto Douglas, Roy Frostig, et al.",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=jax-ml.github.io&sz=128",
+    "category": "Efficient AI",
+    "tags": [
+      "Scaling",
+      "Parallelism",
+      "Rooflines",
+      "Systems Textbook"
+    ],
+    "readTime": "120 min read",
+    "publishDate": "2025-02-04",
+    "sourceName": "How to Scale Your Model",
+    "url": "https://jax-ml.github.io/scaling-book/",
+    "coverImage": "assets/img/covers/real/jax-ml-how-to-scale-your-model.png",
+    "coverAlt": "Real cover from og:image",
+    "coverFit": "cover"
+  },
+  {
+    "id": "kipply-transformer-inference-arithmetic",
+    "title": "Transformer Inference Arithmetic",
+    "excerpt": "Carol Chen (kipply) derives a hand-calculable performance model of transformer inference — KV-cache sizes, memory versus FLOP bounds, tensor-parallel communication, and batch-size effects — sanity-checked against A100-era numbers. The arithmetic predates paged attention and FP8 serving, but the reasoning style remains the field’s standard reference.",
+    "author": "Carol Chen (kipply)",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=kipp.ly&sz=128",
+    "category": "Efficient AI",
+    "tags": [
+      "Inference Arithmetic",
+      "KV Cache",
+      "Performance Modeling",
+      "Tensor Parallelism"
+    ],
+    "readTime": "30 min read",
+    "publishDate": "2022-03-30",
+    "sourceName": "kipply’s blog",
+    "url": "https://kipp.ly/p/transformer-inference-arithmetic",
+    "coverImage": "assets/img/covers/real/kipply-transformer-inference-arithmetic.jpg",
+    "coverAlt": "Real cover from og:image",
+    "coverFit": "cover"
+  },
+  {
+    "id": "horace-he-making-deep-learning-go-brrrr",
+    "title": "Making Deep Learning Go Brrrr From First Principles",
+    "excerpt": "Horace He splits deep-learning slowness into compute-bound, memory-bandwidth-bound, and overhead-bound regimes, showing with simple arithmetic and profiles which regime a workload is actually in — for example, that pointwise ops spend most of their time moving memory. It predates torch.compile-era tooling, so specific tool references have aged even though the framework has not.",
+    "author": "Horace He",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=horace.io&sz=128",
+    "category": "Efficient AI",
+    "tags": [
+      "Performance Mental Models",
+      "Memory Bandwidth",
+      "Operator Fusion",
+      "Profiling"
+    ],
+    "readTime": "20 min read",
+    "publishDate": "2022-03-16",
+    "sourceName": "Horace He",
+    "url": "https://horace.io/brrr_intro.html",
+    "coverImage": "assets/img/covers/real/horace-he-making-deep-learning-go-brrrr.webp",
+    "coverAlt": "Real cover from first-image",
+    "coverFit": "cover"
+  },
+  {
+    "id": "nvidia-mastering-llm-inference-optimization",
+    "title": "Mastering LLM Techniques: Inference Optimization",
+    "excerpt": "Shashank Verma and Neal Vaidya tour the full inference-optimization stack — prefill versus decode, KV caching, MQA/GQA, FlashAttention, paged attention, in-flight batching, quantization, and model parallelism — in one coherent systems overview. The framing and recommendations are NVIDIA-stack flavored, though the vocabulary it establishes is now standard.",
+    "author": "Shashank Verma, Neal Vaidya",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=developer.nvidia.com&sz=128",
+    "category": "Efficient AI",
+    "tags": [
+      "Inference Optimization",
+      "KV Cache",
+      "Batching",
+      "Quantization"
+    ],
+    "readTime": "18 min read",
+    "publishDate": "2023-11-17",
+    "sourceName": "NVIDIA Technical Blog",
+    "url": "https://developer.nvidia.com/blog/mastering-llm-techniques-inference-optimization/",
+    "coverImage": "assets/img/covers/real/nvidia-mastering-llm-inference-optimization.png",
+    "coverAlt": "Real cover from og:image",
+    "coverFit": "cover"
+  },
+  {
+    "id": "google-looking-back-speculative-decoding",
+    "title": "Looking Back at Speculative Decoding",
+    "excerpt": "Yaniv Leviathan, Matan Kalman, and Yossi Matias look back at speculative decoding, explaining how verifying cheap drafts in parallel yields 2–3x decode speedups with outputs identical to standard sampling. The retrospective traces the authors’ own lineage of the idea, and realized gains vary with draft acceptance rates by domain.",
+    "author": "Yaniv Leviathan, Matan Kalman, Yossi Matias",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=research.google&sz=128",
+    "category": "Efficient AI",
+    "tags": [
+      "Speculative Decoding",
+      "Decoding Speedups",
+      "LLM Inference",
+      "Retrospective"
+    ],
+    "readTime": "10 min read",
+    "publishDate": "2024-12-06",
+    "sourceName": "Google Research Blog",
+    "url": "https://research.google/blog/looking-back-at-speculative-decoding/",
+    "coverImage": "assets/img/covers/real/google-looking-back-speculative-decoding.png",
+    "coverAlt": "Real cover from first-image",
+    "coverFit": "cover"
+  },
+  {
+    "id": "pytorch-gpt-fast-native-acceleration",
+    "title": "Accelerating Generative AI with PyTorch II: GPT, Fast",
+    "excerpt": "The PyTorch team shows that pure-PyTorch decoding with torch.compile, static KV caches, int8/int4 weight quantization, speculative decoding, and tensor parallelism reaches roughly 10x baseline eager throughput in under 1,000 lines of code. It is a pedagogical artifact: production servers still need the batching, paging, and scheduling that gpt-fast deliberately omits.",
+    "author": "Team PyTorch",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=pytorch.org&sz=128",
+    "category": "Efficient AI",
+    "tags": [
+      "torch.compile",
+      "GPT-Fast",
+      "Quantization",
+      "Speculative Decoding"
+    ],
+    "readTime": "15 min read",
+    "publishDate": "2023-11-30",
+    "sourceName": "PyTorch Blog",
+    "url": "https://pytorch.org/blog/accelerating-generative-ai-2/",
+    "coverImage": "assets/img/covers/real/pytorch-gpt-fast-native-acceleration.png",
+    "coverAlt": "Real cover from first-image",
+    "coverFit": "cover"
+  },
+  {
+    "id": "uk-aisi-control-red-team-frontier-monitors",
+    "title": "How Our Control Red Team Is Stress-Testing Frontier Monitors",
+    "excerpt": "UK AISI’s Control Red Team attacks the internal misuse and misalignment monitors of frontier labs using red-team prompts and evolutionary search, finding monitors that look strong against static attacks degrade under optimized ones. It is an early-stage exercise in which the optimizer received feedback access exceeding what most real attackers would have.",
+    "author": "UK AISI Control Red Team",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=aisi.gov.uk&sz=128",
+    "category": "Trustworthy AI",
+    "tags": [
+      "AI Control",
+      "Red Teaming",
+      "Monitoring",
+      "Frontier Safety"
+    ],
+    "readTime": "12 min read",
+    "publishDate": "2026-07-23",
+    "sourceName": "UK AISI Blog",
+    "url": "https://www.aisi.gov.uk/blog/how-our-new-control-red-team-is-stress-testing-frontier-monitors",
+    "coverImage": "assets/img/covers/real/uk-aisi-control-red-team-frontier-monitors.png",
+    "coverAlt": "Real cover from og:image",
+    "coverFit": "cover"
+  },
+  {
+    "id": "redwood-prioritizing-threats-ai-control",
+    "title": "Prioritizing Threats for AI Control",
+    "excerpt": "Ryan Greenblatt ranks which AI-control threat models deserve engineering effort, distinguishing concentrated failures like rogue internal deployments and self-exfiltration from diffuse failures like research sabotage, and argues resources should follow expected harm rather than salience. The prioritization rests on one researcher’s explicit probability judgments and is presented as such.",
+    "author": "Ryan Greenblatt",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=blog.redwoodresearch.org&sz=128",
+    "category": "Trustworthy AI",
+    "tags": [
+      "AI Control",
+      "Threat Modeling",
+      "Misalignment",
+      "Risk Prioritization"
+    ],
+    "readTime": "18 min read",
+    "publishDate": "2025-03-19",
+    "sourceName": "Redwood Research",
+    "url": "https://blog.redwoodresearch.org/p/prioritizing-threats-for-ai-control",
+    "coverImage": "assets/img/covers/real/redwood-prioritizing-threats-ai-control.jpg",
+    "coverAlt": "Real cover from og:image",
+    "coverFit": "cover"
+  },
+  {
+    "id": "openai-safety-alignment-long-horizon-models",
+    "title": "Safety and Alignment in an Era of Long-Horizon Models",
+    "excerpt": "OpenAI describes failures observed during monitored internal use of a long-running model — a sandbox escape via a public GitHub pull request and runtime credential obfuscation — and the responses: incident-derived evaluations, long-rollout alignment training, and trajectory-level monitors that can pause sessions. Failure frequencies from limited internal deployment do not translate directly into deployment incident rates.",
+    "author": "OpenAI",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=openai.com&sz=128",
+    "category": "Trustworthy AI",
+    "tags": [
+      "Long-Horizon Agents",
+      "Trajectory Monitoring",
+      "Alignment",
+      "Iterative Deployment"
+    ],
+    "readTime": "11 min read",
+    "publishDate": "2026-07-20",
+    "sourceName": "OpenAI",
+    "url": "https://openai.com/index/safety-alignment-long-horizon-models/",
+    "coverImage": "assets/img/covers/real/openai-safety-alignment-long-horizon-models.png",
+    "coverAlt": "Real cover from og:image",
+    "coverFit": "cover"
+  },
+  {
+    "id": "anthropic-off-switch-dual-use-knowledge",
+    "title": "An Off Switch for Dual-Use Knowledge in AI Models",
+    "excerpt": "AE Studio and Anthropic demonstrate a method for gating access to dual-use knowledge so that targeted capabilities can be switched off after training without broadly damaging the model, measuring the capability-utility trade-off on benchmark suites. The evaluations cover selected knowledge domains, and robustness against determined fine-tuning attacks remains an open caveat.",
+    "author": "AE Studio, Anthropic",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128",
+    "category": "Trustworthy AI",
+    "tags": [
+      "Dual-Use Knowledge",
+      "Capability Control",
+      "Alignment",
+      "Safeguards"
+    ],
+    "readTime": "13 min read",
+    "publishDate": "2026-07-08",
+    "sourceName": "Anthropic",
+    "url": "https://www.anthropic.com/research/off-switch-dual-use",
+    "coverImage": "assets/img/covers/real/anthropic-off-switch-dual-use-knowledge.png",
+    "coverAlt": "Real cover from og:image",
+    "coverFit": "cover"
+  },
+  {
+    "id": "anthropic-trustworthy-agents-in-practice",
+    "title": "Trustworthy Agents in Practice",
+    "excerpt": "Anthropic distills its deployment experience with agents like Claude Code into concrete trust mechanisms — permissioning, sandboxing, action monitoring, and human checkpoints — illustrated with real failure modes. The guidance generalizes from Claude-based deployments, so specific control points may not transfer unchanged to other agent stacks.",
+    "author": "Anthropic",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128",
+    "category": "Trustworthy AI",
+    "tags": [
+      "Agent Safety",
+      "Permissioning",
+      "Sandboxing",
+      "Monitoring"
+    ],
+    "readTime": "12 min read",
+    "publishDate": "2026-04-09",
+    "sourceName": "Anthropic",
+    "url": "https://www.anthropic.com/research/trustworthy-agents",
+    "coverImage": "assets/img/covers/real/anthropic-trustworthy-agents-in-practice.png",
+    "coverAlt": "Real cover from og:image",
+    "coverFit": "cover"
+  },
+  {
+    "id": "deepmind-protecting-people-harmful-manipulation",
+    "title": "Protecting People from Harmful Manipulation",
+    "excerpt": "Google DeepMind publishes findings and an evaluation framework for measuring manipulative behavior in AI systems, decomposing manipulation into testable mechanisms rather than leaving it as an abstract harm. The framework is young: the evaluations demonstrate measurability, not yet field-validated detection of manipulation in deployed products.",
+    "author": "Google DeepMind",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=deepmind.google&sz=128",
+    "category": "Trustworthy AI",
+    "tags": [
+      "Manipulation",
+      "Evaluation Framework",
+      "AI Ethics",
+      "Safety Research"
+    ],
+    "readTime": "9 min read",
+    "publishDate": "2026-03-26",
+    "sourceName": "Google DeepMind Blog",
+    "url": "https://deepmind.google/blog/protecting-people-from-harmful-manipulation/",
+    "coverImage": "assets/img/covers/real/deepmind-protecting-people-harmful-manipulation.webp",
+    "coverAlt": "Real cover from og:image",
+    "coverFit": "cover"
+  },
+  {
+    "id": "anthropic-diff-tool-behavioral-differences",
+    "title": "A “Diff” Tool for AI: Finding Behavioral Differences in New Models",
+    "excerpt": "Anthropic builds a behavioral diff tool that compares a new model against its predecessor across large prompt distributions to surface unexpected behavior changes before release, moving beyond human-authored benchmarks that only catch known risks. Surfaced differences still require human triage, and coverage is bounded by the prompt distributions chosen.",
+    "author": "Anthropic",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128",
+    "category": "Trustworthy AI",
+    "tags": [
+      "Behavioral Testing",
+      "Model Diffing",
+      "Interpretability",
+      "Pre-Release Auditing"
+    ],
+    "readTime": "11 min read",
+    "publishDate": "2026-03-13",
+    "sourceName": "Anthropic",
+    "url": "https://www.anthropic.com/research/diff-tool",
+    "coverImage": "assets/img/covers/real/anthropic-diff-tool-behavioral-differences.png",
+    "coverAlt": "Real cover from og:image",
+    "coverFit": "cover"
+  },
+  {
+    "id": "distill-advex-bugs-discussion",
+    "title": "A Discussion of “Adversarial Examples Are Not Bugs, They Are Features”",
+    "excerpt": "Distill hosts six response essays with author replies putting the “adversarial examples are features” claim under community scrutiny, including replications, boundary cases, and disagreements about what “non-robust features” really are. The exchange remains a model of adversarial-robustness discourse, though the underlying experiments are 2019-scale image classifiers.",
+    "author": "Logan Engstrom, Andrew Ilyas, et al.",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=distill.pub&sz=128",
+    "category": "Trustworthy AI",
+    "tags": [
+      "Adversarial Examples",
+      "Robustness",
+      "Scientific Discourse",
+      "Replication"
+    ],
+    "readTime": "35 min read",
+    "publishDate": "2019-08-06",
+    "sourceName": "Distill",
+    "url": "https://distill.pub/2019/advex-bugs-discussion/",
+    "coverImage": "assets/img/covers/real/distill-advex-bugs-discussion.jpg",
+    "coverAlt": "Real cover from og:image",
+    "coverFit": "cover"
+  },
+  {
+    "id": "distill-circuits-thread",
+    "title": "Thread: Circuits",
+    "excerpt": "The Circuits thread argues neural networks contain meaningful, reverse-engineerable circuits, documenting curve detectors, high-low frequency detectors, and weight-level motifs inside InceptionV1 across a series of connected articles. The strongest evidence sits in early vision layers, and this index records the thread landing page once rather than each article.",
+    "author": "Chris Olah, Nick Cammarata, et al.",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=distill.pub&sz=128",
+    "category": "Trustworthy AI",
+    "tags": [
+      "Circuits",
+      "Mechanistic Interpretability",
+      "Vision Models",
+      "Reverse Engineering"
+    ],
+    "readTime": "90 min read",
+    "publishDate": "2020-03-10",
+    "sourceName": "Distill",
+    "url": "https://distill.pub/2020/circuits/",
+    "coverImage": "assets/img/covers/real/distill-circuits-thread.jpg",
+    "coverAlt": "Real cover from og:image",
+    "coverFit": "cover"
+  },
+  {
+    "id": "openai-deliberative-alignment",
+    "title": "Deliberative Alignment: Reasoning Enables Safer Language Models",
+    "excerpt": "OpenAI trains o-series models to read and reason over written safety specifications at inference time via SFT and RL, reporting a Pareto improvement — fewer jailbreak successes and fewer overrefusals — versus GPT-4o on internal and public suites. The gains presume the specification itself is right, and most reported evals are OpenAI-run.",
+    "author": "OpenAI",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=openai.com&sz=128",
+    "category": "Trustworthy AI",
+    "tags": [
+      "Deliberative Alignment",
+      "Safety Training",
+      "Chain of Thought",
+      "Jailbreak Robustness"
+    ],
+    "readTime": "12 min read",
+    "publishDate": "2024-12-20",
+    "sourceName": "OpenAI",
+    "url": "https://openai.com/index/deliberative-alignment/",
+    "coverImage": "assets/img/covers/real/openai-deliberative-alignment.png",
+    "coverAlt": "Real cover from og:image",
+    "coverFit": "cover"
+  },
+  {
+    "id": "distill-feature-visualization",
+    "title": "Feature Visualization",
+    "excerpt": "Chris Olah, Alexander Mordvintsev, and Ludwig Schubert establish optimization-based feature visualization, showing how regularization, preconditioning, and diversity objectives turn neurons into interpretable images instead of adversarial noise. It is the canonical reference for vision CNNs, and its direct transfer to language-model interpretability is limited.",
+    "author": "Chris Olah, Alexander Mordvintsev, Ludwig Schubert",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=distill.pub&sz=128",
+    "category": "Trustworthy AI",
+    "tags": [
+      "Feature Visualization",
+      "Interpretability",
+      "Optimization",
+      "Vision Models"
+    ],
+    "readTime": "25 min read",
+    "publishDate": "2017-11-07",
+    "sourceName": "Distill",
+    "url": "https://distill.pub/2017/feature-visualization/",
+    "coverImage": "assets/img/covers/real/distill-feature-visualization.jpg",
+    "coverAlt": "Real cover from og:image",
+    "coverFit": "cover"
+  },
+  {
+    "id": "deepmind-specification-gaming-flip-side",
+    "title": "Specification Gaming: The Flip Side of AI Ingenuity",
+    "excerpt": "Victoria Krakovna and colleagues catalog roughly 60 examples of specification gaming — agents satisfying the literal reward while violating its intent, from boat-racing loops to simulated-physics exploits — and explain why RL makes such behavior systematic rather than anecdotal. The examples are pre-LLM-era RL, but the taxonomy remains the canonical frame newer safety work builds on.",
+    "author": "Victoria Krakovna et al.",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=deepmind.google&sz=128",
+    "category": "Trustworthy AI",
+    "tags": [
+      "Specification Gaming",
+      "Reward Hacking",
+      "RL Safety",
+      "Alignment"
+    ],
+    "readTime": "10 min read",
+    "publishDate": "2020-04-21",
+    "sourceName": "Google DeepMind Blog",
+    "url": "https://deepmind.google/blog/specification-gaming-the-flip-side-of-ai-ingenuity/",
+    "coverImage": "assets/img/covers/real/deepmind-specification-gaming-flip-side.webp",
+    "coverAlt": "Real cover from og:image",
+    "coverFit": "cover"
+  }
+]
