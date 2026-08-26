@@ -316,25 +316,21 @@ body,
     color: var(--unified-on-accent);
 }
 
-/* Categories page: left-aligned taxonomy cards with scope and boundary notes. */
+/* Categories page: softer topic chips and a readable low-emphasis action. */
 .categories-page .categories-section .category-card {
-    padding: 28px 28px 26px;
+    min-height: 440px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 30px 28px 26px;
     border-radius: 8px;
-    text-align: left;
 }
 
 .categories-page .categories-section .category-icon {
-    width: 52px;
-    height: 52px;
-    margin-bottom: 0;
+    margin-bottom: 22px;
     border-color: var(--unified-border);
     border-radius: 8px;
     background: color-mix(in srgb, var(--unified-accent-soft) 58%, transparent);
-}
-
-.categories-page .categories-section .category-icon svg {
-    width: 26px;
-    height: 26px;
 }
 
 .categories-page .categories-section .category-title {
@@ -342,19 +338,20 @@ body,
 }
 
 .categories-page .categories-section .category-description {
-    margin-bottom: 16px;
-    font-size: 0.95rem;
+    min-height: 3.2em;
+    max-width: 34ch;
+    margin-bottom: 20px;
 }
 
 .categories-page .categories-section .category-tags {
+    min-height: 64px;
     display: flex;
     align-content: flex-start;
     align-items: flex-start;
-    justify-content: flex-start;
-    flex-wrap: wrap;
+    justify-content: center;
     gap: 7px;
     width: 100%;
-    margin: 0 0 20px;
+    margin: 0 0 22px;
 }
 
 .categories-page .categories-section .category-tags .tag {

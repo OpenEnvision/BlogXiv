@@ -19,47 +19,47 @@ class ExplorePage {
         this.categoryTaxonomy = [
             {
                 name: 'Multimodal Model',
-                description: 'Vision-language, audio-language, grounding, and fused perception — not pure image generators.'
+                description: 'Vision-language, audio-language, OCR, document AI, and unified multimodal model research'
             },
             {
                 name: 'Visual Generation',
-                description: 'Diffusion, flow matching, latent modeling, and controllable image or video synthesis.'
+                description: 'Image, video, editing, 3D generation, and controllable visual synthesis research'
             },
             {
                 name: 'World Model',
-                description: 'Learned simulators, robotics/VLA, dynamics, spatial representations, and model-based planning.'
+                description: 'Physical simulation, video world models, autonomous driving worlds, robotics/VLA, and model-based planning research'
             },
             {
                 name: 'AI Agents',
-                description: 'Tool use, harnesses, memory, multi-agent workflows, and agent evaluation under real infrastructure.'
+                description: 'Tool-using agents, coding agents, browser agents, agent infrastructure, and long-horizon agent systems'
             },
             {
                 name: 'LLM & MLLM',
-                description: 'Reasoning, mixture-of-experts, post-training, retrieval transformers, and language-model analysis.'
+                description: 'Language reasoning, post-training, hallucination, RAG, and multimodal LLM analysis'
             },
             {
                 name: 'Foundation Model',
-                description: 'Pretraining, datasets, architecture, scaling behavior, and open-weight recipes — not launch pages.'
+                description: 'Open and frontier foundation models, architecture, training recipes, and ecosystem analysis'
             },
             {
                 name: 'Efficient AI',
-                description: 'Kernels, parallelism, quantization, speculative decoding, and training or inference systems.'
+                description: 'Inference, training, serving, kernels, optimizers, compression, and small-model systems'
             },
             {
                 name: 'Trustworthy AI',
-                description: 'Safety, alignment, interpretability, control evaluations, security, and monitoring.'
+                description: 'Alignment, interpretability, hallucination, red teaming, auditing, safety evals, and secure AI systems'
             },
             {
                 name: 'Research Craft',
-                description: 'Evaluation methodology, experiment design, data analysis, and reproducibility as scientific practice.'
+                description: 'Evaluation, AI engineering practice, benchmark design, product evals, and researcher workflows'
             },
             {
                 name: 'Frontier',
-                description: 'Individual capability, compute, and power reports — not lab homepages or news indexes.'
+                description: 'Frontier AI model releases, open-model shifts, lab roadmaps, global ecosystem movement, and deployment-facing capability updates'
             },
             {
                 name: 'How to Research',
-                description: 'Advising, research taste, reading, writing, talks, and PhD practice as a durable craft.'
+                description: 'Research experience only: paper writing, research taste, experiment habits, reproducibility, research code, and scientific workflow reflections'
             }
         ];
         this.categoryAliases = {
