@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Help Center - BlogrXiv</title>
-    <meta name="description" content="BlogrXiv Help Center: FAQs, authoring guide, privacy, and support contacts.">
+    <meta name="description" content="BlogrXiv Help Center: how to recommend a blog, how editorial review works, how categories are assigned, and how to report an issue.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -62,7 +62,7 @@
         <div class="container">
             <header class="page-header">
                 <h1 class="page-title">Help Center</h1>
-                <p class="page-description">Answers to common questions and tips for getting the most from BlogrXiv.</p>
+                <p class="page-description">How the index works: recommending posts, submitting original writing, editorial review, and reporting issues.</p>
             </header>
 
             <section class="blogs-section" aria-labelledby="faqTitle">
@@ -70,35 +70,39 @@
                 <div class="research-card" style="padding: 1.5rem 2rem;">
                     <div class="research-content">
                         <details style="margin-bottom: .75rem;">
-                            <summary style="font-weight:600; color: var(--text-primary);">How do I publish a blog?</summary>
-                            <p class="research-description">Send your draft, project page, or source links to the BlogrXiv team for review. Follow our <a href="guidelines.html">Community Guidelines</a>.</p>
+                            <summary style="font-weight:600; color: var(--text-primary);">How does a blog get into the index?</summary>
+                            <p class="research-description">BlogrXiv does not publish drafts and is not a hosting platform. There are two intake paths: recommend an existing public post (yours or someone else's) through a GitHub Discussion or the <a href="submit.html">submission page</a>, or submit original Markdown writing through a pull request. Editors review every candidate against five criteria — technical contribution, specificity, source quality, reusability, and taxonomic fit — and only accepted work is added to the index, always linking back to the canonical source.</p>
                         </details>
                         <details style="margin-bottom: .75rem;">
-                            <summary style="font-weight:600; color: var(--text-primary);">Can I use AI tools while writing?</summary>
-                            <p class="research-description">Yes, with disclosure. You remain responsible for factual accuracy, originality, and proper citations.</p>
+                            <summary style="font-weight:600; color: var(--text-primary);">What kinds of pages are not indexed?</summary>
+                            <p class="research-description">Lab or personal homepages, GitHub organization indexes, product landing pages, shallow release announcements, and paper-only pages without independent narrative are out of scope. Recommendations should point at a specific post that explains a mechanism, method, system behavior, or research lesson.</p>
                         </details>
                         <details style="margin-bottom: .75rem;">
                             <summary style="font-weight:600; color: var(--text-primary);">How are categories assigned?</summary>
-                            <p class="research-description">Authors set categories; editors may suggest adjustments for discoverability and consistency.</p>
+                            <p class="research-description">Recommenders and authors suggest a category; editors make the final assignment using the boundary notes on the <a href="categories.html">taxonomy page</a>. Each entry is placed on exactly one of the eleven shelves, with secondary themes carried by topic tags.</p>
+                        </details>
+                        <details style="margin-bottom: .75rem;">
+                            <summary style="font-weight:600; color: var(--text-primary);">Can AI tools be used in original writing submissions?</summary>
+                            <p class="research-description">Yes, with disclosure. The submitting author remains responsible for factual accuracy, originality, and proper citations, and purely AI-generated content without meaningful human authorship is not accepted.</p>
                         </details>
                         <details>
-                            <summary style="font-weight:600; color: var(--text-primary);">How do I report an issue?</summary>
-                            <p class="research-description">Email <a href="mailto:juanxitian1031@gmail.com">juanxitian1031@gmail.com</a> with links and context. For urgent matters, see <a href="contact.html">Contact</a>.</p>
+                            <summary style="font-weight:600; color: var(--text-primary);">How do I report an issue or request a correction?</summary>
+                            <p class="research-description">Email <a href="mailto:juanxitian1031@gmail.com">juanxitian1031@gmail.com</a> with links and context, or open a GitHub Discussion. Indexed entries can be corrected or removed, and every editorial decision is recorded publicly when a GitHub record exists.</p>
                         </details>
                     </div>
                 </div>
             </section>
 
-            <section class="blogs-section" aria-labelledby="authoringTitle">
-                <h2 class="section-title" id="authoringTitle" style="text-align:center; margin-bottom: 1.25rem;">Authoring Best Practices</h2>
+            <section class="blogs-section" aria-labelledby="recommendTitle">
+                <h2 class="section-title" id="recommendTitle" style="text-align:center; margin-bottom: 1.25rem;">Making a Strong Recommendation</h2>
                 <div class="research-cards">
                     <div class="research-card">
                         <div class="research-icon">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 1 1 3 3L7 19l-4 1 1-4 12.5-12.5z"></path></svg>
                         </div>
                         <div class="research-content">
-                            <h3 class="research-title">Structure for readability</h3>
-                            <p class="research-description">Use abstracts, headings, figures, and summaries. Keep paragraphs concise and purposeful.</p>
+                            <h3 class="research-title">Name the contribution</h3>
+                            <p class="research-description">State what the post teaches: the mechanism, method, implementation detail, evaluation insight, or research lesson that makes it worth indexing.</p>
                         </div>
                     </div>
                     <div class="research-card">
@@ -106,8 +110,8 @@
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg>
                         </div>
                         <div class="research-content">
-                            <h3 class="research-title">Cite responsibly</h3>
-                            <p class="research-description">Link to papers and datasets; provide stable identifiers. Attribute quotes and figures.</p>
+                            <h3 class="research-title">Make provenance legible</h3>
+                            <p class="research-description">Provide the canonical URL and identify the author, lab, or organization, so editors can verify source quality and attribution.</p>
                         </div>
                     </div>
                     <div class="research-card">
@@ -115,8 +119,8 @@
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7h-9"></path><path d="M14 17H5"></path><circle cx="7" cy="7" r="2"></circle><circle cx="17" cy="17" r="2"></circle></svg>
                         </div>
                         <div class="research-content">
-                            <h3 class="research-title">Share artifacts</h3>
-                            <p class="research-description">When possible, include code, configs, or links to repos for reproducibility.</p>
+                            <h3 class="research-title">Suggest placement</h3>
+                            <p class="research-description">Propose one category from the taxonomy and a few topic tags. Editors confirm the final shelf using the published boundary notes.</p>
                         </div>
                     </div>
                 </div>
@@ -126,7 +130,7 @@
                 <h2 class="section-title" id="supportTitle" style="text-align:center; margin-bottom: 1.25rem;">Support</h2>
                 <div class="research-card" style="padding: 1.5rem 2rem;">
                     <div class="research-content">
-                        <p class="research-description">We’re here to help with content, feedback, or policy issues.</p>
+                        <p class="research-description">Contact the editors about recommendations, corrections, feedback, or policy questions.</p>
                         <ul style="color: var(--text-secondary); line-height: 1.8; padding-left: 1.25rem;">
                             <li>General: <a href="mailto:juanxitian1031@gmail.com" class="btn btn-outline">juanxitian1031@gmail.com</a></li>
                             <li>Feedback & bug reports: <a href="mailto:juanxitian1031@gmail.com" class="btn btn-outline">juanxitian1031@gmail.com</a></li>
@@ -147,7 +151,7 @@
                             <img src="assets/img/brand/blogrxiv.svg" alt="BlogrXiv" class="brand-logo" />
                         </a>
                     </div>
-                    <p class="footer-description">Discover, share, and explore amazing blogs across different domains.</p>
+                    <p class="footer-description">A curated, source-linked index of technical AI research writing.</p>
                 </div>
                 <div class="footer-section">
                     <h3 class="footer-title">Platform</h3>

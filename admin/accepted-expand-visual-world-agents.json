@@ -1,0 +1,191 @@
+[
+  {
+    "id": "sander-dieleman-guidance-cheat-code-diffusion",
+    "title": "Guidance: A Cheat Code for Diffusion Models",
+    "excerpt": "Sander Dieleman explains classifier guidance and classifier-free guidance, showing how mixing conditional and unconditional score estimates with a scale factor sharpens the conditional distribution and why that near-free change powers the fidelity of DALL-E 2 and Imagen. He builds geometric intuition for the guidance term as a gradient nudging samples toward higher-likelihood regions of the conditional, and is explicit about the price: raising the guidance scale trades sample diversity for fidelity, effectively truncating the distribution the model was trained on.",
+    "author": "Sander Dieleman",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=sander.ai&sz=128",
+    "category": "Visual Generation",
+    "tags": [
+      "Diffusion Models",
+      "Classifier-Free Guidance",
+      "Conditional Generation",
+      "Score Function"
+    ],
+    "readTime": "16 min read",
+    "publishDate": "2022-05-26",
+    "sourceName": "Sander Dieleman",
+    "url": "https://sander.ai/2022/05/26/guidance.html",
+    "coverImage": "assets/img/covers/real/sander-dieleman-guidance-cheat-code-diffusion.jpg",
+    "coverAlt": "Guidance for diffusion models article cover",
+    "coverFit": "cover"
+  },
+  {
+    "id": "nvidia-improving-diffusion-models-alternative-gans-part-1",
+    "title": "Improving Diffusion Models as an Alternative to GANs, Part 1",
+    "excerpt": "Arash Vahdat and Karsten Kreis frame generative modeling as a trilemma among sample quality, mode coverage, and sampling speed, then walk through denoising diffusion fundamentals to argue diffusion models beat GANs on training stability and diversity while losing badly on sampling cost. This is the conceptual half of a two-part series: the concrete NVIDIA techniques for overcoming slow sampling, including latent-space diffusion and diffusion-GAN hybrids, are deferred to Part 2.",
+    "author": "Arash Vahdat, Karsten Kreis",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=developer.nvidia.com&sz=128",
+    "category": "Visual Generation",
+    "tags": [
+      "Diffusion Models",
+      "GANs",
+      "Generative Learning Trilemma",
+      "Sampling Speed"
+    ],
+    "readTime": "12 min read",
+    "publishDate": "2022-04-26",
+    "sourceName": "NVIDIA Technical Blog",
+    "url": "https://developer.nvidia.com/blog/improving-diffusion-models-as-an-alternative-to-gans-part-1/",
+    "coverImage": "assets/img/covers/real/nvidia-improving-diffusion-models-alternative-gans-part-1.png",
+    "coverAlt": "Generation with diffusion models illustration from NVIDIA",
+    "coverFit": "cover"
+  },
+  {
+    "id": "google-high-fidelity-image-generation-diffusion",
+    "title": "High Fidelity Image Generation Using Diffusion Models",
+    "excerpt": "Jonathan Ho and Chitwan Saharia introduce SR3, which super-resolves images by iterative refinement from noise, and CDM, cascaded class-conditional diffusion pipelines whose ImageNet samples surpass BigGAN-deep and VQ-VAE-2 on both FID and Classification Accuracy Score. SR3 approaches a 50% fool rate in human evaluations of face super-resolution; the results lean on careful cascading and conditioning augmentation across resolutions, and the post predates the guidance techniques that later drove text-to-image quality.",
+    "author": "Jonathan Ho, Chitwan Saharia",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=research.google&sz=128",
+    "category": "Visual Generation",
+    "tags": [
+      "Diffusion Models",
+      "Super-Resolution",
+      "Cascaded Generation",
+      "ImageNet"
+    ],
+    "readTime": "9 min read",
+    "publishDate": "2021-07-16",
+    "sourceName": "Google Research Blog",
+    "url": "https://research.google/blog/high-fidelity-image-generation-using-diffusion-models/",
+    "coverImage": "assets/img/covers/real/google-high-fidelity-image-generation-diffusion.jpg",
+    "coverAlt": "SR3 and CDM diffusion model results cover",
+    "coverFit": "cover"
+  },
+  {
+    "id": "bair-model-based-rl-theory-and-practice",
+    "title": "Model-Based Reinforcement Learning: Theory and Practice",
+    "excerpt": "Michael Janner surveys when learned dynamics models actually help policy optimization, deriving a monotonic-improvement bound that is too pessimistic to justify model usage and then repairing it with empirical estimates of model generalization. The resulting MBPO recipe, short model rollouts branched from real states with probabilistic ensembles and soft actor-critic, matches the asymptotic performance of model-free methods at a fraction of the samples, though the evidence comes from MuJoCo continuous-control benchmarks rather than high-dimensional or real-world domains.",
+    "author": "Michael Janner",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=bair.berkeley.edu&sz=128",
+    "category": "World Model",
+    "tags": [
+      "Model-Based RL",
+      "World Models",
+      "Policy Optimization",
+      "Sample Efficiency"
+    ],
+    "readTime": "12 min read",
+    "publishDate": "2019-12-12",
+    "sourceName": "BAIR Blog",
+    "url": "https://bair.berkeley.edu/blog/2019/12/12/mbpo/",
+    "coverImage": "assets/img/covers/real/bair-model-based-rl-theory-and-practice.png",
+    "coverAlt": "Model-based reinforcement learning header figure",
+    "coverFit": "cover"
+  },
+  {
+    "id": "runway-introducing-general-world-models",
+    "title": "Introducing General World Models",
+    "excerpt": "Anastasis Germanidis argues that video generators like Gen-2 are already early, limited world models: to synthesize realistic motion they must internalize some physics, yet they still fail on complex camera and object dynamics. The post defines general world models as systems that build internal environment representations to simulate futures and names the open problems, consistent environment maps, navigation and interaction, and realistic models of human behavior; it is an agenda-setting research statement rather than a technical report.",
+    "author": "Anastasis Germanidis",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=runwayml.com&sz=128",
+    "category": "World Model",
+    "tags": [
+      "World Models",
+      "Video Generation",
+      "Research Agenda",
+      "Simulation"
+    ],
+    "readTime": "6 min read",
+    "publishDate": "2023-12-11",
+    "sourceName": "Runway Research",
+    "url": "https://runwayml.com/research/introducing-general-world-models",
+    "coverImage": "assets/img/covers/real/runway-introducing-general-world-models.webp",
+    "coverAlt": "Runway general world models research cover",
+    "coverFit": "cover"
+  },
+  {
+    "id": "onex-1x-world-model",
+    "title": "1X World Model",
+    "excerpt": "1X trains an action-controllable video world model on thousands of hours of EVE humanoid data, so identical initial frames roll out differently under different commanded trajectories, providing a learned simulator for evaluating manipulation policies on rigid boxes, doors, and deformables like folded shirts. The company releases over 100 hours of vector-quantized video, pretrained baselines, and a staged World Model Challenge with cash prizes, while candidly showing failure cases where generated futures violate object permanence and physics.",
+    "author": "Jack Monas, Eric Jang",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=1x.tech&sz=128",
+    "category": "World Model",
+    "tags": [
+      "World Models",
+      "Humanoid Robots",
+      "Policy Evaluation",
+      "Video Generation"
+    ],
+    "readTime": "8 min read",
+    "publishDate": "2024-09-17",
+    "sourceName": "1X Technologies",
+    "url": "https://www.1x.tech/discover/1x-world-model",
+    "coverImage": "assets/img/covers/real/onex-1x-world-model.png",
+    "coverAlt": "1X world model generated humanoid robot scenes",
+    "coverFit": "cover"
+  },
+  {
+    "id": "openai-computer-using-agent",
+    "title": "Computer-Using Agent",
+    "excerpt": "OpenAI introduces CUA, the model behind Operator, which combines GPT-4o vision with reinforcement learning to operate raw graphical interfaces through screenshots and a virtual mouse and keyboard, requiring no OS- or website-specific APIs. At release it set state-of-the-art agent results with 38.1% on OSWorld, 58.1% on WebArena, and 87% on WebVoyager, but remains far below the 72.4% human score on OSWorld, and OpenAI shipped it as a gated research preview with confirmation prompts for consequential actions.",
+    "author": "OpenAI",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=openai.com&sz=128",
+    "category": "AI Agents",
+    "tags": [
+      "Computer Use",
+      "GUI Agents",
+      "Reinforcement Learning",
+      "Operator"
+    ],
+    "readTime": "10 min read",
+    "publishDate": "2025-01-23",
+    "sourceName": "OpenAI",
+    "url": "https://openai.com/index/computer-using-agent/",
+    "coverImage": "assets/img/covers/real/openai-computer-using-agent.png",
+    "coverAlt": "OpenAI Computer-Using Agent announcement cover",
+    "coverFit": "cover"
+  },
+  {
+    "id": "google-chain-of-agents-long-context",
+    "title": "Chain of Agents: Large Language Models Collaborating on Long-Context Tasks",
+    "excerpt": "A training-free, task-agnostic framework where worker LLMs each read one chunk of a long input and pass a communication unit down a chain before a manager agent synthesizes the final answer, replacing read-then-process retrieval with interleaved read-process. Presented at NeurIPS 2024, Chain-of-Agents improves up to 10% over RAG, multi-agent, and full-context baselines on long-document question answering, summarization, and code completion, at the cost of strictly sequential worker calls that add latency.",
+    "author": "Yusen Zhang, Ruoxi Sun",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=research.google&sz=128",
+    "category": "AI Agents",
+    "tags": [
+      "Multi-Agent Systems",
+      "Long Context",
+      "LLM Collaboration",
+      "RAG"
+    ],
+    "readTime": "9 min read",
+    "publishDate": "2025-01-23",
+    "sourceName": "Google Research Blog",
+    "url": "https://research.google/blog/chain-of-agents-large-language-models-collaborating-on-long-context-tasks/",
+    "coverImage": "assets/img/covers/real/google-chain-of-agents-long-context.jpg",
+    "coverAlt": "Chain of Agents framework illustration",
+    "coverFit": "cover"
+  },
+  {
+    "id": "meta-cicero-diplomacy-agent",
+    "title": "CICERO: An AI Agent That Negotiates, Persuades, and Cooperates with People",
+    "excerpt": "CICERO reached human-level performance in full-press Diplomacy by coupling a 2.7B-parameter controllable dialogue model fine-tuned on over 40,000 webDiplomacy games with the piKL planning algorithm, which balances dialogue-consistent intentions against rational play. Across 40 anonymous online games it more than doubled the average human score and ranked in the top 10% of repeat players, though Meta documents cases where the agent generates contradictory messages that undermine its own negotiated plans.",
+    "author": "Meta AI",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=ai.meta.com&sz=128",
+    "category": "AI Agents",
+    "tags": [
+      "Multi-Agent Negotiation",
+      "Strategic Reasoning",
+      "Dialogue Models",
+      "Game AI"
+    ],
+    "readTime": "11 min read",
+    "publishDate": "2022-11-22",
+    "sourceName": "Meta AI",
+    "url": "https://ai.meta.com/blog/cicero-ai-negotiates-persuades-and-cooperates-with-people/",
+    "coverImage": "assets/img/covers/real/meta-cicero-diplomacy-agent.png",
+    "coverAlt": "CICERO Diplomacy agent gameplay visualization",
+    "coverFit": "cover"
+  }
+]

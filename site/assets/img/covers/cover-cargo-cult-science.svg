@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Cargo Cult Science cover</title>
+  <desc id="desc">Editorial cover for Richard Feynman's address on scientific integrity.</desc>
+  <rect width="1200" height="630" fill="#fff7ed"/>
+  <rect x="80" y="76" width="1040" height="478" rx="34" fill="#ffffff" stroke="#c2410c" stroke-width="4"/>
+  <rect x="200" y="150" width="380" height="310" rx="26" fill="#ffedd5" stroke="#9a3412" stroke-width="5"/>
+  <path d="M270 230h240M270 300h180M270 370h220" stroke="#7c2d12" stroke-width="18" stroke-linecap="round"/>
+  <rect x="640" y="150" width="380" height="310" rx="26" fill="#fef2f2" stroke="#9a3412" stroke-width="5" stroke-dasharray="22 18"/>
+  <path d="M710 230h240M710 300h180M710 370h220" stroke="#fca5a5" stroke-width="18" stroke-linecap="round"/>
+  <path d="M580 305h60" stroke="#9a3412" stroke-width="12" stroke-linecap="round" stroke-dasharray="4 20"/>
+  <text x="180" y="528" fill="#7c2d12" font-family="Arial, Helvetica, sans-serif" font-size="52" font-weight="700">Scientific Integrity</text>
+</svg>

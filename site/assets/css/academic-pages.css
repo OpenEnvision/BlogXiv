@@ -501,6 +501,67 @@ h6 {
     line-height: 1.6;
 }
 
+.taxonomy-panel {
+    margin: 0 0 2.75rem;
+    padding: 1.7rem 1.85rem 1.45rem;
+    border: 1px solid var(--page-rule);
+    background: color-mix(in srgb, var(--page-paper-deep) 78%, transparent);
+}
+
+.taxonomy-panel-kicker {
+    margin: 0 0 0.35rem;
+    color: var(--page-accent);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.taxonomy-panel h2 {
+    margin: 0 0 0.7rem;
+    font-family: var(--page-serif);
+    font-size: 1.55rem;
+    font-weight: 600;
+}
+
+.taxonomy-panel > p {
+    max-width: 74ch;
+    margin: 0 0 1.2rem;
+    color: var(--page-muted);
+    line-height: 1.65;
+}
+
+.taxonomy-rule-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 0.95rem 1.35rem;
+}
+
+.taxonomy-rule {
+    margin: 0;
+}
+
+.taxonomy-rule dt {
+    margin: 0 0 0.22rem;
+    font-size: 0.94rem;
+    font-weight: 600;
+}
+
+.taxonomy-rule dd {
+    margin: 0;
+    color: var(--page-muted);
+    font-size: 0.84rem;
+    line-height: 1.55;
+}
+
+.category-boundary {
+    margin: -0.35rem 0 1rem;
+    color: var(--page-muted);
+    font-size: 0.78rem;
+    line-height: 1.5;
+    max-width: 46ch;
+}
+
 .category-tags .tag,
 .blog-tags .tag,
 .author-card .tag {
@@ -509,6 +570,228 @@ h6 {
     color: var(--page-muted);
     background: transparent;
     font-size: 0.65rem;
+}
+
+/* Taxonomy page: classification method panel */
+.categories-page .classification-section {
+    margin-bottom: 56px;
+}
+
+.classification-panel {
+    padding: 34px 36px;
+    border: 1px solid var(--page-rule);
+    border-radius: 3px;
+    background: var(--page-paper-deep);
+}
+
+.classification-kicker {
+    margin: 0 0 10px;
+    color: var(--page-accent);
+    font-family: var(--font-mono);
+    font-size: 0.64rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.classification-intro .section-title {
+    margin: 0 0 14px;
+    font-size: clamp(1.6rem, 3vw, 2.1rem);
+}
+
+.classification-intro p {
+    max-width: 78ch;
+    margin: 0;
+    color: var(--page-muted);
+    font-family: var(--page-serif);
+    font-size: 1rem;
+    line-height: 1.65;
+}
+
+.classification-dimensions {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    margin: 28px 0;
+    padding: 0;
+    border-top: 1px solid var(--page-rule);
+    border-left: 1px solid var(--page-rule);
+    counter-reset: classify-dimension;
+    list-style: none;
+}
+
+.classification-dimensions li {
+    padding: 16px;
+    border-right: 1px solid var(--page-rule);
+    border-bottom: 1px solid var(--page-rule);
+    background: var(--page-paper);
+}
+
+.classification-dimensions li::before {
+    content: counter(classify-dimension, decimal-leading-zero);
+    counter-increment: classify-dimension;
+    display: block;
+    margin-bottom: 8px;
+    color: var(--page-accent);
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+}
+
+.classification-dimensions h3 {
+    margin: 0 0 6px;
+    font-family: var(--page-serif);
+    font-size: 0.98rem;
+    font-weight: 600;
+}
+
+.classification-dimensions p {
+    margin: 0;
+    color: var(--page-muted);
+    font-size: 0.8rem;
+    line-height: 1.55;
+}
+
+.classification-scope {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    margin-bottom: 24px;
+}
+
+.scope-column {
+    padding: 18px 22px;
+    border: 1px solid var(--page-rule);
+    border-radius: 3px;
+    background: var(--page-paper);
+}
+
+.scope-column h3 {
+    margin: 0 0 10px;
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.scope-in h3 {
+    color: #2f6f63;
+}
+
+.scope-out h3 {
+    color: var(--page-accent);
+}
+
+[data-theme="dark"] .scope-in h3 {
+    color: #9ad7ca;
+}
+
+.scope-column ul {
+    margin: 0;
+    padding-left: 18px;
+    color: var(--page-muted);
+    font-family: var(--page-serif);
+    font-size: 0.92rem;
+    line-height: 1.6;
+}
+
+.scope-column li + li {
+    margin-top: 6px;
+}
+
+.classification-note {
+    margin: 0;
+    padding: 14px 18px;
+    border-left: 3px solid var(--page-accent);
+    background: var(--page-paper);
+    color: var(--page-ink);
+    font-family: var(--page-serif);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.classification-note a {
+    color: var(--page-accent);
+}
+
+/* Taxonomy page: shelf grid heading and per-card scope notes */
+.shelves-heading {
+    margin-bottom: 28px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--page-ink);
+}
+
+.shelves-heading .section-title {
+    margin: 0 0 8px;
+    font-size: clamp(1.6rem, 3vw, 2.1rem);
+}
+
+.shelves-heading .section-description {
+    max-width: 76ch;
+    margin: 0;
+    font-size: 0.98rem;
+    line-height: 1.6;
+}
+
+.categories-page .categories-section .categories-grid {
+    grid-template-columns: repeat(auto-fill, minmax(min(380px, 100%), 1fr));
+}
+
+.category-card-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 16px;
+}
+
+.category-index {
+    color: var(--page-muted);
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.06em;
+}
+
+.category-boundary {
+    margin: 0 0 16px;
+    padding: 12px 14px;
+    border: 1px solid var(--page-rule);
+    border-left: 3px solid var(--page-navy);
+    border-radius: 2px;
+    background: var(--page-paper-deep);
+    color: var(--page-muted);
+    font-size: 0.84rem;
+    line-height: 1.55;
+}
+
+.category-boundary-label {
+    display: block;
+    margin-bottom: 4px;
+    color: var(--page-navy);
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+@media (max-width: 1100px) {
+    .classification-dimensions {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .classification-panel {
+        padding: 22px 20px;
+    }
+
+    .classification-dimensions {
+        grid-template-columns: 1fr;
+    }
+
+    .classification-scope {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* Authors and informational cards */

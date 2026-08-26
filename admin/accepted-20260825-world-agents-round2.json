@@ -1,0 +1,254 @@
+[
+  {
+    "id": "openai-computer-using-agent",
+    "title": "Computer-Using Agent",
+    "excerpt": "OpenAI introduces Computer-Using Agent (CUA), the model behind Operator, which combines GPT-4o's vision capabilities with reinforcement learning to operate graphical interfaces the way people do, clicking, typing, and scrolling without OS- or web-specific APIs. It sets state-of-the-art results of 38.1% on OSWorld, 58.1% on WebArena, and 87% on WebVoyager using a perception-reasoning-action loop over raw screenshots. The post is candid that reliability drops on unfamiliar interfaces and complex text editing, motivating the guarded research-preview release.",
+    "author": "OpenAI",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=openai.com&sz=128",
+    "category": "AI Agents",
+    "tags": [
+      "Computer Use",
+      "GUI Agents",
+      "Reinforcement Learning",
+      "Operator"
+    ],
+    "readTime": "10 min read",
+    "publishDate": "2025-01-23",
+    "sourceName": "OpenAI",
+    "url": "https://openai.com/index/computer-using-agent/",
+    "coverImage": "assets/img/covers/real/openai-computer-using-agent.png",
+    "coverAlt": "Computer-Using Agent announcement cover",
+    "coverFit": "cover"
+  },
+  {
+    "id": "openai-emergent-tool-use-hide-and-seek",
+    "title": "Emergent tool use from multi-agent interaction",
+    "excerpt": "OpenAI trains agents in a simulated hide-and-seek environment and observes six distinct phases of emergent strategy, from door-blocking shelters to ramp use, ramp-locking, and box surfing, each arising as a counter-strategy to the opposing team with no direct incentive to interact with objects. The post argues that multi-agent competition creates a self-supervised autocurriculum that produces more human-relevant skills than intrinsic motivation baselines. It also proposes transfer and fine-tuning tests as a way to quantify what the agents actually learned.",
+    "author": "Bowen Baker, Ingmar Kanitscheider, et al.",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=openai.com&sz=128",
+    "category": "AI Agents",
+    "tags": [
+      "Multi-Agent RL",
+      "Emergent Behavior",
+      "Autocurricula",
+      "Hide-and-Seek"
+    ],
+    "readTime": "11 min read",
+    "publishDate": "2019-09-17",
+    "sourceName": "OpenAI",
+    "url": "https://openai.com/index/emergent-tool-use/",
+    "coverImage": "assets/img/covers/real/openai-emergent-tool-use-hide-and-seek.png",
+    "coverAlt": "Hide-and-seek agents building a shelter from boxes",
+    "coverFit": "cover"
+  },
+  {
+    "id": "msr-autogen-multi-agent-framework",
+    "title": "AutoGen: Enabling next-generation large language model applications",
+    "excerpt": "Microsoft Research presents AutoGen, an open-source framework that builds LLM applications as conversations among customizable, conversable agents that can combine LLMs, tools, and human input. Developers define agents and how they interact, and the framework handles the multi-agent orchestration for workflows spanning coding, math, decision-making, and entertainment. Evaluations show the multi-agent conversation pattern beating single-agent approaches on several benchmark tasks while keeping humans optionally in the loop.",
+    "author": "Chi Wang, Gagan Bansal, et al.",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=microsoft.com&sz=128",
+    "category": "AI Agents",
+    "tags": [
+      "Multi-Agent Systems",
+      "Agent Frameworks",
+      "Open Source",
+      "Orchestration"
+    ],
+    "readTime": "9 min read",
+    "publishDate": "2023-09-25",
+    "sourceName": "Microsoft Research Blog",
+    "url": "https://www.microsoft.com/en-us/research/blog/autogen-enabling-next-generation-large-language-model-applications/",
+    "coverImage": "assets/img/covers/real/msr-autogen-multi-agent-framework.jpg",
+    "coverAlt": "AutoGen framework announcement cover",
+    "coverFit": "cover"
+  },
+  {
+    "id": "msr-magma-multimodal-agent-foundation-model",
+    "title": "Magma: A foundation model for multimodal AI agents across digital and physical worlds",
+    "excerpt": "Microsoft Research introduces Magma, a single foundation model that handles both digital tasks like UI navigation and physical tasks like robot manipulation, bridging verbal and spatial intelligence instead of training separate VLA models per environment. Its pretraining centers on Set-of-Mark annotations that ground actions to numbered marks in screenshots and robot scenes, and Trace-of-Mark supervision that teaches motion planning from instructional videos. The result formulates plans and executes actions competitively with specialist agents despite being a generalist.",
+    "author": "Jianwei Yang, et al.",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=microsoft.com&sz=128",
+    "category": "AI Agents",
+    "tags": [
+      "Multimodal Agents",
+      "Foundation Models",
+      "UI Navigation",
+      "Robot Manipulation"
+    ],
+    "readTime": "11 min read",
+    "publishDate": "2025-02-25",
+    "sourceName": "Microsoft Research Blog",
+    "url": "https://www.microsoft.com/en-us/research/blog/magma-a-foundation-model-for-multimodal-ai-agents-across-digital-and-physical-worlds/",
+    "coverImage": "assets/img/covers/real/msr-magma-multimodal-agent-foundation-model.jpg",
+    "coverAlt": "Magma multimodal agent foundation model cover",
+    "coverFit": "cover"
+  },
+  {
+    "id": "deepmind-funsearch-new-discoveries-mathematics",
+    "title": "FunSearch: Making new discoveries in mathematical sciences using Large Language Models",
+    "excerpt": "Google DeepMind pairs a code-writing LLM with an automated evaluator in an evolutionary loop that searches for programs rather than answers, guarding against hallucinations while iteratively improving the best candidates. FunSearch surpassed the best known result on the cap set problem, which the authors present as the first genuinely new discovery an LLM has made on an open problem in mathematics, and it also found bin-packing heuristics that beat standard baselines. Because outputs are programs, the solutions are interpretable and deployable rather than opaque numerical answers.",
+    "author": "Alhussein Fawzi, Bernardino Romera Paredes",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=deepmind.google&sz=128",
+    "category": "AI Agents",
+    "tags": [
+      "LLM Search",
+      "Mathematical Discovery",
+      "Evolutionary Methods",
+      "Program Synthesis"
+    ],
+    "readTime": "10 min read",
+    "publishDate": "2023-12-14",
+    "sourceName": "Google DeepMind",
+    "url": "https://deepmind.google/blog/funsearch-making-new-discoveries-in-mathematical-sciences-using-large-language-models/",
+    "coverImage": "assets/img/covers/real/deepmind-funsearch-new-discoveries-mathematics.webp",
+    "coverAlt": "FunSearch mathematical discovery illustration",
+    "coverFit": "cover"
+  },
+  {
+    "id": "bair-struq-secalign-prompt-injection-defense",
+    "title": "Defending against Prompt Injection with Structured Queries (StruQ) and Preference Optimization (SecAlign)",
+    "excerpt": "Berkeley researchers propose two fine-tuning defenses against prompt injection, the top-listed threat to LLM-integrated applications: a secure front-end separates the prompt from untrusted data with special delimiter tokens, StruQ trains on simulated injections so the model ignores instructions in the data channel, and SecAlign preference-optimizes it to prefer responses to the intended instruction. Both defenses cut optimization-free attack success rates to around 0% while preserving utility. SecAlign additionally holds strong optimization-based attacks below 15%, over four times lower than the previous state of the art across five tested LLMs.",
+    "author": "Sizhe Chen, Julien Piet, Chawin Sitawarin, David Wagner, et al.",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=bair.berkeley.edu&sz=128",
+    "category": "AI Agents",
+    "tags": [
+      "Prompt Injection",
+      "LLM Security",
+      "Fine-Tuning Defenses",
+      "Preference Optimization"
+    ],
+    "readTime": "8 min read",
+    "publishDate": "2025-04-11",
+    "sourceName": "BAIR Blog",
+    "url": "https://bair.berkeley.edu/blog/2025/04/11/prompt-injection-defense/",
+    "coverImage": "assets/img/covers/real/bair-struq-secalign-prompt-injection-defense.png",
+    "coverAlt": "StruQ and SecAlign prompt injection defense diagram",
+    "coverFit": "cover"
+  },
+  {
+    "id": "runway-introducing-general-world-models",
+    "title": "Introducing General World Models",
+    "excerpt": "Runway announces a long-term research effort around general world models, systems that build an internal representation of an environment and use it to simulate future events within it. The post frames video models like Gen-2 as very early and limited world models that understand basic physics and motion but fail on complex camera or object movements. It lays out the open challenges ahead: generating consistent maps of environments, navigating and interacting within them, and modeling not just the world but also its inhabitants and realistic human behavior.",
+    "author": "Runway Research",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=runwayml.com&sz=128",
+    "category": "World Model",
+    "tags": [
+      "World Models",
+      "Video Generation",
+      "Simulation",
+      "Research Agenda"
+    ],
+    "readTime": "6 min read",
+    "publishDate": "2023-12-11",
+    "sourceName": "Runway Research",
+    "url": "https://runwayml.com/research/introducing-general-world-models",
+    "coverImage": "assets/img/covers/real/runway-introducing-general-world-models.webp",
+    "coverAlt": "Runway general world models research cover",
+    "coverFit": "cover"
+  },
+  {
+    "id": "pi-fast-robot-action-tokenization",
+    "title": "FAST: Efficient Robot Action Tokenization",
+    "excerpt": "Physical Intelligence shows why naive per-dimension binning breaks down for high-frequency dexterous control, since consecutive actions become highly correlated and trivially predictable, and introduces FAST, a tokenizer that compresses action chunks with a discrete cosine transform followed by byte-pair encoding. FAST lets standard autoregressive VLA recipes learn tasks like laundry folding where previous tokenizations fail entirely, and trains up to 5x faster than the diffusion-based pi0 with comparable performance. The team also released FAST+, a universal action tokenizer trained on one million real robot trajectories across embodiments.",
+    "author": "Physical Intelligence",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=pi.website&sz=128",
+    "category": "World Model",
+    "tags": [
+      "Action Tokenization",
+      "Vision-Language-Action",
+      "Robot Learning",
+      "Compression"
+    ],
+    "readTime": "9 min read",
+    "publishDate": "2025-01-16",
+    "sourceName": "Physical Intelligence",
+    "url": "https://www.pi.website/research/fast",
+    "coverImage": "assets/img/covers/real/pi-fast-robot-action-tokenization.png",
+    "coverAlt": "FAST robot action tokenization paper thumbnail",
+    "coverFit": "cover"
+  },
+  {
+    "id": "pi-hi-robot-listen-think-harder",
+    "title": "Teaching Robots to Listen and Think Harder",
+    "excerpt": "Physical Intelligence describes Hi Robot, a hierarchical system in which a high-level vision-language model reasons through complex prompts and live user feedback, effectively talking itself through multi-stage tasks, while a low-level vision-language-action policy executes the atomic commands. The system is trained with synthetically generated situated instructions and corrections, letting it handle jobs like clearing a table while incorporating real-time interjections such as \"that is not trash.\" In evaluations it follows complex constraints markedly better than flat VLA policies or a GPT-4o-based high-level planner.",
+    "author": "Physical Intelligence",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=pi.website&sz=128",
+    "category": "World Model",
+    "tags": [
+      "Hierarchical VLA",
+      "Instruction Following",
+      "Robot Learning",
+      "Human Feedback"
+    ],
+    "readTime": "8 min read",
+    "publishDate": "2025-02-26",
+    "sourceName": "Physical Intelligence",
+    "url": "https://www.pi.website/research/hirobot",
+    "coverImage": "assets/img/covers/real/pi-hi-robot-listen-think-harder.png",
+    "coverAlt": "Hi Robot hierarchical VLA paper thumbnail",
+    "coverFit": "cover"
+  },
+  {
+    "id": "meta-openeqa-word-models-to-world-models",
+    "title": "OpenEQA: From word models to world models",
+    "excerpt": "Meta FAIR releases OpenEQA, the first open-vocabulary benchmark for embodied question answering, with over 1,600 human-written question-answer pairs across more than 180 real environments plus an LLM-Match metric for scoring free-form answers. Benchmarking state-of-the-art vision-language models exposes a wide gap to human performance, with GPT-4V scoring 48.5% against 85.9% for humans. On questions requiring spatial understanding the models are nearly blind, doing little better than text-only baselines, which the authors argue shows how far current systems are from queryable world models.",
+    "author": "Meta FAIR",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=ai.meta.com&sz=128",
+    "category": "World Model",
+    "tags": [
+      "Embodied AI",
+      "Benchmarks",
+      "Vision-Language Models",
+      "Spatial Understanding"
+    ],
+    "readTime": "8 min read",
+    "publishDate": "2024-04-11",
+    "sourceName": "Meta AI",
+    "url": "https://ai.meta.com/blog/openeqa-embodied-question-answering-robotics-ar-glasses/",
+    "coverImage": "assets/img/covers/real/meta-openeqa-word-models-to-world-models.png",
+    "coverAlt": "OpenEQA embodied question answering illustration",
+    "coverFit": "cover"
+  },
+  {
+    "id": "nvidia-r2d2-dreamgen-world-foundation-models",
+    "title": "R²D²: Training Generalist Robots with NVIDIA Research Workflows and World Foundation Models",
+    "excerpt": "NVIDIA's robotics research digest explains DreamGen, the pipeline behind Isaac GR00T-Dreams, which uses world foundation models to generate photorealistic synthetic robot videos and turn them into labeled neural trajectories with minimal human demonstrations. The four-step recipe fine-tunes a world model on a target robot, prompts it with novel instructions and environments, extracts pseudo-actions via a latent action model or inverse dynamics model, and trains policies on the result. Together with latent action pretraining from videos and sim-and-real co-training, this data helped GR00T N1.5 reach higher success rates and better language following than N1.",
+    "author": "Seun Doherty",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=developer.nvidia.com&sz=128",
+    "category": "World Model",
+    "tags": [
+      "World Foundation Models",
+      "Synthetic Data",
+      "Robot Learning",
+      "GR00T"
+    ],
+    "readTime": "10 min read",
+    "publishDate": "2025-07-16",
+    "sourceName": "NVIDIA Technical Blog",
+    "url": "https://developer.nvidia.com/blog/r2d2-training-generalist-robots-with-nvidia-research-workflows-and-world-foundation-models/",
+    "coverImage": "assets/img/covers/real/nvidia-r2d2-dreamgen-world-foundation-models.gif",
+    "coverAlt": "Animated figure of robot trajectories generated by world foundation models",
+    "coverFit": "cover"
+  },
+  {
+    "id": "deepmind-open-x-embodiment-rt-x",
+    "title": "Scaling up learning across many different robot types",
+    "excerpt": "Google DeepMind and 33 academic labs release Open X-Embodiment, a dataset assembled from 22 robot embodiments with over one million episodes, alongside RT-X models trained across all of them. RT-1-X outperformed the original lab-specific methods by 50% on average in five partner labs, and RT-2-X roughly tripled performance on emergent spatial-reasoning skills relative to RT-2. The results are early evidence that a single generalist policy trained on diverse robot data transfers skills across embodiments the way large models transfer across text and images.",
+    "author": "Quan Vuong, Pannag Sanketi",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=deepmind.google&sz=128",
+    "category": "World Model",
+    "tags": [
+      "Cross-Embodiment",
+      "Robot Learning",
+      "Open Datasets",
+      "RT-X"
+    ],
+    "readTime": "8 min read",
+    "publishDate": "2023-10-03",
+    "sourceName": "Google DeepMind",
+    "url": "https://deepmind.google/blog/scaling-up-learning-across-many-different-robot-types/",
+    "coverImage": "assets/img/covers/real/deepmind-open-x-embodiment-rt-x.webp",
+    "coverAlt": "Open X-Embodiment cross-robot learning illustration",
+    "coverFit": "cover"
+  }
+]

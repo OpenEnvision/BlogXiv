@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Productive Stupidity cover</title>
+  <desc id="desc">Editorial cover for Martin Schwartz's essay on the importance of stupidity in scientific research.</desc>
+  <rect width="1200" height="630" fill="#f5f3ff"/>
+  <rect x="80" y="76" width="1040" height="478" rx="34" fill="#ffffff" stroke="#6d28d9" stroke-width="4"/>
+  <path d="M600 160c-120 0-190 80-190 160 0 60 40 110 100 135v55h180v-55c60-25 100-75 100-135 0-80-70-160-190-160z" fill="#ede9fe" stroke="#5b21b6" stroke-width="8"/>
+  <text x="600" y="345" fill="#5b21b6" font-family="Arial, Helvetica, sans-serif" font-size="150" font-weight="700" text-anchor="middle">?</text>
+  <circle cx="330" cy="220" r="14" fill="#8b5cf6"/>
+  <circle cx="880" cy="200" r="18" fill="#a78bfa"/>
+  <circle cx="920" cy="400" r="12" fill="#8b5cf6"/>
+  <circle cx="290" cy="390" r="16" fill="#a78bfa"/>
+  <text x="180" y="528" fill="#4c1d95" font-family="Arial, Helvetica, sans-serif" font-size="52" font-weight="700">Productive Stupidity</text>
+</svg>

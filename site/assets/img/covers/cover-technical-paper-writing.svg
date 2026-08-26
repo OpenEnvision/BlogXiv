@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Technical Paper Writing cover</title>
+  <desc id="desc">Editorial cover for Michael Ernst's guide to writing a technical paper.</desc>
+  <rect width="1200" height="630" fill="#f0fdf4"/>
+  <rect x="80" y="76" width="1040" height="478" rx="34" fill="#ffffff" stroke="#15803d" stroke-width="4"/>
+  <rect x="220" y="130" width="560" height="340" rx="24" fill="#dcfce7" stroke="#166534" stroke-width="5"/>
+  <path d="M290 210h420M290 270h330M290 330h390M290 390h250" stroke="#14532d" stroke-width="18" stroke-linecap="round"/>
+  <path d="M840 420 L980 280" stroke="#166534" stroke-width="26" stroke-linecap="round"/>
+  <path d="M980 280 L1010 250 L1024 294 Z" fill="#166534"/>
+  <path d="M840 420l-24 46 50-20z" fill="#f59e0b"/>
+  <text x="180" y="528" fill="#14532d" font-family="Arial, Helvetica, sans-serif" font-size="52" font-weight="700">Paper Craft</text>
+</svg>

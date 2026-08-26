@@ -1,0 +1,149 @@
+[
+  {
+    "id": "paul-graham-how-to-do-great-work",
+    "title": "How to Do Great Work",
+    "excerpt": "Paul Graham merges the advice given across fields into one recipe: pick a field matching your natural aptitude and deep curiosity, work hard at the frontier until you can see the gaps, and let curiosity rather than premeditated plans steer each stage. The essay is long, aphoristic, and deliberately general, so readers must map its claims onto their own discipline.",
+    "author": "Paul Graham",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=paulgraham.com&sz=128",
+    "category": "How to Research",
+    "tags": [
+      "Ambition",
+      "Curiosity",
+      "Problem Selection",
+      "Classic Essay"
+    ],
+    "readTime": "55 min read",
+    "publishDate": "2023-07-01",
+    "sourceName": "paulgraham.com",
+    "url": "https://www.paulgraham.com/greatwork.html",
+    "coverImage": "assets/img/covers/cover-great-work.svg",
+    "coverAlt": "Editorial cover showing an upward path toward a highlighted goal",
+    "coverFit": "cover"
+  },
+  {
+    "id": "sebastian-ruder-10-tips-for-research-and-a-phd",
+    "title": "10 Tips for Research and a PhD",
+    "excerpt": "Fresh from finishing his own PhD, Sebastian Ruder lists ten habits that compounded: start writing from day one, work on one or two focused projects at a time, be ambitious enough to fail, collaborate deliberately, and publish artifacts — code, blog posts, and reviews — that outlive individual papers. The advice targets machine learning and NLP students specifically.",
+    "author": "Sebastian Ruder",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=ruder.io&sz=128",
+    "category": "How to Research",
+    "tags": [
+      "PhD Advice",
+      "ML Research",
+      "Writing Habits",
+      "Collaboration"
+    ],
+    "readTime": "15 min read",
+    "publishDate": "2020-05-22",
+    "sourceName": "ruder.io",
+    "url": "https://www.ruder.io/10-tips-for-research-and-a-phd/",
+    "coverImage": "assets/img/covers/real/sebastian-ruder-10-tips-for-research-and-a-phd.jpg",
+    "coverAlt": "Real cover from og:image",
+    "coverFit": "cover"
+  },
+  {
+    "id": "tim-dettmers-machine-learning-phd-applications",
+    "title": "Machine Learning PhD Applications — Everything You Need to Know",
+    "excerpt": "Tim Dettmers dissects how ML PhD admissions actually weigh publications, recommendation letters, and research fit, then walks through school selection, statement writing, and interviews with data from his own application cycle. The mechanics are specific to competitive US and Canadian programs around 2018, but the ranking of what matters has aged well.",
+    "author": "Tim Dettmers",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=timdettmers.com&sz=128",
+    "category": "How to Research",
+    "tags": [
+      "PhD Applications",
+      "Graduate School",
+      "ML Research",
+      "Career Advice"
+    ],
+    "readTime": "35 min read",
+    "publishDate": "2018-11-26",
+    "sourceName": "Tim Dettmers",
+    "url": "https://timdettmers.com/2018/11/26/phd-applications/",
+    "coverImage": "assets/img/covers/real/tim-dettmers-machine-learning-phd-applications.gif",
+    "coverAlt": "Real cover from og:image",
+    "coverFit": "cover"
+  },
+  {
+    "id": "richard-feynman-cargo-cult-science",
+    "title": "Cargo Cult Science",
+    "excerpt": "Feynman's 1974 Caltech commencement address names the failure mode where work has the outer form of science but lacks utter honesty: report everything that could make your result wrong, not just what supports it. His account of why the measured charge of the electron drifted slowly after Millikan remains the canonical parable of experimenter bias.",
+    "author": "Richard Feynman",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=calteches.library.caltech.edu&sz=128",
+    "category": "How to Research",
+    "tags": [
+      "Scientific Integrity",
+      "Experimental Rigor",
+      "Research Ethics",
+      "Classic Essay"
+    ],
+    "readTime": "18 min read",
+    "publishDate": "1974-06-14",
+    "sourceName": "Caltech Engineering and Science",
+    "url": "https://calteches.library.caltech.edu/51/2/CargoCult.htm",
+    "coverImage": "assets/img/covers/cover-cargo-cult-science.svg",
+    "coverAlt": "Editorial cover contrasting a solid document with a hollow dashed copy",
+    "coverFit": "cover"
+  },
+  {
+    "id": "martin-schwartz-the-importance-of-stupidity-in-scientific-research",
+    "title": "The Importance of Stupidity in Scientific Research",
+    "excerpt": "Martin Schwartz's one-page Journal of Cell Science essay argues that real research means feeling actively confused most of the time, and that graduate school is hard because coursework rewards knowing answers while research demands wading into the unknown. Embracing this 'productive stupidity' is presented as the core psychological transition of becoming a scientist.",
+    "author": "Martin A. Schwartz",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=journals.biologists.com&sz=128",
+    "category": "How to Research",
+    "tags": [
+      "Productive Stupidity",
+      "Research Mindset",
+      "Graduate School",
+      "Classic Essay"
+    ],
+    "readTime": "5 min read",
+    "publishDate": "2008-06-01",
+    "sourceName": "Journal of Cell Science",
+    "url": "https://journals.biologists.com/jcs/article/121/11/1771/30038/The-importance-of-stupidity-in-scientific-research",
+    "coverImage": "assets/img/covers/cover-productive-stupidity.svg",
+    "coverAlt": "Editorial cover showing a head silhouette filled with a question mark",
+    "coverFit": "cover"
+  },
+  {
+    "id": "michael-ernst-how-to-write-a-technical-paper",
+    "title": "How to Write a Technical Paper",
+    "excerpt": "Michael Ernst's continuously updated guide covers point-first writing, one idea per paragraph and sentence, figure design, naming, responding to reviews, and relentless revision, with each rule illustrated by concrete before-and-after examples from real drafts. It reads as a working editor's checklist rather than abstract style advice.",
+    "author": "Michael Ernst",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=homes.cs.washington.edu&sz=128",
+    "category": "How to Research",
+    "tags": [
+      "Paper Writing",
+      "Technical Communication",
+      "Revision",
+      "Research Skills"
+    ],
+    "readTime": "40 min read",
+    "publishDate": "2005-01-01",
+    "sourceName": "University of Washington CSE",
+    "url": "https://homes.cs.washington.edu/~mernst/advice/write-technical-paper.html",
+    "coverImage": "assets/img/covers/cover-technical-paper-writing.svg",
+    "coverAlt": "Editorial cover showing an annotated manuscript with an editing pencil",
+    "coverFit": "cover"
+  },
+  {
+    "id": "mensh-kording-ten-simple-rules-for-structuring-papers",
+    "title": "Ten Simple Rules for Structuring Papers",
+    "excerpt": "Brett Mensh and Konrad Kording compress paper structure into ten rules built around a single central contribution: apply context-content-conclusion at every scale from sentence to manuscript, write for the time-constrained reader who skims, and budget writing effort by how much each section shapes the paper's fate. The rules are field-agnostic and widely taught in ML groups.",
+    "author": "Brett Mensh and Konrad Kording",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=journals.plos.org&sz=128",
+    "category": "How to Research",
+    "tags": [
+      "Paper Writing",
+      "Scientific Communication",
+      "Storytelling",
+      "Research Skills"
+    ],
+    "readTime": "20 min read",
+    "publishDate": "2017-09-28",
+    "sourceName": "PLOS Computational Biology",
+    "url": "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1005619",
+    "coverImage": "assets/img/covers/real/kording-mensh-ten-simple-rules-for-structuring-papers.png",
+    "coverAlt": "Real cover from og:image",
+    "coverFit": "contain"
+  }
+]

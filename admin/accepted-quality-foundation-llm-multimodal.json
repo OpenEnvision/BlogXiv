@@ -1,0 +1,359 @@
+[
+  {
+    "id": "mii-llm-zagreus-training-llm-from-scratch",
+    "title": "The Joy and Pain of Training an LLM from Scratch",
+    "excerpt": "The mii-llm community documents training the 0.4B Zagreus models from scratch with Hugging Face Nanotron, covering framework selection, the tokenization pipeline, Slurm pretraining configs, and Axolotl post-training into the Nesso instruct models, with evaluations across Italian, Spanish, French, and Portuguese benchmarks. Findings come from 0.4B-parameter runs on a single sponsored cluster, so the recipe does not directly speak to larger-scale training.",
+    "author": "Alessandro Ercolani",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=huggingface.co&sz=128",
+    "category": "Foundation Model",
+    "tags": [
+      "Pretraining",
+      "Small Language Models",
+      "Nanotron",
+      "Multilingual"
+    ],
+    "readTime": "15 min read",
+    "publishDate": "2026-04-02",
+    "sourceName": "Hugging Face Blog",
+    "url": "https://huggingface.co/blog/giux78/slm-zagreus-nesso",
+    "coverImage": "assets/img/covers/real/mii-llm-zagreus-training-llm-from-scratch.png",
+    "coverAlt": "Zagreus and Nesso small language model training cover",
+    "coverFit": "cover"
+  },
+  {
+    "id": "openai-techniques-for-training-large-neural-networks",
+    "title": "Techniques for Training Large Neural Networks",
+    "excerpt": "OpenAI surveys the parallelism toolkit behind large-model training: data, pipeline, and tensor parallelism, mixture-of-experts routing, and memory savers such as activation recomputation, CPU offloading, and mixed precision, explaining how gradient synchronization and pipeline bubbles limit scaling efficiency. It is a 2022 snapshot, so newer stacks like FSDP and modern MoE kernels are outside its scope.",
+    "author": "OpenAI",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=openai.com&sz=128",
+    "category": "Foundation Model",
+    "tags": [
+      "Distributed Training",
+      "Parallelism",
+      "Mixture of Experts",
+      "GPU Systems"
+    ],
+    "readTime": "11 min read",
+    "publishDate": "2022-06-09",
+    "sourceName": "OpenAI",
+    "url": "https://openai.com/index/techniques-for-training-large-neural-networks/",
+    "coverImage": "assets/img/covers/real/openai-techniques-for-training-large-neural-networks.webp",
+    "coverAlt": "OpenAI large neural network training techniques cover",
+    "coverFit": "cover"
+  },
+  {
+    "id": "ai2-dolma-3-trillion-token-open-corpus",
+    "title": "Dolma: 3 Trillion Token Open Corpus for Language Model Pretraining",
+    "excerpt": "Ai2 releases Dolma, a 3-trillion-token pretraining corpus mixing web text, academic publications, code, books, and encyclopedic sources, and documents the curation goals, filtering decisions, and a datasheet alongside comparisons with the corpora behind closed and open models. Curation choices are tuned to the OLMo project, and the fuller technical report followed later.",
+    "author": "Ai2",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=allenai.org&sz=128",
+    "category": "Foundation Model",
+    "tags": [
+      "Pretraining Data",
+      "Open Corpus",
+      "OLMo",
+      "Data Curation"
+    ],
+    "readTime": "12 min read",
+    "publishDate": "2023-08-18",
+    "sourceName": "Ai2 Blog",
+    "url": "https://allenai.org/blog/dolma-3-trillion-tokens-open-llm-corpus-9a0ff4b8da64",
+    "coverImage": "assets/img/covers/real/ai2-dolma-3-trillion-token-open-corpus.jpg",
+    "coverAlt": "Dolma open pretraining corpus cover",
+    "coverFit": "cover"
+  },
+  {
+    "id": "apple-third-generation-foundation-models",
+    "title": "Introducing the Third Generation of Apple’s Foundation Models",
+    "excerpt": "Apple details AFM 3: a 3B dense on-device model, a natively multimodal 20B sparse on-device model that activates only 1–4B parameters per request, and three Private Cloud Compute server models, with sections on architectures for Apple silicon and training methodology. Most reported evaluations are Apple’s own, and the sparse on-device model requires the most capable Apple silicon systems.",
+    "author": "Apple Machine Learning Research",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=machinelearning.apple.com&sz=128",
+    "category": "Foundation Model",
+    "tags": [
+      "On-Device AI",
+      "Sparse Models",
+      "Private Cloud Compute",
+      "Apple Silicon"
+    ],
+    "readTime": "14 min read",
+    "publishDate": "2026-06-08",
+    "sourceName": "Apple Machine Learning Research",
+    "url": "https://machinelearning.apple.com/research/introducing-third-generation-of-apple-foundation-models",
+    "coverImage": "assets/img/covers/real/apple-third-generation-foundation-models.png",
+    "coverAlt": "Apple third-generation foundation models cover",
+    "coverFit": "cover"
+  },
+  {
+    "id": "google-gemma-4-multi-token-prediction-drafters",
+    "title": "Accelerating Gemma 4: Faster Inference with Multi-Token Prediction Drafters",
+    "excerpt": "Google releases multi-token prediction drafter models for the Gemma 4 family, a speculative-decoding setup where drafters reuse the target model’s activations and share its KV cache to propose several tokens that the target verifies in one forward pass, reporting up to 3x speedups with unchanged outputs. Gains are hardware- and batch-dependent: the 26B MoE model needs batch sizes of 4–8 to reach about 2.2x on Apple silicon.",
+    "author": "Olivier Lacombe, Maarten Grootendorst",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=blog.google&sz=128",
+    "category": "Foundation Model",
+    "tags": [
+      "Gemma 4",
+      "Speculative Decoding",
+      "Multi-Token Prediction",
+      "Inference Efficiency"
+    ],
+    "readTime": "8 min read",
+    "publishDate": "2026-05-05",
+    "sourceName": "Google Blog",
+    "url": "https://blog.google/innovation-and-ai/technology/developers-tools/multi-token-prediction-gemma-4/",
+    "coverImage": "assets/img/covers/real/google-gemma-4-multi-token-prediction-drafters.png",
+    "coverAlt": "Gemma 4 multi-token prediction drafters cover",
+    "coverFit": "cover"
+  },
+  {
+    "id": "hazyresearch-structured-state-spaces-s4",
+    "title": "Structured State Spaces: Combining Continuous-Time, Recurrent, and Convolutional Models",
+    "excerpt": "Hazy Research shows how the linear state space model x′(t) = Ax(t) + Bu(t) admits three equivalent views — continuous-time, recurrent, and convolutional — and how S4 switches between them for efficient training and inference, with discretization and HiPPO initialization providing long-range memory. The post predates selective SSMs like Mamba, so it reflects the first generation of structured state space models.",
+    "author": "Albert Gu, Karan Goel, Christopher Ré",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=hazyresearch.stanford.edu&sz=128",
+    "category": "Foundation Model",
+    "tags": [
+      "State Space Models",
+      "S4",
+      "Long Sequences",
+      "Architecture"
+    ],
+    "readTime": "13 min read",
+    "publishDate": "2022-01-14",
+    "sourceName": "Stanford Hazy Research",
+    "url": "https://hazyresearch.stanford.edu/blog/2022-01-14-s4-3",
+    "coverImage": "assets/img/covers/real/hazyresearch-structured-state-spaces-s4.png",
+    "coverAlt": "Structured state space model views diagram",
+    "coverFit": "contain"
+  },
+  {
+    "id": "hugging-face-moe-in-transformers",
+    "title": "Mixture of Experts (MoEs) in Transformers",
+    "excerpt": "Hugging Face explains how MoE layers replace dense feed-forward blocks with routed experts, then walks through the engineering that makes them practical in the transformers library: weight conversion, lazy tensor materialization, faster weight loading, expert-parallel backends, and where quantization fits. A worked example predicts gpt-oss-20b decode speed from active parameters and memory bandwidth (~111 estimated vs ~115 measured tok/s on an M3 Ultra); benchmarks target the transformers stack rather than dedicated serving engines.",
+    "author": "Hugging Face",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=huggingface.co&sz=128",
+    "category": "LLM & MLLM",
+    "tags": [
+      "Mixture of Experts",
+      "Transformers Library",
+      "Expert Parallelism",
+      "Inference"
+    ],
+    "readTime": "14 min read",
+    "publishDate": "2026-02-26",
+    "sourceName": "Hugging Face Blog",
+    "url": "https://huggingface.co/blog/moe-transformers",
+    "coverImage": "assets/img/covers/real/hugging-face-moe-in-transformers.png",
+    "coverAlt": "Mixture of experts in transformers cover",
+    "coverFit": "cover"
+  },
+  {
+    "id": "openai-learning-to-reason-with-llms",
+    "title": "Learning to Reason with LLMs",
+    "excerpt": "OpenAI introduces o1, trained with large-scale reinforcement learning to produce a long private chain of thought before answering, and shows accuracy climbing with both train-time RL compute and test-time thinking compute — reaching AIME qualifier scores among the top 500 US students and above-PhD accuracy on GPQA. The chain of thought is hidden from users, and the data and RL recipe are not disclosed, so results are hard to reproduce externally.",
+    "author": "OpenAI",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=openai.com&sz=128",
+    "category": "LLM & MLLM",
+    "tags": [
+      "Reasoning",
+      "Reinforcement Learning",
+      "Test-Time Compute",
+      "o1"
+    ],
+    "readTime": "13 min read",
+    "publishDate": "2024-09-12",
+    "sourceName": "OpenAI",
+    "url": "https://openai.com/index/learning-to-reason-with-llms/",
+    "coverImage": "assets/img/covers/real/openai-learning-to-reason-with-llms.png",
+    "coverAlt": "OpenAI o1 learning to reason cover",
+    "coverFit": "cover"
+  },
+  {
+    "id": "minimax-maxproof-math-proof-evolution",
+    "title": "MaxProof: Scaling Mathematical Proof with Generative-Verifier RL and Evolutionary Search",
+    "excerpt": "MiniMax trains three expert models — a proof generator via long-horizon RL, a verifier aligned through error-finding RL, and a repair model fine-tuned on flawed-proof and verification-analysis pairs — then merges them and applies MaxProof, an evolutionary test-time-scaling loop that converts best@K capability into a more stable pass@1. The post centers on training characteristics and system tradeoffs; evaluations focus on contest-style proofs and the evolutionary search consumes substantial inference compute.",
+    "author": "MiniMax",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=minimax.io&sz=128",
+    "category": "LLM & MLLM",
+    "tags": [
+      "Mathematical Reasoning",
+      "Generative Verifier",
+      "Test-Time Scaling",
+      "Reinforcement Learning"
+    ],
+    "readTime": "16 min read",
+    "publishDate": "2026-06-09",
+    "sourceName": "MiniMax Research",
+    "url": "https://www.minimax.io/blog/minimax-maxproof-math-proof-evolution",
+    "coverImage": "assets/img/covers/real/minimax-maxproof-math-proof-evolution.png",
+    "coverAlt": "MaxProof mathematical proof evolution cover",
+    "coverFit": "cover"
+  },
+  {
+    "id": "illustrated-retrieval-transformer",
+    "title": "The Illustrated Retrieval Transformer",
+    "excerpt": "Jay Alammar visually explains DeepMind’s RETRO, showing how a 7.5B-parameter model paired with a 2-trillion-token retrieval database can match far larger models by injecting nearest-neighbor text chunks through chunked cross-attention, separating world knowledge in the database from language ability in the parameters. It covers the mechanism at intuition level; training details and ablations live in the RETRO paper.",
+    "author": "Jay Alammar",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=jalammar.github.io&sz=128",
+    "category": "LLM & MLLM",
+    "tags": [
+      "Retrieval Augmentation",
+      "RETRO",
+      "Cross-Attention",
+      "Visual Explainer"
+    ],
+    "readTime": "9 min read",
+    "publishDate": "2022-01-03",
+    "sourceName": "Jay Alammar",
+    "url": "https://jalammar.github.io/illustrated-retrieval-transformer/",
+    "coverImage": "assets/img/covers/real/illustrated-retrieval-transformer.png",
+    "coverAlt": "RETRO retrieval transformer illustration",
+    "coverFit": "cover"
+  },
+  {
+    "id": "illustrated-transformer",
+    "title": "The Illustrated Transformer",
+    "excerpt": "The canonical visual walkthrough of the Transformer: self-attention built from query, key, and value projections, multi-head attention, positional encodings, residual connections, and the full encoder-decoder stack, all rendered as per-matrix diagrams. It describes the original 2017 encoder-decoder design, so decoder-only variants and later attention optimizations such as FlashAttention are not covered.",
+    "author": "Jay Alammar",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=jalammar.github.io&sz=128",
+    "category": "LLM & MLLM",
+    "tags": [
+      "Transformer",
+      "Self-Attention",
+      "Architecture",
+      "Visual Explainer"
+    ],
+    "readTime": "15 min read",
+    "publishDate": "2018-06-27",
+    "sourceName": "Jay Alammar",
+    "url": "https://jalammar.github.io/illustrated-transformer/",
+    "coverImage": "assets/img/covers/real/illustrated-transformer.png",
+    "coverAlt": "Illustrated Transformer architecture diagram",
+    "coverFit": "contain"
+  },
+  {
+    "id": "hugging-face-illustrating-rlhf",
+    "title": "Illustrating Reinforcement Learning from Human Feedback (RLHF)",
+    "excerpt": "Hugging Face breaks RLHF into three stages — pretraining a base language model, training a reward model on human preference rankings, and PPO fine-tuning against that reward with a KL penalty that keeps the policy near the reference model — and maps the design space along with open tooling like TRL and TRLX. Written in the ChatGPT era, it predates DPO-style direct preference optimization now common in post-training.",
+    "author": "Nathan Lambert, Louis Castricato, Leandro von Werra, Alex Havrilla",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=huggingface.co&sz=128",
+    "category": "LLM & MLLM",
+    "tags": [
+      "RLHF",
+      "Reward Models",
+      "PPO",
+      "Alignment"
+    ],
+    "readTime": "12 min read",
+    "publishDate": "2022-12-09",
+    "sourceName": "Hugging Face Blog",
+    "url": "https://huggingface.co/blog/rlhf",
+    "coverImage": "assets/img/covers/real/hugging-face-illustrating-rlhf.png",
+    "coverAlt": "Illustrating RLHF cover",
+    "coverFit": "cover"
+  },
+  {
+    "id": "anthropic-mapping-mind-language-model",
+    "title": "Mapping the Mind of a Large Language Model",
+    "excerpt": "Anthropic scales sparse dictionary learning to Claude 3 Sonnet, extracting millions of interpretable features from a production model — spanning multilingual and multimodal concepts like the Golden Gate Bridge as well as safety-relevant ones like deception and sycophancy — and shows that clamping features causally steers behavior. The recovered features are likely a small fraction of what the model represents, and the dictionary-learning pass is compute-intensive.",
+    "author": "Anthropic",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128",
+    "category": "LLM & MLLM",
+    "tags": [
+      "Interpretability",
+      "Sparse Autoencoders",
+      "Feature Steering",
+      "Claude"
+    ],
+    "readTime": "12 min read",
+    "publishDate": "2024-05-21",
+    "sourceName": "Anthropic",
+    "url": "https://www.anthropic.com/research/mapping-mind-language-model",
+    "coverImage": "assets/img/covers/real/anthropic-mapping-mind-language-model.jpg",
+    "coverAlt": "Mapping the mind of a language model cover",
+    "coverFit": "cover"
+  },
+  {
+    "id": "google-language-models-chain-of-thought",
+    "title": "Language Models Perform Reasoning via Chain of Thought",
+    "excerpt": "Google Research shows that prompting PaLM with a few worked examples that spell out intermediate reasoning steps sharply improves arithmetic, commonsense, and symbolic reasoning, reaching 58% on GSM8K with PaLM 540B — then state of the art over a fine-tuned, verifier-ranked GPT-3. The gains are emergent with scale: smaller models produce fluent but illogical chains, so the technique mainly benefits models around 100B parameters and up.",
+    "author": "Jason Wei, Denny Zhou",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=research.google&sz=128",
+    "category": "LLM & MLLM",
+    "tags": [
+      "Chain of Thought",
+      "Prompting",
+      "Reasoning",
+      "Emergent Abilities"
+    ],
+    "readTime": "9 min read",
+    "publishDate": "2022-05-11",
+    "sourceName": "Google Research",
+    "url": "https://research.google/blog/language-models-perform-reasoning-via-chain-of-thought/",
+    "coverImage": "assets/img/covers/real/google-language-models-chain-of-thought.jpg",
+    "coverAlt": "Chain of thought prompting cover",
+    "coverFit": "cover"
+  },
+  {
+    "id": "matteo-nulli-demystifying-multimodal-learning",
+    "title": "Demystifying Multimodal Learning: Enabling Vision in Language Models",
+    "excerpt": "Matteo Nulli builds vision-language models up from formal definitions: a ViT-based CLIP vision encoder, the contrastive objective that aligns image and text embeddings in a shared space, and the projector that turns patch embeddings into visual tokens a language model can consume, illustrated with LLaVA-OneVision-style diagrams. It is a tutorial synthesis rather than new experiments, and it focuses on the adapter-style VLM family.",
+    "author": "Matteo Nulli",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=huggingface.co&sz=128",
+    "category": "Multimodal Model",
+    "tags": [
+      "Vision-Language Models",
+      "CLIP",
+      "Visual Tokens",
+      "Tutorial"
+    ],
+    "readTime": "13 min read",
+    "publishDate": "2026-02-17",
+    "sourceName": "Hugging Face Blog",
+    "url": "https://huggingface.co/blog/MatteoNulli/de-mystifying-multimodal-learning-enabiling-vision",
+    "coverImage": "assets/img/covers/real/matteo-nulli-demystifying-multimodal-learning.png",
+    "coverAlt": "Demystifying multimodal learning cover",
+    "coverFit": "cover"
+  },
+  {
+    "id": "lilian-weng-generalized-visual-language-models",
+    "title": "Generalized Visual Language Models",
+    "excerpt": "Lilian Weng surveys four ways to give language models vision: joint training on image-text pairs (VisualBERT, SimVLM), learned visual prefixes feeding a frozen LM (Frozen, ClipCap), cross-attention fusion, and training-free combinations of specialist models, comparing architectures and ablations across captioning and VQA benchmarks. Written in mid-2022, it predates instruction-tuned VLMs like LLaVA and GPT-4V-class systems.",
+    "author": "Lilian Weng",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=lilianweng.github.io&sz=128",
+    "category": "Multimodal Model",
+    "tags": [
+      "Vision-Language Models",
+      "Frozen LM",
+      "Cross-Attention",
+      "Survey"
+    ],
+    "readTime": "18 min read",
+    "publishDate": "2022-06-09",
+    "sourceName": "Lil'Log",
+    "url": "https://lilianweng.github.io/posts/2022-06-09-vlm/",
+    "coverImage": "assets/img/covers/real/lilian-weng-generalized-visual-language-models.png",
+    "coverAlt": "Generalized visual language models architecture diagram",
+    "coverFit": "contain"
+  },
+  {
+    "id": "chip-huyen-multimodality-large-multimodal-models",
+    "title": "Multimodality and Large Multimodal Models (LMMs)",
+    "excerpt": "Chip Huyen dissects two representative multimodal systems: CLIP’s contrastive image-text pretraining with a shared embedding space, and Flamingo’s Perceiver Resampler plus gated cross-attention layers for interleaved vision-language generation, then maps research directions like instruction tuning and more efficient training. The survey stops at 2023-era systems, before natively multimodal frontier models became standard.",
+    "author": "Chip Huyen",
+    "authorAvatar": "https://www.google.com/s2/favicons?domain=huyenchip.com&sz=128",
+    "category": "Multimodal Model",
+    "tags": [
+      "Multimodal Models",
+      "CLIP",
+      "Flamingo",
+      "Survey"
+    ],
+    "readTime": "20 min read",
+    "publishDate": "2023-10-10",
+    "sourceName": "Chip Huyen",
+    "url": "https://huyenchip.com/2023/10/10/multimodal.html",
+    "coverImage": "assets/img/covers/real/chip-huyen-multimodality-large-multimodal-models.png",
+    "coverAlt": "CLIP architecture diagram from multimodality survey",
+    "coverFit": "contain"
+  }
+]

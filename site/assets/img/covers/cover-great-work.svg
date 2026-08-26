@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">How to Do Great Work cover</title>
+  <desc id="desc">Editorial cover for Paul Graham's essay on doing great work.</desc>
+  <rect width="1200" height="630" fill="#f0f9ff"/>
+  <rect x="80" y="76" width="1040" height="478" rx="34" fill="#ffffff" stroke="#0369a1" stroke-width="4"/>
+  <path d="M240 460 L400 350 L540 400 L720 260 L900 300 L980 180" fill="none" stroke="#0284c7" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="980" cy="180" r="34" fill="#f59e0b"/>
+  <circle cx="240" cy="460" r="22" fill="#0369a1"/>
+  <circle cx="540" cy="400" r="22" fill="#0369a1"/>
+  <circle cx="720" cy="260" r="22" fill="#0369a1"/>
+  <text x="180" y="528" fill="#0c4a6e" font-family="Arial, Helvetica, sans-serif" font-size="52" font-weight="700">Great Work</text>
+</svg>
