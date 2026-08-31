@@ -5704,6 +5704,22 @@ class BlogXiv {
                 coverFit: 'cover'
             },
             {
+                id: 'tencent-hy4-preview',
+                title: 'Introducing Hy4 preview',
+                excerpt: 'Tencent Hunyuan releases Hy4 preview, a 770B-parameter MoE (49B active) with a 1M-token context and a recursive self-improvement loop in which the model participates in optimizing its own training methods, data strategy, evaluation, and inference operators, yielding a 31.8% end-to-end throughput gain; weights and code are open under a permissive commercial license.',
+                author: 'Tencent Hunyuan',
+                authorAvatar: 'https://www.google.com/s2/favicons?domain=tencent.com&sz=128',
+                category: 'Foundation Model',
+                tags: ['Hunyuan Hy4', 'MoE', 'Open Weights', '1M Context', 'Recursive Self-Improvement', 'Model Release'],
+                readTime: '10 min read',
+                publishDate: '2026-08-29',
+                sourceName: 'Tencent Hunyuan',
+                url: 'https://hy.tencent.ai/research/hy4-preview',
+                coverImage: 'assets/img/covers/real/tencent-hy4-preview.jpg',
+                coverAlt: 'Tencent Hy4 preview article cover',
+                coverFit: 'cover'
+            },
+            {
                 id: 'ruhan-wang-harness-handbook',
                 title: 'Harness Handbook',
                 excerpt: 'A practical handbook for understanding and building agent harnesses, covering the execution environment, tools, context, feedback, and evaluation around an underlying model.',
